@@ -4,9 +4,40 @@ using UnityEngine;
 
 public class Character1 : GenericCharacter
 {
-    public float publicJumpForce = 7;  //shown in inspector
-    public float publicMoveSpeed = 7;  // shown in inspector
-    //public bool onGround;
+    // movement variables
+    protected CharacterMovementController movementController;
+    public float runSpeed = 40f;
+    float horizontalMove = 0f;
+    bool jump = false;
+
+    void Awake()
+    {
+        base.getComponents();
+        movementController = GetComponent<CharacterMovementController>();
+    }
+
+    void Start()
+    {
+
+    }
+
+    void Update()
+    {
+        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            jump = true;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        // Move our character
+        movementController.Move(horizontalMove * Time.fixedDeltaTime, jump);
+        jump = false;
+        movementController.BetterJump();
+    }
 
     public override void useCharacterPotion()
     {
@@ -28,26 +59,5 @@ public class Character1 : GenericCharacter
             // do the potion
         }
         throw new System.NotImplementedException();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        base.getComponents();
-        base.jumpForce = publicJumpForce;
-        base.moveSpeed = publicMoveSpeed;
-    }
-
-    // checking of key presses go here
-    void Update()
-    {
-        base.checkJump();
-    }
-
-    // physics related stuff go here
-    private void FixedUpdate()
-    {
-        base.jumpCharacter();
-        base.moveCharacter();
     }
 }
