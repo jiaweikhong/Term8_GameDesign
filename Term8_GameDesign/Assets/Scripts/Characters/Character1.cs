@@ -36,7 +36,6 @@ public class Character1 : GenericCharacter
 
         if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.Jump)))
         {
-            Debug.Log("jump pressed!");
             jump = true;
         }
     }

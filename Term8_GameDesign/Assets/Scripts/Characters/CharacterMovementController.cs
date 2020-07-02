@@ -30,9 +30,10 @@ public class CharacterMovementController : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
         for (int i = 0; i < colliders.Length; i++)
         {
-            if (colliders[i].gameObject != gameObject)
+			// if y-velocity not at 0 means passing through one-way platformer and not on ground
+			if (colliders[i].gameObject != gameObject && Math.Abs(m_Rigidbody2D.velocity.y) < 0.01)
             {
-                m_Grounded = true;
+				m_Grounded = true;
             }
         }
 		//Debug.Log("im grounded " + m_Grounded);

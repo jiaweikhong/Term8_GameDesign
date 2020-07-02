@@ -2380,7 +2380,7 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 1175346260}
   m_MovementSmoothing: 0.05
   m_fallMultiplier: 8
-  jumpForce: 6
+  jumpForce: 12
 --- !u!114 &1170511319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2860,7 +2860,7 @@ MonoBehaviour:
     - controlKey: 1
       key: 100
     - controlKey: 2
-      key: 304
+      key: 119
 --- !u!4 &2041668366
 Transform:
   m_ObjectHideFlags: 0
