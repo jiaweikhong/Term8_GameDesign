@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,7 +25,7 @@ public class CharacterMovementController : MonoBehaviour
     private void FixedUpdate()
     {
         m_Grounded = false;
-
+		
         // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
         Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
         for (int i = 0; i < colliders.Length; i++)
@@ -34,7 +35,8 @@ public class CharacterMovementController : MonoBehaviour
                 m_Grounded = true;
             }
         }
-    }
+		//Debug.Log("im grounded " + m_Grounded);
+	}
 
 	public void Move(float move, bool jump)
 	{

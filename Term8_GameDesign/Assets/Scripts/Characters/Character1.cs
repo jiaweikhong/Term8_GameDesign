@@ -1,14 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Enums;
 
 public class Character1 : GenericCharacter
 {
     // movement variables
     protected CharacterMovementController movementController;
+    ControlsManager controlsManager;
     public float runSpeed = 40f;
     float horizontalMove = 0f;
     bool jump = false;
+
+    bool isLeftPressed = false;
+    bool isRightPressed = false;
 
     void Awake()
     {
@@ -18,15 +23,20 @@ public class Character1 : GenericCharacter
 
     void Start()
     {
-
+        controlsManager = FindObjectOfType<ControlsManager>();
     }
 
     void Update()
     {
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        isLeftPressed = Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.LeftKey));
+        isRightPressed = Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.RightKey));
+        horizontalMove = isLeftPressed ? -1 : 0;
+        horizontalMove = isRightPressed ? 1 : horizontalMove;
+        horizontalMove *= runSpeed;
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.Jump)))
         {
+            Debug.Log("jump pressed!");
             jump = true;
         }
     }
