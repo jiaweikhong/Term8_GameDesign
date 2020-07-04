@@ -3589,7 +3589,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 619884122}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1e2372116963bb949a591f832a76f885, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -3822,7 +3822,7 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 328594305}
   m_MovementSmoothing: 0.05
   m_fallMultiplier: 8
-  jumpForce: 6
+  jumpForce: 12
 --- !u!114 &673675643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3845,7 +3845,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 673675640}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1e2372116963bb949a591f832a76f885, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
