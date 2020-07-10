@@ -42,8 +42,7 @@ public class GenericPlayer : MonoBehaviour
 
     public void incrementDeath()
     {
-        return;
-        // scorecontroller.incrementdeath 
+        ScoreControllerScript.Instance.incrementDeath(playerNum);
     }
 
 }
