@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4281c08cabaf9964c946953bb3ba221d, type: 3}
+  m_Name: MurasakiData
+  m_EditorClassIdentifier: 
+  characterName: Murasaki
+  sprite: {fileID: 4723107735738678597, guid: 82b79617c4fb4fa4796b747479bcc084, type: 3}
+  title: Blade Alchemist
+  backstory: 'Descendent of the Renesha Clan renown for their ability to brew potions
+    that allow them to create metal objects. Murasaki is adept at using blades. She
+    fights to bring glory and honour to her clan. '
+  primarySprite: {fileID: 21300000, guid: 529a6d2a951debe46bde582452a28dee, type: 3}
+  primaryName: Kunai Flash
+  secondarySprite: {fileID: 21300000, guid: 0582362e504913743a7b8bf1e13aadd4, type: 3}
+  secondaryName: Heavenward Katana
