@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterSelect : MonoBehaviour
+public class CharacterSelectUI : MonoBehaviour
 {
     [SerializeField] 
     private Text characterName;
@@ -17,8 +17,14 @@ public class CharacterSelect : MonoBehaviour
     private Image secondarySprite;
     [SerializeField]
     private Text secondaryName;
+    [SerializeField]
+    private GameObject arrows;
+    [SerializeField]
+    private Text Confirm;
+    [SerializeField]
+    private GameObject confirmBorder;
 
-    public void UpdateDisplayUI(CharacterData data)
+    public void UpdateCharacterDisplayed(CharacterData data)
     {
         characterName.text = data.CharacterName;
         sprite.sprite = data.Sprite;
@@ -27,5 +33,12 @@ public class CharacterSelect : MonoBehaviour
         primaryName.text = data.PrimaryName;
         secondarySprite.sprite = data.SecondarySprite;
         secondaryName.text = data.SecondaryName;
+    }
+
+    public void UpdateSelected(bool isSelected)
+    {
+        arrows.SetActive(!isSelected);
+        confirmBorder.SetActive(!isSelected);
+        Confirm.text = (isSelected) ? "READY >" : "CONFIRM";
     }
 }

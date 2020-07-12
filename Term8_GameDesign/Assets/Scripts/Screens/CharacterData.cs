@@ -21,6 +21,8 @@ public class CharacterData : ScriptableObject
     private Sprite secondarySprite;
     [SerializeField]
     private string secondaryName;
+    [SerializeField]
+    private bool isTaken;
 
     public string CharacterName
     { get
@@ -53,5 +55,12 @@ public class CharacterData : ScriptableObject
     public string SecondaryName
     { get
         { return secondaryName; }
+    }
+    public bool Availability
+    { 
+        get
+        { return isTaken; }
+        set
+        { isTaken = value; }
     }
 }
