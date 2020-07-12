@@ -15,6 +15,7 @@ public class CharacterSelectController : MonoBehaviour
 
     void Start()
     {
+        // get reference and display default
         controlsManager = FindObjectOfType<ControlsManager>();
         characterSelectUI.UpdateCharacterDisplayed(characterManager.GetCharacter(characterIndex));
         characterSelectUI.UpdateSelected(characterSelected);

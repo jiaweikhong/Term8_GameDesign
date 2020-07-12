@@ -8,6 +8,15 @@ public class PlayerStats : ScriptableObject
     [SerializeField]
     private int playerNum;      // starts from 0!
     [SerializeField]
+    private CharacterData character;
+    [SerializeField]
+    private int Weets;
+    [SerializeField]
+    private int qtyPotion2;
+    [SerializeField]
+    private int qtyPotion3;
+    
+    [SerializeField]
     private int _playerKills = 0;
     [SerializeField]
     private int _playerDeaths = 0;
@@ -17,40 +26,25 @@ public class PlayerStats : ScriptableObject
     public int PlayerKills
     {
         get
-        {
-            return _playerKills;
-        }
-
+        { return _playerKills; }
         set
-        {
-            _playerKills = value;
-        }
+        { _playerKills = value; }
     }
 
     public int PlayerDeaths
     {
         get
-        {
-            return _playerDeaths;
-        }
-
+        { return _playerDeaths; }
         set
-        {
-            _playerDeaths = value;
-        }
+        { _playerDeaths = value; }
     }
 
     public int PlayerHealth
     {
         get
-        {
-            return _playerHealth;
-        }
-
+        { return _playerHealth; }
         set
-        {
-            _playerHealth = value;
-        }
+        { _playerHealth = value; }
     }
 
     public void resetPlayerHealth()

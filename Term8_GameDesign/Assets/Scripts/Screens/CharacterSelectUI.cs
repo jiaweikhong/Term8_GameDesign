@@ -26,6 +26,7 @@ public class CharacterSelectUI : MonoBehaviour
 
     public void UpdateCharacterDisplayed(CharacterData data)
     {
+        // update character information for browsing
         characterName.text = data.CharacterName;
         sprite.sprite = data.Sprite;
         title.text = data.Title;
@@ -37,6 +38,7 @@ public class CharacterSelectUI : MonoBehaviour
 
     public void UpdateSelected(bool isSelected)
     {
+        // select/unselect response
         arrows.SetActive(!isSelected);
         confirmBorder.SetActive(!isSelected);
         Confirm.text = (isSelected) ? "READY >" : "CONFIRM";
