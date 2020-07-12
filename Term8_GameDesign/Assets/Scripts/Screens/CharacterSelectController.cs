@@ -13,12 +13,6 @@ public class CharacterSelectController : MonoBehaviour
     private int characterIndex = 0;
     private bool characterSelected = false;
 
-
-
-    void Awake()
-    {
-        playerScript = gameObject.GetComponent<GenericPlayer>();
-    }
     void Start()
     {
         controlsManager = FindObjectOfType<ControlsManager>();
@@ -37,7 +31,7 @@ public class CharacterSelectController : MonoBehaviour
                 if (characterIndex<0) characterIndex = 3;
                 characterSelectUI.UpdateCharacterDisplayed(characterManager.GetCharacter(characterIndex));
             }
-            else if (Input.GetKeyUp(controlsManager.GetKey(playerNum, ControlKeys.RightKey)))
+            else if (Input.GetKeyDown(controlsManager.GetKey(playerNum, ControlKeys.RightKey)))
             {
                 characterIndex += 1;
                 if (characterIndex>3) characterIndex = 0;
