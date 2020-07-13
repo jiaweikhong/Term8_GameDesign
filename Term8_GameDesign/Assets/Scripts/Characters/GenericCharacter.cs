@@ -27,23 +27,11 @@ public abstract class GenericCharacter : MonoBehaviour
         thisBody = GetComponent<Rigidbody2D>();
     }
 
-
-    void incrementScore()
+    // no use at the moment, the score is done by the gamemanager
+    /*void incrementScore()
     {
         playerScript.incrementScore();
-    }
-
-    protected void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("damage"))
-        {
-            health--;
-        }
-        /*if (health == 0)
-        {
-            playerScript.incrementDeath();      // not implemented yet
-        }*/
-    }
+    }*/
 
     //abstract methods must be implemented by child classes
     public abstract void useCharacterPotion();
@@ -51,6 +39,8 @@ public abstract class GenericCharacter : MonoBehaviour
     public abstract void usePotion2();
 
     public abstract void usePotion3();
+
+    public abstract void onDeath();
 
     // implement methods for all the different potion 3s here
 }

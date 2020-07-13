@@ -12,6 +12,35 @@ public class GenericPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    // no use at the moment since GameManager will increment score / death based on playerTakesDamage()
+/*    public void incrementScore()
+    {
+        GameManager.Instance.incrementScore(playerNum);
+    }
+
+    public void incrementDeath()
+    {
+        GameManager.Instance.incrementDeath(playerNum);
+    }*/
+
+    public void takeDamage(int attackingPlayerNum)
+    {
+        GameManager.Instance.playerTakesDamage(attackingPlayerNum, playerNum);
+    }
+
+    void attachCharacter(int charNum)
+    {
+        // set base characterNum
+        characterNum = charNum;
         switch (characterNum)
         {
             case 1:
@@ -27,22 +56,6 @@ public class GenericPlayer : MonoBehaviour
                 // attach character 4 prefab as a child to this player (which includes the sprite, script etc);
                 break;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void incrementScore()
-    {
-        ScoreControllerScript.Instance.incrementScore(playerNum);
-    }
-
-    public void incrementDeath()
-    {
-        ScoreControllerScript.Instance.incrementDeath(playerNum);
     }
 
 }
