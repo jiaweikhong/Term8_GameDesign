@@ -10,9 +10,9 @@ public class GenericPlayer : MonoBehaviour
     public int qtyPotion3;  // we need to think about the menu interaction of setting the qty of potions.
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        GameManager.onDeathEvent += genericPlayerDeath;
     }
 
     // Update is called once per frame
@@ -21,19 +21,19 @@ public class GenericPlayer : MonoBehaviour
 
     }
 
-    // no use at the moment since GameManager will increment score / death based on playerTakesDamage()
-/*    public void incrementScore()
+    private void genericPlayerDeath(int deadPlayerNum)
     {
-        GameManager.Instance.incrementScore(playerNum);
+        if (deadPlayerNum == playerNum)
+        {
+            // TODO: trigger death animation
+            // perhaps getComponent GenericCharacter -> call onDeath and implement the death animation there
+            Debug.Log("Player " + playerNum + " has ded");
+        }
     }
-
-    public void incrementDeath()
-    {
-        GameManager.Instance.incrementDeath(playerNum);
-    }*/
 
     public void takeDamage(int attackingPlayerNum)
     {
+        // TODO: trigger hurt animation
         GameManager.Instance.playerTakesDamage(attackingPlayerNum, playerNum);
     }
 
@@ -57,5 +57,16 @@ public class GenericPlayer : MonoBehaviour
                 break;
         }
     }
+
+    // no use at the moment since GameManager will increment score / death based on playerTakesDamage()
+    /*    public void incrementScore()
+        {
+            GameManager.Instance.incrementScore(playerNum);
+        }
+
+        public void incrementDeath()
+        {
+            GameManager.Instance.incrementDeath(playerNum);
+        }*/
 
 }

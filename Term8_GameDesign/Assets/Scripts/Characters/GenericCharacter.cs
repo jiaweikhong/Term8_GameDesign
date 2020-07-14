@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class GenericCharacter : MonoBehaviour
 {
-    private int health;
     protected GenericPlayer playerScript;
     protected int potion3_name;
     private Rigidbody2D thisBody;

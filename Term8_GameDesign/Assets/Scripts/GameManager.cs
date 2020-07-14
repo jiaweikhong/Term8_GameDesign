@@ -12,6 +12,9 @@ public class GameManager : GenericSingletonClass<GameManager>
     public PlayerStats player4;
     private Dictionary<int, PlayerStats> playersHashTable;      // store reference to PlayerStats for easy retrieval
 
+    public delegate void PlayerDeathDelegate(int deadPlayerNum);
+    public static event PlayerDeathDelegate onDeathEvent;       // to let GenericPlayer know that they dieded so need to trigger animation
+
     void Start()
     {
         playersHashTable = new Dictionary<int, PlayerStats> {
@@ -52,9 +55,7 @@ public class GameManager : GenericSingletonClass<GameManager>
     {
         PlayerStats requiredPlayer = playersHashTable[playerNum];
         requiredPlayer.PlayerDeaths++;
-        // TODO: trigger GenericCharacter.onDeath()
-        // perhaps need to attach players gameobjects here ? :( then GetComponentInChildren<GenericCharacter>().onDeath()
-        // or use events.... then Player1,2,3,4 subscribe to some event here then when u trigger here, the player1 will call base.onDeath()
+        onDeathEvent?.Invoke(playerNum);        // let the respecive player know that they ded
     }
 
     // When game ends, reset PlayerKills and PlayerDeaths
