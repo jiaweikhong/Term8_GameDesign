@@ -8,14 +8,52 @@ public class PlayerStats : ScriptableObject
     [SerializeField]
     private int playerNum;      // starts from 0!
     [SerializeField]
-    private CharacterData character;
+    private CharacterData _character;
     [SerializeField]
-    private int Weets;
+    private int _weets = 200;
     [SerializeField]
-    private int qtyPotion2;
+    private int _secondaryPotionQty = 0;
     [SerializeField]
-    private int qtyPotion3;
-    
+    private SpecialPotionData _specialPotion;
+    [SerializeField]
+    private int _specialPotionQty = 0;
+
+    public CharacterData CharacterData
+    {
+        get
+        { return _character; }
+        set
+        { _character = value; }
+    }
+    public int Weets
+    {
+        get
+        { return _weets; }
+        set
+        { _weets = value; }
+    }
+    public int SecondaryPotionQty
+    {
+        get
+        { return _secondaryPotionQty; }
+        set
+        { _secondaryPotionQty = value; }
+    }
+    public SpecialPotionData specialPotion
+    {
+        get
+        { return _specialPotion; }
+        set
+        { _specialPotion = value; }
+    }
+    public int SpecialPotionQty
+    {
+        get
+        { return _specialPotionQty; }
+        set
+        { _specialPotionQty = value; }
+    }
+
     [SerializeField]
     private int _playerKills = 0;
     [SerializeField]
@@ -30,7 +68,6 @@ public class PlayerStats : ScriptableObject
         set
         { _playerKills = value; }
     }
-
     public int PlayerDeaths
     {
         get
@@ -38,7 +75,6 @@ public class PlayerStats : ScriptableObject
         set
         { _playerDeaths = value; }
     }
-
     public int PlayerHealth
     {
         get
@@ -46,9 +82,25 @@ public class PlayerStats : ScriptableObject
         set
         { _playerHealth = value; }
     }
-
     public void resetPlayerHealth()
     {
         _playerHealth = 3;
+    }
+    public void ResetGame()
+    {
+        _weets = 200;
+        _secondaryPotionQty = 0;
+        _specialPotionQty = 0;
+        _playerKills = 0;
+        _playerDeaths = 0;
+        _playerHealth = 3;
+    }
+
+    public void UpdateBrew(int weets, int secQty, int speQty, SpecialPotionData special)
+    {
+        _weets = weets;
+        _secondaryPotionQty = secQty;
+        _specialPotionQty = speQty;
+        _specialPotion = special;
     }
 }

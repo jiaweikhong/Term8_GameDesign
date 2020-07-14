@@ -6,24 +6,27 @@ using Enums;
 public class CharacterSelectController : MonoBehaviour
 {
     public int playerNum;
-    public CharacterSelectManager characterManager;
+    public PlayerStats playerStats;
     public CharacterSelectUI characterSelectUI;
     private ControlsManager controlsManager;
-    protected GenericPlayer playerScript;
+    private ScreensTransitionManager screensTransitionManager;
+    private CharacterSelectManager characterManager;
     private int characterIndex = 0;
-    private bool characterSelected = false;
+    private bool playerReady = false;
 
     void Start()
     {
         // get reference and display default
         controlsManager = FindObjectOfType<ControlsManager>();
+        screensTransitionManager = FindObjectOfType<ScreensTransitionManager>();
+        characterManager = FindObjectOfType<CharacterSelectManager>();
         characterSelectUI.UpdateCharacterDisplayed(characterManager.GetCharacter(characterIndex));
-        characterSelectUI.UpdateSelected(characterSelected);
+        characterSelectUI.UpdateSelected(playerReady);
     }
 
     void Update()
     {
-        if (!characterSelected)
+        if (!playerReady)
         {
             // browse characters
             if (Input.GetKeyDown(controlsManager.GetKey(playerNum, ControlKeys.LeftKey)))
@@ -45,8 +48,11 @@ public class CharacterSelectController : MonoBehaviour
                 // if character not taken
                 if (characterManager.SelectCharacter(characterIndex))
                 {
-                    characterSelected = true;
+                    playerReady = true;
+                    playerStats.CharacterData = characterManager.GetCharacter(characterIndex);
                     characterSelectUI.UpdateSelected(true);
+                    playerStats.ResetGame();
+                    screensTransitionManager.ReadyPlayer(true);
                 }
             }
         }
@@ -55,9 +61,10 @@ public class CharacterSelectController : MonoBehaviour
             // undo selection
             if (Input.GetKeyDown(controlsManager.GetKey(playerNum, ControlKeys.SecondaryKey)))
             {
-                characterSelected = false;
+                playerReady = false;
                 characterManager.UnSelectCharacter(characterIndex);
                 characterSelectUI.UpdateSelected(false);
+                screensTransitionManager.ReadyPlayer(false);
             }
 
         }
