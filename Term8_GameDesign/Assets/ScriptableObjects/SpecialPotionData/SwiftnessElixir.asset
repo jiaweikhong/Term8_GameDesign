@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0b6227a7c772634681412875922af20, type: 3}
-  m_Name: New Special Potion Data
+  m_Name: SwiftnessElixir
   m_EditorClassIdentifier: 
-  potionName: 
-  description: 
-  sprite: {fileID: 0}
-  cost: 0
+  specialName: Swiftness Elixir
+  description: Makes player move at 1.2x speed for 5 seconds
+  sprite: {fileID: 21300000, guid: 0514b9a1df36a6140a7401107c8db063, type: 3}
+  cost: 80

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0b6227a7c772634681412875922af20, type: 3}
   m_Name: DreamDust
   m_EditorClassIdentifier: 
-  potionName: 
-  description: 
-  sprite: {fileID: 0}
-  cost: 0
+  specialName: Dream Dust
+  description: ' Makes all other players sleep for 2 seconds '
+  sprite: {fileID: 21300000, guid: 2c904865185b4a446ba655a9491ed0eb, type: 3}
+  cost: 160
