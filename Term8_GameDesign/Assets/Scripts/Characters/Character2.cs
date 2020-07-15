@@ -13,7 +13,12 @@ public class Character2 : GenericCharacter
     bool jump = false;
     private bool isLeftPressed = false;
     private bool isRightPressed = false;
-    
+
+    // attack variables
+    private float timeBtwAttack;
+    [SerializeField]
+    private float startTimeBtwAttack;
+
 
     void Awake()
     {
@@ -39,6 +44,29 @@ public class Character2 : GenericCharacter
         {
             jump = true;
         }
+
+        // attack
+        if (timeBtwAttack <= 0)
+        {
+            if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.PrimaryKey)))
+            {
+                Debug.Log("Pressed Primary Key");
+                useCharacterPotion();
+            }
+            else if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.SecondaryKey)))
+            {
+                usePotion2();
+            }
+            else if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.SpecialKey)))
+            {
+                usePotion3();
+            }
+            timeBtwAttack = startTimeBtwAttack;
+        }
+        else
+        {
+            timeBtwAttack -= Time.deltaTime;
+        }
     }
 
     void FixedUpdate()
@@ -51,24 +79,24 @@ public class Character2 : GenericCharacter
 
     public override void useCharacterPotion()
     {
-        throw new System.NotImplementedException();
+        Debug.Log(playerScript.playerNum + " Potion 1!!");
     }
 
     public override void usePotion2()
     {
+        Debug.Log(playerScript.playerNum + " Potion 2!!");
         // do the same check as described in usePotion3()
-        throw new System.NotImplementedException();
     }
 
     public override void usePotion3()
     {
         // remember to check if there's any more potions left. it's stored in base.playerScript.qtyPotion3
-        // e.g.
+        Debug.Log(playerScript.playerNum + "Potion 3!");
+
         if (base.playerScript.qtyPotion3 > 0)
         {
             // do the potion
         }
-        throw new System.NotImplementedException();
     }
 
     public override void onDeath()

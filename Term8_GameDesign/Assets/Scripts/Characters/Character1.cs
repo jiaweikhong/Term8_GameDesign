@@ -19,8 +19,8 @@ public class Character1 : GenericCharacter
     [SerializeField]
     private float startTimeBtwAttack;
     public Transform attackPos;                                                                
-    public float attackRangeX;
-    public float attackRangeY;
+    public float attackRangeX;      //  TODO: refactor into CharacterStats ScriptableObject?
+    public float attackRangeY;      //
     public LayerMask whatIsOpponents;
 
     void Awake()
@@ -48,19 +48,21 @@ public class Character1 : GenericCharacter
             jump = true;
         }
 
-        // attack (possibly basic attack)
+        // attack
         if (timeBtwAttack <= 0)
         {
-            if (Input.GetKey(KeyCode.C))
+            if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.PrimaryKey)))
             {
-                Debug.Log("pressed c");
-                Vector2 attackRange = new Vector2(attackRangeX, attackRangeY);
-                Collider2D[] opponentsToDamage = Physics2D.OverlapBoxAll(attackPos.position, attackRange, 0, whatIsOpponents);
-                for (int i = 0; i < opponentsToDamage.Length; i++)
-                {
-                    Debug.Log("damage taken by player");
-                    opponentsToDamage[i].GetComponentInParent<GenericPlayer>().takeDamage(playerScript.playerNum);
-                }
+                Debug.Log("Pressed Primary Key");
+                useCharacterPotion();
+            }
+            else if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.SecondaryKey)))
+            {
+                usePotion2();
+            }
+            else if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.SpecialKey)))
+            {
+                usePotion3();
             }
             timeBtwAttack = startTimeBtwAttack;
         }
@@ -86,24 +88,31 @@ public class Character1 : GenericCharacter
 
     public override void useCharacterPotion()
     {
-        throw new System.NotImplementedException();
+        // TODO: attack animation
+        Vector2 attackRange = new Vector2(attackRangeX, attackRangeY);
+        Collider2D[] opponentsToDamage = Physics2D.OverlapBoxAll(attackPos.position, attackRange, 0, whatIsOpponents);
+        for (int i = 0; i < opponentsToDamage.Length; i++)
+        {
+            Debug.Log("damage taken by player");
+            opponentsToDamage[i].GetComponentInParent<GenericPlayer>().takeDamage(playerScript.playerNum);
+        }
     }
 
     public override void usePotion2()
     {
+        Debug.Log("Potion 2!!");
         // do the same check as described in usePotion3()
-        throw new System.NotImplementedException();
     }
 
     public override void usePotion3()
     {
         // remember to check if there's any more potions left. it's stored in base.playerScript.qtyPotion3
-        // e.g.
+        Debug.Log("Potion 3!");
+        
         if (base.playerScript.qtyPotion3 > 0)
         {
             // do the potion
         }
-        throw new System.NotImplementedException();
     }
 
     public override void onDeath()
