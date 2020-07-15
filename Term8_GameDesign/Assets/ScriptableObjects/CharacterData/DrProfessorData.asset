@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4281c08cabaf9964c946953bb3ba221d, type: 3}
+  m_Name: DrProfessorData
+  m_EditorClassIdentifier: 
+  characterName: Dr. Professor
+  sprite: {fileID: 8239112264362327762, guid: 3819363ea4dda9f47937907863515be0, type: 3}
+  title: Toxic Alchemist
+  backstory: 'Ex-researcher that was fired because his inventions were deemed too
+    toxic for the lab. Dr. Professor continues to experiment independently to make
+    people see the beauty of his creations. '
+  primarySprite: {fileID: 21300000, guid: 8532565a25f93af499aca585298fa347, type: 3}
+  primaryName: Woosh Cruk
+  secondarySprite: {fileID: 21300000, guid: d5bb00bf6e041024cb0954668c243b8d, type: 3}
+  secondaryName: Fieu Piang
