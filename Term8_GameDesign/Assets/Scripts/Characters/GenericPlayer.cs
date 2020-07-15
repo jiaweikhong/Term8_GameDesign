@@ -25,8 +25,8 @@ public class GenericPlayer : MonoBehaviour
     {
         if (deadPlayerNum == playerNum)
         {
-            // TODO: trigger death animation
-            // perhaps getComponent GenericCharacter -> call onDeath and implement the death animation there
+            // trigger death animation in character
+            GetComponentInChildren<GenericCharacter>().onDeath();
             Debug.Log("Player " + playerNum + " has ded");
         }
     }

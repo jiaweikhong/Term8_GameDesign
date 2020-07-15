@@ -4,7 +4,9 @@ using UnityEngine;
 using Enums;
 
 public class Character1 : GenericCharacter
-{   
+{
+    private Animator animator;
+
     // movement variables
     protected CharacterMovementController movementController;
     ControlsManager controlsManager;
@@ -27,6 +29,7 @@ public class Character1 : GenericCharacter
     {
         base.getComponents();
         movementController = GetComponent<CharacterMovementController>();
+        animator = GetComponent<Animator>();
     }
 
     void Start()
@@ -42,10 +45,12 @@ public class Character1 : GenericCharacter
         horizontalMove = isLeftPressed ? -1 : 0;
         horizontalMove = isRightPressed ? 1 : horizontalMove;
         horizontalMove *= runSpeed;
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));  // set run animation
 
         if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.Jump)))
         {
             jump = true;
+            animator.SetBool("IsJumping", true);
         }
 
         // attack
@@ -72,6 +77,11 @@ public class Character1 : GenericCharacter
         }
     }
 
+    public void OnLanding()
+    {
+        animator.SetBool("IsJumping", false);
+    }
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -88,7 +98,8 @@ public class Character1 : GenericCharacter
 
     public override void useCharacterPotion()
     {
-        // TODO: attack animation
+        // attack animation
+        animator.SetTrigger("Attack");
         Vector2 attackRange = new Vector2(attackRangeX, attackRangeY);
         Collider2D[] opponentsToDamage = Physics2D.OverlapBoxAll(attackPos.position, attackRange, 0, whatIsOpponents);
         for (int i = 0; i < opponentsToDamage.Length; i++)
@@ -102,6 +113,7 @@ public class Character1 : GenericCharacter
     {
         Debug.Log("Potion 2!!");
         // do the same check as described in usePotion3()
+        // animator.SetTrigger("Attack");
     }
 
     public override void usePotion3()
@@ -112,13 +124,15 @@ public class Character1 : GenericCharacter
         if (base.playerScript.qtyPotion3 > 0)
         {
             // do the potion
+            // animator.SetTrigger("Attack");
         }
     }
 
     public override void onDeath()
     {
-        // TODO: trigger death animation
+        // trigger death animation
+        animator.SetTrigger("Death");
         // dont need to increment death since it is taken care of in GameManager.takeDamage
-        throw new System.NotImplementedException();
+        // throw new System.NotImplementedException();
     }
 }

@@ -4,7 +4,9 @@ using UnityEngine;
 using Enums;
 
 public class Character2 : GenericCharacter
-{   
+{
+    private Animator animator;
+
     // movement variables
     protected CharacterMovementController movementController;
     ControlsManager controlsManager;
@@ -24,6 +26,7 @@ public class Character2 : GenericCharacter
     {
         base.getComponents();
         movementController = GetComponent<CharacterMovementController>();
+        animator = GetComponent<Animator>();
     }
 
     void Start()
@@ -39,10 +42,12 @@ public class Character2 : GenericCharacter
         horizontalMove = isLeftPressed ? -1 : 0;
         horizontalMove = isRightPressed ? 1 : horizontalMove;
         horizontalMove *= runSpeed;
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));  // set run animation
 
         if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.Jump)))
         {
             jump = true;
+            animator.SetBool("IsJumping", true);
         }
 
         // attack
@@ -69,6 +74,11 @@ public class Character2 : GenericCharacter
         }
     }
 
+    public void OnLanding()
+    {
+        animator.SetBool("IsJumping", false);
+    }
+
     void FixedUpdate()
     {
         // Move our character
@@ -79,6 +89,7 @@ public class Character2 : GenericCharacter
 
     public override void useCharacterPotion()
     {
+        animator.SetTrigger("Attack");
         Debug.Log(playerScript.playerNum + " Potion 1!!");
     }
 
@@ -101,6 +112,7 @@ public class Character2 : GenericCharacter
 
     public override void onDeath()
     {
-        throw new System.NotImplementedException();
+        animator.SetTrigger("Death");
+        // throw new System.NotImplementedException();
     }
 }
