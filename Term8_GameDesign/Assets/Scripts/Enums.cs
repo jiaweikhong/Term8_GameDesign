@@ -7,6 +7,8 @@
         Jump,
         PrimaryKey,
         SecondaryKey,
-        SpecialKey
+        SpecialKey,
+        UpKey,
+        DownKey
     }
 }
