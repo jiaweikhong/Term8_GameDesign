@@ -5,7 +5,7 @@ using Enums;
 
 public class BrewingPhaseController : MonoBehaviour
 {
-    
+
     public int playerNum;
     public PlayerStats playerStats;
     public BrewingPhaseUI brewingPhaseUI;
@@ -40,26 +40,30 @@ public class BrewingPhaseController : MonoBehaviour
         // handle selection field {0: secondary, 1: special, 2: confirm, 3: ready}
         if (selectionIndex < 3)
         {
-            if (Input.GetKeyDown(controlsManager.GetKey(playerNum, ControlKeys.UpKey)))
+            //if (Input.GetKeyDown(controlsManager.GetKey(playerNum, ControlKeys.UpKey)))
+            if (controlsManager.CheckUpSelect(playerNum))
             {
+                controlsManager.LockNavigation(playerNum);
                 selectionIndex -= 1;
                 if (selectionIndex < 0) selectionIndex = 2;
                 brewingPhaseUI.UpdateSelectionBox(selectionIndex);
             }
-            else if (Input.GetKeyDown(controlsManager.GetKey(playerNum, ControlKeys.DownKey)))
+            //else if (Input.GetKeyDown(controlsManager.GetKey(playerNum, ControlKeys.DownKey)))
+            else if (controlsManager.CheckDownSelect(playerNum))
             {
+                controlsManager.LockNavigation(playerNum);
                 selectionIndex += 1;
                 if (selectionIndex > 2) selectionIndex = 0;
                 brewingPhaseUI.UpdateSelectionBox(selectionIndex);
             }
-            
+
             // secondary potion
             if (selectionIndex == 0)
             {
                 int secondaryCost = 20;
                 if (Input.GetKeyDown(controlsManager.GetKey(playerNum, ControlKeys.PrimaryKey))) // buy 1
                 {
-                    if (weets-secondaryCost >= 0) // check enough money
+                    if (weets - secondaryCost >= 0) // check enough money
                     {
                         secondaryQty += 1;
                         weets -= secondaryCost;
@@ -84,7 +88,7 @@ public class BrewingPhaseController : MonoBehaviour
 
                 if (Input.GetKeyDown(controlsManager.GetKey(playerNum, ControlKeys.PrimaryKey))) // buy 1
                 {
-                    if (weets-specialCost >= 0) // check enough money
+                    if (weets - specialCost >= 0) // check enough money
                     {
                         specialQty += 1;
                         weets -= specialCost;
@@ -100,30 +104,34 @@ public class BrewingPhaseController : MonoBehaviour
                         brewingPhaseUI.UpdateSpecialQty(specialQty, weets);
                     }
                 }
-                else if (Input.GetKeyDown(controlsManager.GetKey(playerNum, ControlKeys.LeftKey))) // browse special potion
+                //else if (Input.GetKeyDown(controlsManager.GetKey(playerNum, ControlKeys.LeftKey))) // browse special potion
+                else if(controlsManager.CheckLeftSelect(playerNum))
                 {
+                    controlsManager.LockNavigation(playerNum);
                     // refund money
                     if (specialQty > 0)
                     {
-                        weets += specialQty*specialCost;
+                        weets += specialQty * specialCost;
                         specialQty = 0;
                     }
                     // change index and displayed
                     specialIndex -= 1;
-                    if (specialIndex < 0) specialIndex = numSpecialPotions-1;
+                    if (specialIndex < 0) specialIndex = numSpecialPotions - 1;
                     brewingPhaseUI.UpdateSpecialPotion(brewingManager.GetSpecialPotion(specialIndex), weets);
                 }
-                else if (Input.GetKeyDown(controlsManager.GetKey(playerNum, ControlKeys.RightKey))) // browse special potion
+                //else if (Input.GetKeyDown(controlsManager.GetKey(playerNum, ControlKeys.RightKey))) // browse special potion
+                else if (controlsManager.CheckRightSelect(playerNum))
                 {
+                    controlsManager.LockNavigation(playerNum);
                     // refund money
                     if (specialQty > 0)
                     {
-                        weets += specialQty*specialCost;
+                        weets += specialQty * specialCost;
                         specialQty = 0;
                     }
                     // change index and displayed
                     specialIndex += 1;
-                    if (specialIndex > numSpecialPotions-1) specialIndex = 0;
+                    if (specialIndex > numSpecialPotions - 1) specialIndex = 0;
                     brewingPhaseUI.UpdateSpecialPotion(brewingManager.GetSpecialPotion(specialIndex), weets);
                 }
             }
@@ -147,6 +155,12 @@ public class BrewingPhaseController : MonoBehaviour
                 selectionIndex = 2;
                 screensTransitionManager.ReadyPlayer(false);
             }
+        }
+
+        // allows joycon to navigate when user returns joystick to neutral
+        for (int i = 0; i < 4; i++)
+        {
+            controlsManager.UnlockNavigation(i);
         }
     }
 }
