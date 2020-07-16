@@ -6,6 +6,7 @@ using Enums;
 public class Character2 : GenericCharacter
 {
     private Animator animator;
+    public Animator primaryPotAnimator;
 
     // movement variables
     protected CharacterMovementController movementController;
@@ -90,6 +91,7 @@ public class Character2 : GenericCharacter
     public override void useCharacterPotion()
     {
         animator.SetTrigger("Attack");
+        primaryPotAnimator.SetTrigger("Primary");
         Debug.Log(playerScript.playerNum + " Potion 1!!");
     }
 

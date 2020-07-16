@@ -24,6 +24,7 @@ public class Character1 : GenericCharacter
     public float attackRangeX;      //  TODO: refactor into CharacterStats ScriptableObject?
     public float attackRangeY;      //
     public LayerMask whatIsOpponents;
+    private bool wasHurted;         // To prevent issue of getting damaged multiple times by same attack
 
     void Awake()
     {
@@ -80,6 +81,26 @@ public class Character1 : GenericCharacter
     public void OnLanding()
     {
         animator.SetBool("IsJumping", false);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("other is " + other.gameObject);
+        if (other.gameObject.CompareTag("Damage") && !wasHurted)
+        {
+            int otherPlayerNum = other.gameObject.transform.parent.gameObject.GetComponentInParent<GenericPlayer>().playerNum;
+            Debug.Log("taken damage from  " + otherPlayerNum);
+            playerScript.takeDamage(otherPlayerNum);
+            wasHurted = true;
+            StartCoroutine(UnhurtPlayer());
+        }
+    }
+
+    IEnumerator UnhurtPlayer()
+    {
+        // during these 0.3s won't get hurt again
+        yield return new WaitForSeconds(0.3f);
+        wasHurted = false;
     }
 
     void OnDrawGizmosSelected()
