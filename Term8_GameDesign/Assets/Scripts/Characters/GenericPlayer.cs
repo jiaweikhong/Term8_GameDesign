@@ -6,28 +6,63 @@ public class GenericPlayer : MonoBehaviour
 {
     public int playerNum;
     public int characterNum;
+    protected GenericCharacter genericCharacter;
 
     void Awake()
     {
-        GameManager.OnDeathEvent += GenericPlayerDeath;         // subscribe so that GenericPlayer knows when to die
+        GameManager.Instance.OnDeathEvent += GenericPlayerDeath;         // subscribe so that GenericPlayer knows when to die
+        GameManager.Instance.OnMuddledEvent += PlayerMuddled;
+        GameManager.Instance.OnDreamingEvent += PlayerDreaming;
+
+        genericCharacter = GetComponentInChildren<GenericCharacter>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    // Event Handlers
     private void GenericPlayerDeath(int deadPlayerNum)
     {
         if (deadPlayerNum == playerNum)
         {
             // trigger death animation in character
-            GetComponentInChildren<GenericCharacter>().OnDeath();
+            genericCharacter.OnDeath();
             Debug.Log("Player " + playerNum + " has ded");
         }
     }
 
+    private void PlayerMuddled(int casterPlayerNum)
+    {
+        if (casterPlayerNum != playerNum)
+        {
+            Debug.Log("I am muddled, my player number is " + playerNum);
+            genericCharacter.SetMuddleness(true);
+            StartCoroutine(RevertMuddleness());
+        }
+    }
+
+    private void PlayerDreaming(int casterPlayerNum)
+    {
+        if (casterPlayerNum != playerNum)
+        {
+            Debug.Log("I am dreaming, my player number is " + playerNum);
+            genericCharacter.SetDreaming(true);
+            StartCoroutine(RevertDreaming());
+        }
+    }
+
+    IEnumerator RevertMuddleness()
+    {
+        yield return new WaitForSeconds(1.5f);
+        genericCharacter.SetMuddleness(false);
+        Debug.Log("Ended Muddling Mist on player " + playerNum);
+    }
+
+    IEnumerator RevertDreaming()
+    {
+        yield return new WaitForSeconds(2f);
+        genericCharacter.SetDreaming(false);
+        Debug.Log("Ended Dream Dust on player " + playerNum);
+    }
+
+    // Pass request to GameManager
     public void TakeDamage(int attackingPlayerNum)
     {
         // TODO: trigger hurt animation
@@ -44,6 +79,25 @@ public class GenericPlayer : MonoBehaviour
         return GameManager.Instance.UseSpecialPotionIfCanUse(playerNum);
     }
 
+    public void IncreaseDamageDealtTo2()
+    {
+        GameManager.Instance.IncreaseDamageDealtTo2(playerNum);
+    }
+
+    public void DecreaseDamageDealtTo1()
+    {
+        GameManager.Instance.DecreaseDamageDealtTo1(playerNum);
+    }
+
+    public void CastMuddlingMist()
+    {
+        GameManager.Instance.CastMuddlingMist(playerNum);
+    }
+
+    public void CastDreamingDust()
+    {
+        GameManager.Instance.CastDreamDust(playerNum);
+    }
 
     void AttachCharacter(int charNum)
     {

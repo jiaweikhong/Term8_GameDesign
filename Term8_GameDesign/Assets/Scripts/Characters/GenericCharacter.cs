@@ -9,7 +9,6 @@ public abstract class GenericCharacter : MonoBehaviour
     protected ControlsManager controlsManager;
     protected CharacterMovementController movementController;
     protected GenericPlayer playerScript;
-    private Rigidbody2D thisBody;
     protected Animator animator;
 
     // movement variables
@@ -25,6 +24,9 @@ public abstract class GenericCharacter : MonoBehaviour
     protected float startTimeBtwAttack = 0.3f;
     protected bool wasHurted;         // To prevent issue of getting damaged multiple times by same collider
 
+    // status effect variables
+    protected bool isMuddled = false;
+    protected bool canMove = true;
 
     public virtual void Awake()
     {
@@ -35,40 +37,44 @@ public abstract class GenericCharacter : MonoBehaviour
 
     void Update()
     {
-        // movement
-        isLeftPressed = Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.LeftKey));
-        isRightPressed = Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.RightKey));
-        horizontalMove = isLeftPressed ? -1 : 0;
-        horizontalMove = isRightPressed ? 1 : horizontalMove;
-        horizontalMove *= runSpeed;
-        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));  // set run animation
+        if (canMove)
+        {
+            // movement
+            isLeftPressed = Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.LeftKey));
+            isRightPressed = Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.RightKey));
+            horizontalMove = isLeftPressed ? -1 : 0;
+            horizontalMove = isRightPressed ? 1 : horizontalMove;
+            horizontalMove *= runSpeed;
+            horizontalMove *= isMuddled ? -1 : 1;                   // swap controls
+            animator.SetFloat("Speed", Mathf.Abs(horizontalMove));  // set run animation
 
-        if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.Jump)))
-        {
-            jump = true;
-            animator.SetBool("IsJumping", true);
-        }
+            if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.Jump)))
+            {
+                jump = true;
+                animator.SetBool("IsJumping", true);
+            }
 
-        // attack
-        if (timeBtwAttack <= 0)
-        {
-            if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.PrimaryKey)))
+            // attack
+            if (timeBtwAttack <= 0)
             {
-                UseCharacterPotion();
+                if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.PrimaryKey)))
+                {
+                    UseCharacterPotion();
+                }
+                else if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.SecondaryKey)))
+                {
+                    UsePotion2();
+                }
+                else if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.SpecialKey)))
+                {
+                    UsePotion3();
+                }
+                timeBtwAttack = startTimeBtwAttack;
             }
-            else if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.SecondaryKey)))
+            else
             {
-                UsePotion2();
+                timeBtwAttack -= Time.deltaTime;
             }
-            else if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.SpecialKey)))
-            {
-                UsePotion3();
-            }
-            timeBtwAttack = startTimeBtwAttack;
-        }
-        else
-        {
-            timeBtwAttack -= Time.deltaTime;
         }
     }
 
@@ -106,4 +112,57 @@ public abstract class GenericCharacter : MonoBehaviour
     public abstract void OnDeath();
 
     // implement methods for all the different potion 3s here
+    public void SwiftnessElixir()
+    {
+        Debug.Log("Started speed boost");
+        float speedMultiplier = 1.25f;   // TODO: refactor to variable later
+        runSpeed *= speedMultiplier;
+        StartCoroutine(RevertEnhancedSpeed(speedMultiplier));
+    }
+
+    public void KillerBrew()
+    {
+        Debug.Log("Started Killer Brew");
+        playerScript.IncreaseDamageDealtTo2();
+        StartCoroutine(RevertDamageDealt());
+    }
+
+    public void MuddlingMist()
+    {
+        Debug.Log("Started Muddling Mist");
+        playerScript.CastMuddlingMist();
+    }
+
+    public void DreamDust()
+    {
+        Debug.Log("Started Dream Dust");
+        playerScript.CastDreamingDust();
+    }
+
+    // Coroutines to end special potion's effect
+    IEnumerator RevertEnhancedSpeed(float speedMultiplier)
+    {
+        yield return new WaitForSeconds(5f);
+        runSpeed /= speedMultiplier;
+        Debug.Log("Ended speed boost");
+    }
+
+    IEnumerator RevertDamageDealt()
+    {
+        yield return new WaitForSeconds(5f);
+        playerScript.DecreaseDamageDealtTo1();
+        Debug.Log("Ended Killer Brew");
+    }
+
+    // Special Potions Status Effect on this player
+    public void SetMuddleness(bool isCharacterMuddled)
+    {
+        isMuddled = isCharacterMuddled;
+    }
+
+    public void SetDreaming(bool isCharacterDreaming)
+    {
+        // character can move if it is not currently dreaming
+        canMove = !isCharacterDreaming;
+    }
 }

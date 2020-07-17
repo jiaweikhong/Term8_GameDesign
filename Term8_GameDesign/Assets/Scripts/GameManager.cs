@@ -15,7 +15,14 @@ public class GameManager : GenericSingletonClass<GameManager>
     private Dictionary<int, PlayerStats> playersHashTable;      // store reference to PlayerStats for easy retrieval
 
     public delegate void PlayerDeathDelegate(int deadPlayerNum);
-    public static event PlayerDeathDelegate OnDeathEvent;       // to let GenericPlayer know that they dieded so need to trigger animation
+    public event PlayerDeathDelegate OnDeathEvent;              // to let GenericPlayer know that they dieded so need to trigger animation
+
+    // SpecialPotion Events
+    public delegate void MuddledDelegate(int casterPlayerNum);
+    public event MuddledDelegate OnMuddledEvent;
+    public delegate void DreamDelegate(int casterPlayerNum);
+    public event DreamDelegate OnDreamingEvent;
+
 
     void Start()
     {
@@ -36,8 +43,9 @@ public class GameManager : GenericSingletonClass<GameManager>
     public void PlayerTakesDamage(int attackingPlayerNum, int receivingPlayerNum)
     {
         PlayerStats receivingPlayer = playersHashTable[receivingPlayerNum];
-        receivingPlayer.PlayerHealth--;
-        if (receivingPlayer.PlayerHealth == 0)
+        PlayerStats attackingPlayer = playersHashTable[attackingPlayerNum];
+        receivingPlayer.PlayerHealth -= attackingPlayer.DamageDealtToOthers;
+        if (receivingPlayer.PlayerHealth <= 0)
         {
             IncrementDeath(receivingPlayerNum);         // increment death for receiving player
             IncrementScore(attackingPlayerNum);         // increment score for attacking player   
@@ -56,6 +64,18 @@ public class GameManager : GenericSingletonClass<GameManager>
         PlayerStats requiredPlayer = playersHashTable[playerNum];
         requiredPlayer.PlayerDeaths++;
         OnDeathEvent?.Invoke(playerNum);        // let the respecive player know that they ded
+    }
+
+    public void IncreaseDamageDealtTo2(int playerNum)
+    {
+        PlayerStats requiredPlayer = playersHashTable[playerNum];
+        requiredPlayer.DamageDealtToOthers = 2;
+    }
+
+    public void DecreaseDamageDealtTo1(int playerNum)
+    {
+        PlayerStats requiredPlayer = playersHashTable[playerNum];
+        requiredPlayer.DamageDealtToOthers = 1;
     }
 
     // Potions
@@ -81,6 +101,17 @@ public class GameManager : GenericSingletonClass<GameManager>
             return true;
         }
         return false;
+    }
+
+    // Trigger Special Potion Effects
+    public void CastMuddlingMist(int casterPlayerNum)
+    {
+        OnMuddledEvent?.Invoke(casterPlayerNum);
+    }
+
+    public void CastDreamDust(int casterPlayerNum)
+    {
+        OnDreamingEvent?.Invoke(casterPlayerNum);
     }
 
     // When game ends, reset player scriptable object
