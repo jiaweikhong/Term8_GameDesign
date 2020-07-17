@@ -37,9 +37,9 @@ public abstract class GenericCharacter : MonoBehaviour
 
     void Update()
     {
-        // movement
         if (canMove)
         {
+            // movement
             isLeftPressed = Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.LeftKey));
             isRightPressed = Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.RightKey));
             horizontalMove = isLeftPressed ? -1 : 0;
@@ -53,28 +53,28 @@ public abstract class GenericCharacter : MonoBehaviour
                 jump = true;
                 animator.SetBool("IsJumping", true);
             }
-        }
-        
-        // attack
-        if (timeBtwAttack <= 0)
-        {
-            if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.PrimaryKey)))
+
+            // attack
+            if (timeBtwAttack <= 0)
             {
-                UseCharacterPotion();
+                if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.PrimaryKey)))
+                {
+                    UseCharacterPotion();
+                }
+                else if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.SecondaryKey)))
+                {
+                    UsePotion2();
+                }
+                else if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.SpecialKey)))
+                {
+                    UsePotion3();
+                }
+                timeBtwAttack = startTimeBtwAttack;
             }
-            else if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.SecondaryKey)))
+            else
             {
-                UsePotion2();
+                timeBtwAttack -= Time.deltaTime;
             }
-            else if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.SpecialKey)))
-            {
-                UsePotion3();
-            }
-            timeBtwAttack = startTimeBtwAttack;
-        }
-        else
-        {
-            timeBtwAttack -= Time.deltaTime;
         }
     }
 
