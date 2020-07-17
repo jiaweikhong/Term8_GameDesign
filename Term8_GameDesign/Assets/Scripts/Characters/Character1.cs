@@ -36,7 +36,7 @@ public class Character1 : GenericCharacter
         horizontalMove *= runSpeed;
 
         // This allows movement with joycons. Comment out to allow keyboard movement.
-        moveCharWithJoycon();
+        //moveCharWithJoycon();
         
         // Debug Purposes only
         //checkPress();

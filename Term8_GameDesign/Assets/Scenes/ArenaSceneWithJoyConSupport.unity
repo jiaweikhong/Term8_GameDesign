@@ -2925,6 +2925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057ca7670f9c29744b4ef04a6dcd51a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joycon: 0
   playerControls:
   - keyCodes:
     - controlKey: 0
@@ -2934,14 +2935,12 @@ MonoBehaviour:
     - controlKey: 2
       key: 32
   - keyCodes:
+    - controlKey: 0
+      key: 97
+    - controlKey: 1
+      key: 100
     - controlKey: 2
-      key: 373
-    - controlKey: 3
-      key: 371
-    - controlKey: 4
-      key: 370
-    - controlKey: 5
-      key: 372
+      key: 119
 --- !u!4 &2041668366
 Transform:
   m_ObjectHideFlags: 0
