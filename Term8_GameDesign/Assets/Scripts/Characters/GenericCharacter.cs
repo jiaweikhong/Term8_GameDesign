@@ -97,8 +97,10 @@ public abstract class GenericCharacter : MonoBehaviour
 
     IEnumerator UnhurtPlayer()
     {
+        animator.SetLayerWeight(1,1);
         // during these 0.3s won't get hurt again
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(1.0f);
+        animator.SetLayerWeight(1,0);
         wasHurted = false;
     }
 
