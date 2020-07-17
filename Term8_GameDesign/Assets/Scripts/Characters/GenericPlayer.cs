@@ -9,9 +9,12 @@ public class GenericPlayer : MonoBehaviour
 
     void Awake()
     {
-        GameManager.OnDeathEvent += GenericPlayerDeath;         // subscribe so that GenericPlayer knows when to die
+        GameManager.Instance.OnDeathEvent += GenericPlayerDeath;         // subscribe so that GenericPlayer knows when to die
+        GameManager.Instance.OnMuddledEvent += PlayerMuddled;
+        GameManager.Instance.OnDreamingEvent += PlayerDreaming;
     }
 
+    // Event Handlers
     private void GenericPlayerDeath(int deadPlayerNum)
     {
         if (deadPlayerNum == playerNum)
@@ -22,6 +25,36 @@ public class GenericPlayer : MonoBehaviour
         }
     }
 
+    private void PlayerMuddled(int casterPlayerNum)
+    {
+        if (casterPlayerNum != playerNum)
+        {
+            Debug.Log("I am muddled, my player number is " + playerNum);
+            StartCoroutine(RevertMuddleness());
+        }
+    }
+
+    private void PlayerDreaming(int casterPlayerNum)
+    {
+        if (casterPlayerNum != playerNum)
+        {
+            Debug.Log("I am dreaming, my player number is " + playerNum);
+        }
+    }
+
+    IEnumerator RevertMuddleness()
+    {
+        yield return new WaitForSeconds(1.5f);
+        Debug.Log("Ended Muddling Mist on player " + playerNum);
+    }
+
+    IEnumerator RevertDreaming()
+    {
+        yield return new WaitForSeconds(2f);
+        Debug.Log("Ended Dream Dust on player " + playerNum);
+    }
+
+    // Pass request to GameManager
     public void TakeDamage(int attackingPlayerNum)
     {
         // TODO: trigger hurt animation
@@ -46,6 +79,16 @@ public class GenericPlayer : MonoBehaviour
     public void DecreaseDamageDealtTo1()
     {
         GameManager.Instance.DecreaseDamageDealtTo1(playerNum);
+    }
+
+    public void CastMuddlingMist()
+    {
+        GameManager.Instance.CastMuddlingMist(playerNum);
+    }
+
+    public void CastDreamingDust()
+    {
+        GameManager.Instance.CastDreamDust(playerNum);
     }
 
     void AttachCharacter(int charNum)

@@ -15,7 +15,14 @@ public class GameManager : GenericSingletonClass<GameManager>
     private Dictionary<int, PlayerStats> playersHashTable;      // store reference to PlayerStats for easy retrieval
 
     public delegate void PlayerDeathDelegate(int deadPlayerNum);
-    public static event PlayerDeathDelegate OnDeathEvent;       // to let GenericPlayer know that they dieded so need to trigger animation
+    public event PlayerDeathDelegate OnDeathEvent;              // to let GenericPlayer know that they dieded so need to trigger animation
+
+    // SpecialPotion Events
+    public delegate void MuddledDelegate(int casterPlayerNum);
+    public event MuddledDelegate OnMuddledEvent;
+    public delegate void DreamDelegate(int casterPlayerNum);
+    public event DreamDelegate OnDreamingEvent;
+
 
     void Start()
     {
@@ -94,6 +101,17 @@ public class GameManager : GenericSingletonClass<GameManager>
             return true;
         }
         return false;
+    }
+
+    // Trigger Special Potion Effects
+    public void CastMuddlingMist(int casterPlayerNum)
+    {
+        OnMuddledEvent?.Invoke(casterPlayerNum);
+    }
+
+    public void CastDreamDust(int casterPlayerNum)
+    {
+        OnDreamingEvent?.Invoke(casterPlayerNum);
     }
 
     // When game ends, reset player scriptable object

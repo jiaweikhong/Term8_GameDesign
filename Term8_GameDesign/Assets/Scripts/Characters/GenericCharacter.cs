@@ -9,7 +9,6 @@ public abstract class GenericCharacter : MonoBehaviour
     protected ControlsManager controlsManager;
     protected CharacterMovementController movementController;
     protected GenericPlayer playerScript;
-    private Rigidbody2D thisBody;
     protected Animator animator;
 
     // movement variables
@@ -114,18 +113,31 @@ public abstract class GenericCharacter : MonoBehaviour
         StartCoroutine(RevertEnhancedSpeed(speedMultiplier));
     }
 
-    IEnumerator RevertEnhancedSpeed(float speedMultiplier)
-    {
-        yield return new WaitForSeconds(5f);
-        runSpeed /= speedMultiplier;
-        Debug.Log("Ended speed boost");
-    }
-
     public void KillerBrew()
     {
         Debug.Log("Started Killer Brew");
         playerScript.IncreaseDamageDealtTo2();
         StartCoroutine(RevertDamageDealt());
+    }
+
+    public void MuddlingMist()
+    {
+        Debug.Log("Started Muddling Mist");
+        playerScript.CastMuddlingMist();
+    }
+
+    public void DreamDust()
+    {
+        Debug.Log("Started Dream Dust");
+        playerScript.CastDreamingDust();
+    }
+
+    // Coroutines to end special potion's effect
+    IEnumerator RevertEnhancedSpeed(float speedMultiplier)
+    {
+        yield return new WaitForSeconds(5f);
+        runSpeed /= speedMultiplier;
+        Debug.Log("Ended speed boost");
     }
 
     IEnumerator RevertDamageDealt()
