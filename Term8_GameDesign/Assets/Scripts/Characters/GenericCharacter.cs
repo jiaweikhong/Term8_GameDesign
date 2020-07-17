@@ -24,6 +24,9 @@ public abstract class GenericCharacter : MonoBehaviour
     protected float startTimeBtwAttack = 0.3f;
     protected bool wasHurted;         // To prevent issue of getting damaged multiple times by same collider
 
+    // status effect variables
+    protected bool isMuddled = false;
+    protected bool canMove = true;
 
     public virtual void Awake()
     {
@@ -35,19 +38,23 @@ public abstract class GenericCharacter : MonoBehaviour
     void Update()
     {
         // movement
-        isLeftPressed = Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.LeftKey));
-        isRightPressed = Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.RightKey));
-        horizontalMove = isLeftPressed ? -1 : 0;
-        horizontalMove = isRightPressed ? 1 : horizontalMove;
-        horizontalMove *= runSpeed;
-        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));  // set run animation
-
-        if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.Jump)))
+        if (canMove)
         {
-            jump = true;
-            animator.SetBool("IsJumping", true);
-        }
+            isLeftPressed = Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.LeftKey));
+            isRightPressed = Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.RightKey));
+            horizontalMove = isLeftPressed ? -1 : 0;
+            horizontalMove = isRightPressed ? 1 : horizontalMove;
+            horizontalMove *= runSpeed;
+            horizontalMove *= isMuddled ? -1 : 1;                   // swap controls
+            animator.SetFloat("Speed", Mathf.Abs(horizontalMove));  // set run animation
 
+            if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.Jump)))
+            {
+                jump = true;
+                animator.SetBool("IsJumping", true);
+            }
+        }
+        
         // attack
         if (timeBtwAttack <= 0)
         {
@@ -145,5 +152,17 @@ public abstract class GenericCharacter : MonoBehaviour
         yield return new WaitForSeconds(5f);
         playerScript.DecreaseDamageDealtTo1();
         Debug.Log("Ended Killer Brew");
+    }
+
+    // Special Potions Status Effect on this player
+    public void SetMuddleness(bool isCharacterMuddled)
+    {
+        isMuddled = isCharacterMuddled;
+    }
+
+    public void SetDreaming(bool isCharacterDreaming)
+    {
+        // character can move if it is not currently dreaming
+        canMove = !isCharacterDreaming;
     }
 }

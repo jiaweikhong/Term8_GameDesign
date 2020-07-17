@@ -6,12 +6,15 @@ public class GenericPlayer : MonoBehaviour
 {
     public int playerNum;
     public int characterNum;
+    protected GenericCharacter genericCharacter;
 
     void Awake()
     {
         GameManager.Instance.OnDeathEvent += GenericPlayerDeath;         // subscribe so that GenericPlayer knows when to die
         GameManager.Instance.OnMuddledEvent += PlayerMuddled;
         GameManager.Instance.OnDreamingEvent += PlayerDreaming;
+
+        genericCharacter = GetComponentInChildren<GenericCharacter>();
     }
 
     // Event Handlers
@@ -20,7 +23,7 @@ public class GenericPlayer : MonoBehaviour
         if (deadPlayerNum == playerNum)
         {
             // trigger death animation in character
-            GetComponentInChildren<GenericCharacter>().OnDeath();
+            genericCharacter.OnDeath();
             Debug.Log("Player " + playerNum + " has ded");
         }
     }
@@ -30,6 +33,7 @@ public class GenericPlayer : MonoBehaviour
         if (casterPlayerNum != playerNum)
         {
             Debug.Log("I am muddled, my player number is " + playerNum);
+            genericCharacter.SetMuddleness(true);
             StartCoroutine(RevertMuddleness());
         }
     }
@@ -39,18 +43,22 @@ public class GenericPlayer : MonoBehaviour
         if (casterPlayerNum != playerNum)
         {
             Debug.Log("I am dreaming, my player number is " + playerNum);
+            genericCharacter.SetDreaming(true);
+            StartCoroutine(RevertDreaming());
         }
     }
 
     IEnumerator RevertMuddleness()
     {
         yield return new WaitForSeconds(1.5f);
+        genericCharacter.SetMuddleness(false);
         Debug.Log("Ended Muddling Mist on player " + playerNum);
     }
 
     IEnumerator RevertDreaming()
     {
         yield return new WaitForSeconds(2f);
+        genericCharacter.SetDreaming(false);
         Debug.Log("Ended Dream Dust on player " + playerNum);
     }
 

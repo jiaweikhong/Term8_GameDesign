@@ -39,7 +39,8 @@ public class Character2 : GenericCharacter
         Debug.Log(playerScript.playerNum + "Potion 3!");
         //SwiftnessElixir();
         //KillerBrew();
-        playerScript.CastMuddlingMist();
+        //MuddlingMist();
+        DreamDust();
     }
 
     public override void OnDeath()
