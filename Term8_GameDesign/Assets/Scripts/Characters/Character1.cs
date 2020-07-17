@@ -114,7 +114,7 @@ public class Character1 : GenericCharacter
 
     public override void UsePotion2()
     {
-        /*if (playerScript.UsePotion2IfCanUse())
+/*        if (playerScript.UseSecondaryPotionIfCanUse())
         {
 
         }*/
@@ -124,6 +124,7 @@ public class Character1 : GenericCharacter
 
     public override void UsePotion3()
     {
+        //
         // remember to check if there's any more potions left.
         Debug.Log("Potion 3!");
     }

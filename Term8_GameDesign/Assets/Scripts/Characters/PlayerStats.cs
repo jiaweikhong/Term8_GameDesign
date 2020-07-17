@@ -86,7 +86,7 @@ public class PlayerStats : ScriptableObject
         set
         { _playerHealth = value; }
     }
-    public void resetPlayerHealth()
+    public void ResetPlayerHealth()
     {
         _playerHealth = 3;
     }

@@ -6,8 +6,6 @@ public class GenericPlayer : MonoBehaviour
 {
     public int playerNum;
     public int characterNum;
-    public int qtyPotion2;  // these store the qty of potions that the player has but does not know what potions they are
-    public int qtyPotion3;  // we need to think about the menu interaction of setting the qty of potions.
 
     // Start is called before the first frame update
     void Awake()
@@ -37,14 +35,14 @@ public class GenericPlayer : MonoBehaviour
         GameManager.Instance.PlayerTakesDamage(attackingPlayerNum, playerNum);
     }
 
-    public bool UsePotion2IfCanUse()
+    public bool UseSecondaryPotionIfCanUse()
     {
-        if (GameManager.Instance.CanUsePotion2(playerNum))
-        {
-            GameManager.Instance.UsePotion2(playerNum);
-            return true;        // used potion2
-        }
-        return false;
+        return GameManager.Instance.UseSecondaryPotionIfCanUse(playerNum);
+    }
+
+    public bool UseSpecialPotionIfCanUse()
+    {
+        return GameManager.Instance.UseSpecialPotionIfCanUse(playerNum);
     }
 
 

@@ -39,12 +39,9 @@ public class GameManager : GenericSingletonClass<GameManager>
         receivingPlayer.PlayerHealth--;
         if (receivingPlayer.PlayerHealth == 0)
         {
-            // increment death for receiving player
-            IncrementDeath(receivingPlayerNum);
-            // increment score for attacking player
-            IncrementScore(attackingPlayerNum);
-            // reset health 
-            receivingPlayer.PlayerHealth = 3;
+            IncrementDeath(receivingPlayerNum);         // increment death for receiving player
+            IncrementScore(attackingPlayerNum);         // increment score for attacking player   
+            receivingPlayer.ResetPlayerHealth();        // reset health 
         }
     }
 
@@ -62,17 +59,28 @@ public class GameManager : GenericSingletonClass<GameManager>
     }
 
     // Potions
-    public bool CanUsePotion2(int playerNum)
+    public bool UseSecondaryPotionIfCanUse(int playerNum)
     {
         PlayerStats requiredPlayer = playersHashTable[playerNum];
-        return requiredPlayer.SecondaryPotionQty > 0;
+        if (requiredPlayer.SecondaryPotionQty > 0)
+        {
+            // decrement potion2 qty
+            requiredPlayer.SecondaryPotionQty--;
+            return true;
+        }
+        return false;
     }
 
-    public void UsePotion2(int playerNum)
+    public bool UseSpecialPotionIfCanUse(int playerNum)
     {
-        // Before calling this function, make sure to call CanUsePotion2(playerNum) !
         PlayerStats requiredPlayer = playersHashTable[playerNum];
-        requiredPlayer.SecondaryPotionQty--;
+        if (requiredPlayer.SpecialPotionQty > 0)
+        {
+            // decrement potion3 qty
+            requiredPlayer.SpecialPotionQty--;
+            return true;
+        }
+        return false;
     }
 
     // When game ends, reset player scriptable object
