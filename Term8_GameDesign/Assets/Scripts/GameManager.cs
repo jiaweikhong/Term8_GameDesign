@@ -36,8 +36,9 @@ public class GameManager : GenericSingletonClass<GameManager>
     public void PlayerTakesDamage(int attackingPlayerNum, int receivingPlayerNum)
     {
         PlayerStats receivingPlayer = playersHashTable[receivingPlayerNum];
-        receivingPlayer.PlayerHealth--;
-        if (receivingPlayer.PlayerHealth == 0)
+        PlayerStats attackingPlayer = playersHashTable[attackingPlayerNum];
+        receivingPlayer.PlayerHealth -= attackingPlayer.DamageDealtToOthers;
+        if (receivingPlayer.PlayerHealth <= 0)
         {
             IncrementDeath(receivingPlayerNum);         // increment death for receiving player
             IncrementScore(attackingPlayerNum);         // increment score for attacking player   
@@ -56,6 +57,18 @@ public class GameManager : GenericSingletonClass<GameManager>
         PlayerStats requiredPlayer = playersHashTable[playerNum];
         requiredPlayer.PlayerDeaths++;
         OnDeathEvent?.Invoke(playerNum);        // let the respecive player know that they ded
+    }
+
+    public void IncreaseDamageDealtTo2(int playerNum)
+    {
+        PlayerStats requiredPlayer = playersHashTable[playerNum];
+        requiredPlayer.DamageDealtToOthers = 2;
+    }
+
+    public void DecreaseDamageDealtTo1(int playerNum)
+    {
+        PlayerStats requiredPlayer = playersHashTable[playerNum];
+        requiredPlayer.DamageDealtToOthers = 1;
     }
 
     // Potions

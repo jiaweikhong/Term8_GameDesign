@@ -17,6 +17,8 @@ public class PlayerStats : ScriptableObject
     private SpecialPotionData _specialPotion;
     [SerializeField]
     private int _specialPotionQty = 0;
+    [SerializeField]
+    private int _damageDealtToOthers = 1;
 
     public CharacterData CharacterData
     {
@@ -86,6 +88,13 @@ public class PlayerStats : ScriptableObject
         set
         { _playerHealth = value; }
     }
+    public int DamageDealtToOthers
+    {
+        get
+        { return _damageDealtToOthers; }
+        set
+        { _damageDealtToOthers = value; }
+    }
     public void ResetPlayerHealth()
     {
         _playerHealth = 3;
@@ -98,6 +107,7 @@ public class PlayerStats : ScriptableObject
         _playerKills = 0;
         _playerDeaths = 0;
         _playerHealth = 3;
+        _damageDealtToOthers = 1;
     }
 
     public void UpdateBrew(int weets, int secQty, int speQty, SpecialPotionData special)

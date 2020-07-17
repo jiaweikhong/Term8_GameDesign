@@ -12,12 +12,6 @@ public class GenericPlayer : MonoBehaviour
         GameManager.OnDeathEvent += GenericPlayerDeath;         // subscribe so that GenericPlayer knows when to die
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void GenericPlayerDeath(int deadPlayerNum)
     {
         if (deadPlayerNum == playerNum)
@@ -44,6 +38,15 @@ public class GenericPlayer : MonoBehaviour
         return GameManager.Instance.UseSpecialPotionIfCanUse(playerNum);
     }
 
+    public void IncreaseDamageDealtTo2()
+    {
+        GameManager.Instance.IncreaseDamageDealtTo2(playerNum);
+    }
+
+    public void DecreaseDamageDealtTo1()
+    {
+        GameManager.Instance.DecreaseDamageDealtTo1(playerNum);
+    }
 
     void AttachCharacter(int charNum)
     {

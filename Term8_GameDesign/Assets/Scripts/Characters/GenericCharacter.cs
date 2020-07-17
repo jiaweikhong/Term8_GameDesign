@@ -106,4 +106,32 @@ public abstract class GenericCharacter : MonoBehaviour
     public abstract void OnDeath();
 
     // implement methods for all the different potion 3s here
+    public void SwiftnessElixir()
+    {
+        Debug.Log("Started speed boost");
+        float speedMultiplier = 1.25f;   // TODO: refactor to variable later
+        runSpeed *= speedMultiplier;
+        StartCoroutine(RevertEnhancedSpeed(speedMultiplier));
+    }
+
+    IEnumerator RevertEnhancedSpeed(float speedMultiplier)
+    {
+        yield return new WaitForSeconds(5f);
+        runSpeed /= speedMultiplier;
+        Debug.Log("Ended speed boost");
+    }
+
+    public void KillerBrew()
+    {
+        Debug.Log("Started Killer Brew");
+        playerScript.IncreaseDamageDealtTo2();
+        StartCoroutine(RevertDamageDealt());
+    }
+
+    IEnumerator RevertDamageDealt()
+    {
+        yield return new WaitForSeconds(5f);
+        playerScript.DecreaseDamageDealtTo1();
+        Debug.Log("Ended Killer Brew");
+    }
 }
