@@ -26,12 +26,6 @@ public abstract class GenericCharacter : MonoBehaviour
         thisBody = GetComponent<Rigidbody2D>();
     }
 
-    // no use at the moment, the score is done by the gamemanager
-    /*void incrementScore()
-    {
-        playerScript.incrementScore();
-    }*/
-
     //abstract methods must be implemented by child classes
     public abstract void UseCharacterPotion();
 

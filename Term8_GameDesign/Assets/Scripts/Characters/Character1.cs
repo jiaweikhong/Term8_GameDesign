@@ -20,10 +20,6 @@ public class Character1 : GenericCharacter
     private float timeBtwAttack;
     [SerializeField]
     private float startTimeBtwAttack;
-    public Transform attackPos;                                                                
-    public float attackRangeX;      //  TODO: refactor into CharacterStats ScriptableObject?
-    public float attackRangeY;      //
-    public LayerMask whatIsOpponents;
     private bool wasHurted;         // To prevent issue of getting damaged multiple times by same attack
 
     void Awake()
@@ -36,7 +32,6 @@ public class Character1 : GenericCharacter
     void Start()
     {
         controlsManager = FindObjectOfType<ControlsManager>();
-        Debug.Log("player num isss " + playerScript.playerNum);
     }
 
     void Update()
@@ -60,7 +55,6 @@ public class Character1 : GenericCharacter
         {
             if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.PrimaryKey)))
             {
-                Debug.Log("Pressed Primary Key");
                 UseCharacterPotion();
             }
             else if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.SecondaryKey)))
@@ -86,11 +80,10 @@ public class Character1 : GenericCharacter
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("other is " + other.gameObject);
         if (other.gameObject.CompareTag("Damage") && !wasHurted)
         {
             int otherPlayerNum = other.gameObject.transform.parent.gameObject.GetComponentInParent<GenericPlayer>().playerNum;
-            Debug.Log("taken damage from  " + otherPlayerNum);
+            Debug.Log("Taken damage from Player " + otherPlayerNum);
             playerScript.TakeDamage(otherPlayerNum);
             wasHurted = true;
             StartCoroutine(UnhurtPlayer());
@@ -102,12 +95,6 @@ public class Character1 : GenericCharacter
         // during these 0.3s won't get hurt again
         yield return new WaitForSeconds(0.3f);
         wasHurted = false;
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(attackPos.position, new Vector3(attackRangeX, attackRangeY, 1));
     }
 
     void FixedUpdate()
@@ -122,32 +109,23 @@ public class Character1 : GenericCharacter
     {
         // attack animation
         animator.SetTrigger("Attack");
-        Vector2 attackRange = new Vector2(attackRangeX, attackRangeY);
-        Collider2D[] opponentsToDamage = Physics2D.OverlapBoxAll(attackPos.position, attackRange, 0, whatIsOpponents);
-        for (int i = 0; i < opponentsToDamage.Length; i++)
-        {
-            Debug.Log("damage taken by player");
-            opponentsToDamage[i].GetComponentInParent<GenericPlayer>().TakeDamage(playerScript.playerNum);
-        }
+        // TODO: primary attack animation
     }
 
     public override void UsePotion2()
     {
+        /*if (playerScript.UsePotion2IfCanUse())
+        {
+
+        }*/
         Debug.Log("Potion 2!!");
-        // do the same check as described in usePotion3()
         // animator.SetTrigger("Attack");
     }
 
     public override void UsePotion3()
     {
-        // remember to check if there's any more potions left. it's stored in base.playerScript.qtyPotion3
+        // remember to check if there's any more potions left.
         Debug.Log("Potion 3!");
-        
-        if (base.playerScript.qtyPotion3 > 0)
-        {
-            // do the potion
-            // animator.SetTrigger("Attack");
-        }
     }
 
     public override void OnDeath()

@@ -32,6 +32,7 @@ public class GameManager : GenericSingletonClass<GameManager>
 
     }
 
+    // Kill/Death/Damage
     public void PlayerTakesDamage(int attackingPlayerNum, int receivingPlayerNum)
     {
         PlayerStats receivingPlayer = playersHashTable[receivingPlayerNum];
@@ -60,10 +61,18 @@ public class GameManager : GenericSingletonClass<GameManager>
         OnDeathEvent?.Invoke(playerNum);        // let the respecive player know that they ded
     }
 
+    // Potions
     public bool CanUsePotion2(int playerNum)
     {
         PlayerStats requiredPlayer = playersHashTable[playerNum];
         return requiredPlayer.SecondaryPotionQty > 0;
+    }
+
+    public void UsePotion2(int playerNum)
+    {
+        // Before calling this function, make sure to call CanUsePotion2(playerNum) !
+        PlayerStats requiredPlayer = playersHashTable[playerNum];
+        requiredPlayer.SecondaryPotionQty--;
     }
 
     // When game ends, reset player scriptable object

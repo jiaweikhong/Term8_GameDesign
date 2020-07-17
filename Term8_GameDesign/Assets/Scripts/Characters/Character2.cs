@@ -97,7 +97,10 @@ public class Character2 : GenericCharacter
 
     public override void UsePotion2()
     {
-        // if got qtyPotion2 ...
+/*        if (playerScript.UsePotion2IfCanUse())
+        {
+            Debug.Log("I can use");
+        }*/
         animator.SetTrigger("Attack");
         primaryPotAnimator.SetTrigger("Secondary");
         Debug.Log(playerScript.playerNum + " Potion 2!!");

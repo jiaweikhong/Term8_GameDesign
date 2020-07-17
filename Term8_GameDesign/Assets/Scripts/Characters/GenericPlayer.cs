@@ -37,6 +37,16 @@ public class GenericPlayer : MonoBehaviour
         GameManager.Instance.PlayerTakesDamage(attackingPlayerNum, playerNum);
     }
 
+    public bool UsePotion2IfCanUse()
+    {
+        if (GameManager.Instance.CanUsePotion2(playerNum))
+        {
+            GameManager.Instance.UsePotion2(playerNum);
+            return true;        // used potion2
+        }
+        return false;
+    }
+
 
     void AttachCharacter(int charNum)
     {
