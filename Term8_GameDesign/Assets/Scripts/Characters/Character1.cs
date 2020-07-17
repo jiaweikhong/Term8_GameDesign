@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Enums;
+using UnityEngine.EventSystems;
 
 public class Character1 : GenericCharacter
 {
@@ -44,4 +45,28 @@ public class Character1 : GenericCharacter
         // trigger death animation
         animator.SetTrigger("Death");
     }
+
+    // Allows for joycon movement
+    private void moveCharWithJoycon()
+    {
+        float horMovement = controlsManager.moveHorizontal(playerScript.playerNum);
+        horizontalMove = horMovement * runSpeed;
+    }
+
+    void checkPress()
+    {
+        if (Input.GetKey(KeyCode.Joystick1Button0))
+        {
+            Debug.Log("joy 1 button 0");
+        }
+        else if (Input.GetKey(KeyCode.Joystick2Button0))
+        {
+            Debug.Log("joy 2 button 0");
+        }
+        else if (Input.GetKey(KeyCode.Joystick1Button3))
+        {
+            Debug.Log("joy 1 button 3");
+        }
+    }
+
 }
