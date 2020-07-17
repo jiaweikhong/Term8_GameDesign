@@ -25,7 +25,7 @@ public class Character2 : GenericCharacter
 
     void Awake()
     {
-        base.getComponents();
+        base.GetComponents();
         movementController = GetComponent<CharacterMovementController>();
         animator = GetComponent<Animator>();
     }
@@ -57,15 +57,15 @@ public class Character2 : GenericCharacter
             if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.PrimaryKey)))
             {
                 Debug.Log("Pressed Primary Key");
-                useCharacterPotion();
+                UseCharacterPotion();
             }
             else if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.SecondaryKey)))
             {
-                usePotion2();
+                UsePotion2();
             }
             else if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.SpecialKey)))
             {
-                usePotion3();
+                UsePotion3();
             }
             timeBtwAttack = startTimeBtwAttack;
         }
@@ -88,14 +88,14 @@ public class Character2 : GenericCharacter
         movementController.BetterJump();
     }
 
-    public override void useCharacterPotion()
+    public override void UseCharacterPotion()
     {
         animator.SetTrigger("Attack");
         primaryPotAnimator.SetTrigger("Primary");
         Debug.Log(playerScript.playerNum + " Potion 1!!");
     }
 
-    public override void usePotion2()
+    public override void UsePotion2()
     {
         // if got qtyPotion2 ...
         animator.SetTrigger("Attack");
@@ -103,7 +103,7 @@ public class Character2 : GenericCharacter
         Debug.Log(playerScript.playerNum + " Potion 2!!");
     }
 
-    public override void usePotion3()
+    public override void UsePotion3()
     {
         // remember to check if there's any more potions left. it's stored in base.playerScript.qtyPotion3
         Debug.Log(playerScript.playerNum + "Potion 3!");
@@ -114,7 +114,7 @@ public class Character2 : GenericCharacter
         }
     }
 
-    public override void onDeath()
+    public override void OnDeath()
     {
         animator.SetTrigger("Death");
         // throw new System.NotImplementedException();

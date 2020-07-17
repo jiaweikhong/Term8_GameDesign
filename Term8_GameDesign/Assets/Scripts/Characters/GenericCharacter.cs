@@ -20,7 +20,7 @@ public abstract class GenericCharacter : MonoBehaviour
 
     }
 
-    protected void getComponents()
+    protected void GetComponents()
     {
         playerScript = GetComponentInParent<GenericPlayer>();
         thisBody = GetComponent<Rigidbody2D>();
@@ -33,13 +33,13 @@ public abstract class GenericCharacter : MonoBehaviour
     }*/
 
     //abstract methods must be implemented by child classes
-    public abstract void useCharacterPotion();
+    public abstract void UseCharacterPotion();
 
-    public abstract void usePotion2();
+    public abstract void UsePotion2();
 
-    public abstract void usePotion3();
+    public abstract void UsePotion3();
 
-    public abstract void onDeath();
+    public abstract void OnDeath();
 
     // implement methods for all the different potion 3s here
 }

@@ -12,7 +12,7 @@ public class GenericPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        GameManager.onDeathEvent += genericPlayerDeath;
+        GameManager.OnDeathEvent += GenericPlayerDeath;
     }
 
     // Update is called once per frame
@@ -21,23 +21,24 @@ public class GenericPlayer : MonoBehaviour
 
     }
 
-    private void genericPlayerDeath(int deadPlayerNum)
+    private void GenericPlayerDeath(int deadPlayerNum)
     {
         if (deadPlayerNum == playerNum)
         {
             // trigger death animation in character
-            GetComponentInChildren<GenericCharacter>().onDeath();
+            GetComponentInChildren<GenericCharacter>().OnDeath();
             Debug.Log("Player " + playerNum + " has ded");
         }
     }
 
-    public void takeDamage(int attackingPlayerNum)
+    public void TakeDamage(int attackingPlayerNum)
     {
         // TODO: trigger hurt animation
-        GameManager.Instance.playerTakesDamage(attackingPlayerNum, playerNum);
+        GameManager.Instance.PlayerTakesDamage(attackingPlayerNum, playerNum);
     }
 
-    void attachCharacter(int charNum)
+
+    void AttachCharacter(int charNum)
     {
         // set base characterNum
         characterNum = charNum;

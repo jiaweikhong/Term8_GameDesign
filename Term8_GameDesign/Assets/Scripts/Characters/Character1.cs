@@ -28,7 +28,7 @@ public class Character1 : GenericCharacter
 
     void Awake()
     {
-        base.getComponents();
+        base.GetComponents();
         movementController = GetComponent<CharacterMovementController>();
         animator = GetComponent<Animator>();
     }
@@ -61,15 +61,15 @@ public class Character1 : GenericCharacter
             if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.PrimaryKey)))
             {
                 Debug.Log("Pressed Primary Key");
-                useCharacterPotion();
+                UseCharacterPotion();
             }
             else if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.SecondaryKey)))
             {
-                usePotion2();
+                UsePotion2();
             }
             else if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.SpecialKey)))
             {
-                usePotion3();
+                UsePotion3();
             }
             timeBtwAttack = startTimeBtwAttack;
         }
@@ -91,7 +91,7 @@ public class Character1 : GenericCharacter
         {
             int otherPlayerNum = other.gameObject.transform.parent.gameObject.GetComponentInParent<GenericPlayer>().playerNum;
             Debug.Log("taken damage from  " + otherPlayerNum);
-            playerScript.takeDamage(otherPlayerNum);
+            playerScript.TakeDamage(otherPlayerNum);
             wasHurted = true;
             StartCoroutine(UnhurtPlayer());
         }
@@ -118,7 +118,7 @@ public class Character1 : GenericCharacter
         movementController.BetterJump();
     }
 
-    public override void useCharacterPotion()
+    public override void UseCharacterPotion()
     {
         // attack animation
         animator.SetTrigger("Attack");
@@ -127,18 +127,18 @@ public class Character1 : GenericCharacter
         for (int i = 0; i < opponentsToDamage.Length; i++)
         {
             Debug.Log("damage taken by player");
-            opponentsToDamage[i].GetComponentInParent<GenericPlayer>().takeDamage(playerScript.playerNum);
+            opponentsToDamage[i].GetComponentInParent<GenericPlayer>().TakeDamage(playerScript.playerNum);
         }
     }
 
-    public override void usePotion2()
+    public override void UsePotion2()
     {
         Debug.Log("Potion 2!!");
         // do the same check as described in usePotion3()
         // animator.SetTrigger("Attack");
     }
 
-    public override void usePotion3()
+    public override void UsePotion3()
     {
         // remember to check if there's any more potions left. it's stored in base.playerScript.qtyPotion3
         Debug.Log("Potion 3!");
@@ -150,7 +150,7 @@ public class Character1 : GenericCharacter
         }
     }
 
-    public override void onDeath()
+    public override void OnDeath()
     {
         // trigger death animation
         animator.SetTrigger("Death");

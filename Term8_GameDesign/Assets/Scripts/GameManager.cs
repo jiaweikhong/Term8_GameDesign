@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// This script takes care of interaction with PlayerStats ScriptableObject
+// (i.e. health, kills, deaths, potionQty)
 public class GameManager : GenericSingletonClass<GameManager>
 {
 
@@ -13,7 +15,7 @@ public class GameManager : GenericSingletonClass<GameManager>
     private Dictionary<int, PlayerStats> playersHashTable;      // store reference to PlayerStats for easy retrieval
 
     public delegate void PlayerDeathDelegate(int deadPlayerNum);
-    public static event PlayerDeathDelegate onDeathEvent;       // to let GenericPlayer know that they dieded so need to trigger animation
+    public static event PlayerDeathDelegate OnDeathEvent;       // to let GenericPlayer know that they dieded so need to trigger animation
 
     void Start()
     {
@@ -30,44 +32,50 @@ public class GameManager : GenericSingletonClass<GameManager>
 
     }
 
-    public void playerTakesDamage(int attackingPlayerNum, int receivingPlayerNum)
+    public void PlayerTakesDamage(int attackingPlayerNum, int receivingPlayerNum)
     {
         PlayerStats receivingPlayer = playersHashTable[receivingPlayerNum];
         receivingPlayer.PlayerHealth--;
         if (receivingPlayer.PlayerHealth == 0)
         {
             // increment death for receiving player
-            incrementDeath(receivingPlayerNum);
+            IncrementDeath(receivingPlayerNum);
             // increment score for attacking player
-            incrementScore(attackingPlayerNum);
+            IncrementScore(attackingPlayerNum);
             // reset health 
             receivingPlayer.PlayerHealth = 3;
         }
     }
 
-    public void incrementScore(int playerNum)
+    public void IncrementScore(int playerNum)
     {
         PlayerStats requiredPlayer = playersHashTable[playerNum];
         requiredPlayer.PlayerKills++;
     }
 
-    public void incrementDeath(int playerNum)
+    public void IncrementDeath(int playerNum)
     {
         PlayerStats requiredPlayer = playersHashTable[playerNum];
         requiredPlayer.PlayerDeaths++;
-        onDeathEvent?.Invoke(playerNum);        // let the respecive player know that they ded
+        OnDeathEvent?.Invoke(playerNum);        // let the respecive player know that they ded
     }
 
-    // When game ends, reset PlayerKills and PlayerDeaths
+    public bool CanUsePotion2(int playerNum)
+    {
+        PlayerStats requiredPlayer = playersHashTable[playerNum];
+        return requiredPlayer.SecondaryPotionQty > 0;
+    }
+
+    // When game ends, reset player scriptable object
     void OnDestroy()
     {
-        resetPlayer(player0);
-        resetPlayer(player1);
-        resetPlayer(player2);
-        resetPlayer(player3);
+        ResetPlayer(player0);
+        ResetPlayer(player1);
+        ResetPlayer(player2);
+        ResetPlayer(player3);
     }
 
-    void resetPlayer(PlayerStats playerStats)
+    void ResetPlayer(PlayerStats playerStats)
     {
         // reset weets, potionQty, kills, death, health
         playerStats.ResetGame();
