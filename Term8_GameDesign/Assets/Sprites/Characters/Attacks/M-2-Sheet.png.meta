@@ -20,6 +20,18 @@ TextureImporter:
   - first:
       213: -7704166096068430456
     second: M-2-Sheet_2
+  - first:
+      213: -636321056421456458
+    second: M-2-Sheet_3
+  - first:
+      213: 5594707179762274246
+    second: M-2-Sheet_4
+  - first:
+      213: -6968263427156013658
+    second: M-2-Sheet_5
+  - first:
+      213: -2719874393390703465
+    second: M-2-Sheet_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -63,7 +75,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 40
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -108,10 +120,10 @@ TextureImporter:
       name: M-2-Sheet_0
       rect:
         serializedVersion: 2
-        x: 160
-        y: 13
-        width: 32
-        height: 32
+        x: 0
+        y: 0
+        width: 40
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -129,10 +141,10 @@ TextureImporter:
       name: M-2-Sheet_1
       rect:
         serializedVersion: 2
-        x: 192
-        y: 13
-        width: 32
-        height: 32
+        x: 40
+        y: 0
+        width: 40
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,10 +162,10 @@ TextureImporter:
       name: M-2-Sheet_2
       rect:
         serializedVersion: 2
-        x: 224
-        y: 13
-        width: 32
-        height: 32
+        x: 80
+        y: 0
+        width: 40
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,6 +175,90 @@ TextureImporter:
       bones: []
       spriteID: 885bb3901cd451590800000000000000
       internalID: -7704166096068430456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M-2-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 40
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b5d5ecde555b27f0800000000000000
+      internalID: -636321056421456458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M-2-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 40
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cfce08b98464ad40800000000000000
+      internalID: 5594707179762274246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M-2-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 40
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ad050b1551cb4f90800000000000000
+      internalID: -6968263427156013658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M-2-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 40
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79c144456a0114ad0800000000000000
+      internalID: -2719874393390703465
       vertices: []
       indices: 
       edges: []

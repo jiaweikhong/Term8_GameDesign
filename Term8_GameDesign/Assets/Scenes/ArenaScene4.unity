@@ -1526,8 +1526,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 1, y: 1.125}
+    newSize: {x: 1, y: 1.125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -1579,7 +1579,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -2236,10 +2236,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b34f737947afff48ade7a729537aef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: {fileID: 11400000, guid: 86b5e2945bb646043b4eaba1c3533f5f, type: 2}
-  player2: {fileID: 11400000, guid: 491e4f90cc3cea545b7b86776434fce4, type: 2}
-  player3: {fileID: 11400000, guid: f0af0c7bb9303264b8ac0b812117b6ad, type: 2}
-  player4: {fileID: 11400000, guid: ac6388aa48268434cb1af62bbc18df67, type: 2}
+  player0: {fileID: 11400000, guid: 86b5e2945bb646043b4eaba1c3533f5f, type: 2}
+  player1: {fileID: 11400000, guid: 491e4f90cc3cea545b7b86776434fce4, type: 2}
+  player2: {fileID: 11400000, guid: f0af0c7bb9303264b8ac0b812117b6ad, type: 2}
+  player3: {fileID: 11400000, guid: ac6388aa48268434cb1af62bbc18df67, type: 2}
 --- !u!4 &744740947
 Transform:
   m_ObjectHideFlags: 0
@@ -2640,7 +2640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   primaryPotAnimator: {fileID: 212437307}
   runSpeed: 40
-  startTimeBtwAttack: 0.1
+  startTimeBtwAttack: 0.3
 --- !u!58 &1170511320
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2889,7 +2889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 40
-  startTimeBtwAttack: 0.1
+  startTimeBtwAttack: 0.3
   attackPos: {fileID: 1661993840}
   attackRangeX: 2.06
   attackRangeY: 0.73

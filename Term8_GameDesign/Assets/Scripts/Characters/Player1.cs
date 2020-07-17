@@ -9,7 +9,7 @@ public class Player1 : GenericPlayer
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame

@@ -36,6 +36,7 @@ public class Character1 : GenericCharacter
     void Start()
     {
         controlsManager = FindObjectOfType<ControlsManager>();
+        Debug.Log("player num isss " + playerScript.playerNum);
     }
 
     void Update()

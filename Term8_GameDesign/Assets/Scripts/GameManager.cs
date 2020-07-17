@@ -6,10 +6,10 @@ public class GameManager : GenericSingletonClass<GameManager>
 {
 
     // Attach each Player's ScriptableObject
+    public PlayerStats player0;
     public PlayerStats player1;
     public PlayerStats player2;
     public PlayerStats player3;
-    public PlayerStats player4;
     private Dictionary<int, PlayerStats> playersHashTable;      // store reference to PlayerStats for easy retrieval
 
     public delegate void PlayerDeathDelegate(int deadPlayerNum);
@@ -18,10 +18,10 @@ public class GameManager : GenericSingletonClass<GameManager>
     void Start()
     {
         playersHashTable = new Dictionary<int, PlayerStats> {
-            { 0, player1 },
-            { 1, player2 },
-            { 2, player3 },
-            { 3, player4 }
+            { 0, player0 },
+            { 1, player1 },
+            { 2, player2 },
+            { 3, player3 }
         }; 
     }
 
@@ -61,16 +61,15 @@ public class GameManager : GenericSingletonClass<GameManager>
     // When game ends, reset PlayerKills and PlayerDeaths
     void OnDestroy()
     {
+        resetPlayer(player0);
         resetPlayer(player1);
         resetPlayer(player2);
         resetPlayer(player3);
-        resetPlayer(player4);
     }
 
     void resetPlayer(PlayerStats playerStats)
     {
-        playerStats.PlayerKills = 0;
-        playerStats.PlayerDeaths = 0;
-        playerStats.PlayerHealth = 3;
+        // reset weets, potionQty, kills, death, health
+        playerStats.ResetGame();
     }
 }
