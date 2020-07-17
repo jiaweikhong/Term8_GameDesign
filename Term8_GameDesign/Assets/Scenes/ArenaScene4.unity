@@ -1489,7 +1489,7 @@ GameObject:
   - component: {fileID: 212437307}
   - component: {fileID: 212437308}
   m_Layer: 12
-  m_Name: SecondaryPotionAttack
+  m_Name: MurasakiPotionAttack
   m_TagString: Damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2638,9 +2638,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d201ecf3f2928a46b40b5bc7e327fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryPotAnimator: {fileID: 212437307}
+  controlsManager: {fileID: 2041668365}
   runSpeed: 40
   startTimeBtwAttack: 0.3
+  potionAnimator: {fileID: 212437307}
 --- !u!58 &1170511320
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2887,6 +2888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 308c629f85066264595d6628e4c7fa14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlsManager: {fileID: 2041668365}
   runSpeed: 40
   startTimeBtwAttack: 0.3
 --- !u!58 &1499973702
@@ -3053,8 +3055,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNum: 0
   characterNum: 0
-  qtyPotion2: 0
-  qtyPotion3: 0
 --- !u!4 &1563416595
 Transform:
   m_ObjectHideFlags: 0
@@ -3101,8 +3101,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNum: 1
   characterNum: 0
-  qtyPotion2: 0
-  qtyPotion3: 0
 --- !u!4 &1848981635
 Transform:
   m_ObjectHideFlags: 0

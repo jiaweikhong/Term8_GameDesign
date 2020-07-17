@@ -7,10 +7,9 @@ public class GenericPlayer : MonoBehaviour
     public int playerNum;
     public int characterNum;
 
-    // Start is called before the first frame update
     void Awake()
     {
-        GameManager.OnDeathEvent += GenericPlayerDeath;
+        GameManager.OnDeathEvent += GenericPlayerDeath;         // subscribe so that GenericPlayer knows when to die
     }
 
     // Update is called once per frame
@@ -66,16 +65,4 @@ public class GenericPlayer : MonoBehaviour
                 break;
         }
     }
-
-    // no use at the moment since GameManager will increment score / death based on playerTakesDamage()
-    /*    public void incrementScore()
-        {
-            GameManager.Instance.incrementScore(playerNum);
-        }
-
-        public void incrementDeath()
-        {
-            GameManager.Instance.incrementDeath(playerNum);
-        }*/
-
 }
