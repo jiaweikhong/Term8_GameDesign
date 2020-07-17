@@ -60,6 +60,10 @@ public class PlayerStats : ScriptableObject
     private int _playerDeaths = 0;
     [SerializeField]
     private int _playerHealth = 3;
+    [SerializeField]
+    private int _qtyPotion2 = 0;
+    [SerializeField]
+    private int _qtyPotion3 = 0;
 
     public int PlayerKills
     {
@@ -82,7 +86,7 @@ public class PlayerStats : ScriptableObject
         set
         { _playerHealth = value; }
     }
-    public void resetPlayerHealth()
+    public void ResetPlayerHealth()
     {
         _playerHealth = 3;
     }

@@ -1,40 +1,37 @@
 fileFormatVersion: 2
-guid: 3819363ea4dda9f47937907863515be0
+guid: 9632afd40a20a9e40ad789ae63c1573f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8239112264362327762
-    second: Mura_Idle_0
+      213: 7134623883381066245
+    second: M-2-Sheet_0
   - first:
-      213: 1896259919334798362
-    second: Mura_Idle_1
+      213: -5298516317023204133
+    second: M-2-Sheet_1
   - first:
-      213: 2147183060552062861
-    second: Mura_Idle_2
+      213: -7647831229974865850
+    second: M-2-Sheet_2
   - first:
-      213: 8954744144921881240
-    second: Mura_Idle_3
+      213: 7549184357883718894
+    second: M-2-Sheet_0
   - first:
-      213: 7360678000053774118
-    second: Mura_Idle_4
+      213: 2247326701874740901
+    second: M-2-Sheet_1
   - first:
-      213: 6793496449722343053
-    second: Mura_Idle_5
+      213: -7704166096068430456
+    second: M-2-Sheet_2
   - first:
-      213: 1495587364863930832
-    second: Mura_Idle_6
+      213: -636321056421456458
+    second: M-2-Sheet_3
   - first:
-      213: 5757315079802788257
-    second: Mura_Idle_7
+      213: 5594707179762274246
+    second: M-2-Sheet_4
   - first:
-      213: 855324258217933697
-    second: Mura_Idle_8
+      213: -6968263427156013658
+    second: M-2-Sheet_5
   - first:
-      213: 6336485327659845283
-    second: Mura_Idle_9
-  - first:
-      213: -639244751500281249
-    second: Mura_Idle_10
+      213: -2719874393390703465
+    second: M-2-Sheet_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -78,7 +75,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 40
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -120,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mura_Idle_0
+      name: M-2-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 40
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2de71e5a3f4375270800000000000000
-      internalID: 8239112264362327762
+      spriteID: eec289b1d2714c860800000000000000
+      internalID: 7549184357883718894
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mura_Idle_1
+      name: M-2-Sheet_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 40
         y: 0
-        width: 32
-        height: 32
+        width: 40
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a14f2cd895ed05a10800000000000000
-      internalID: 1896259919334798362
+      spriteID: 5ae7e7f7abb103f10800000000000000
+      internalID: 2247326701874740901
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mura_Idle_2
+      name: M-2-Sheet_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 80
         y: 0
-        width: 32
-        height: 32
+        width: 40
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8711f70e935ccd10800000000000000
-      internalID: 2147183060552062861
+      spriteID: 885bb3901cd451590800000000000000
+      internalID: -7704166096068430456
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mura_Idle_3
+      name: M-2-Sheet_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 120
         y: 0
-        width: 32
-        height: 32
+        width: 40
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,41 +194,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89ae3940b54a54c70800000000000000
-      internalID: 8954744144921881240
+      spriteID: 6b5d5ecde555b27f0800000000000000
+      internalID: -636321056421456458
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mura_Idle_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 627ec3b74a1662660800000000000000
-      internalID: 7360678000053774118
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mura_Idle_5
+      name: M-2-Sheet_4
       rect:
         serializedVersion: 2
         x: 160
         y: 0
-        width: 32
-        height: 32
+        width: 40
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,20 +215,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8ed39c0709574e50800000000000000
-      internalID: 6793496449722343053
+      spriteID: 6cfce08b98464ad40800000000000000
+      internalID: 5594707179762274246
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mura_Idle_6
+      name: M-2-Sheet_5
       rect:
         serializedVersion: 2
-        x: 192
+        x: 200
         y: 0
-        width: 32
-        height: 32
+        width: 40
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -260,20 +236,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d1f64dc8c461c410800000000000000
-      internalID: 1495587364863930832
+      spriteID: 6ad050b1551cb4f90800000000000000
+      internalID: -6968263427156013658
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mura_Idle_7
+      name: M-2-Sheet_6
       rect:
         serializedVersion: 2
-        x: 224
+        x: 240
         y: 0
-        width: 32
-        height: 32
+        width: 40
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,71 +257,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a915afbf8716ef40800000000000000
-      internalID: 5757315079802788257
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mura_Idle_8
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 18bbad291e8bedb00800000000000000
-      internalID: 855324258217933697
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mura_Idle_9
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3a6c3a755d7bfe750800000000000000
-      internalID: 6336485327659845283
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mura_Idle_10
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f5afa4e0942f027f0800000000000000
-      internalID: -639244751500281249
+      spriteID: 79c144456a0114ad0800000000000000
+      internalID: -2719874393390703465
       vertices: []
       indices: 
       edges: []

@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4de138b753175045ad069cadc79e708, type: 3}
-  m_Name: Player4Stats
+  m_Name: Player0Stats
   m_EditorClassIdentifier: 
-  playerNum: 3
-  _character: {fileID: 11400000, guid: aeeda1e8042a6e442805ef1b74d0391a, type: 2}
+  playerNum: 0
+  _character: {fileID: 11400000, guid: 4caea6bd2df3e2e41bd930ee2f28b36b, type: 2}
   _weets: 200
   _secondaryPotionQty: 0
-  _specialPotion: {fileID: 11400000, guid: a19f75fc27961b34dab78285f5329675, type: 2}
+  _specialPotion: {fileID: 11400000, guid: 5f5a5a473a4d8ca46a7b49d1c0bd6dfa, type: 2}
   _specialPotionQty: 0
   _playerKills: 0
   _playerDeaths: 0
   _playerHealth: 3
+  _qtyPotion2: 0
+  _qtyPotion3: 0

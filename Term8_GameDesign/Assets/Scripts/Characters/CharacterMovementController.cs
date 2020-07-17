@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CharacterMovementController : MonoBehaviour
 {
@@ -17,14 +18,21 @@ public class CharacterMovementController : MonoBehaviour
     private bool m_FacingRight = true;
     private Vector3 m_Velocity = Vector3.zero;
 
-    private void Awake()
+	[Header("Events")]
+	[Space]
+
+	public UnityEvent OnLandEvent;			// allow us to set animator to stop jumping
+
+	private void Awake()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
-    }
+		if (OnLandEvent == null) OnLandEvent = new UnityEvent();
+	}
 
     private void FixedUpdate()
     {
-        m_Grounded = false;
+		bool wasGrounded = m_Grounded;
+		m_Grounded = false;
 		
         // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
         Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
@@ -34,6 +42,7 @@ public class CharacterMovementController : MonoBehaviour
 			if (colliders[i].gameObject != gameObject && Math.Abs(m_Rigidbody2D.velocity.y) < 0.01)
             {
 				m_Grounded = true;
+				if (!wasGrounded) OnLandEvent.Invoke();
             }
         }
 		//Debug.Log("im grounded " + m_Grounded);

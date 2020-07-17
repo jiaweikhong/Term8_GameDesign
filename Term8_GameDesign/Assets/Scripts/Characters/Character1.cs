@@ -5,40 +5,8 @@ using Enums;
 
 public class Character1 : GenericCharacter
 {
-    // movement variables
-    protected CharacterMovementController movementController;
-    ControlsManager controlsManager;
-    public float runSpeed = 40f;
-    float horizontalMove = 0f;
-    bool jump = false;
 
-    bool isLeftPressed = false;
-    bool isRightPressed = false;
-
-    void Awake()
-    {
-        base.getComponents();
-        movementController = GetComponent<CharacterMovementController>();
-    }
-
-    void Start()
-    {
-        controlsManager = FindObjectOfType<ControlsManager>();
-    }
-
-    void Update()
-    {
-        isLeftPressed = Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.LeftKey));
-        isRightPressed = Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.RightKey));
-        horizontalMove = isLeftPressed ? -1 : 0;
-        horizontalMove = isRightPressed ? 1 : horizontalMove;
-        horizontalMove *= runSpeed;
-
-        if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.Jump)))
-        {
-            jump = true;
-        }
-    }
+    // If you want to override awake, please see: https://answers.unity.com/questions/388454/can-ishould-i-call-awake-in-parent-class-manually.html
 
     void FixedUpdate()
     {
@@ -48,25 +16,32 @@ public class Character1 : GenericCharacter
         movementController.BetterJump();
     }
 
-    public override void useCharacterPotion()
+    public override void UseCharacterPotion()
     {
-        throw new System.NotImplementedException();
+        // attack animation
+        animator.SetTrigger("Attack");
+        // TODO: primary attack animation
     }
 
-    public override void usePotion2()
+    public override void UsePotion2()
     {
-        // do the same check as described in usePotion3()
-        throw new System.NotImplementedException();
-    }
-
-    public override void usePotion3()
-    {
-        // remember to check if there's any more potions left. it's stored in base.playerScript.qtyPotion3
-        // e.g.
-        if (base.playerScript.qtyPotion3 > 0)
+/*        if (playerScript.UseSecondaryPotionIfCanUse())
         {
-            // do the potion
-        }
-        throw new System.NotImplementedException();
+
+        }*/
+        Debug.Log("Potion 2!!");
+        // animator.SetTrigger("Attack");
+    }
+
+    public override void UsePotion3()
+    {
+        // remember to check if there's any more potions left.
+        Debug.Log("Potion 3!");
+    }
+
+    public override void OnDeath()
+    {
+        // trigger death animation
+        animator.SetTrigger("Death");
     }
 }

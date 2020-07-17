@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4de138b753175045ad069cadc79e708, type: 3}
   m_Name: Player2Stats
   m_EditorClassIdentifier: 
-  playerNum: 1
-  _character: {fileID: 11400000, guid: b2324c148bb3398489656117da134249, type: 2}
+  playerNum: 2
+  _character: {fileID: 11400000, guid: 4fc1ab2275dccc34d8ee486c36fbc304, type: 2}
   _weets: 200
   _secondaryPotionQty: 0
-  _specialPotion: {fileID: 11400000, guid: a19f75fc27961b34dab78285f5329675, type: 2}
+  _specialPotion: {fileID: 11400000, guid: 356e64ce6ecacf04b81c42de5d90e04c, type: 2}
   _specialPotionQty: 0
   _playerKills: 0
   _playerDeaths: 0
   _playerHealth: 3
+  _qtyPotion2: 0
+  _qtyPotion3: 0

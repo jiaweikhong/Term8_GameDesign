@@ -6,12 +6,49 @@ public class GenericPlayer : MonoBehaviour
 {
     public int playerNum;
     public int characterNum;
-    public int qtyPotion2;  // these store the qty of potions that the player has but does not know what potions they are
-    public int qtyPotion3;  // we need to think about the menu interaction of setting the qty of potions.
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        GameManager.OnDeathEvent += GenericPlayerDeath;         // subscribe so that GenericPlayer knows when to die
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    private void GenericPlayerDeath(int deadPlayerNum)
+    {
+        if (deadPlayerNum == playerNum)
+        {
+            // trigger death animation in character
+            GetComponentInChildren<GenericCharacter>().OnDeath();
+            Debug.Log("Player " + playerNum + " has ded");
+        }
+    }
+
+    public void TakeDamage(int attackingPlayerNum)
+    {
+        // TODO: trigger hurt animation
+        GameManager.Instance.PlayerTakesDamage(attackingPlayerNum, playerNum);
+    }
+
+    public bool UseSecondaryPotionIfCanUse()
+    {
+        return GameManager.Instance.UseSecondaryPotionIfCanUse(playerNum);
+    }
+
+    public bool UseSpecialPotionIfCanUse()
+    {
+        return GameManager.Instance.UseSpecialPotionIfCanUse(playerNum);
+    }
+
+
+    void AttachCharacter(int charNum)
+    {
+        // set base characterNum
+        characterNum = charNum;
         switch (characterNum)
         {
             case 1:
@@ -28,21 +65,4 @@ public class GenericPlayer : MonoBehaviour
                 break;
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void incrementScore()
-    {
-        ScoreControllerScript.Instance.incrementScore(playerNum);
-    }
-
-    public void incrementDeath()
-    {
-        ScoreControllerScript.Instance.incrementDeath(playerNum);
-    }
-
 }
