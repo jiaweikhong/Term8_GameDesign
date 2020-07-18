@@ -23,6 +23,7 @@ public class PlayerInputScript : MonoBehaviour
     // The following are for UI navigation
     public void NavigateInput(InputAction.CallbackContext context)
     {
+        // Title Screen Scene
         if (SceneManager.GetActiveScene().buildIndex == 0 && context.performed)
         {
             if (screensTransitionManager.GetScreenNum() == 1)
@@ -36,10 +37,16 @@ public class PlayerInputScript : MonoBehaviour
                 brewingPhaseController.NavigateInput(context);
             }
         }
+        // Arena Scene - Start the input for match conclusion screen here
+        else if (SceneManager.GetActiveScene().buildIndex == 1 && context.performed)
+        {
+
+        }
     }
 
     public void SubmitInput(InputAction.CallbackContext context)
     {
+        // Title Screen Scene
         if (SceneManager.GetActiveScene().buildIndex == 0 && context.performed)
         {
             // title screen
@@ -58,10 +65,16 @@ public class PlayerInputScript : MonoBehaviour
                 brewingPhaseController.SubmitInput(context);
             }
         }
+        // Arena Scene - Start the input for match conclusion screen here
+        else if (SceneManager.GetActiveScene().buildIndex == 1 && context.performed)
+        {
+
+        }
     }
 
     public void CancelInput(InputAction.CallbackContext context)
     {
+        // Title Screen Scene
         if (SceneManager.GetActiveScene().buildIndex == 0 && context.performed)
         {
             // char select screen
@@ -74,6 +87,11 @@ public class PlayerInputScript : MonoBehaviour
             {
                 brewingPhaseController.CancelInput(context);
             }
+        }
+        // Arena Scene - Start the input for match conclusion screen here
+        else if (SceneManager.GetActiveScene().buildIndex == 1 && context.performed)
+        {
+
         }
     }
 
