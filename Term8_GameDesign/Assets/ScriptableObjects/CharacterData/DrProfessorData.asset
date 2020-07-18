@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DrProfessorData
   m_EditorClassIdentifier: 
   characterName: Dr. Professor
-  sprite: {fileID: 8239112264362327762, guid: 3819363ea4dda9f47937907863515be0, type: 3}
+  sprite: {fileID: 4723107735738678597, guid: c33362e61092e4d4ab9edc8a37018d02, type: 3}
   title: Toxic Alchemist
   backstory: 'Ex-researcher that was fired because his inventions were deemed too
     toxic for the lab. Dr. Professor continues to experiment independently to make
@@ -22,3 +22,4 @@ MonoBehaviour:
   primaryName: Woosh Cruk
   secondarySprite: {fileID: 21300000, guid: d5bb00bf6e041024cb0954668c243b8d, type: 3}
   secondaryName: Fieu Piang
+  isTaken: 0
