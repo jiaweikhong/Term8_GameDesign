@@ -45,11 +45,4 @@ public class Character1 : GenericCharacter
         // trigger death animation
         animator.SetTrigger("Death");
     }
-
-/*    // Allows for joycon movementin old input system
-    private void moveCharWithJoycon()
-    {
-        float horMovement = controlsManager.moveHorizontal(playerScript.playerNum);
-        horizontalMove = horMovement * runSpeed;
-    }*/
 }

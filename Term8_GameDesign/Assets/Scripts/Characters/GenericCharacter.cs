@@ -40,46 +40,6 @@ public abstract class GenericCharacter : MonoBehaviour
     void Update()
     {
         timeBtwAttack -= Time.deltaTime;
-
-        /*if (canMove)
-        {
-            // movement
-            isLeftPressed = Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.LeftKey));
-            isRightPressed = Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.RightKey));
-            horizontalMove = isLeftPressed ? -1 : 0;
-            horizontalMove = isRightPressed ? 1 : horizontalMove;
-            horizontalMove *= runSpeed;
-            horizontalMove *= isMuddled ? -1 : 1;                   // swap controls
-            animator.SetFloat("Speed", Mathf.Abs(horizontalMove));  // set run animation
-
-            if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.Jump)))
-            {
-                jump = true;
-                animator.SetBool("IsJumping", true);
-            }
-
-            // attack
-            if (timeBtwAttack <= 0)
-            {
-                if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.PrimaryKey)))
-                {
-                    UseCharacterPotion();
-                }
-                else if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.SecondaryKey)))
-                {
-                    UsePotion2();
-                }
-                else if (Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.SpecialKey)))
-                {
-                    UsePotion3();
-                }
-                timeBtwAttack = startTimeBtwAttack;
-            }
-            else
-            {
-                timeBtwAttack -= Time.deltaTime;
-            }
-        }*/
     }
 
     public void MoveInput(InputAction.CallbackContext context)
@@ -109,6 +69,7 @@ public abstract class GenericCharacter : MonoBehaviour
         {
             Debug.Log("pri pot input detected");
             UseCharacterPotion();
+            timeBtwAttack = startTimeBtwAttack;
         }
     }
 
@@ -118,6 +79,7 @@ public abstract class GenericCharacter : MonoBehaviour
         {
             Debug.Log("sec pot input detected");
             UsePotion2();
+            timeBtwAttack = startTimeBtwAttack;
         }
     }
 
@@ -127,6 +89,7 @@ public abstract class GenericCharacter : MonoBehaviour
         {
             Debug.Log("special pot input detected");
             UsePotion3();
+            timeBtwAttack = startTimeBtwAttack;
         }
     }
 

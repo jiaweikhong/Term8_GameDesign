@@ -24,8 +24,7 @@ public class ScreensTransitionManager : MonoBehaviour
 
     public void Start()
     {
-        // get references and set active/inactive pages 
-        //controlsManager = FindObjectOfType<ControlsManager>();
+        // set active/inactive pages 
         titleCanvas.SetActive(true);
         characterSelectCanvas.SetActive(false);
         brewingPhaseCanvas.SetActive(false);

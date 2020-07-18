@@ -20,6 +20,7 @@ public class PlayerInputScript : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    // The following are for UI navigation
     public void NavigateInput(InputAction.CallbackContext context)
     {
         if (SceneManager.GetActiveScene().buildIndex == 0 && context.performed)
@@ -41,18 +42,17 @@ public class PlayerInputScript : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == 0 && context.performed)
         {
+            // title screen
             if (screensTransitionManager.GetScreenNum() == 0)
             {
                 screensTransitionManager.onSelectPlay();
             }
-
+            // char select screen
             else if (screensTransitionManager.GetScreenNum() == 1)
             {
                 characterSelectController.SelectInput();
-                //controlsManager.SwitchAllControllersToCharacterMode();
-                //SceneManager.LoadScene(1);
             }
-
+            // brew screen
             else if (screensTransitionManager.GetScreenNum() == 2)
             {
                 brewingPhaseController.SubmitInput(context);
@@ -64,11 +64,12 @@ public class PlayerInputScript : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == 0 && context.performed)
         {
+            // char select screen
             if (screensTransitionManager.GetScreenNum() == 1)
             {
                 characterSelectController.CancelInput();
             }
-
+            // brew screen
             else if (screensTransitionManager.GetScreenNum() == 2)
             {
                 brewingPhaseController.CancelInput(context);
@@ -76,6 +77,7 @@ public class PlayerInputScript : MonoBehaviour
         }
     }
 
+    // The following are for Arena controls
     public void MoveInput(InputAction.CallbackContext context)
     {
         genericCharacter.MoveInput(context);

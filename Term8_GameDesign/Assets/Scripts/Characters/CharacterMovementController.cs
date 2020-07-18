@@ -38,7 +38,7 @@ public class CharacterMovementController : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
         for (int i = 0; i < colliders.Length; i++)
         {
-			Debug.Log(m_Rigidbody2D.velocity.y);
+			//Debug.Log(m_Rigidbody2D.velocity.y);
 			// if y-velocity not at 0 means passing through one-way platformer and not on ground. threshold is set at 1.5f because moving left somehow provides velocity of -1.3f.
 			if (colliders[i].gameObject != gameObject && Math.Abs(m_Rigidbody2D.velocity.y) < 1.5f)
             {
@@ -46,8 +46,7 @@ public class CharacterMovementController : MonoBehaviour
 				if (!wasGrounded) OnLandEvent.Invoke();
             }
         }
-		Debug.Log("im grounded " + m_Grounded);
-
+		//Debug.Log("im grounded " + m_Grounded);
 	}
 
 	public void Move(float move, bool jump)
@@ -67,8 +66,6 @@ public class CharacterMovementController : MonoBehaviour
 			Flip();
 		}
 
-/*		Debug.Log("jump bool:" + jump.ToString());
-		Debug.Log("grounded bool: " + m_Grounded.ToString());*/
 		if (m_Grounded && jump)
 		{
 			//Debug.Log("jump velocity activated!");
@@ -93,5 +90,4 @@ public class CharacterMovementController : MonoBehaviour
 			m_Rigidbody2D.velocity += Vector2.up * Physics2D.gravity * (m_fallMultiplier - 1) * Time.deltaTime;
 		}
 	}
-
 }
