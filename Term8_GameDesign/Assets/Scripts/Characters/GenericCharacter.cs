@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public abstract class GenericCharacter : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public abstract class GenericCharacter : MonoBehaviour
 
     // movement variables
     public float runSpeed = 40f;
+    protected Vector2 inputVector = new Vector2(0, 0);
     protected float horizontalMove = 0f;
     protected bool jump = false;
     protected bool isLeftPressed = false;     // REMOVE THIS once we get the axis controls
@@ -37,7 +39,9 @@ public abstract class GenericCharacter : MonoBehaviour
 
     void Update()
     {
-        if (canMove)
+        timeBtwAttack -= Time.deltaTime;
+
+        /*if (canMove)
         {
             // movement
             isLeftPressed = Input.GetKey(controlsManager.GetKey(playerScript.playerNum, ControlKeys.LeftKey));
@@ -75,6 +79,54 @@ public abstract class GenericCharacter : MonoBehaviour
             {
                 timeBtwAttack -= Time.deltaTime;
             }
+        }*/
+    }
+
+    public void MoveInput(InputAction.CallbackContext context)
+    {
+        if (canMove)
+        {
+            Debug.Log("move input detected");
+            inputVector = context.ReadValue<Vector2>();
+            horizontalMove = inputVector.x * runSpeed * (isMuddled ? -1 : 1);
+            animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+        }
+    }
+
+    public void JumpInput(InputAction.CallbackContext context)
+    {
+        if (canMove)
+        {
+            Debug.Log("jump input detected");
+            jump = true;
+            animator.SetBool("IsJumping", true);
+        }
+    }
+
+    public void PriPotInput(InputAction.CallbackContext context)
+    {
+        if (timeBtwAttack <= 0)
+        {
+            Debug.Log("pri pot input detected");
+            UseCharacterPotion();
+        }
+    }
+
+    public void SecPotInput(InputAction.CallbackContext context)
+    {
+        if (timeBtwAttack <= 0)
+        {
+            Debug.Log("sec pot input detected");
+            UsePotion2();
+        }
+    }
+
+    public void SpecialPotInput(InputAction.CallbackContext context)
+    {
+        if (timeBtwAttack <= 0)
+        {
+            Debug.Log("special pot input detected");
+            UsePotion3();
         }
     }
 

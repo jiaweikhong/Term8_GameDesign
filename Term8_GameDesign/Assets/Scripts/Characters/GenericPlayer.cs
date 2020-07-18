@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GenericPlayer : MonoBehaviour
 {
     public int playerNum;
     public int characterNum;
     protected GenericCharacter genericCharacter;
+
+    //public PlayerInput pi;
 
     void Awake()
     {
@@ -119,4 +123,6 @@ public class GenericPlayer : MonoBehaviour
                 break;
         }
     }
+
+
 }

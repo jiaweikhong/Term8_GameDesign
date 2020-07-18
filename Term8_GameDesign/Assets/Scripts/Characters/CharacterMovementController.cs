@@ -38,14 +38,16 @@ public class CharacterMovementController : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
         for (int i = 0; i < colliders.Length; i++)
         {
-			// if y-velocity not at 0 means passing through one-way platformer and not on ground
-			if (colliders[i].gameObject != gameObject && Math.Abs(m_Rigidbody2D.velocity.y) < 0.01)
+			Debug.Log(m_Rigidbody2D.velocity.y);
+			// if y-velocity not at 0 means passing through one-way platformer and not on ground. threshold is set at 1.5f because moving left somehow provides velocity of -1.3f.
+			if (colliders[i].gameObject != gameObject && Math.Abs(m_Rigidbody2D.velocity.y) < 1.5f)
             {
 				m_Grounded = true;
 				if (!wasGrounded) OnLandEvent.Invoke();
             }
         }
-		//Debug.Log("im grounded " + m_Grounded);
+		Debug.Log("im grounded " + m_Grounded);
+
 	}
 
 	public void Move(float move, bool jump)
@@ -65,8 +67,11 @@ public class CharacterMovementController : MonoBehaviour
 			Flip();
 		}
 
+/*		Debug.Log("jump bool:" + jump.ToString());
+		Debug.Log("grounded bool: " + m_Grounded.ToString());*/
 		if (m_Grounded && jump)
 		{
+			//Debug.Log("jump velocity activated!");
 			m_Grounded = false;
 			/*m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));*/
 			m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, jumpForce);			// use velocity so that we can do mario jump
