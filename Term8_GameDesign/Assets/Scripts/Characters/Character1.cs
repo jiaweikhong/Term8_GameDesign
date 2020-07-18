@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class Character1 : GenericCharacter
 {
-
+    public Animator potionAnimator;
     // If you want to override awake, please see: https://answers.unity.com/questions/388454/can-ishould-i-call-awake-in-parent-class-manually.html
 
     void FixedUpdate()
@@ -22,6 +22,8 @@ public class Character1 : GenericCharacter
         // attack animation
         animator.SetTrigger("Attack");
         // TODO: primary attack animation
+        potionAnimator.SetTrigger("Primary");
+        Debug.Log(playerScript.playerNum + " Potion 1!!");
     }
 
     public override void UsePotion2()
@@ -30,6 +32,8 @@ public class Character1 : GenericCharacter
         {
 
         }*/
+        animator.SetTrigger("Attack");
+        potionAnimator.SetTrigger("Secondary");
         Debug.Log("Potion 2!!");
         // animator.SetTrigger("Attack");
     }
