@@ -2,20 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Enums;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class ScreensTransitionManager : MonoBehaviour
 {
     public GameObject titleCanvas;
     public GameObject characterSelectCanvas;
     public GameObject brewingPhaseCanvas;
-    private ControlsManager controlsManager;
+    public ControlsManager controlsManager;
+
+    public int requiredPlayersToStart = 4;
     private int screenNum = 0;
+    [SerializeField]
     private int readyPlayersNum = 0;
+
+    public int GetScreenNum()
+    {
+        return screenNum;
+    }
 
     public void Start()
     {
-        // get references and set active/inactive pages 
-        controlsManager = FindObjectOfType<ControlsManager>();
+        // set active/inactive pages 
         titleCanvas.SetActive(true);
         characterSelectCanvas.SetActive(false);
         brewingPhaseCanvas.SetActive(false);
@@ -23,21 +32,9 @@ public class ScreensTransitionManager : MonoBehaviour
 
     public void Update()
     {
-        if (screenNum == 0)
+        if (screenNum == 1)
         {
-            // check player controls
-            // TODO: separate script if need to handle selection of other menu buttons in title screen
-            if (Input.GetKeyDown(controlsManager.GetKey(0, ControlKeys.PrimaryKey)))
-            {
-                screenNum += 1;
-                // set active/inactive relevant pages 
-                characterSelectCanvas.SetActive(true);
-                titleCanvas.SetActive(false);
-            }
-        }
-        else if (screenNum == 1)
-        {
-            if (readyPlayersNum == 4)
+            if (readyPlayersNum == requiredPlayersToStart)
             {
                 screenNum += 1;
                 readyPlayersNum = 0;
@@ -46,7 +43,7 @@ public class ScreensTransitionManager : MonoBehaviour
         }
         else if (screenNum == 2)
         {
-            if (readyPlayersNum == 4)
+            if (readyPlayersNum == requiredPlayersToStart)
             {
                 //toPlay();
                 StartCoroutine(toGamePlay());
@@ -70,7 +67,26 @@ public class ScreensTransitionManager : MonoBehaviour
     private IEnumerator toGamePlay()
     {
         yield return new WaitForSeconds(1f);
-        titleCanvas.SetActive(true);
+        //titleCanvas.SetActive(true);
         brewingPhaseCanvas.SetActive(false);
+        controlsManager.SwitchAllControllersToCharacterMode();
+        SceneManager.LoadScene(1);
     }
+
+    public void onSelectPlay()
+    {
+        if (screenNum == 0)
+        {
+            Debug.Log("screen trans manager select input");
+
+            // check player controls
+            // TODO: separate script if need to handle selection of other menu buttons in title screen
+            screenNum += 1;
+            // set active/inactive relevant pages 
+            characterSelectCanvas.SetActive(true);
+            titleCanvas.SetActive(false);
+        }
+    }
+
+
 }

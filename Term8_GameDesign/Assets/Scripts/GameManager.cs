@@ -4,7 +4,8 @@ using UnityEngine;
 
 // This script takes care of interaction with PlayerStats ScriptableObject
 // (i.e. health, kills, deaths, potionQty)
-public class GameManager : GenericSingletonClass<GameManager>
+//public class GameManager : GenericSingletonClass<GameManager>
+public class GameManager : MonoBehaviour
 {
 
     // Attach each Player's ScriptableObject
@@ -23,7 +24,6 @@ public class GameManager : GenericSingletonClass<GameManager>
     public delegate void DreamDelegate(int casterPlayerNum);
     public event DreamDelegate OnDreamingEvent;
 
-
     void Start()
     {
         playersHashTable = new Dictionary<int, PlayerStats> {
@@ -31,7 +31,8 @@ public class GameManager : GenericSingletonClass<GameManager>
             { 1, player1 },
             { 2, player2 },
             { 3, player3 }
-        }; 
+        };
+        DontDestroyOnLoad(gameObject);
     }
 
     void Update()
@@ -44,6 +45,8 @@ public class GameManager : GenericSingletonClass<GameManager>
     {
         PlayerStats receivingPlayer = playersHashTable[receivingPlayerNum];
         PlayerStats attackingPlayer = playersHashTable[attackingPlayerNum];
+        Debug.Log(receivingPlayer);
+        Debug.Log(attackingPlayer);
         receivingPlayer.PlayerHealth -= attackingPlayer.DamageDealtToOthers;
         if (receivingPlayer.PlayerHealth <= 0)
         {
@@ -63,6 +66,8 @@ public class GameManager : GenericSingletonClass<GameManager>
     {
         PlayerStats requiredPlayer = playersHashTable[playerNum];
         requiredPlayer.PlayerDeaths++;
+        Debug.Log("invoke death on" + playerNum.ToString());
+        //Debug.Log(OnMuddledEvent.GetInvocationList().Length);
         OnDeathEvent?.Invoke(playerNum);        // let the respecive player know that they ded
     }
 

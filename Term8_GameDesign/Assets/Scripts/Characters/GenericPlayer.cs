@@ -1,25 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GenericPlayer : MonoBehaviour
 {
     public int playerNum;
     public int characterNum;
     protected GenericCharacter genericCharacter;
+    public GameManager gameManager;
+
+    //public PlayerInput pi;
 
     void Awake()
     {
-        GameManager.Instance.OnDeathEvent += GenericPlayerDeath;         // subscribe so that GenericPlayer knows when to die
-        GameManager.Instance.OnMuddledEvent += PlayerMuddled;
-        GameManager.Instance.OnDreamingEvent += PlayerDreaming;
-
         genericCharacter = GetComponentInChildren<GenericCharacter>();
+
+    }
+
+    private void OnEnable()
+    {
+        gameManager.OnDeathEvent += GenericPlayerDeath;         // subscribe so that GenericPlayer knows when to die
+        gameManager.OnMuddledEvent += PlayerMuddled;
+        gameManager.OnDreamingEvent += PlayerDreaming;
     }
 
     // Event Handlers
     private void GenericPlayerDeath(int deadPlayerNum)
     {
+        Debug.Log("dying");
         if (deadPlayerNum == playerNum)
         {
             // trigger death animation in character
@@ -66,37 +76,37 @@ public class GenericPlayer : MonoBehaviour
     public void TakeDamage(int attackingPlayerNum)
     {
         // TODO: trigger hurt animation
-        GameManager.Instance.PlayerTakesDamage(attackingPlayerNum, playerNum);
+        gameManager.PlayerTakesDamage(attackingPlayerNum, playerNum);
     }
 
     public bool UseSecondaryPotionIfCanUse()
     {
-        return GameManager.Instance.UseSecondaryPotionIfCanUse(playerNum);
+        return gameManager.UseSecondaryPotionIfCanUse(playerNum);
     }
 
     public bool UseSpecialPotionIfCanUse()
     {
-        return GameManager.Instance.UseSpecialPotionIfCanUse(playerNum);
+        return gameManager.UseSpecialPotionIfCanUse(playerNum);
     }
 
     public void IncreaseDamageDealtTo2()
     {
-        GameManager.Instance.IncreaseDamageDealtTo2(playerNum);
+        gameManager.IncreaseDamageDealtTo2(playerNum);
     }
 
     public void DecreaseDamageDealtTo1()
     {
-        GameManager.Instance.DecreaseDamageDealtTo1(playerNum);
+        gameManager.DecreaseDamageDealtTo1(playerNum);
     }
 
     public void CastMuddlingMist()
     {
-        GameManager.Instance.CastMuddlingMist(playerNum);
+        gameManager.CastMuddlingMist(playerNum);
     }
 
     public void CastDreamingDust()
     {
-        GameManager.Instance.CastDreamDust(playerNum);
+        gameManager.CastDreamDust(playerNum);
     }
 
     void AttachCharacter(int charNum)
@@ -119,4 +129,6 @@ public class GenericPlayer : MonoBehaviour
                 break;
         }
     }
+
+
 }
