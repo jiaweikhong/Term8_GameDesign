@@ -1,34 +1,31 @@
 fileFormatVersion: 2
-guid: 0883340cf287d4f4784182e5ec32db4b
+guid: e55ffdf050b515c42829976f6c77a80e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7008412969330441016
-    second: Attack_0
+      213: 3856007573902139133
+    second: L-2-Sheet_0
   - first:
-      213: -7763475090823894447
-    second: Attack_1
+      213: 4785484228851437204
+    second: L-2-Sheet_1
   - first:
-      213: 302641331129538988
-    second: Attack_2
+      213: 2553291231258742385
+    second: L-2-Sheet_2
   - first:
-      213: -6329420634031446844
-    second: Attack_3
+      213: -5651316884113349486
+    second: L-2-Sheet_3
   - first:
-      213: -910092549403018386
-    second: Attack_4
+      213: 1541213482646369251
+    second: L-2-Sheet_4
   - first:
-      213: 221524225039350300
-    second: Attack_5
+      213: 7127213876323284052
+    second: L-2-Sheet_5
   - first:
-      213: 1290532464073988732
-    second: Attack_6
+      213: 5091039210073155633
+    second: L-2-Sheet_6
   - first:
-      213: 4780903288873104255
-    second: Attack_7
-  - first:
-      213: -2238382357930459393
-    second: Attack_8
+      213: -2409712461386592588
+    second: L-2-Sheet_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -114,13 +111,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attack_0
+      name: L-2-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 36
+        width: 90
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,20 +125,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c481db598d1dbe90800000000000000
-      internalID: -7008412969330441016
+      spriteID: dfe17ad557a438530800000000000000
+      internalID: 3856007573902139133
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_1
+      name: L-2-Sheet_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 90
         y: 0
-        width: 32
-        height: 36
+        width: 90
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,20 +146,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15a29dc9988924490800000000000000
-      internalID: -7763475090823894447
+      spriteID: 49e8ce23d84796240800000000000000
+      internalID: 4785484228851437204
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_2
+      name: L-2-Sheet_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 180
         y: 0
-        width: 32
-        height: 36
+        width: 90
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -170,20 +167,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca9d35cefa2333400800000000000000
-      internalID: 302641331129538988
+      spriteID: 17e0c4fc8dc1f6320800000000000000
+      internalID: 2553291231258742385
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_3
+      name: L-2-Sheet_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 270
         y: 0
-        width: 32
-        height: 36
+        width: 90
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,20 +188,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c42782d7716928a0800000000000000
-      internalID: -6329420634031446844
+      spriteID: 294a1416c3d7291b0800000000000000
+      internalID: -5651316884113349486
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_4
+      name: L-2-Sheet_4
       rect:
         serializedVersion: 2
-        x: 128
+        x: 360
         y: 0
-        width: 32
-        height: 36
+        width: 90
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,20 +209,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6b7a10f5a3be53f0800000000000000
-      internalID: -910092549403018386
+      spriteID: 3e3fd2c2f7d736510800000000000000
+      internalID: 1541213482646369251
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_5
+      name: L-2-Sheet_5
       rect:
         serializedVersion: 2
-        x: 160
+        x: 450
         y: 0
-        width: 32
-        height: 36
+        width: 90
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -233,20 +230,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c1a3d96eb13031300800000000000000
-      internalID: 221524225039350300
+      spriteID: 454fb784243f8e260800000000000000
+      internalID: 7127213876323284052
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_6
+      name: L-2-Sheet_6
       rect:
         serializedVersion: 2
-        x: 192
+        x: 540
         y: 0
-        width: 32
-        height: 36
+        width: 90
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -254,20 +251,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7a5d344074e8e110800000000000000
-      internalID: 1290532464073988732
+      spriteID: 138eef5203107a640800000000000000
+      internalID: 5091039210073155633
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_7
+      name: L-2-Sheet_7
       rect:
         serializedVersion: 2
-        x: 224
+        x: 630
         y: 0
-        width: 32
-        height: 36
+        width: 90
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -275,29 +272,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7337cef53e295240800000000000000
-      internalID: 4780903288873104255
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Attack_8
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 32
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ffebd0cda1bafe0e0800000000000000
-      internalID: -2238382357930459393
+      spriteID: 4be4838984bfe8ed0800000000000000
+      internalID: -2409712461386592588
       vertices: []
       indices: 
       edges: []
