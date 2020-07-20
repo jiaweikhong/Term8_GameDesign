@@ -44,8 +44,8 @@ public class Character1 : GenericCharacter
         Debug.Log("Potion 3!");
         // SwiftnessElixir();
         // KillerBrew();
-        MuddlingMist();
-        // DreamDust();
+        // MuddlingMist();
+        DreamDust();
     }
 
     public override void OnDeath()
