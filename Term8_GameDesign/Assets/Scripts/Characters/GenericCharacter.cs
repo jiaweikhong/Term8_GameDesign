@@ -134,7 +134,7 @@ public abstract class GenericCharacter : MonoBehaviour
     public void SwiftnessElixir()
     {
         Debug.Log("Started speed boost");
-        float speedMultiplier = 1.25f;   // TODO: refactor to variable later
+        float speedMultiplier = 1.75f;   // TODO: refactor to variable later
         runSpeed *= speedMultiplier;
         StartCoroutine(RevertEnhancedSpeed(speedMultiplier));
     }
@@ -161,14 +161,14 @@ public abstract class GenericCharacter : MonoBehaviour
     // Coroutines to end special potion's effect
     IEnumerator RevertEnhancedSpeed(float speedMultiplier)
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(7f);
         runSpeed /= speedMultiplier;
         Debug.Log("Ended speed boost");
     }
 
     IEnumerator RevertDamageDealt()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(7f);
         playerScript.DecreaseDamageDealtTo1();
         Debug.Log("Ended Killer Brew");
     }
@@ -182,6 +182,9 @@ public abstract class GenericCharacter : MonoBehaviour
     public void SetDreaming(bool isCharacterDreaming)
     {
         // character can move if it is not currently dreaming
+        horizontalMove = 0f;
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         canMove = !isCharacterDreaming;
+        
     }
 }

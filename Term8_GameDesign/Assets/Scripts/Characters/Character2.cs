@@ -37,10 +37,10 @@ public class Character2 : GenericCharacter
     {
         // remember to check if there's any more potions left
         Debug.Log(playerScript.playerNum + "Potion 3!");
-        //SwiftnessElixir();
-        //KillerBrew();
-        //MuddlingMist();
-        DreamDust();
+        SwiftnessElixir();
+        // KillerBrew();
+        // MuddlingMist();
+        // DreamDust();
     }
 
     public override void OnDeath()

@@ -42,6 +42,10 @@ public class Character1 : GenericCharacter
     {
         // remember to check if there's any more potions left.
         Debug.Log("Potion 3!");
+        // SwiftnessElixir();
+        // KillerBrew();
+        MuddlingMist();
+        // DreamDust();
     }
 
     public override void OnDeath()
