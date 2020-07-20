@@ -29,7 +29,6 @@ public abstract class GenericCharacter : MonoBehaviour
     // status effect variables
     protected bool isMuddled = false;
     protected bool canMove = true;
-
     public virtual void Awake()
     {
         playerScript = GetComponentInParent<GenericPlayer>();
@@ -65,7 +64,7 @@ public abstract class GenericCharacter : MonoBehaviour
 
     public void PriPotInput(InputAction.CallbackContext context)
     {
-        if (timeBtwAttack <= 0)
+        if (timeBtwAttack <= 0 && canMove)
         {
             Debug.Log("pri pot input detected");
             UseCharacterPotion();
@@ -75,7 +74,7 @@ public abstract class GenericCharacter : MonoBehaviour
 
     public void SecPotInput(InputAction.CallbackContext context)
     {
-        if (timeBtwAttack <= 0)
+        if (timeBtwAttack <= 0 && canMove)
         {
             Debug.Log("sec pot input detected");
             UsePotion2();
@@ -85,7 +84,7 @@ public abstract class GenericCharacter : MonoBehaviour
 
     public void SpecialPotInput(InputAction.CallbackContext context)
     {
-        if (timeBtwAttack <= 0)
+        if (timeBtwAttack <= 0 && canMove)
         {
             Debug.Log("special pot input detected");
             UsePotion3();
