@@ -103,10 +103,12 @@ public abstract class GenericCharacter : MonoBehaviour
         if (other.gameObject.CompareTag("Damage") && !wasHurted)
         {
             int otherPlayerNum = other.gameObject.transform.parent.gameObject.GetComponentInParent<GenericPlayer>().playerNum;
-            Debug.Log("Taken damage from Player " + otherPlayerNum);
+            int playerNum = gameObject.transform.parent.gameObject.GetComponentInParent<GenericPlayer>().playerNum;
+            if (otherPlayerNum != playerNum)
+            {Debug.Log("Taken damage from Player " + otherPlayerNum);
             playerScript.TakeDamage(otherPlayerNum);
             wasHurted = true;
-            StartCoroutine(UnhurtPlayer());
+            StartCoroutine(UnhurtPlayer());}
         }
     }
 
