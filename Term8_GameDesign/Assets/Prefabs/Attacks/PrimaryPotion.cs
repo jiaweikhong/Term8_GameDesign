@@ -4,26 +4,18 @@ using UnityEngine;
 
 public class PrimaryPotion : MonoBehaviour
 {
-    public float speed = 20f;
+    public float speed = 8f;
     public Rigidbody2D rb;
     public int casterPlayerNum;
     
     void OnEnable()
     {
-        Debug.Log("I waz enabled");
         rb.velocity = transform.right * speed;
-        StartCoroutine((Shoot()));
+        Invoke("Destroy", 0.2f);
     }
 
-    IEnumerator Shoot()
+    void Destroy()
     {
-        yield return new WaitForSeconds(0.2f);
-        Debug.Log("I shooted but it no werk");
         gameObject.SetActive(false);
     }
-    
-    // void OnTriggerEnter2D(Collider2D other) {
-    //     Debug.Log("primary potion hit smth" + other.name  + other.tag);
-        
-    // }
 }

@@ -121,6 +121,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &165643245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 165643246}
+  m_Layer: 12
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &165643246
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165643245}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 904213718}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &222265786
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,7 +373,7 @@ MonoBehaviour:
   runSpeed: 40
   startTimeBtwAttack: 0.6
   potionAnimator: {fileID: 1541022893}
-  throwPoint: {fileID: 906396951}
+  firePoint: {fileID: 906396951}
   secondaryPotion: {fileID: 2450455228669544526, guid: e3e113ef183e36c42a16c598bc4e754d,
     type: 3}
 --- !u!1 &282814371
@@ -734,6 +764,7 @@ Transform:
   m_Children:
   - {fileID: 1017253317}
   - {fileID: 1352898155}
+  - {fileID: 165643246}
   m_Father: {fileID: 1095754850}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -772,6 +803,7 @@ MonoBehaviour:
   runSpeed: 40
   startTimeBtwAttack: 0.6
   potionAnimator: {fileID: 1352898157}
+  firePoint: {fileID: 165643246}
 --- !u!114 &904213721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -943,7 +975,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 906396950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.037, y: -0.206, z: 0}
+  m_LocalPosition: {x: 0.299, y: -0.206, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 222265787}
@@ -997,9 +1029,18 @@ MonoBehaviour:
       type: 3}
     amountToPool: 3
     shouldExpand: 1
-  - objectToPool: {fileID: 0}
-    amountToPool: 0
-    shouldExpand: 0
+  - objectToPool: {fileID: 8609145565279659012, guid: 2b0d7a8c82920e342aa7f040c5f8515c,
+      type: 3}
+    amountToPool: 3
+    shouldExpand: 1
+  - objectToPool: {fileID: 6342058585083793, guid: 3240c3a41d7f3d34a9fe604a5cf9d3be,
+      type: 3}
+    amountToPool: 3
+    shouldExpand: 1
+  - objectToPool: {fileID: 6514714914129979670, guid: 7a189b5ba3183974aba0a96acecbb10f,
+      type: 3}
+    amountToPool: 3
+    shouldExpand: 1
   pooledObjects: []
 --- !u!1 &1017253316
 GameObject:
@@ -2346,7 +2387,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1087586642
 Transform:
   m_ObjectHideFlags: 0
@@ -2432,8 +2473,6 @@ MonoBehaviour:
   startTimeBtwAttack: 0.6
   potionAnimator: {fileID: 1351507441}
   firePoint: {fileID: 517315992}
-  primaryPotionPrefab: {fileID: 6953075727441956800, guid: b8e5bec94cda68e4bbe524087b0006fd,
-    type: 3}
 --- !u!114 &1087586645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3690,16 +3729,16 @@ GameObject:
   - component: {fileID: 1782654044}
   - component: {fileID: 1782654043}
   - component: {fileID: 1782654042}
-  - component: {fileID: 1782654041}
   - component: {fileID: 1782654040}
   - component: {fileID: 1782654039}
+  - component: {fileID: 1782654041}
   m_Layer: 11
   m_Name: The Traveller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1782654038
 Transform:
   m_ObjectHideFlags: 0
@@ -3713,6 +3752,7 @@ Transform:
   m_Children:
   - {fileID: 1598000433}
   - {fileID: 1963011609}
+  - {fileID: 2056082821}
   m_Father: {fileID: 282814375}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3777,15 +3817,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1782654037}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 308c629f85066264595d6628e4c7fa14, type: 3}
+  m_Script: {fileID: 11500000, guid: f7cd1c30fe0a1e746a29c006e37576b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   controlsManager: {fileID: 0}
   runSpeed: 40
   startTimeBtwAttack: 0.6
   potionAnimator: {fileID: 1963011610}
-  firePoint: {fileID: 0}
-  primaryPotionPrefab: {fileID: 0}
+  firePoint: {fileID: 2056082821}
 --- !u!58 &1782654042
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4601,6 +4640,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &2056082820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2056082821}
+  m_Layer: 11
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2056082821
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056082820}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.299, y: -0.206, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1782654038}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2117280756
 GameObject:
   m_ObjectHideFlags: 0
