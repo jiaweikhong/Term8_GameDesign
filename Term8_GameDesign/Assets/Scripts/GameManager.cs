@@ -47,7 +47,10 @@ public class GameManager : MonoBehaviour
         PlayerStats attackingPlayer = playersHashTable[attackingPlayerNum];
         Debug.Log(receivingPlayer);
         Debug.Log(attackingPlayer);
-        receivingPlayer.PlayerHealth -= attackingPlayer.DamageDealtToOthers;
+        if (receivingPlayer != attackingPlayer)
+        {
+            receivingPlayer.PlayerHealth -= attackingPlayer.DamageDealtToOthers;
+        }
         if (receivingPlayer.PlayerHealth <= 0)
         {
             IncrementDeath(receivingPlayerNum);         // increment death for receiving player

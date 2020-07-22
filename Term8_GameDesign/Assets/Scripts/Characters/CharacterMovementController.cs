@@ -77,9 +77,7 @@ public class CharacterMovementController : MonoBehaviour
 	private void Flip()
 	{
 		m_FacingRight = !m_FacingRight;
-		Vector3 playerLocalScale = transform.localScale;
-		playerLocalScale.x *= -1;		// flip
-		transform.localScale = playerLocalScale;
+		transform.Rotate (0f, 180f, 0f);
 	}
 
 	public void BetterJump()

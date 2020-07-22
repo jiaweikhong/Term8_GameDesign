@@ -3145,6 +3145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057ca7670f9c29744b4ef04a6dcd51a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joycon: 0
   playerControls:
   - keyCodes:
     - controlKey: 0

@@ -29,7 +29,6 @@ public abstract class GenericCharacter : MonoBehaviour
     // status effect variables
     protected bool isMuddled = false;
     protected bool canMove = true;
-
     public virtual void Awake()
     {
         playerScript = GetComponentInParent<GenericPlayer>();
@@ -65,7 +64,7 @@ public abstract class GenericCharacter : MonoBehaviour
 
     public void PriPotInput(InputAction.CallbackContext context)
     {
-        if (timeBtwAttack <= 0)
+        if (timeBtwAttack <= 0 && canMove)
         {
             Debug.Log("pri pot input detected");
             UseCharacterPotion();
@@ -75,7 +74,7 @@ public abstract class GenericCharacter : MonoBehaviour
 
     public void SecPotInput(InputAction.CallbackContext context)
     {
-        if (timeBtwAttack <= 0)
+        if (timeBtwAttack <= 0 && canMove)
         {
             Debug.Log("sec pot input detected");
             UsePotion2();
@@ -85,7 +84,7 @@ public abstract class GenericCharacter : MonoBehaviour
 
     public void SpecialPotInput(InputAction.CallbackContext context)
     {
-        if (timeBtwAttack <= 0)
+        if (timeBtwAttack <= 0 && canMove)
         {
             Debug.Log("special pot input detected");
             UsePotion3();
@@ -103,17 +102,21 @@ public abstract class GenericCharacter : MonoBehaviour
         if (other.gameObject.CompareTag("Damage") && !wasHurted)
         {
             int otherPlayerNum = other.gameObject.transform.parent.gameObject.GetComponentInParent<GenericPlayer>().playerNum;
-            Debug.Log("Taken damage from Player " + otherPlayerNum);
+            int playerNum = gameObject.transform.parent.gameObject.GetComponentInParent<GenericPlayer>().playerNum;
+            if (otherPlayerNum != playerNum)
+            {Debug.Log("Taken damage from Player " + otherPlayerNum);
             playerScript.TakeDamage(otherPlayerNum);
             wasHurted = true;
-            StartCoroutine(UnhurtPlayer());
+            StartCoroutine(UnhurtPlayer());}
         }
     }
 
     IEnumerator UnhurtPlayer()
     {
+        animator.SetLayerWeight(1,1);
         // during these 0.3s won't get hurt again
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(1.0f);
+        animator.SetLayerWeight(1,0);
         wasHurted = false;
     }
 
@@ -130,7 +133,7 @@ public abstract class GenericCharacter : MonoBehaviour
     public void SwiftnessElixir()
     {
         Debug.Log("Started speed boost");
-        float speedMultiplier = 1.25f;   // TODO: refactor to variable later
+        float speedMultiplier = 1.75f;   // TODO: refactor to variable later
         runSpeed *= speedMultiplier;
         StartCoroutine(RevertEnhancedSpeed(speedMultiplier));
     }
@@ -157,14 +160,14 @@ public abstract class GenericCharacter : MonoBehaviour
     // Coroutines to end special potion's effect
     IEnumerator RevertEnhancedSpeed(float speedMultiplier)
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(7f);
         runSpeed /= speedMultiplier;
         Debug.Log("Ended speed boost");
     }
 
     IEnumerator RevertDamageDealt()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(7f);
         playerScript.DecreaseDamageDealtTo1();
         Debug.Log("Ended Killer Brew");
     }
@@ -178,6 +181,9 @@ public abstract class GenericCharacter : MonoBehaviour
     public void SetDreaming(bool isCharacterDreaming)
     {
         // character can move if it is not currently dreaming
+        horizontalMove = 0f;
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         canMove = !isCharacterDreaming;
+        
     }
 }
