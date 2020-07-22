@@ -9,6 +9,7 @@ public class TheTraveller : GenericCharacter
     public Animator potionAnimator;
     // If you want to override awake, please see: https://answers.unity.com/questions/388454/can-ishould-i-call-awake-in-parent-class-manually.html
     public Transform firePoint;
+    public Transform pillarFirePoint;
     void FixedUpdate()
     {
         // Move our character
@@ -41,14 +42,17 @@ public class TheTraveller : GenericCharacter
 
     public override void UsePotion2()
     {
-/*        if (playerScript.UseSecondaryPotionIfCanUse())
-        {
-
-        }*/
         animator.SetTrigger("Attack");
-        potionAnimator.SetTrigger("Secondary");
+
+        GameObject secondaryPotion = ObjectPooler.SharedInstance.GetPooledObject("TheTravellerSecondary(Clone)"); 
+        secondaryPotion.GetComponent<SecondaryPotion>().casterPlayerNum = playerScript.playerNum;
+        if (secondaryPotion != null)
+        {
+            secondaryPotion.transform.position = pillarFirePoint.position;
+            secondaryPotion.transform.rotation = pillarFirePoint.rotation;
+            secondaryPotion.SetActive(true);
+        }
         Debug.Log("Potion 2!!");
-        // animator.SetTrigger("Attack");
     }
 
     public override void UsePotion3()

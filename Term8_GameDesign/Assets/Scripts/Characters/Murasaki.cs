@@ -9,6 +9,7 @@ public class Murasaki : GenericCharacter
     public Animator potionAnimator;
     // If you want to override awake, please see: https://answers.unity.com/questions/388454/can-ishould-i-call-awake-in-parent-class-manually.html
     public Transform firePoint;
+    public Transform swordsSpawnPoint;
     void FixedUpdate()
     {
         // Move our character
@@ -41,14 +42,17 @@ public class Murasaki : GenericCharacter
 
     public override void UsePotion2()
     {
-/*        if (playerScript.UseSecondaryPotionIfCanUse())
-        {
-
-        }*/
         animator.SetTrigger("Attack");
-        potionAnimator.SetTrigger("Secondary");
+
+        GameObject secondaryPotion = ObjectPooler.SharedInstance.GetPooledObject("MurasakiSecondary(Clone)"); 
+        secondaryPotion.GetComponent<SecondaryPotion>().casterPlayerNum = playerScript.playerNum;
+        if (secondaryPotion != null)
+        {
+            secondaryPotion.transform.position = swordsSpawnPoint.position;
+            secondaryPotion.transform.rotation = swordsSpawnPoint.rotation;
+            secondaryPotion.SetActive(true);
+        }
         Debug.Log("Potion 2!!");
-        // animator.SetTrigger("Attack");
     }
 
     public override void UsePotion3()

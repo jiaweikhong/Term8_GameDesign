@@ -7,7 +7,7 @@ public class DrProfessor : GenericCharacter
 {
     public Animator potionAnimator;     // can refactor into the GenericCharacter (when other attacks are done)
     public Transform firePoint;
-    public GameObject secondaryPotion;
+    // public GameObject secondaryPotion;
 
     void FixedUpdate()
     {
@@ -41,16 +41,17 @@ public class DrProfessor : GenericCharacter
 
     public override void UsePotion2()
     {
-/*        if (playerScript.UseSecondaryPotionIfCanUse())
-        {
-
-        }*/
         animator.SetTrigger("Attack");
-        // potionAnimator.SetTrigger("Secondary");
 
-        Instantiate(secondaryPotion, firePoint.position, firePoint.rotation);
-
-        Debug.Log(playerScript.playerNum + " Potion 2!!");
+        GameObject secondaryPotion = ObjectPooler.SharedInstance.GetPooledObject("DrProfessorSecondary(Clone)"); 
+        secondaryPotion.GetComponent<ProfessorSecondary>().casterPlayerNum = playerScript.playerNum;
+        if (secondaryPotion != null)
+        {
+            secondaryPotion.transform.position = firePoint.position;
+            secondaryPotion.transform.rotation = firePoint.rotation;
+            secondaryPotion.SetActive(true);
+        }
+        Debug.Log("Potion 2!!");
 
 
     }

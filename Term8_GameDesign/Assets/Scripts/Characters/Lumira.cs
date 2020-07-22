@@ -21,19 +21,17 @@ public class Lumira : GenericCharacter
     {
         // attack animation
         animator.SetTrigger("Attack");
-        // TODO: primary attack animation
-        // potionAnimator.SetTrigger("Primary");
 
         // Set casterPlayerNum in primaryPotion script of prefab 
         GameObject primaryPotion = ObjectPooler.SharedInstance.GetPooledObject("LumiraPrimary(Clone)"); 
-        // Instantiate(primaryPotionPrefab, firePoint.position, firePoint.rotation);
         primaryPotion.GetComponent<PrimaryPotion>().casterPlayerNum = playerScript.playerNum;
+        
+        // Reset transform, set pooled object to active
         if (primaryPotion != null)
         {
             primaryPotion.transform.position = firePoint.position;
             primaryPotion.transform.rotation = firePoint.rotation;
             primaryPotion.SetActive(true);
-            // primaryPotion.GetComponent<PrimaryPotion>().enabled = true;
         }
         
         Debug.Log(playerScript.playerNum + " Potion 1!!");
@@ -41,14 +39,17 @@ public class Lumira : GenericCharacter
 
     public override void UsePotion2()
     {
-/*        if (playerScript.UseSecondaryPotionIfCanUse())
-        {
-
-        }*/
         animator.SetTrigger("Attack");
-        potionAnimator.SetTrigger("Secondary");
+
+        GameObject secondaryPotion = ObjectPooler.SharedInstance.GetPooledObject("LumiraSecondary(Clone)"); 
+        secondaryPotion.GetComponent<SecondaryPotion>().casterPlayerNum = playerScript.playerNum;
+        if (secondaryPotion != null)
+        {
+            secondaryPotion.transform.position = transform.position;
+            secondaryPotion.transform.rotation = transform.rotation;
+            secondaryPotion.SetActive(true);
+        }
         Debug.Log("Potion 2!!");
-        // animator.SetTrigger("Attack");
     }
 
     public override void UsePotion3()
