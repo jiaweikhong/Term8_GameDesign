@@ -4,11 +4,12 @@ using UnityEngine;
 using Enums;
 using UnityEngine.EventSystems;
 
-public class Character1 : GenericCharacter
+public class Lumira : GenericCharacter
 {
     public Animator potionAnimator;
     // If you want to override awake, please see: https://answers.unity.com/questions/388454/can-ishould-i-call-awake-in-parent-class-manually.html
-
+    public Transform firePoint;
+    public GameObject primaryPotionPrefab;
     void FixedUpdate()
     {
         // Move our character
@@ -22,7 +23,20 @@ public class Character1 : GenericCharacter
         // attack animation
         animator.SetTrigger("Attack");
         // TODO: primary attack animation
-        potionAnimator.SetTrigger("Primary");
+        // potionAnimator.SetTrigger("Primary");
+
+        // Set casterPlayerNum in primaryPotion script of prefab 
+        GameObject primaryPotion = ObjectPooler.SharedInstance.GetPooledObject("LumiraPrimary(Clone)"); 
+        // Instantiate(primaryPotionPrefab, firePoint.position, firePoint.rotation);
+        primaryPotion.GetComponent<PrimaryPotion>().casterPlayerNum = playerScript.playerNum;
+        if (primaryPotion != null)
+        {
+            primaryPotion.transform.position = firePoint.position;
+            primaryPotion.transform.rotation = firePoint.rotation;
+            primaryPotion.SetActive(true);
+            // primaryPotion.GetComponent<PrimaryPotion>().enabled = true;
+        }
+        
         Debug.Log(playerScript.playerNum + " Potion 1!!");
     }
 
