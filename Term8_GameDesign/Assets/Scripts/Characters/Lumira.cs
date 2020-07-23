@@ -9,6 +9,10 @@ public class Lumira : GenericCharacter
     public Animator potionAnimator;
     // If you want to override awake, please see: https://answers.unity.com/questions/388454/can-ishould-i-call-awake-in-parent-class-manually.html
     public Transform firePoint;
+
+    public AudioClip potion1SFX;
+    public AudioClip potion2SFX;
+
     void FixedUpdate()
     {
         // Move our character
@@ -21,6 +25,7 @@ public class Lumira : GenericCharacter
     {
         // attack animation
         animator.SetTrigger("Attack");
+        audioSrc.PlayOneShot(potion1SFX);
 
         // Set casterPlayerNum in primaryPotion script of prefab 
         GameObject primaryPotion = ObjectPooler.SharedInstance.GetPooledObject("LumiraPrimary(Clone)"); 
@@ -40,6 +45,7 @@ public class Lumira : GenericCharacter
     public override void UsePotion2()
     {
         animator.SetTrigger("Attack");
+        audioSrc.PlayOneShot(potion2SFX);
 
         GameObject secondaryPotion = ObjectPooler.SharedInstance.GetPooledObject("LumiraSecondary(Clone)"); 
         secondaryPotion.GetComponent<SecondaryPotion>().casterPlayerNum = playerScript.playerNum;
@@ -66,5 +72,7 @@ public class Lumira : GenericCharacter
     {
         // trigger death animation
         animator.SetTrigger("Death");
+        float deathAnimLength = animator.GetCurrentAnimatorStateInfo(0).length;
+        StartCoroutine(SetSpawnPosition(deathAnimLength));
     }
 }

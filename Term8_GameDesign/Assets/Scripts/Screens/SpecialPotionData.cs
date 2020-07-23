@@ -2,28 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName="SpecialPotionData")]
+[CreateAssetMenu(menuName = "SpecialPotionData")]
 public class SpecialPotionData : ScriptableObject
 {
-    [SerializeField] 
+    [SerializeField]
     private string specialName;
-    [SerializeField] 
+    [SerializeField]
     private string description;
-    [SerializeField] 
+    [SerializeField]
     private Sprite sprite;
     [SerializeField]
     private int cost;
 
     public string SpecialName
-    { get
+    {
+        get
         { return specialName; }
     }
     public Sprite Sprite
-    { get
+    {
+        get
         { return sprite; }
     }
     public int Cost
-    { get
+    {
+        get
         { return cost; }
     }
 }

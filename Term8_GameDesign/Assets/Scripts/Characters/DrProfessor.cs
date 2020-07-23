@@ -9,6 +9,9 @@ public class DrProfessor : GenericCharacter
     public Transform firePoint;
     // public GameObject secondaryPotion;
 
+    public AudioClip potion1SFX;
+    public AudioClip potion2SFX;
+
     void FixedUpdate()
     {
         // Move our character
@@ -21,11 +24,12 @@ public class DrProfessor : GenericCharacter
     {
         // attack animation
         animator.SetTrigger("Attack");
+        audioSrc.PlayOneShot(potion1SFX);
         // TODO: primary attack animation
         // potionAnimator.SetTrigger("Primary");
 
         // Set casterPlayerNum in primaryPotion script of prefab 
-        GameObject primaryPotion = ObjectPooler.SharedInstance.GetPooledObject("DrProfessorPrimary(Clone)"); 
+        GameObject primaryPotion = ObjectPooler.SharedInstance.GetPooledObject("DrProfessorPrimary(Clone)");
         // Instantiate(primaryPotionPrefab, firePoint.position, firePoint.rotation);
         primaryPotion.GetComponent<PrimaryPotion>().casterPlayerNum = playerScript.playerNum;
         if (primaryPotion != null)
@@ -35,15 +39,16 @@ public class DrProfessor : GenericCharacter
             primaryPotion.SetActive(true);
             // primaryPotion.GetComponent<PrimaryPotion>().enabled = true;
         }
-        
+
         Debug.Log(playerScript.playerNum + " Potion 1!!");
     }
 
     public override void UsePotion2()
     {
         animator.SetTrigger("Attack");
+        audioSrc.PlayOneShot(potion2SFX);
 
-        GameObject secondaryPotion = ObjectPooler.SharedInstance.GetPooledObject("DrProfessorSecondary(Clone)"); 
+        GameObject secondaryPotion = ObjectPooler.SharedInstance.GetPooledObject("DrProfessorSecondary(Clone)");
         secondaryPotion.GetComponent<ProfessorSecondary>().casterPlayerNum = playerScript.playerNum;
         if (secondaryPotion != null)
         {
@@ -69,6 +74,8 @@ public class DrProfessor : GenericCharacter
     public override void OnDeath()
     {
         animator.SetTrigger("Death");
+        float deathAnimLength = animator.GetCurrentAnimatorStateInfo(0).length;
+        StartCoroutine(SetSpawnPosition(deathAnimLength));
         // throw new System.NotImplementedException();
     }
 }

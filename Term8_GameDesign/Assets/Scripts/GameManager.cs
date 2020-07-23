@@ -24,6 +24,10 @@ public class GameManager : MonoBehaviour
     public delegate void DreamDelegate(int casterPlayerNum);
     public event DreamDelegate OnDreamingEvent;
 
+    // For Camera Shake effect
+    public CameraShake mainCamShake;
+    public bool enableCamShakeOnDeath = true;
+
     void Start()
     {
         playersHashTable = new Dictionary<int, PlayerStats> {
@@ -67,6 +71,14 @@ public class GameManager : MonoBehaviour
 
     public void IncrementDeath(int playerNum)
     {
+        if (mainCamShake == null)
+        {
+            mainCamShake = FindObjectOfType<CameraShake>();
+        }
+        if (enableCamShakeOnDeath)
+        {
+            mainCamShake.ShakeScreen();
+        }
         PlayerStats requiredPlayer = playersHashTable[playerNum];
         requiredPlayer.PlayerDeaths++;
         Debug.Log("invoke death on" + playerNum.ToString());
