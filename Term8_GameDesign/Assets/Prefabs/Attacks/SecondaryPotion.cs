@@ -7,7 +7,7 @@ public class SecondaryPotion : MonoBehaviour
     public int casterPlayerNum;
     void OnEnable()
     {
-        Invoke("Destroy", 2f);
+        Invoke("Destroy", 1.5f);
     }
 
     void Destroy()

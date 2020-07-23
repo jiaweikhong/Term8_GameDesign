@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a28156118b5444641ba98fb2722332b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 8
   rb: {fileID: 256997198857676082}
   casterPlayerNum: 0
 --- !u!95 &5127381842425432415
