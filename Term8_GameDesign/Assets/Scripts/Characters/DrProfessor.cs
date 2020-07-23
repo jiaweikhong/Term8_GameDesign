@@ -56,16 +56,6 @@ public class DrProfessor : GenericCharacter
 
     }
 
-    public override void UsePotion3()
-    {
-        // remember to check if there's any more potions left
-        Debug.Log(playerScript.playerNum + "Potion 3!");
-        SwiftnessElixir();
-        // KillerBrew();
-        // MuddlingMist();
-        // DreamDust();
-    }
-
     public override void OnDeath()
     {
         animator.SetTrigger("Death");
