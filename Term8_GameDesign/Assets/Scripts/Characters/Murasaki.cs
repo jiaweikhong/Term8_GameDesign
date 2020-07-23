@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Enums;
+using UnityEngine.EventSystems;
 
-public class DrProfessor : GenericCharacter
+public class Murasaki : GenericCharacter
 {
-    public Animator potionAnimator;     // can refactor into the GenericCharacter (when other attacks are done)
+    public Animator potionAnimator;
+    // If you want to override awake, please see: https://answers.unity.com/questions/388454/can-ishould-i-call-awake-in-parent-class-manually.html
     public Transform firePoint;
-    // public GameObject secondaryPotion;
-
+    public Transform swordsSpawnPoint;
     void FixedUpdate()
     {
         // Move our character
@@ -25,7 +26,7 @@ public class DrProfessor : GenericCharacter
         // potionAnimator.SetTrigger("Primary");
 
         // Set casterPlayerNum in primaryPotion script of prefab 
-        GameObject primaryPotion = ObjectPooler.SharedInstance.GetPooledObject("DrProfessorPrimary(Clone)"); 
+        GameObject primaryPotion = ObjectPooler.SharedInstance.GetPooledObject("MurasakiPrimary(Clone)"); 
         // Instantiate(primaryPotionPrefab, firePoint.position, firePoint.rotation);
         primaryPotion.GetComponent<PrimaryPotion>().casterPlayerNum = playerScript.playerNum;
         if (primaryPotion != null)
@@ -43,32 +44,30 @@ public class DrProfessor : GenericCharacter
     {
         animator.SetTrigger("Attack");
 
-        GameObject secondaryPotion = ObjectPooler.SharedInstance.GetPooledObject("DrProfessorSecondary(Clone)"); 
-        secondaryPotion.GetComponent<ProfessorSecondary>().casterPlayerNum = playerScript.playerNum;
+        GameObject secondaryPotion = ObjectPooler.SharedInstance.GetPooledObject("MurasakiSecondary(Clone)"); 
+        secondaryPotion.GetComponent<SecondaryPotion>().casterPlayerNum = playerScript.playerNum;
         if (secondaryPotion != null)
         {
-            secondaryPotion.transform.position = firePoint.position;
-            secondaryPotion.transform.rotation = firePoint.rotation;
+            secondaryPotion.transform.position = swordsSpawnPoint.position;
+            secondaryPotion.transform.rotation = swordsSpawnPoint.rotation;
             secondaryPotion.SetActive(true);
         }
         Debug.Log("Potion 2!!");
-
-
     }
 
     public override void UsePotion3()
     {
-        // remember to check if there's any more potions left
-        Debug.Log(playerScript.playerNum + "Potion 3!");
-        SwiftnessElixir();
+        // remember to check if there's any more potions left.
+        Debug.Log("Potion 3!");
+        // SwiftnessElixir();
         // KillerBrew();
         // MuddlingMist();
-        // DreamDust();
+        DreamDust();
     }
 
     public override void OnDeath()
     {
+        // trigger death animation
         animator.SetTrigger("Death");
-        // throw new System.NotImplementedException();
     }
 }
