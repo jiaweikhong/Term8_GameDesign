@@ -22,8 +22,6 @@ public class Murasaki : GenericCharacter
     {
         // attack animation
         animator.SetTrigger("Attack");
-        // TODO: primary attack animation
-        // potionAnimator.SetTrigger("Primary");
 
         // Set casterPlayerNum in primaryPotion script of prefab 
         GameObject primaryPotion = ObjectPooler.SharedInstance.GetPooledObject("MurasakiPrimary(Clone)"); 
@@ -59,5 +57,10 @@ public class Murasaki : GenericCharacter
     {
         // trigger death animation
         animator.SetTrigger("Death");
+    }
+
+    public override void OnHurt()
+    {
+        // trigger hurt animation
     }
 }

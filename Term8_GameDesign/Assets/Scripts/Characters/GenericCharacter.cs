@@ -159,6 +159,7 @@ public abstract class GenericCharacter : MonoBehaviour
     }
 
     public abstract void OnDeath();
+    public abstract void OnHurt();
 
     // implement methods for all the different potion 3s here
     public void SwiftnessElixir()

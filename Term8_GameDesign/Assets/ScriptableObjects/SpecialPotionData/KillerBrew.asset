@@ -16,3 +16,4 @@ MonoBehaviour:
   description: Doubles damage dealt for 5 seconds
   sprite: {fileID: 21300000, guid: 39abd210a783c334bbb838f2d247fc41, type: 3}
   cost: 160
+  specialPotionType: 1

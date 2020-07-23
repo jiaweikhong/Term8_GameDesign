@@ -76,7 +76,8 @@ public class GenericPlayer : MonoBehaviour
     // Pass request to GameManager
     public void TakeDamage(int attackingPlayerNum)
     {
-        // TODO: trigger hurt animation
+        // trigger hurt animation in character
+        genericCharacter.OnHurt();
         gameManager.PlayerTakesDamage(attackingPlayerNum, playerNum);
     }
 
