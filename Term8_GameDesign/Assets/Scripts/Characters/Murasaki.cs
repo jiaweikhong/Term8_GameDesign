@@ -74,6 +74,7 @@ public class Murasaki : GenericCharacter
     public override void OnDeath()
     {
         // trigger death animation
+        animator.SetBool("IsJumping", false);
         animator.SetTrigger("Death");
         float deathAnimLength = animator.GetCurrentAnimatorStateInfo(0).length;
         StartCoroutine(SetSpawnPosition(deathAnimLength));

@@ -488,6 +488,12 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "DisabledActionMap",
+            "id": "024627d2-001f-4719-9376-b31fb5cbbab2",
+            "actions": [],
+            "bindings": []
         }
     ],
     "controlSchemes": [

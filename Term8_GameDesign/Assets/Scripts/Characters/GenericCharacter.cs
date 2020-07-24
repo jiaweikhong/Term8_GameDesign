@@ -65,7 +65,7 @@ public abstract class GenericCharacter : MonoBehaviour
     {
         if (canMove)
         {
-            Debug.Log("move input detected");
+            //Debug.Log("move input detected");
             inputVector = context.ReadValue<Vector2>();
             horizontalMove = inputVector.x * runSpeed * (isMuddled ? -1 : 1);
             animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
@@ -76,7 +76,7 @@ public abstract class GenericCharacter : MonoBehaviour
     {
         if (canMove)
         {
-            Debug.Log("jump input detected");
+            //Debug.Log("jump input detected");
             jump = true;
             animator.SetBool("IsJumping", true);
         }
@@ -86,7 +86,7 @@ public abstract class GenericCharacter : MonoBehaviour
     {
         if (timeBtwAttack <= 0 && canMove)
         {
-            Debug.Log("pri pot input detected");
+            //Debug.Log("pri pot input detected");
             UseCharacterPotion();
             timeBtwAttack = startTimeBtwAttack;
         }
@@ -96,7 +96,7 @@ public abstract class GenericCharacter : MonoBehaviour
     {
         if (timeBtwAttack <= 0 && canMove)
         {
-            Debug.Log("sec pot input detected");
+            //Debug.Log("sec pot input detected");
             UsePotion2();
             timeBtwAttack = startTimeBtwAttack;
         }
@@ -106,7 +106,7 @@ public abstract class GenericCharacter : MonoBehaviour
     {
         if (timeBtwAttack <= 0 && canMove)
         {
-            Debug.Log("special pot input detected");
+            //Debug.Log("special pot input detected");
             UsePotion3();
             timeBtwAttack = startTimeBtwAttack;
         }
@@ -229,6 +229,8 @@ public abstract class GenericCharacter : MonoBehaviour
 
     protected IEnumerator SetSpawnPosition(float deathAnimLength)
     {
+        controlsManager.DisableActionMap(playerScript.playerNum);
+        rigidBody.velocity = Vector3.zero;
         rigidBody.bodyType = RigidbodyType2D.Kinematic;
         boxCollider.enabled = false;
         yield return new WaitForSeconds(deathAnimLength);
@@ -238,5 +240,6 @@ public abstract class GenericCharacter : MonoBehaviour
         boxCollider.enabled = true;
         rigidBody.bodyType = RigidbodyType2D.Dynamic;
         spriteRenderer.enabled = true;
+        controlsManager.EnableCharacterActionMap(playerScript.playerNum);
     }
 }

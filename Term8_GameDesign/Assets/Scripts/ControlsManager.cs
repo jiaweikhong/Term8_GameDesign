@@ -33,4 +33,42 @@ public class ControlsManager : MonoBehaviour
         /*        controlsP3.SwitchCurrentActionMap("UIActions");
                 controlsP4.SwitchCurrentActionMap("UIActions");*/
     }
+
+    public void DisableActionMap(int playerNum)
+    {
+        switch (playerNum)
+        {
+            case 0:
+                controlsP1.SwitchCurrentActionMap("DisabledActionMap");
+                break;
+            case 1:
+                controlsP2.SwitchCurrentActionMap("DisabledActionMap");
+                break;
+            case 2:
+                controlsP3.SwitchCurrentActionMap("DisabledActionMap");
+                break;
+            case 3:
+                controlsP4.SwitchCurrentActionMap("DisabledActionMap");
+                break;
+        }
+    }
+
+    public void EnableCharacterActionMap(int playerNum)
+    {
+        switch (playerNum)
+        {
+            case 0:
+                controlsP1.SwitchCurrentActionMap("CharacterActions");
+                break;
+            case 1:
+                controlsP2.SwitchCurrentActionMap("CharacterActions");
+                break;
+            case 2:
+                controlsP3.SwitchCurrentActionMap("CharacterActions");
+                break;
+            case 3:
+                controlsP4.SwitchCurrentActionMap("CharacterActions");
+                break;
+        }
+    }
 }

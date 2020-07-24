@@ -73,6 +73,7 @@ public class DrProfessor : GenericCharacter
 
     public override void OnDeath()
     {
+        animator.SetBool("IsJumping", false);
         animator.SetTrigger("Death");
         float deathAnimLength = animator.GetCurrentAnimatorStateInfo(0).length;
         StartCoroutine(SetSpawnPosition(deathAnimLength));
