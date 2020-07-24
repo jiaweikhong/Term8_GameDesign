@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Enums;
 
 public class GenericPlayer : MonoBehaviour
 {
     public int playerNum;
-    public int characterNum;
+    public CharacterType characterType;
     protected GenericCharacter genericCharacter;
     public GameManager gameManager;
 
@@ -75,7 +76,6 @@ public class GenericPlayer : MonoBehaviour
     // Pass request to GameManager
     public void TakeDamage(int attackingPlayerNum)
     {
-        // TODO: trigger hurt animation
         gameManager.PlayerTakesDamage(attackingPlayerNum, playerNum);
     }
 
@@ -87,6 +87,12 @@ public class GenericPlayer : MonoBehaviour
     public bool UseSpecialPotionIfCanUse()
     {
         return gameManager.UseSpecialPotionIfCanUse(playerNum);
+    }
+
+    public SpecialPotionType GetSpecialPotionType()
+    {
+        // TODO: refactor this? feels inefficient to fetch special potion from PlayerStats each time
+        return gameManager.GetSpecialPotionType(playerNum);
     }
 
     public void IncreaseDamageDealtTo2()
@@ -109,22 +115,22 @@ public class GenericPlayer : MonoBehaviour
         gameManager.CastDreamDust(playerNum);
     }
 
-    void AttachCharacter(int charNum)
+    void AttachCharacter(CharacterType charType)
     {
         // set base characterNum
-        characterNum = charNum;
-        switch (characterNum)
+        characterType = charType;
+        switch (characterType)
         {
-            case 1:
+            case CharacterType.DrProfessor:
                 // attach character 1 prefab as a child to this player (which includes the sprite, script etc);
                 break;
-            case 2:
+            case CharacterType.Lumira:
                 // attach character 2 prefab as a child to this player (which includes the sprite, script etc);
                 break;
-            case 3:
+            case CharacterType.Murasaki:
                 // attach character 3 prefab as a child to this player (which includes the sprite, script etc);
                 break;
-            case 4:
+            case CharacterType.TheTraveller:
                 // attach character 4 prefab as a child to this player (which includes the sprite, script etc);
                 break;
         }

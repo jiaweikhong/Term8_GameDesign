@@ -26,8 +26,6 @@ public class DrProfessor : GenericCharacter
         animator.SetTrigger("Attack");
         audioSrc.PlayOneShot(potion1SFX);
         // TODO: primary attack animation
-        // potionAnimator.SetTrigger("Primary");
-
         // Set casterPlayerNum in primaryPotion script of prefab 
         GameObject primaryPotion = ObjectPooler.SharedInstance.GetPooledObject("DrProfessorPrimary(Clone)");
         // Instantiate(primaryPotionPrefab, firePoint.position, firePoint.rotation);
@@ -61,16 +59,6 @@ public class DrProfessor : GenericCharacter
 
     }
 
-    public override void UsePotion3()
-    {
-        // remember to check if there's any more potions left
-        Debug.Log(playerScript.playerNum + "Potion 3!");
-        SwiftnessElixir();
-        // KillerBrew();
-        // MuddlingMist();
-        // DreamDust();
-    }
-
     public override void OnDeath()
     {
         animator.SetBool("IsJumping", false);
@@ -79,4 +67,5 @@ public class DrProfessor : GenericCharacter
         StartCoroutine(SetSpawnPosition(deathAnimLength));
         // throw new System.NotImplementedException();
     }
+
 }

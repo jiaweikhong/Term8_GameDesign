@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Enums;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -44,7 +45,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    // Kill/Death/Damage
+    // Kill/Death/Damage ======================================
     public void PlayerTakesDamage(int attackingPlayerNum, int receivingPlayerNum)
     {
         PlayerStats receivingPlayer = playersHashTable[receivingPlayerNum];
@@ -98,7 +99,7 @@ public class GameManager : MonoBehaviour
         requiredPlayer.DamageDealtToOthers = 1;
     }
 
-    // Potions
+    // Potions ======================================
     public bool UseSecondaryPotionIfCanUse(int playerNum)
     {
         PlayerStats requiredPlayer = playersHashTable[playerNum];
@@ -123,7 +124,13 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    // Trigger Special Potion Effects
+    public SpecialPotionType GetSpecialPotionType(int playerNum)
+    {
+        PlayerStats requiredPlayer = playersHashTable[playerNum];
+        return requiredPlayer.SpecialPotion.SpecialPotionType;
+    }
+
+    // Trigger Special Potion Effects ======================================
     public void CastMuddlingMist(int casterPlayerNum)
     {
         OnMuddledEvent?.Invoke(casterPlayerNum);
@@ -134,7 +141,7 @@ public class GameManager : MonoBehaviour
         OnDreamingEvent?.Invoke(casterPlayerNum);
     }
 
-    // When game ends, reset player scriptable object
+    // When game ends, reset player scriptable object ======================================
     void OnDestroy()
     {
         ResetPlayer(player0);
