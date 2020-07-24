@@ -18,6 +18,8 @@ public class CharacterSelectController : MonoBehaviour
 
     private Vector2 navigateVector = new Vector2(0, 0);
 
+    public GenericPlayer playerScript;
+
     void Start()
     {
         // get reference and display default
@@ -62,6 +64,8 @@ public class CharacterSelectController : MonoBehaviour
                 playerStats.CharacterData = characterManager.GetCharacter(characterIndex);
                 characterSelectUI.UpdateSelected(true);
                 playerStats.ResetGame();
+                // attach char here
+                playerScript.AttachCharacter((CharacterType)characterIndex);
                 screensTransitionManager.ReadyPlayer(true);
             }
         }
@@ -75,6 +79,7 @@ public class CharacterSelectController : MonoBehaviour
             playerReady = false;
             characterManager.UnSelectCharacter(characterIndex);
             characterSelectUI.UpdateSelected(false);
+            playerScript.DetachAllCharacters();
             screensTransitionManager.ReadyPlayer(false);
         }
     }

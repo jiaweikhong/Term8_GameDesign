@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerInputScript : MonoBehaviour
 {
-    public PlayerInput pi;
     public ControlsManager controlsManager;
     public ScreensTransitionManager screensTransitionManager;
     public CharacterSelectController characterSelectController;
@@ -16,8 +15,12 @@ public class PlayerInputScript : MonoBehaviour
 
     private void Start()
     {
-        genericCharacter = GetComponentInChildren<GenericCharacter>();
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void RetrieveChildCharacter()
+    {
+        genericCharacter = GetComponentInChildren<GenericCharacter>();
     }
 
     // The following are for UI navigation

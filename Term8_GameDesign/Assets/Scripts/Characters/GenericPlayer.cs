@@ -11,8 +11,11 @@ public class GenericPlayer : MonoBehaviour
     public CharacterType characterType;
     protected GenericCharacter genericCharacter;
     public GameManager gameManager;
-
-    //public PlayerInput pi;
+    public GameObject DrProfessorChild;
+    public GameObject LumiraChild;
+    public GameObject MurasakiChild;
+    public GameObject TheTravellerChild;
+    public PlayerInputScript playerInputScript;
 
     void Awake()
     {
@@ -115,7 +118,7 @@ public class GenericPlayer : MonoBehaviour
         gameManager.CastDreamDust(playerNum);
     }
 
-    void AttachCharacter(CharacterType charType)
+    public void AttachCharacter(CharacterType charType)
     {
         // set base characterNum
         characterType = charType;
@@ -123,18 +126,33 @@ public class GenericPlayer : MonoBehaviour
         {
             case CharacterType.DrProfessor:
                 // attach character 1 prefab as a child to this player (which includes the sprite, script etc);
+                DrProfessorChild.SetActive(true);
+                playerInputScript.RetrieveChildCharacter();
                 break;
             case CharacterType.Lumira:
                 // attach character 2 prefab as a child to this player (which includes the sprite, script etc);
+                LumiraChild.SetActive(true);
+                playerInputScript.RetrieveChildCharacter();
                 break;
             case CharacterType.Murasaki:
                 // attach character 3 prefab as a child to this player (which includes the sprite, script etc);
+                TheTravellerChild.SetActive(true);
+                playerInputScript.RetrieveChildCharacter();
                 break;
             case CharacterType.TheTraveller:
                 // attach character 4 prefab as a child to this player (which includes the sprite, script etc);
+                MurasakiChild.SetActive(true);
+                playerInputScript.RetrieveChildCharacter();
                 break;
         }
     }
 
+    public void DetachAllCharacters()
+    {
+        DrProfessorChild.SetActive(false);
+        LumiraChild.SetActive(false);
+        TheTravellerChild.SetActive(false);
+        MurasakiChild.SetActive(false);
+    }
 
 }
