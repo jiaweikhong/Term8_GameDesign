@@ -373,7 +373,7 @@ MonoBehaviour:
   controlsManager: {fileID: 1937247189}
   runSpeed: 40
   startTimeBtwAttack: 0.6
-  respawnTime: 5
+  respawnTime: 1.5
   specialPotsSFX: {fileID: 11400000, guid: a69ded931c64f10498cf6323a68331a2, type: 2}
   hurtSFX: {fileID: 8300000, guid: bc847b9132aa1984ba22a326f789b33e, type: 3}
   potionAnimator: {fileID: 1541022893}
@@ -398,7 +398,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &282814372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,7 +574,7 @@ MonoBehaviour:
     m_ActionId: af56303c-1836-4449-a347-309abd2caf4a
     m_ActionName: UI0/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Gamepad
+  m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: CharacterActions
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -608,7 +608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 0
-  characterNum: 0
+  characterType: 0
   gameManager: {fileID: 1206021503}
 --- !u!4 &282814375
 Transform:
@@ -835,10 +835,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d201ecf3f2928a46b40b5bc7e327fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlsManager: {fileID: 0}
+  controlsManager: {fileID: 1937247189}
   runSpeed: 40
   startTimeBtwAttack: 0.6
-  respawnTime: 5
+  respawnTime: 1.5
   specialPotsSFX: {fileID: 11400000, guid: a69ded931c64f10498cf6323a68331a2, type: 2}
   hurtSFX: {fileID: 8300000, guid: bc847b9132aa1984ba22a326f789b33e, type: 3}
   potionAnimator: {fileID: 1352898157}
@@ -2626,7 +2626,7 @@ MonoBehaviour:
   controlsManager: {fileID: 1937247189}
   runSpeed: 40
   startTimeBtwAttack: 0.6
-  respawnTime: 5
+  respawnTime: 1.5
   specialPotsSFX: {fileID: 11400000, guid: a69ded931c64f10498cf6323a68331a2, type: 2}
   hurtSFX: {fileID: 8300000, guid: bc847b9132aa1984ba22a326f789b33e, type: 3}
   potionAnimator: {fileID: 1351507441}
@@ -2862,7 +2862,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1095754847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2876,7 +2876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 1
-  characterNum: 0
+  characterType: 0
   gameManager: {fileID: 1206021503}
 --- !u!114 &1095754848
 MonoBehaviour:
@@ -3221,7 +3221,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1206021503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4143,10 +4143,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7cd1c30fe0a1e746a29c006e37576b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlsManager: {fileID: 0}
+  controlsManager: {fileID: 1937247189}
   runSpeed: 40
   startTimeBtwAttack: 0.6
-  respawnTime: 5
+  respawnTime: 1.5
   specialPotsSFX: {fileID: 11400000, guid: a69ded931c64f10498cf6323a68331a2, type: 2}
   hurtSFX: {fileID: 8300000, guid: bc847b9132aa1984ba22a326f789b33e, type: 3}
   potionAnimator: {fileID: 1963011610}
@@ -4884,7 +4884,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1937247189
 MonoBehaviour:
   m_ObjectHideFlags: 0
