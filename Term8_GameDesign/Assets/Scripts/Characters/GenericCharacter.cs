@@ -113,7 +113,6 @@ public abstract class GenericCharacter : MonoBehaviour
                 otherPlayerNum = other.gameObject.GetComponent<ProfessorSecondary>().casterPlayerNum;
             }
             
-
             int playerNum = gameObject.transform.parent.gameObject.GetComponentInParent<GenericPlayer>().playerNum;
             if (otherPlayerNum != playerNum)
             {Debug.Log("Taken damage from Player " + otherPlayerNum);
@@ -137,7 +136,27 @@ public abstract class GenericCharacter : MonoBehaviour
 
     public abstract void UsePotion2();
 
-    public abstract void UsePotion3();
+    public void UsePotion3()
+    {
+        // remember to check if there's any more potions left.
+        // if playerScript.UseSpecialPotionIfCanUse() -> use
+        Debug.Log("Potion 3!");
+        switch (playerScript.GetSpecialPotionType())
+        {
+            case SpecialPotionType.DreamDust:
+                DreamDust();
+                break;
+            case SpecialPotionType.KillerBrew:
+                KillerBrew();
+                break;
+            case SpecialPotionType.MuddlingMist:
+                MuddlingMist();
+                break;
+            case SpecialPotionType.SwiftnessElixir:
+                SwiftnessElixir();
+                break;
+        }
+    }
 
     public abstract void OnDeath();
 

@@ -21,8 +21,6 @@ public class DrProfessor : GenericCharacter
     {
         // attack animation
         animator.SetTrigger("Attack");
-        // TODO: primary attack animation
-        // potionAnimator.SetTrigger("Primary");
 
         // Set casterPlayerNum in primaryPotion script of prefab 
         GameObject primaryPotion = ObjectPooler.SharedInstance.GetPooledObject("DrProfessorPrimary(Clone)"); 
@@ -56,19 +54,9 @@ public class DrProfessor : GenericCharacter
 
     }
 
-    public override void UsePotion3()
-    {
-        // remember to check if there's any more potions left
-        Debug.Log(playerScript.playerNum + "Potion 3!");
-        SwiftnessElixir();
-        // KillerBrew();
-        // MuddlingMist();
-        // DreamDust();
-    }
-
     public override void OnDeath()
     {
         animator.SetTrigger("Death");
-        // throw new System.NotImplementedException();
     }
+
 }

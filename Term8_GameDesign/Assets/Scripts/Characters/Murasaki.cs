@@ -22,8 +22,6 @@ public class Murasaki : GenericCharacter
     {
         // attack animation
         animator.SetTrigger("Attack");
-        // TODO: primary attack animation
-        // potionAnimator.SetTrigger("Primary");
 
         // Set casterPlayerNum in primaryPotion script of prefab 
         GameObject primaryPotion = ObjectPooler.SharedInstance.GetPooledObject("MurasakiPrimary(Clone)"); 
@@ -53,16 +51,6 @@ public class Murasaki : GenericCharacter
             secondaryPotion.SetActive(true);
         }
         Debug.Log("Potion 2!!");
-    }
-
-    public override void UsePotion3()
-    {
-        // remember to check if there's any more potions left.
-        Debug.Log("Potion 3!");
-        // SwiftnessElixir();
-        // KillerBrew();
-        // MuddlingMist();
-        DreamDust();
     }
 
     public override void OnDeath()

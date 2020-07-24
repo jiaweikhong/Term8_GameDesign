@@ -41,7 +41,7 @@ public class PlayerStats : ScriptableObject
         set
         { _secondaryPotionQty = value; }
     }
-    public SpecialPotionData specialPotion
+    public SpecialPotionData SpecialPotion
     {
         get
         { return _specialPotion; }

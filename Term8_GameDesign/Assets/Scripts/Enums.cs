@@ -11,4 +11,20 @@
         UpKey,
         DownKey
     }
+
+    public enum SpecialPotionType
+    {
+        DreamDust,
+        KillerBrew,
+        MuddlingMist,
+        SwiftnessElixir
+    }
+
+    public enum CharacterType
+    {
+        DrProfessor,
+        Lumira,
+        Murasaki,
+        TheTraveller
+    }
 }
