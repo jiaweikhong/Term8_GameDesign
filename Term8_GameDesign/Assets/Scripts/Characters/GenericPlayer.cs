@@ -76,8 +76,6 @@ public class GenericPlayer : MonoBehaviour
     // Pass request to GameManager
     public void TakeDamage(int attackingPlayerNum)
     {
-        // trigger hurt animation in character
-        genericCharacter.OnHurt();
         gameManager.PlayerTakesDamage(attackingPlayerNum, playerNum);
     }
 
@@ -93,6 +91,7 @@ public class GenericPlayer : MonoBehaviour
 
     public SpecialPotionType GetSpecialPotionType()
     {
+        // TODO: refactor this? feels inefficient to fetch special potion from PlayerStats each time
         return gameManager.GetSpecialPotionType(playerNum);
     }
 

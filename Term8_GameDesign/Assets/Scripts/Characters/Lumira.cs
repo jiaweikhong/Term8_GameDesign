@@ -57,9 +57,4 @@ public class Lumira : GenericCharacter
         // trigger death animation
         animator.SetTrigger("Death");
     }
-
-    public override void OnHurt()
-    {
-        // trigger hurt animation
-    }
 }

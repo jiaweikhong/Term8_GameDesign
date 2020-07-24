@@ -58,9 +58,4 @@ public class Murasaki : GenericCharacter
         // trigger death animation
         animator.SetTrigger("Death");
     }
-
-    public override void OnHurt()
-    {
-        // trigger hurt animation
-    }
 }

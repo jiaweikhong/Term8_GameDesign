@@ -59,8 +59,4 @@ public class DrProfessor : GenericCharacter
         animator.SetTrigger("Death");
     }
 
-    public override void OnHurt()
-    {
-        // trigger hurt animation
-    }
 }
