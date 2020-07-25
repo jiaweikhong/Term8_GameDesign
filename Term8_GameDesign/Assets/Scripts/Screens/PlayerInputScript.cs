@@ -16,6 +16,7 @@ public class PlayerInputScript : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
+        genericCharacter = GetComponentInChildren<GenericCharacter>();
     }
 
     public void RetrieveChildCharacter()

@@ -19,6 +19,7 @@ public class GenericPlayer : MonoBehaviour
 
     void Awake()
     {
+        genericCharacter = GetComponentInChildren<GenericCharacter>();
     }
 
     void RetrieveChildCharacter()
