@@ -19,8 +19,11 @@ public class GenericPlayer : MonoBehaviour
 
     void Awake()
     {
-        genericCharacter = GetComponentInChildren<GenericCharacter>();
+    }
 
+    void RetrieveChildCharacter()
+    {
+        genericCharacter = GetComponentInChildren<GenericCharacter>();
     }
 
     private void OnEnable()
@@ -127,21 +130,25 @@ public class GenericPlayer : MonoBehaviour
             case CharacterType.DrProfessor:
                 // attach character 1 prefab as a child to this player (which includes the sprite, script etc);
                 DrProfessorChild.SetActive(true);
+                RetrieveChildCharacter();
                 playerInputScript.RetrieveChildCharacter();
                 break;
             case CharacterType.Lumira:
                 // attach character 2 prefab as a child to this player (which includes the sprite, script etc);
                 LumiraChild.SetActive(true);
+                RetrieveChildCharacter();
                 playerInputScript.RetrieveChildCharacter();
                 break;
             case CharacterType.Murasaki:
                 // attach character 3 prefab as a child to this player (which includes the sprite, script etc);
-                TheTravellerChild.SetActive(true);
+                MurasakiChild.SetActive(true);
+                RetrieveChildCharacter();
                 playerInputScript.RetrieveChildCharacter();
                 break;
             case CharacterType.TheTraveller:
                 // attach character 4 prefab as a child to this player (which includes the sprite, script etc);
-                MurasakiChild.SetActive(true);
+                TheTravellerChild.SetActive(true);
+                RetrieveChildCharacter();
                 playerInputScript.RetrieveChildCharacter();
                 break;
         }

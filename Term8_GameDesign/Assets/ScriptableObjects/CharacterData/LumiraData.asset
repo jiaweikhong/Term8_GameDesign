@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LumiraData
   m_EditorClassIdentifier: 
   characterName: Lumira
-  sprite: {fileID: 4723107735738678597, guid: da42788f7317aeb4c8859b106cb1fd57, type: 3}
+  sprite: {fileID: 4723107735738678597, guid: 8eef6af16478942448b7b25665928441, type: 3}
   title: Frost Alchemist
   backstory: "Heiress of Arandell and the top student in the prestigious alchemy
     academy.  Lumira\u2019s heart turned cold after being orphaned at a young age.
@@ -22,3 +22,4 @@ MonoBehaviour:
   primaryName: Crystallized Intellect
   secondarySprite: {fileID: 21300000, guid: aa2180476077f9749b06e771a4bdc7e3, type: 3}
   secondaryName: Gungnir Manifest
+  isTaken: 0

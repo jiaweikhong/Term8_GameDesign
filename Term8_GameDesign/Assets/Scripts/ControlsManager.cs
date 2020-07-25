@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Enums;
 using UnityEngine.InputSystem;
+using UnityEditor.U2D.Path.GUIFramework;
 
 // This Class will control the input for all Players
 public class ControlsManager : MonoBehaviour
@@ -20,18 +21,26 @@ public class ControlsManager : MonoBehaviour
 
     public void SwitchAllControllersToCharacterMode()
     {
-        controlsP1.SwitchCurrentActionMap("CharacterActions");
-        controlsP2.SwitchCurrentActionMap("CharacterActions");
-        /*        controlsP3.SwitchCurrentActionMap("CharacterActions");
-                controlsP4.SwitchCurrentActionMap("CharacterActions");*/
+        if (controlsP1.gameObject.activeSelf == true)
+        { controlsP1.SwitchCurrentActionMap("CharacterActions"); }
+        if (controlsP2.gameObject.activeSelf == true)
+        { controlsP2.SwitchCurrentActionMap("CharacterActions"); }
+        if (controlsP3.gameObject.activeSelf == true)
+        { controlsP3.SwitchCurrentActionMap("CharacterActions"); }
+        if (controlsP4.gameObject.activeSelf == true)
+        { controlsP4.SwitchCurrentActionMap("CharacterActions"); }
     }
 
     public void SwitchAllControllersToUIMode()
     {
-        controlsP1.SwitchCurrentActionMap("UIActions");
-        controlsP2.SwitchCurrentActionMap("UIActions");
-        /*        controlsP3.SwitchCurrentActionMap("UIActions");
-                controlsP4.SwitchCurrentActionMap("UIActions");*/
+        if (controlsP1.gameObject.activeSelf == true)
+        { controlsP1.SwitchCurrentActionMap("UIActions"); }
+        if (controlsP2.gameObject.activeSelf == true)
+        { controlsP2.SwitchCurrentActionMap("UIActions"); }
+        if (controlsP3.gameObject.activeSelf == true)
+        { controlsP3.SwitchCurrentActionMap("UIActions"); }
+        if (controlsP4.gameObject.activeSelf == true)
+        { controlsP4.SwitchCurrentActionMap("UIActions"); }
     }
 
     public void DisableActionMap(int playerNum)

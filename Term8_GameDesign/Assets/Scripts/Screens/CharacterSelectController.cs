@@ -17,8 +17,12 @@ public class CharacterSelectController : MonoBehaviour
     private bool playerReady = false;
 
     private Vector2 navigateVector = new Vector2(0, 0);
-
     public GenericPlayer playerScript;
+    private AudioSource audioSrc;
+    public AudioClip navigateSFX;
+    public AudioClip selectSFX;
+    public AudioClip errorSFX;
+    public AudioClip cancelSFX;
 
     void Start()
     {
@@ -28,6 +32,7 @@ public class CharacterSelectController : MonoBehaviour
         characterManager = FindObjectOfType<CharacterSelectManager>();
         characterSelectUI.UpdateCharacterDisplayed(characterManager.GetCharacter(characterIndex));
         characterSelectUI.UpdateSelected(playerReady);
+        audioSrc = GetComponent<AudioSource>();
     }
 
     // Note: The following 3 functions NavigateInput, SelectInput, and CancelInput are called from the PlayerInputScript
@@ -40,12 +45,14 @@ public class CharacterSelectController : MonoBehaviour
             navigateVector = context.ReadValue<Vector2>();
             if (navigateVector.x < -0.5f)
             {
+                audioSrc.PlayOneShot(navigateSFX);
                 characterIndex -= 1;
                 if (characterIndex < 0) characterIndex = 3;
                 characterSelectUI.UpdateCharacterDisplayed(characterManager.GetCharacter(characterIndex));
             }
             else if (navigateVector.x > 0.5f)
             {
+                audioSrc.PlayOneShot(navigateSFX);
                 characterIndex += 1;
                 if (characterIndex > 3) characterIndex = 0;
                 characterSelectUI.UpdateCharacterDisplayed(characterManager.GetCharacter(characterIndex));
@@ -60,6 +67,7 @@ public class CharacterSelectController : MonoBehaviour
             // if character not taken
             if (characterManager.SelectCharacter(characterIndex))
             {
+                audioSrc.PlayOneShot(selectSFX);
                 playerReady = true;
                 playerStats.CharacterData = characterManager.GetCharacter(characterIndex);
                 characterSelectUI.UpdateSelected(true);
@@ -67,6 +75,10 @@ public class CharacterSelectController : MonoBehaviour
                 // attach char here
                 playerScript.AttachCharacter((CharacterType)characterIndex);
                 screensTransitionManager.ReadyPlayer(true);
+            }
+            else
+            {
+                audioSrc.PlayOneShot(errorSFX);
             }
         }
     }
@@ -76,11 +88,16 @@ public class CharacterSelectController : MonoBehaviour
         if (gameObject.activeInHierarchy && playerReady)
         {
             // undo selection
+            audioSrc.PlayOneShot(cancelSFX);
             playerReady = false;
             characterManager.UnSelectCharacter(characterIndex);
             characterSelectUI.UpdateSelected(false);
             playerScript.DetachAllCharacters();
             screensTransitionManager.ReadyPlayer(false);
+        }
+        else if (gameObject.activeInHierarchy && !playerReady)
+        {
+            audioSrc.PlayOneShot(errorSFX);
         }
     }
 }

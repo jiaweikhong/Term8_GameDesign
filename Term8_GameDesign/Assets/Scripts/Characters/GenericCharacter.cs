@@ -31,7 +31,7 @@ public abstract class GenericCharacter : MonoBehaviour
     protected bool canMove = true;
 
     // death respawn stuff
-    public float respawnTime = 5f;
+    public float respawnTime = 2f;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider;
     private Rigidbody2D rigidBody;
@@ -40,6 +40,9 @@ public abstract class GenericCharacter : MonoBehaviour
     protected AudioSource audioSrc;
     public SpecialPotsSFX specialPotsSFX;   // ScriptableObject that stores all the SFX for special potions
     public AudioClip hurtSFX;
+    public AudioClip deathSFX;
+    public AudioClip jumpSFX;
+    public AudioClip landSFX;
 
     private void Start()
     {
@@ -76,6 +79,7 @@ public abstract class GenericCharacter : MonoBehaviour
     {
         if (canMove)
         {
+            audioSrc.PlayOneShot(jumpSFX);
             //Debug.Log("jump input detected");
             jump = true;
             animator.SetBool("IsJumping", true);
@@ -114,6 +118,7 @@ public abstract class GenericCharacter : MonoBehaviour
 
     public void OnLanding()
     {
+        //audioSrc.PlayOneShot(landSFX);
         animator.SetBool("IsJumping", false);
     }
 
@@ -247,6 +252,7 @@ public abstract class GenericCharacter : MonoBehaviour
 
     protected IEnumerator SetSpawnPosition(float deathAnimLength)
     {
+        audioSrc.PlayOneShot(deathSFX);
         controlsManager.DisableActionMap(playerScript.playerNum);
         rigidBody.velocity = Vector3.zero;
         rigidBody.bodyType = RigidbodyType2D.Kinematic;

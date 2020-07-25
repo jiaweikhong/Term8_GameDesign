@@ -17,17 +17,21 @@ public class ScreensTransitionManager : MonoBehaviour
     [SerializeField]
     private int readyPlayersNum = 0;
 
+    private AudioSource audioSrc;
+    public AudioClip toSelectPlaySFX;
+
     public int GetScreenNum()
     {
         return screenNum;
     }
 
-    public void Start()
+    public void Awake()
     {
         // set active/inactive pages 
         titleCanvas.SetActive(true);
         characterSelectCanvas.SetActive(false);
         brewingPhaseCanvas.SetActive(false);
+        audioSrc = GetComponent<AudioSource>();
     }
 
     public void Update()
@@ -45,6 +49,7 @@ public class ScreensTransitionManager : MonoBehaviour
         {
             if (readyPlayersNum == requiredPlayersToStart)
             {
+                screenNum = 0;
                 //toPlay();
                 StartCoroutine(toGamePlay());
             }
@@ -77,7 +82,8 @@ public class ScreensTransitionManager : MonoBehaviour
     {
         if (screenNum == 0)
         {
-            Debug.Log("screen trans manager select input");
+            //Debug.Log("screen trans manager select input");
+            audioSrc.PlayOneShot(toSelectPlaySFX);
 
             // check player controls
             // TODO: separate script if need to handle selection of other menu buttons in title screen
