@@ -8,12 +8,12 @@ public class SpawnWeets : MonoBehaviour
     
     void Start()
     {
-        // Invokes the SpawnAWeet in spawnTime seconds, then repeatedly every spawnTime seconds
-        InvokeRepeating("SpawnAWeet", spawnTime, spawnTime);
+        // Invokes the SpawnAWeet in spawnTime+rand seconds
+        Invoke("SpawnAWeet", spawnTime + Random.Range(-2, 2));
     }
 
     void SpawnAWeet()
-    {
+    {        
         // get from objectpooler
         GameObject weets = ObjectPooler.SharedInstance.GetPooledObject("WeetsPickup(Clone)");
         
@@ -24,5 +24,8 @@ public class SpawnWeets : MonoBehaviour
 
         // set active
         weets.SetActive(true);
+
+        // invoke this function again after spawnTime+rand seconds
+        Invoke("SpawnAWeet", spawnTime + Random.Range(-2, 2));
     }
 }
