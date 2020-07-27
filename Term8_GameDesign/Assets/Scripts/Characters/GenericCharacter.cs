@@ -44,6 +44,9 @@ public abstract class GenericCharacter : MonoBehaviour
     public AudioClip jumpSFX;
     public AudioClip landSFX;
 
+    public GameObject MMSprite;
+    public GameObject DDSprite;
+
     private void Start()
     {
         audioSrc = GetComponent<AudioSource>();
@@ -151,6 +154,22 @@ public abstract class GenericCharacter : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("pickup"))
+        {
+            Debug.Log("I met some weeds");
+            playerScript.AddWeets();
+            collision.gameObject.SetActive(false);
+        }
+        if (collision.gameObject.CompareTag("potion"))
+        {
+            Debug.Log("I met the potion");
+            playerScript.AddSecPotionQty();
+            collision.gameObject.SetActive(false);
+        }
+    }
+
     IEnumerator UnhurtPlayer()
     {
         animator.SetLayerWeight(1, 1);
@@ -169,22 +188,25 @@ public abstract class GenericCharacter : MonoBehaviour
     {
         // remember to check if there's any more potions left.
         // if playerScript.UseSpecialPotionIfCanUse() -> use
-        Debug.Log("Potion 3!");
-        switch (playerScript.GetSpecialPotionType())
-        {
-            case SpecialPotionType.DreamDust:
-                DreamDust();
-                break;
-            case SpecialPotionType.KillerBrew:
-                KillerBrew();
-                break;
-            case SpecialPotionType.MuddlingMist:
-                MuddlingMist();
-                break;
-            case SpecialPotionType.SwiftnessElixir:
-                SwiftnessElixir();
-                break;
+        if (playerScript.UseSpecialPotionIfCanUse()) {
+            Debug.Log("Potion 3!");
+            switch (playerScript.GetSpecialPotionType())
+            {
+                case SpecialPotionType.DreamDust:
+                    DreamDust();
+                    break;
+                case SpecialPotionType.KillerBrew:
+                    KillerBrew();
+                    break;
+                case SpecialPotionType.MuddlingMist:
+                    MuddlingMist();
+                    break;
+                case SpecialPotionType.SwiftnessElixir:
+                    SwiftnessElixir();
+                    break;
+            }
         }
+        
     }
 
     public abstract void OnDeath();
@@ -193,6 +215,7 @@ public abstract class GenericCharacter : MonoBehaviour
     public void SwiftnessElixir()
     {
         Debug.Log("Started speed boost");
+        animator.SetTrigger("SE");
         audioSrc.PlayOneShot(specialPotsSFX.SwiftnessElixirSFX);
         float speedMultiplier = 1.75f;   // TODO: refactor to variable later
         runSpeed *= speedMultiplier;
@@ -202,6 +225,7 @@ public abstract class GenericCharacter : MonoBehaviour
     public void KillerBrew()
     {
         Debug.Log("Started Killer Brew");
+        animator.SetTrigger("KB");
         audioSrc.PlayOneShot(specialPotsSFX.KillerBrewSFX);
         playerScript.IncreaseDamageDealtTo2();
         StartCoroutine(RevertDamageDealt());
@@ -210,13 +234,24 @@ public abstract class GenericCharacter : MonoBehaviour
     public void MuddlingMist()
     {
         Debug.Log("Started Muddling Mist");
+        animator.SetTrigger("Open");
+        MMSprite.SetActive(true);
+        Invoke("disableSprite", 1f);
         audioSrc.PlayOneShot(specialPotsSFX.MuddlingMistSFX);
         playerScript.CastMuddlingMist();
+    }
+
+    public void disableSprite() {
+        MMSprite.SetActive(false);
+        DDSprite.SetActive(false);
     }
 
     public void DreamDust()
     {
         Debug.Log("Started Dream Dust");
+        animator.SetTrigger("Open");
+        DDSprite.SetActive(true);
+        Invoke("disableSprite", 1f);
         audioSrc.PlayOneShot(specialPotsSFX.DreamDustSFX);
         playerScript.CastDreamingDust();
     }

@@ -141,6 +141,19 @@ public class GameManager : MonoBehaviour
         OnDreamingEvent?.Invoke(casterPlayerNum);
     }
 
+    // Pickups ======================================
+    public void AddWeets(int playerNum, int amt)
+    {
+        PlayerStats requiredPlayer = playersHashTable[playerNum];
+        requiredPlayer.Weets += amt;
+    }
+
+    public void AddSecPotionQty(int playerNum, int amt)
+    {
+        PlayerStats requiredPlayer = playersHashTable[playerNum];
+        requiredPlayer.SecondaryPotionQty += amt;
+    }
+
     // When game ends, reset player scriptable object ======================================
     void OnDestroy()
     {

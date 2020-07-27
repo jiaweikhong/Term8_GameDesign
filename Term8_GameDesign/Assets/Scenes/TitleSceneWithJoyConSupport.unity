@@ -2006,7 +2006,7 @@ MonoBehaviour:
     m_ActionId: d50ae7eb-9ca2-43c2-b23b-5f84ecdfb32e
     m_ActionName: CharacterActions/StartButton[/Keyboard/p]
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: UIActions
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -9234,7 +9234,7 @@ MonoBehaviour:
   characterSelectCanvas: {fileID: 1142598110}
   brewingPhaseCanvas: {fileID: 2026188538}
   controlsManager: {fileID: 1517808936}
-  requiredPlayersToStart: 2
+  requiredPlayersToStart: 4
   readyPlayersNum: 0
   toSelectPlaySFX: {fileID: 8300000, guid: d2701761ad919584d8a04bbe6b134f28, type: 3}
 --- !u!4 &1193019350
@@ -11073,7 +11073,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1347666515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12272,7 +12272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1454679445
 MonoBehaviour:
   m_ObjectHideFlags: 0
