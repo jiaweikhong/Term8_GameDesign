@@ -219,6 +219,17 @@
                     "action": "StartButton",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d727b6ff-9ff6-4289-a2b4-e4846eaadd4c",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StartButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
