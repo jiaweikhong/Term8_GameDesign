@@ -151,6 +151,16 @@ public abstract class GenericCharacter : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("pickup"))
+        {
+            Debug.Log("I met some weeds");
+            playerScript.AddWeets();
+            collision.gameObject.SetActive(false);
+        }
+    }
+
     IEnumerator UnhurtPlayer()
     {
         animator.SetLayerWeight(1, 1);

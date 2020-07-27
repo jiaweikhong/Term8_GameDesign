@@ -141,6 +141,13 @@ public class GameManager : MonoBehaviour
         OnDreamingEvent?.Invoke(casterPlayerNum);
     }
 
+    // Weets ======================================
+    public void AddWeets(int playerNum, int amt)
+    {
+        PlayerStats requiredPlayer = playersHashTable[playerNum];
+        requiredPlayer.Weets += amt;
+    }
+
     // When game ends, reset player scriptable object ======================================
     void OnDestroy()
     {

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ground
   - Damage
+  - pickup
   layers:
   - Default
   - TransparentFX
@@ -45,6 +46,9 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 4099301735
+    locked: 0
+  - name: Weets
+    uniqueID: 3324354763
     locked: 0
   - name: Player
     uniqueID: 1210254501
