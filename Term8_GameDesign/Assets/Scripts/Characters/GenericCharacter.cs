@@ -17,8 +17,6 @@ public abstract class GenericCharacter : MonoBehaviour
     protected Vector2 inputVector = new Vector2(0, 0);
     protected float horizontalMove = 0f;
     protected bool jump = false;
-    protected bool isLeftPressed = false;     // REMOVE THIS once we get the axis controls
-    protected bool isRightPressed = false;
 
     // attack variables
     protected float timeBtwAttack;          // To prevent spamming skill
@@ -29,12 +27,15 @@ public abstract class GenericCharacter : MonoBehaviour
     // status effect variables
     protected bool isMuddled = false;
     protected bool canMove = true;
+    public bool isFast = false;      // used to prevent stacking of swiftness elixirs
+    [SerializeField]
+    private float speedBoostMultiplier = 1.75f;
 
     // death respawn stuff
     public float respawnTime = 2f;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider;
-    private Rigidbody2D rigidBody;
+    protected Rigidbody2D rigidBody;
 
     // SFX
     protected AudioSource audioSrc;
@@ -74,6 +75,7 @@ public abstract class GenericCharacter : MonoBehaviour
             //Debug.Log("move input detected");
             inputVector = context.ReadValue<Vector2>();
             horizontalMove = inputVector.x * runSpeed * (isMuddled ? -1 : 1);
+            horizontalMove *= (isFast ? speedBoostMultiplier : 1);
             animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         }
     }
@@ -217,9 +219,8 @@ public abstract class GenericCharacter : MonoBehaviour
         Debug.Log("Started speed boost");
         animator.SetTrigger("SE");
         audioSrc.PlayOneShot(specialPotsSFX.SwiftnessElixirSFX);
-        float speedMultiplier = 1.75f;   // TODO: refactor to variable later
-        runSpeed *= speedMultiplier;
-        StartCoroutine(RevertEnhancedSpeed(speedMultiplier));
+        isFast = true;
+        StartCoroutine(RevertEnhancedSpeed());
     }
 
     public void KillerBrew()
@@ -257,10 +258,10 @@ public abstract class GenericCharacter : MonoBehaviour
     }
 
     // Coroutines to end special potion's effect
-    IEnumerator RevertEnhancedSpeed(float speedMultiplier)
+    IEnumerator RevertEnhancedSpeed()
     {
         yield return new WaitForSeconds(7f);
-        runSpeed /= speedMultiplier;
+        isFast = false;
         Debug.Log("Ended speed boost");
     }
 

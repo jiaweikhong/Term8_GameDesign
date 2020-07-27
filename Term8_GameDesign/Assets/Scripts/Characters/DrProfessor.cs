@@ -25,11 +25,12 @@ public class DrProfessor : GenericCharacter
         // attack animation
         animator.SetTrigger("Attack");
         audioSrc.PlayOneShot(potion1SFX);
-        // TODO: primary attack animation
-        // Set casterPlayerNum in primaryPotion script of prefab 
+
+        // Set casterPlayerNum, casterPlayerSpeed in primaryPotion script of prefab 
         GameObject primaryPotion = ObjectPooler.SharedInstance.GetPooledObject("DrProfessorPrimary(Clone)");
         // Instantiate(primaryPotionPrefab, firePoint.position, firePoint.rotation);
         primaryPotion.GetComponent<PrimaryPotion>().casterPlayerNum = playerScript.playerNum;
+        primaryPotion.GetComponent<PrimaryPotion>().casterPlayerSpeed = rigidBody.velocity;
         if (primaryPotion != null)
         {
             primaryPotion.transform.position = firePoint.position;
