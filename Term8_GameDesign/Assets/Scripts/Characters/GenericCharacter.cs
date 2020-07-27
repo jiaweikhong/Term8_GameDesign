@@ -159,6 +159,12 @@ public abstract class GenericCharacter : MonoBehaviour
             playerScript.AddWeets();
             collision.gameObject.SetActive(false);
         }
+        if (collision.gameObject.CompareTag("potion"))
+        {
+            Debug.Log("I met the potion");
+            playerScript.AddSecPotionQty();
+            collision.gameObject.SetActive(false);
+        }
     }
 
     IEnumerator UnhurtPlayer()

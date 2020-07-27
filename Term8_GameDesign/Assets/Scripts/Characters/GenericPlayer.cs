@@ -129,6 +129,13 @@ public class GenericPlayer : MonoBehaviour
         gameManager.AddWeets(playerNum, amt);
     }
 
+    public void AddSecPotionQty()
+    {
+        // TODO: change amount of secQty
+        int amt = 2;
+        gameManager.AddSecPotionQty(playerNum, amt);
+    }
+
     public void AttachCharacter(CharacterType charType)
     {
         // set base characterNum
