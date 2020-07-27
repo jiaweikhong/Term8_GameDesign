@@ -10,6 +10,7 @@ public class PlayerInputScript : MonoBehaviour
     public ScreensTransitionManager screensTransitionManager;
     public CharacterSelectController characterSelectController;
     public BrewingPhaseController brewingPhaseController;
+    public PauseMenu pauseMenu;
     protected GenericCharacter genericCharacter;
 
 
@@ -44,8 +45,13 @@ public class PlayerInputScript : MonoBehaviour
         // Arena Scene - Start the input for match conclusion screen here
         else if (SceneManager.GetActiveScene().buildIndex == 1 && context.performed)
         {
-
+            if (PauseMenu.isGamePaused)
+            {
+                Debug.Log("trying to navigate in pause menu");
+                pauseMenu.NavigateInput(context);
+            }
         }
+
     }
 
     public void SubmitInput(InputAction.CallbackContext context)
@@ -72,7 +78,10 @@ public class PlayerInputScript : MonoBehaviour
         // Arena Scene - Start the input for match conclusion screen here
         else if (SceneManager.GetActiveScene().buildIndex == 1 && context.performed)
         {
-
+            if (PauseMenu.isGamePaused)
+            {
+                pauseMenu.Select();
+            }
         }
     }
 
@@ -143,6 +152,7 @@ public class PlayerInputScript : MonoBehaviour
         {
             // pause button is pressed
             Debug.Log("pause button is pressed!");
+            pauseMenu.TogglePause();
         }
     }
 

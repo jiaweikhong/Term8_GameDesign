@@ -33,13 +33,13 @@ public class ControlsManager : MonoBehaviour
 
     public void SwitchAllControllersToUIMode()
     {
-        if (controlsP1.gameObject.activeSelf == true)
+        if (controlsP1.gameObject.activeSelf == true && controlsP1 != null)
         { controlsP1.SwitchCurrentActionMap("UIActions"); }
-        if (controlsP2.gameObject.activeSelf == true)
+        if (controlsP2.gameObject.activeSelf == true && controlsP2 != null)
         { controlsP2.SwitchCurrentActionMap("UIActions"); }
-        if (controlsP3.gameObject.activeSelf == true)
+        if (controlsP3.gameObject.activeSelf == true && controlsP3 != null)
         { controlsP3.SwitchCurrentActionMap("UIActions"); }
-        if (controlsP4.gameObject.activeSelf == true)
+        if (controlsP4.gameObject.activeSelf == true && controlsP4 != null)
         { controlsP4.SwitchCurrentActionMap("UIActions"); }
     }
 
