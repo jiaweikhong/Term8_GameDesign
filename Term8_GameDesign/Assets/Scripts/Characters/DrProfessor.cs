@@ -43,20 +43,20 @@ public class DrProfessor : GenericCharacter
 
     public override void UsePotion2()
     {
-        animator.SetTrigger("Attack");
-        audioSrc.PlayOneShot(potion2SFX);
+        if (playerScript.UseSecondaryPotionIfCanUse()) {
+            animator.SetTrigger("Attack");
+            audioSrc.PlayOneShot(potion2SFX);
 
-        GameObject secondaryPotion = ObjectPooler.SharedInstance.GetPooledObject("DrProfessorSecondary(Clone)");
-        secondaryPotion.GetComponent<ProfessorSecondary>().casterPlayerNum = playerScript.playerNum;
-        if (secondaryPotion != null)
-        {
-            secondaryPotion.transform.position = firePoint.position;
-            secondaryPotion.transform.rotation = firePoint.rotation;
-            secondaryPotion.SetActive(true);
+            GameObject secondaryPotion = ObjectPooler.SharedInstance.GetPooledObject("DrProfessorSecondary(Clone)");
+            secondaryPotion.GetComponent<ProfessorSecondary>().casterPlayerNum = playerScript.playerNum;
+            if (secondaryPotion != null)
+            {
+                secondaryPotion.transform.position = firePoint.position;
+                secondaryPotion.transform.rotation = firePoint.rotation;
+                secondaryPotion.SetActive(true);
+            }
+            Debug.Log("Potion 2!!");
         }
-        Debug.Log("Potion 2!!");
-
-
     }
 
     public override void OnDeath()

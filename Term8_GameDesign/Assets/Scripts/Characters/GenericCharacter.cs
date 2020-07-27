@@ -169,22 +169,25 @@ public abstract class GenericCharacter : MonoBehaviour
     {
         // remember to check if there's any more potions left.
         // if playerScript.UseSpecialPotionIfCanUse() -> use
-        Debug.Log("Potion 3!");
-        switch (playerScript.GetSpecialPotionType())
-        {
-            case SpecialPotionType.DreamDust:
-                DreamDust();
-                break;
-            case SpecialPotionType.KillerBrew:
-                KillerBrew();
-                break;
-            case SpecialPotionType.MuddlingMist:
-                MuddlingMist();
-                break;
-            case SpecialPotionType.SwiftnessElixir:
-                SwiftnessElixir();
-                break;
+        if (playerScript.UseSpecialPotionIfCanUse()) {
+            Debug.Log("Potion 3!");
+            switch (playerScript.GetSpecialPotionType())
+            {
+                case SpecialPotionType.DreamDust:
+                    DreamDust();
+                    break;
+                case SpecialPotionType.KillerBrew:
+                    KillerBrew();
+                    break;
+                case SpecialPotionType.MuddlingMist:
+                    MuddlingMist();
+                    break;
+                case SpecialPotionType.SwiftnessElixir:
+                    SwiftnessElixir();
+                    break;
+            }
         }
+        
     }
 
     public abstract void OnDeath();
