@@ -3691,6 +3691,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5889157131035122090, guid: 427d7bae5a9f58742876e07734869d09,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5889157131035122109, guid: 427d7bae5a9f58742876e07734869d09,
         type: 3}
       propertyPath: m_Name
@@ -4554,6 +4559,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7451418005684447551, guid: dd94ad3e4d6ac434a96bf235227e0f97,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd94ad3e4d6ac434a96bf235227e0f97, type: 3}
 --- !u!1 &1702199451 stripped
@@ -5312,6 +5322,21 @@ PrefabInstance:
       propertyPath: controlsManager
       value: 
       objectReference: {fileID: 923332726}
+    - target: {fileID: 5914989715428130534, guid: 4f139f9a2654bd044838d87038cfa581,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1210254501
+      objectReference: {fileID: 0}
+    - target: {fileID: 5914989715428130534, guid: 4f139f9a2654bd044838d87038cfa581,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5914989715428130534, guid: 4f139f9a2654bd044838d87038cfa581,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f139f9a2654bd044838d87038cfa581, type: 3}
 --- !u!1 &1821219253 stripped
@@ -5418,6 +5443,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2101556422}
     m_Modifications:
+    - target: {fileID: 2358140655493449314, guid: 2e03fe28def995b4084ec0028eae4a13,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1210254501
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358140655493449314, guid: 2e03fe28def995b4084ec0028eae4a13,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358140655493449314, guid: 2e03fe28def995b4084ec0028eae4a13,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2358140655493449320, guid: 2e03fe28def995b4084ec0028eae4a13,
         type: 3}
       propertyPath: controlsManager
