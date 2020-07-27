@@ -82,7 +82,7 @@ public abstract class GenericCharacter : MonoBehaviour
     {
         if (canMove)
         {
-            audioSrc.PlayOneShot(jumpSFX);
+            //audioSrc.PlayOneShot(jumpSFX);
             //Debug.Log("jump input detected");
             jump = true;
             animator.SetBool("IsJumping", true);

@@ -400,7 +400,7 @@ RectTransform:
   m_Children:
   - {fileID: 794016477}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -728,6 +728,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Murasaki
       objectReference: {fileID: 0}
+    - target: {fileID: 5889157131035122109, guid: 427d7bae5a9f58742876e07734869d09,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 427d7bae5a9f58742876e07734869d09, type: 3}
 --- !u!1 &561355005 stripped
@@ -904,6 +909,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dr. Professor
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358140655493449325, guid: 2e03fe28def995b4084ec0028eae4a13,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e03fe28def995b4084ec0028eae4a13, type: 3}
@@ -3686,11 +3696,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Murasaki
       objectReference: {fileID: 0}
-    - target: {fileID: 5889157131035122109, guid: 427d7bae5a9f58742876e07734869d09,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 427d7bae5a9f58742876e07734869d09, type: 3}
 --- !u!1 &1256551542 stripped
@@ -4493,11 +4498,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: The Traveller
-      objectReference: {fileID: 0}
-    - target: {fileID: 7451418005684447542, guid: dd94ad3e4d6ac434a96bf235227e0f97,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7451418005684447543, guid: dd94ad3e4d6ac434a96bf235227e0f97,
         type: 3}
@@ -5409,7 +5409,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1951664471
 PrefabInstance:
@@ -5482,11 +5482,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dr. Professor
-      objectReference: {fileID: 0}
-    - target: {fileID: 2358140655493449325, guid: 2e03fe28def995b4084ec0028eae4a13,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e03fe28def995b4084ec0028eae4a13, type: 3}
@@ -5744,6 +5739,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: The Traveller
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451418005684447542, guid: dd94ad3e4d6ac434a96bf235227e0f97,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7451418005684447543, guid: dd94ad3e4d6ac434a96bf235227e0f97,
         type: 3}
