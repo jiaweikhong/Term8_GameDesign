@@ -27,7 +27,6 @@ public class ScreensTransitionManager : MonoBehaviour
 
     public void Awake()
     {
-        DontDestroyOnLoad(gameObject);
         // set active/inactive pages 
         titleCanvas.SetActive(true);
         characterSelectCanvas.SetActive(false);
