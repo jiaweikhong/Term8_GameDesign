@@ -122,6 +122,13 @@ public class GenericPlayer : MonoBehaviour
         gameManager.CastDreamDust(playerNum);
     }
 
+    public void AddWeets()
+    {
+        // TODO: change amount of weets
+        int amt = 20;
+        gameManager.AddWeets(playerNum, amt);
+    }
+
     public void AttachCharacter(CharacterType charType)
     {
         // set base characterNum
