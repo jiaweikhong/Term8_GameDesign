@@ -45,7 +45,7 @@ public class Lumira : GenericCharacter
     public override void UsePotion2()
     {
         if (playerScript.UseSecondaryPotionIfCanUse()) {
-            animator.SetTrigger("Attack");
+            animator.SetTrigger("Secondary");
             audioSrc.PlayOneShot(potion2SFX);
 
             GameObject secondaryPotion = ObjectPooler.SharedInstance.GetPooledObject("LumiraSecondary(Clone)"); 

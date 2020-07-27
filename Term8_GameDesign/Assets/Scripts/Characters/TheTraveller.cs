@@ -48,7 +48,7 @@ public class TheTraveller : GenericCharacter
     public override void UsePotion2()
     {
         if (playerScript.UseSecondaryPotionIfCanUse()) {
-            animator.SetTrigger("Attack");
+            animator.SetTrigger("Secondary");
             audioSrc.PlayOneShot(potion2SFX);
 
             GameObject secondaryPotion = ObjectPooler.SharedInstance.GetPooledObject("TheTravellerSecondary(Clone)"); 

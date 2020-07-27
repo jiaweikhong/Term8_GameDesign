@@ -44,6 +44,9 @@ public abstract class GenericCharacter : MonoBehaviour
     public AudioClip jumpSFX;
     public AudioClip landSFX;
 
+    public GameObject MMSprite;
+    public GameObject DDSprite;
+
     private void Start()
     {
         audioSrc = GetComponent<AudioSource>();
@@ -212,6 +215,7 @@ public abstract class GenericCharacter : MonoBehaviour
     public void SwiftnessElixir()
     {
         Debug.Log("Started speed boost");
+        animator.SetTrigger("SE");
         audioSrc.PlayOneShot(specialPotsSFX.SwiftnessElixirSFX);
         float speedMultiplier = 1.75f;   // TODO: refactor to variable later
         runSpeed *= speedMultiplier;
@@ -221,6 +225,7 @@ public abstract class GenericCharacter : MonoBehaviour
     public void KillerBrew()
     {
         Debug.Log("Started Killer Brew");
+        animator.SetTrigger("KB");
         audioSrc.PlayOneShot(specialPotsSFX.KillerBrewSFX);
         playerScript.IncreaseDamageDealtTo2();
         StartCoroutine(RevertDamageDealt());
@@ -229,13 +234,24 @@ public abstract class GenericCharacter : MonoBehaviour
     public void MuddlingMist()
     {
         Debug.Log("Started Muddling Mist");
+        animator.SetTrigger("Open");
+        MMSprite.SetActive(true);
+        Invoke("disableSprite", 1f);
         audioSrc.PlayOneShot(specialPotsSFX.MuddlingMistSFX);
         playerScript.CastMuddlingMist();
+    }
+
+    public void disableSprite() {
+        MMSprite.SetActive(false);
+        DDSprite.SetActive(false);
     }
 
     public void DreamDust()
     {
         Debug.Log("Started Dream Dust");
+        animator.SetTrigger("Open");
+        DDSprite.SetActive(true);
+        Invoke("disableSprite", 1f);
         audioSrc.PlayOneShot(specialPotsSFX.DreamDustSFX);
         playerScript.CastDreamingDust();
     }
