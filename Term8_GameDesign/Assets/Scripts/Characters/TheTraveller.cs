@@ -30,10 +30,11 @@ public class TheTraveller : GenericCharacter
         // TODO: primary attack animation
         // potionAnimator.SetTrigger("Primary");
 
-        // Set casterPlayerNum in primaryPotion script of prefab 
+        // Set casterPlayerNum, casterPlayerSpeed in primaryPotion script of prefab 
         GameObject primaryPotion = ObjectPooler.SharedInstance.GetPooledObject("TheTravellerPrimary(Clone)"); 
         // Instantiate(primaryPotionPrefab, firePoint.position, firePoint.rotation);
         primaryPotion.GetComponent<PrimaryPotion>().casterPlayerNum = playerScript.playerNum;
+        primaryPotion.GetComponent<PrimaryPotion>().casterPlayerSpeed = rigidBody.velocity;
         if (primaryPotion != null)
         {
             primaryPotion.transform.position = firePoint.position;

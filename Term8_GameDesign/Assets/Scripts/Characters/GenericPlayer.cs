@@ -93,6 +93,12 @@ public class GenericPlayer : MonoBehaviour
 
     public bool UseSpecialPotionIfCanUse()
     {
+        if (GetSpecialPotionType() == SpecialPotionType.SwiftnessElixir)
+        {
+            // if Swiftness Elixir has been used, do not allow stacked usage 
+            if (genericCharacter.isFast) return false;
+        }
+
         return gameManager.UseSpecialPotionIfCanUse(playerNum);
     }
 

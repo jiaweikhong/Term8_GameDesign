@@ -148,6 +148,7 @@ MonoBehaviour:
   speed: 8
   rb: {fileID: 6480516259935765429}
   casterPlayerNum: 0
+  casterPlayerSpeed: {x: 0, y: 0, z: 0}
 --- !u!95 &6518903473814212070
 Animator:
   serializedVersion: 3
