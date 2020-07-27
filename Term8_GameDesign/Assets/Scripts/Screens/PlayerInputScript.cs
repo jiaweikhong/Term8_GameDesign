@@ -137,4 +137,13 @@ public class PlayerInputScript : MonoBehaviour
         }
     }
 
+    public void PauseInput(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            // pause button is pressed
+            Debug.Log("pause button is pressed!");
+        }
+    }
+
 }
