@@ -127,7 +127,7 @@ public abstract class GenericCharacter : MonoBehaviour
         animator.SetBool("IsJumping", false);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Damage") && !wasHurted)
         {

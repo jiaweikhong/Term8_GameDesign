@@ -8,6 +8,11 @@ public class ProfessorSecondary : MonoBehaviour
     public Animator potionAnimator;
     public int casterPlayerNum;
     public Vector3 casterPlayerSpeed;
+
+    private List<string> names;
+    void Start() {
+        names = new List<string>() {"Dr. Professor", "Murasaki", "Lumira", "The Traveller"};
+    }
     void OnEnable()
     {
         Vector2 playerVelocityX = Vector2.right * casterPlayerSpeed.x;
@@ -15,8 +20,7 @@ public class ProfessorSecondary : MonoBehaviour
         this.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(transform.right.x, 1.25f) * speed + playerVelocityX);
     }
     void OnTriggerEnter2D(Collider2D other) {
-        // Probably bad coding practice...
-        if (other.tag != "Damage" && other.name!="Dr. Professor" && other.tag!="pickup")
+        if (other.tag != "Damage" && !names.Contains(other.name) && other.tag!="pickup" && other.tag!="potion")
         {
             Debug.Log("Potion hit something!"+ other.name + other.tag);
             potionAnimator.SetTrigger("Explode");
