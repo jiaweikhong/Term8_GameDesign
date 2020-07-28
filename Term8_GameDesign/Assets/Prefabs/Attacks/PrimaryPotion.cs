@@ -18,7 +18,6 @@ public class PrimaryPotion : MonoBehaviour
         // add caster player's x velocity to the potion's velocity
         Vector3 playerVelocityX = Vector3.right * casterPlayerSpeed.x;
         rb.velocity = transform.right * speed + playerVelocityX;
-        Debug.Log(rb.velocity);
         Invoke("Destroy", 0.2f);
     }
 

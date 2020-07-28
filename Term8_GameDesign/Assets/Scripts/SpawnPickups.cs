@@ -32,9 +32,12 @@ public class SpawnPickups : MonoBehaviour
         // get from objectpooler
         GameObject potion = ObjectPooler.SharedInstance.GetPooledObject("PotionPickup(Clone)");
 
-        ResetVelocityTransform(potion);
+        if (potion)
+        {
+            ResetVelocityTransform(potion);
 
-        potion.SetActive(true);
+            potion.SetActive(true);
+        }
 
         // invoke this function again after spawnTime+rand seconds
         Invoke("SpawnAPotion", spawnTime + Random.Range(-2, 2));
