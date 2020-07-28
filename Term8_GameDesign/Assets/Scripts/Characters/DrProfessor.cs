@@ -50,6 +50,7 @@ public class DrProfessor : GenericCharacter
 
             GameObject secondaryPotion = ObjectPooler.SharedInstance.GetPooledObject("DrProfessorSecondary(Clone)");
             secondaryPotion.GetComponent<ProfessorSecondary>().casterPlayerNum = playerScript.playerNum;
+            secondaryPotion.GetComponent<ProfessorSecondary>().casterPlayerSpeed = rigidBody.velocity;
             if (secondaryPotion != null)
             {
                 secondaryPotion.transform.position = firePoint.position;
