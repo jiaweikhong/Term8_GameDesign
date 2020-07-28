@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1210254501
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -909691555168508392, guid: a12180f5e9b1f044ab199834c56ac06f,
     type: 3}
@@ -148,6 +148,7 @@ MonoBehaviour:
   speed: 8
   rb: {fileID: 8609145565279659008}
   casterPlayerNum: 0
+  casterPlayerSpeed: {x: 0, y: 0, z: 0}
 --- !u!95 &8609145565279659010
 Animator:
   serializedVersion: 3
