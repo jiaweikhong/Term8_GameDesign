@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4281c08cabaf9964c946953bb3ba221d, type: 3}
   m_Name: DrProfessorData
   m_EditorClassIdentifier: 
-  characterName: Dr. Professor
+  characterName: DR PROFESSOR
   sprite: {fileID: 4723107735738678597, guid: c33362e61092e4d4ab9edc8a37018d02, type: 3}
   title: Toxic Alchemist
   backstory: 'Ex-researcher that was fired because his inventions were deemed too

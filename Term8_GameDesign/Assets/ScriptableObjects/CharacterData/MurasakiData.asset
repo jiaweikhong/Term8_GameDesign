@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4281c08cabaf9964c946953bb3ba221d, type: 3}
   m_Name: MurasakiData
   m_EditorClassIdentifier: 
-  characterName: Murasaki
+  characterName: MURASAKI
   sprite: {fileID: 4723107735738678597, guid: 82b79617c4fb4fa4796b747479bcc084, type: 3}
   title: Blade Alchemist
   backstory: 'Descendent of the Renesha Clan renown for their ability to brew potions
@@ -22,3 +22,4 @@ MonoBehaviour:
   primaryName: Kunai Flash
   secondarySprite: {fileID: 21300000, guid: 0582362e504913743a7b8bf1e13aadd4, type: 3}
   secondaryName: Heavenward Katana
+  isTaken: 0

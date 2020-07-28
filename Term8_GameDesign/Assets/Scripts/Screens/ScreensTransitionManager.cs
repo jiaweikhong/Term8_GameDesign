@@ -10,6 +10,8 @@ public class ScreensTransitionManager : MonoBehaviour
     public GameObject titleCanvas;
     public GameObject characterSelectCanvas;
     public GameObject brewingPhaseCanvas;
+    public GameObject afterMatchCanvas;
+    public GameObject gameOverlayCanvas;
     public ControlsManager controlsManager;
 
     public int requiredPlayersToStart = 4;
@@ -25,12 +27,19 @@ public class ScreensTransitionManager : MonoBehaviour
         return screenNum;
     }
 
-    public void Awake()
+    // public void Awake()
+    // {
+    //     DontDestroyOnLoad(gameObject);
+    // }
+    
+    private void Start()
     {
         // set active/inactive pages 
         titleCanvas.SetActive(true);
         characterSelectCanvas.SetActive(false);
         brewingPhaseCanvas.SetActive(false);
+        afterMatchCanvas.SetActive(false);
+        gameOverlayCanvas.SetActive(false);
         audioSrc = GetComponent<AudioSource>();
     }
 
@@ -42,53 +51,64 @@ public class ScreensTransitionManager : MonoBehaviour
             {
                 screenNum += 1;
                 readyPlayersNum = 0;
-                StartCoroutine(toBrewingPhase());
+                StartCoroutine(ToBrewingPhase());
             }
         }
         else if (screenNum == 2)
         {
             if (readyPlayersNum == requiredPlayersToStart)
             {
-                screenNum = 0;
-                //toPlay();
-                StartCoroutine(toGamePlay());
+                screenNum += 1;
+                readyPlayersNum = 0;
+                StartCoroutine(ToGamePlay());
             }
         }
-
+        
+        else if (screenNum == 4)
+        {
+            if (readyPlayersNum == requiredPlayersToStart)
+            {
+                screenNum = 2;
+                readyPlayersNum = 0;
+                StartCoroutine(ToBrewingPhase());
+            }
+        }
     }
+    
 
     public void ReadyPlayer(bool ready)
     {
         readyPlayersNum += (ready) ? 1 : -1;
     }
 
-    private IEnumerator toBrewingPhase()
+    private IEnumerator ToBrewingPhase()
     {
         yield return new WaitForSeconds(1f);
         brewingPhaseCanvas.SetActive(true);
         characterSelectCanvas.SetActive(false);
+        afterMatchCanvas.SetActive(false);
     }
 
-    private IEnumerator toGamePlay()
+    private IEnumerator ToGamePlay()
     {
         yield return new WaitForSeconds(1f);
-        //titleCanvas.SetActive(true);
+        gameOverlayCanvas.SetActive(true);
         brewingPhaseCanvas.SetActive(false);
         controlsManager.SwitchAllControllersToCharacterMode();
-        SceneManager.LoadScene(1);
+    }
+
+    public void ToAfterMatch() {
+        screenNum += 1;
+        afterMatchCanvas.SetActive(true);
+        controlsManager.SwitchAllControllersToUIMode();
     }
 
     public void onSelectPlay()
     {
         if (screenNum == 0)
         {
-            //Debug.Log("screen trans manager select input");
             audioSrc.PlayOneShot(toSelectPlaySFX);
-
-            // check player controls
-            // TODO: separate script if need to handle selection of other menu buttons in title screen
             screenNum += 1;
-            // set active/inactive relevant pages 
             characterSelectCanvas.SetActive(true);
             titleCanvas.SetActive(false);
         }

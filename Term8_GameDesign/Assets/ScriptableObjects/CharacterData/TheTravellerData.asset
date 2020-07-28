@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4281c08cabaf9964c946953bb3ba221d, type: 3}
   m_Name: TheTravellerData
   m_EditorClassIdentifier: 
-  characterName: The Traveller
+  characterName: THE TRAVELLER
   sprite: {fileID: 4723107735738678597, guid: 2dbfdc6eb84e60c438b7c7ecac9f303c, type: 3}
   title: Sand Alchemist
   backstory: 'A mysterious alchemist that claims he is a human but has suspicious
