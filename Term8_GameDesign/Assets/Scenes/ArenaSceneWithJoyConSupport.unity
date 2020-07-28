@@ -3701,6 +3701,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Murasaki
       objectReference: {fileID: 0}
+    - target: {fileID: 5889157131035122109, guid: 427d7bae5a9f58742876e07734869d09,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 427d7bae5a9f58742876e07734869d09, type: 3}
 --- !u!1 &1256551542 stripped
@@ -4503,6 +4508,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: The Traveller
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451418005684447542, guid: dd94ad3e4d6ac434a96bf235227e0f97,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7451418005684447543, guid: dd94ad3e4d6ac434a96bf235227e0f97,
         type: 3}
@@ -5317,6 +5327,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lumira
       objectReference: {fileID: 0}
+    - target: {fileID: 5914989715428129055, guid: 4f139f9a2654bd044838d87038cfa581,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5914989715428130531, guid: 4f139f9a2654bd044838d87038cfa581,
         type: 3}
       propertyPath: controlsManager
@@ -5522,6 +5537,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dr. Professor
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358140655493449325, guid: 2e03fe28def995b4084ec0028eae4a13,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e03fe28def995b4084ec0028eae4a13, type: 3}
@@ -6101,7 +6121,7 @@ MonoBehaviour:
     m_ActionId: d50ae7eb-9ca2-43c2-b23b-5f84ecdfb32e
     m_ActionName: CharacterActions/StartButton[/Keyboard/p]
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: CharacterActions
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
