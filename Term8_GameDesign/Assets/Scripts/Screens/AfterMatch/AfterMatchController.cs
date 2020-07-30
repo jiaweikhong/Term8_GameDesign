@@ -21,6 +21,7 @@ public class AfterMatchController : MonoBehaviour
         // get reference and display default
         screensTransitionManager = FindObjectOfType<ScreensTransitionManager>();
         afterMatchManager = FindObjectOfType<AfterMatchManager>();
+        audioSrc = GetComponent<AudioSource>();
         afterMatchUI.UpdatePlayer(playerStats);
         afterMatchUI.UpdateRank(afterMatchManager.getPlayerRank(playerNum));
     }

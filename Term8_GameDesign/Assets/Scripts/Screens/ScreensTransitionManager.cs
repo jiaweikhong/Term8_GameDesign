@@ -97,10 +97,14 @@ public class ScreensTransitionManager : MonoBehaviour
         controlsManager.SwitchAllControllersToCharacterMode();
     }
 
-    public void ToAfterMatch() {
-        screenNum += 1;
-        afterMatchCanvas.SetActive(true);
-        controlsManager.SwitchAllControllersToUIMode();
+    public void ToAfterMatch() 
+    {
+        if (screenNum == 3)
+        {
+            screenNum += 1;
+            afterMatchCanvas.SetActive(true);
+            controlsManager.SwitchAllControllersToUIMode();
+        }
     }
 
     public void onSelectPlay()
