@@ -44,9 +44,11 @@ public abstract class GenericCharacter : MonoBehaviour
     public AudioClip deathSFX;
     public AudioClip jumpSFX;
     public AudioClip landSFX;
-
+    
+    // Special potion effects
     public GameObject MMSprite;
     public GameObject DDSprite;
+    public Animator StatusEffectAnimator;
 
     private void Start()
     {
@@ -220,6 +222,7 @@ public abstract class GenericCharacter : MonoBehaviour
         animator.SetTrigger("SE");
         audioSrc.PlayOneShot(specialPotsSFX.SwiftnessElixirSFX);
         isFast = true;
+        StatusEffectAnimator.SetBool("SpeedUp", true);
         StartCoroutine(RevertEnhancedSpeed());
     }
 
@@ -229,6 +232,7 @@ public abstract class GenericCharacter : MonoBehaviour
         animator.SetTrigger("KB");
         audioSrc.PlayOneShot(specialPotsSFX.KillerBrewSFX);
         playerScript.IncreaseDamageDealtTo2();
+        StatusEffectAnimator.SetBool("AttackUp", true);
         StartCoroutine(RevertDamageDealt());
     }
 
@@ -262,6 +266,7 @@ public abstract class GenericCharacter : MonoBehaviour
     {
         yield return new WaitForSeconds(7f);
         isFast = false;
+        StatusEffectAnimator.SetBool("SpeedUp", false);
         Debug.Log("Ended speed boost");
     }
 
@@ -269,6 +274,7 @@ public abstract class GenericCharacter : MonoBehaviour
     {
         yield return new WaitForSeconds(7f);
         playerScript.DecreaseDamageDealtTo1();
+        StatusEffectAnimator.SetBool("AttackUp", false);
         Debug.Log("Ended Killer Brew");
     }
 
