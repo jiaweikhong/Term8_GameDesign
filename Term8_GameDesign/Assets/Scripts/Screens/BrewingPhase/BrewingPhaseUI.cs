@@ -48,6 +48,7 @@ public class BrewingPhaseUI : MonoBehaviour
         secondarySprite.sprite = character.SecondarySprite;
         secondaryName.text = character.SecondaryName;
 
+        Debug.Log(data.Weets.ToString() + " w");
         weets.text = data.Weets.ToString() + " w";
         secondaryQty.text = data.SecondaryPotionQty.ToString();
         // specialQty.text = data.SpecialPotionQty.ToString();

@@ -712,6 +712,7 @@ MonoBehaviour:
   - {fileID: 1767347872}
   - {fileID: 1687538137}
   - {fileID: 118620867}
+  inBattle: 0
 --- !u!1 &32314905
 GameObject:
   m_ObjectHideFlags: 0
@@ -3232,6 +3233,8 @@ MonoBehaviour:
   characterSelectController: {fileID: 169695309}
   brewingPhaseController: {fileID: 171339764}
   afterMatchController: {fileID: 1033107790}
+  pauseMenu: {fileID: 0}
+  genericCharacter: {fileID: 0}
 --- !u!114 &197273092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6310,6 +6313,11 @@ PrefabInstance:
       propertyPath: controlsManager
       value: 
       objectReference: {fileID: 1517808936}
+    - target: {fileID: 2358140655493449320, guid: 2e03fe28def995b4084ec0028eae4a13,
+        type: 3}
+      propertyPath: gameOverlayController
+      value: 
+      objectReference: {fileID: 21800613}
     - target: {fileID: 2358140655493449322, guid: 2e03fe28def995b4084ec0028eae4a13,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6369,6 +6377,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dr. Professor
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358140655493449325, guid: 2e03fe28def995b4084ec0028eae4a13,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e03fe28def995b4084ec0028eae4a13, type: 3}
@@ -10125,6 +10138,11 @@ PrefabInstance:
       propertyPath: controlsManager
       value: 
       objectReference: {fileID: 1517808936}
+    - target: {fileID: 5889157131035122081, guid: 427d7bae5a9f58742876e07734869d09,
+        type: 3}
+      propertyPath: gameOverlayController
+      value: 
+      objectReference: {fileID: 21800613}
     - target: {fileID: 5889157131035122082, guid: 427d7bae5a9f58742876e07734869d09,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11685,6 +11703,11 @@ PrefabInstance:
       propertyPath: controlsManager
       value: 
       objectReference: {fileID: 1517808936}
+    - target: {fileID: 7451418005684447541, guid: dd94ad3e4d6ac434a96bf235227e0f97,
+        type: 3}
+      propertyPath: gameOverlayController
+      value: 
+      objectReference: {fileID: 21800613}
     - target: {fileID: 7451418005684447542, guid: dd94ad3e4d6ac434a96bf235227e0f97,
         type: 3}
       propertyPath: m_Name
@@ -13208,6 +13231,8 @@ MonoBehaviour:
   characterSelectController: {fileID: 2079346792}
   brewingPhaseController: {fileID: 1286975034}
   afterMatchController: {fileID: 716191650}
+  pauseMenu: {fileID: 0}
+  genericCharacter: {fileID: 0}
 --- !u!114 &761714821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13644,6 +13669,11 @@ PrefabInstance:
       propertyPath: controlsManager
       value: 
       objectReference: {fileID: 1517808936}
+    - target: {fileID: 5914989715428130531, guid: 4f139f9a2654bd044838d87038cfa581,
+        type: 3}
+      propertyPath: gameOverlayController
+      value: 
+      objectReference: {fileID: 21800613}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f139f9a2654bd044838d87038cfa581, type: 3}
 --- !u!1 &791144287 stripped
@@ -14272,6 +14302,8 @@ GameObject:
   - component: {fileID: 865830324}
   - component: {fileID: 865830323}
   - component: {fileID: 865830322}
+  - component: {fileID: 865830325}
+  - component: {fileID: 865830326}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -14344,6 +14376,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &865830325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865830321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9341a21a1bc800a4aafdfba0c7b88b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &865830326
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865830321}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 14a015f22b76e66468c5050c46f12c73, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &890859165
 GameObject:
   m_ObjectHideFlags: 0
@@ -14578,6 +14641,11 @@ PrefabInstance:
       propertyPath: controlsManager
       value: 
       objectReference: {fileID: 1517808936}
+    - target: {fileID: 2358140655493449320, guid: 2e03fe28def995b4084ec0028eae4a13,
+        type: 3}
+      propertyPath: gameOverlayController
+      value: 
+      objectReference: {fileID: 21800613}
     - target: {fileID: 2358140655493449322, guid: 2e03fe28def995b4084ec0028eae4a13,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14637,6 +14705,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dr. Professor
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358140655493449325, guid: 2e03fe28def995b4084ec0028eae4a13,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e03fe28def995b4084ec0028eae4a13, type: 3}
@@ -15374,6 +15447,11 @@ PrefabInstance:
       propertyPath: controlsManager
       value: 
       objectReference: {fileID: 1517808936}
+    - target: {fileID: 7451418005684447541, guid: dd94ad3e4d6ac434a96bf235227e0f97,
+        type: 3}
+      propertyPath: gameOverlayController
+      value: 
+      objectReference: {fileID: 21800613}
     - target: {fileID: 7451418005684447542, guid: dd94ad3e4d6ac434a96bf235227e0f97,
         type: 3}
       propertyPath: m_Name
@@ -19185,7 +19263,7 @@ GameObject:
   - component: {fileID: 1151291587}
   - component: {fileID: 1151291586}
   m_Layer: 0
-  m_Name: SpawnManager
+  m_Name: SpawnManager_old
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21880,6 +21958,11 @@ PrefabInstance:
       propertyPath: controlsManager
       value: 
       objectReference: {fileID: 1517808936}
+    - target: {fileID: 5889157131035122081, guid: 427d7bae5a9f58742876e07734869d09,
+        type: 3}
+      propertyPath: gameOverlayController
+      value: 
+      objectReference: {fileID: 21800613}
     - target: {fileID: 5889157131035122082, guid: 427d7bae5a9f58742876e07734869d09,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21966,6 +22049,11 @@ PrefabInstance:
       propertyPath: controlsManager
       value: 
       objectReference: {fileID: 1517808936}
+    - target: {fileID: 2358140655493449320, guid: 2e03fe28def995b4084ec0028eae4a13,
+        type: 3}
+      propertyPath: gameOverlayController
+      value: 
+      objectReference: {fileID: 21800613}
     - target: {fileID: 2358140655493449322, guid: 2e03fe28def995b4084ec0028eae4a13,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22025,6 +22113,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dr. Professor
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358140655493449325, guid: 2e03fe28def995b4084ec0028eae4a13,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e03fe28def995b4084ec0028eae4a13, type: 3}
@@ -22096,6 +22189,8 @@ MonoBehaviour:
   characterSelectController: {fileID: 78135407}
   brewingPhaseController: {fileID: 1947301601}
   afterMatchController: {fileID: 1669547694}
+  pauseMenu: {fileID: 0}
+  genericCharacter: {fileID: 0}
 --- !u!114 &1347666517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23518,6 +23613,8 @@ MonoBehaviour:
   characterSelectController: {fileID: 2029108413}
   brewingPhaseController: {fileID: 192626862}
   afterMatchController: {fileID: 35314256}
+  pauseMenu: {fileID: 0}
+  genericCharacter: {fileID: 0}
 --- !u!114 &1454679447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24530,6 +24627,11 @@ PrefabInstance:
       propertyPath: controlsManager
       value: 
       objectReference: {fileID: 1517808936}
+    - target: {fileID: 5914989715428130531, guid: 4f139f9a2654bd044838d87038cfa581,
+        type: 3}
+      propertyPath: gameOverlayController
+      value: 
+      objectReference: {fileID: 21800613}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f139f9a2654bd044838d87038cfa581, type: 3}
 --- !u!1 &1512087254 stripped
@@ -26211,7 +26313,12 @@ MonoBehaviour:
   player1: {fileID: 11400000, guid: 491e4f90cc3cea545b7b86776434fce4, type: 2}
   player2: {fileID: 11400000, guid: f0af0c7bb9303264b8ac0b812117b6ad, type: 2}
   player3: {fileID: 11400000, guid: ac6388aa48268434cb1af62bbc18df67, type: 2}
-  mainCamShake: {fileID: 0}
+  playersGameOverlayUI:
+  - {fileID: 1950235957}
+  - {fileID: 1767347872}
+  - {fileID: 1687538137}
+  - {fileID: 118620867}
+  mainCamShake: {fileID: 865830325}
   enableCamShakeOnDeath: 1
 --- !u!4 &1697950260
 Transform:
@@ -27061,6 +27168,11 @@ PrefabInstance:
       propertyPath: controlsManager
       value: 
       objectReference: {fileID: 1517808936}
+    - target: {fileID: 5889157131035122081, guid: 427d7bae5a9f58742876e07734869d09,
+        type: 3}
+      propertyPath: gameOverlayController
+      value: 
+      objectReference: {fileID: 21800613}
     - target: {fileID: 5889157131035122082, guid: 427d7bae5a9f58742876e07734869d09,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -27209,6 +27321,105 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1747094200}
   m_CullTransparentMesh: 0
+--- !u!1 &1748545541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1748545544}
+  - component: {fileID: 1748545543}
+  - component: {fileID: 1748545542}
+  m_Layer: 0
+  m_Name: SpawnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1748545542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748545541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2ccb7f6fe39e694cbf70e2e6da7cdd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnTime: 2
+--- !u!114 &1748545543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748545541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63d7c201d36320547ad0cab019993402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsToPool:
+  - objectToPool: {fileID: 6953075727441956800, guid: b8e5bec94cda68e4bbe524087b0006fd,
+      type: 3}
+    amountToPool: 3
+    shouldExpand: 1
+  - objectToPool: {fileID: 8609145565279659012, guid: 2b0d7a8c82920e342aa7f040c5f8515c,
+      type: 3}
+    amountToPool: 3
+    shouldExpand: 1
+  - objectToPool: {fileID: 6342058585083793, guid: 3240c3a41d7f3d34a9fe604a5cf9d3be,
+      type: 3}
+    amountToPool: 3
+    shouldExpand: 1
+  - objectToPool: {fileID: 6514714914129979670, guid: 7a189b5ba3183974aba0a96acecbb10f,
+      type: 3}
+    amountToPool: 3
+    shouldExpand: 1
+  - objectToPool: {fileID: 3662271833256639420, guid: 7eb4def65b04868468b01eae92258ca8,
+      type: 3}
+    amountToPool: 3
+    shouldExpand: 1
+  - objectToPool: {fileID: 6094763388907796509, guid: c7eecb92bd7844b4bb224e882b1210ac,
+      type: 3}
+    amountToPool: 3
+    shouldExpand: 1
+  - objectToPool: {fileID: 3101102612383018132, guid: 20897028d04317342939663723f8895c,
+      type: 3}
+    amountToPool: 3
+    shouldExpand: 1
+  - objectToPool: {fileID: 5460528518929216973, guid: bb7b45834cb237342a9dbe40a4472e95,
+      type: 3}
+    amountToPool: 3
+    shouldExpand: 1
+  - objectToPool: {fileID: 5738296437909037499, guid: 14d93d768c2449149bf2183c4ea3b2a3,
+      type: 3}
+    amountToPool: 3
+    shouldExpand: 1
+  - objectToPool: {fileID: 4214988008383786275, guid: 9cb370e89d88cec4889f98bbb86a4036,
+      type: 3}
+    amountToPool: 3
+    shouldExpand: 1
+  pooledObjects: []
+--- !u!4 &1748545544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748545541}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7, y: 5.13, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1759107080
 GameObject:
   m_ObjectHideFlags: 0
@@ -28141,6 +28352,11 @@ PrefabInstance:
       propertyPath: controlsManager
       value: 
       objectReference: {fileID: 1517808936}
+    - target: {fileID: 7451418005684447541, guid: dd94ad3e4d6ac434a96bf235227e0f97,
+        type: 3}
+      propertyPath: gameOverlayController
+      value: 
+      objectReference: {fileID: 21800613}
     - target: {fileID: 7451418005684447542, guid: dd94ad3e4d6ac434a96bf235227e0f97,
         type: 3}
       propertyPath: m_Name
@@ -30944,13 +31160,18 @@ PrefabInstance:
     - target: {fileID: 5914989715428129055, guid: 4f139f9a2654bd044838d87038cfa581,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5914989715428130531, guid: 4f139f9a2654bd044838d87038cfa581,
         type: 3}
       propertyPath: controlsManager
       value: 
       objectReference: {fileID: 1517808936}
+    - target: {fileID: 5914989715428130531, guid: 4f139f9a2654bd044838d87038cfa581,
+        type: 3}
+      propertyPath: gameOverlayController
+      value: 
+      objectReference: {fileID: 21800613}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f139f9a2654bd044838d87038cfa581, type: 3}
 --- !u!4 &2026314365 stripped
@@ -32250,7 +32471,7 @@ MonoBehaviour:
   kills: {fileID: 1496513483}
   deaths: {fileID: 201681539}
   weets: {fileID: 1298915934}
-  Confirm: {fileID: 67977236}
+  Confirm: {fileID: 507827782}
   confirmBorder: {fileID: 18465151}
 --- !u!224 &2097776375
 RectTransform:
@@ -33350,6 +33571,11 @@ PrefabInstance:
       propertyPath: controlsManager
       value: 
       objectReference: {fileID: 1517808936}
+    - target: {fileID: 2358140655493449320, guid: 2e03fe28def995b4084ec0028eae4a13,
+        type: 3}
+      propertyPath: gameOverlayController
+      value: 
+      objectReference: {fileID: 21800613}
     - target: {fileID: 2358140655493449322, guid: 2e03fe28def995b4084ec0028eae4a13,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33413,7 +33639,7 @@ PrefabInstance:
     - target: {fileID: 2358140655493449325, guid: 2e03fe28def995b4084ec0028eae4a13,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e03fe28def995b4084ec0028eae4a13, type: 3}
@@ -33429,6 +33655,11 @@ PrefabInstance:
       propertyPath: controlsManager
       value: 
       objectReference: {fileID: 1517808936}
+    - target: {fileID: 5889157131035122081, guid: 427d7bae5a9f58742876e07734869d09,
+        type: 3}
+      propertyPath: gameOverlayController
+      value: 
+      objectReference: {fileID: 21800613}
     - target: {fileID: 5889157131035122082, guid: 427d7bae5a9f58742876e07734869d09,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33563,6 +33794,11 @@ PrefabInstance:
       propertyPath: controlsManager
       value: 
       objectReference: {fileID: 1517808936}
+    - target: {fileID: 5914989715428130531, guid: 4f139f9a2654bd044838d87038cfa581,
+        type: 3}
+      propertyPath: gameOverlayController
+      value: 
+      objectReference: {fileID: 21800613}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f139f9a2654bd044838d87038cfa581, type: 3}
 --- !u!1001 &7451418004636131238
@@ -33577,6 +33813,11 @@ PrefabInstance:
       propertyPath: controlsManager
       value: 
       objectReference: {fileID: 1517808936}
+    - target: {fileID: 7451418005684447541, guid: dd94ad3e4d6ac434a96bf235227e0f97,
+        type: 3}
+      propertyPath: gameOverlayController
+      value: 
+      objectReference: {fileID: 21800613}
     - target: {fileID: 7451418005684447542, guid: dd94ad3e4d6ac434a96bf235227e0f97,
         type: 3}
       propertyPath: m_Name

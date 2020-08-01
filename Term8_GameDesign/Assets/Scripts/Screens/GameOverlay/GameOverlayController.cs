@@ -13,27 +13,36 @@ public class GameOverlayController : MonoBehaviour
     private bool isPaused;
     // pauseOverlayCanvas
     private float min = 0;
-    private float sec = 3;
+    private float sec = 10;
     private float msec = 0;
+
+    [SerializeField]
+    public bool inBattle = false;
 
     void Start()
     {
         screensTransitionManager = FindObjectOfType<ScreensTransitionManager>();
         SetCountDown(min, sec, msec);
+        invisPlatform.SetActive(false);
+    }
+
+    public void StartMatch()
+    {
         for (int i = 0; i< playerUIs.Length; i++)
         {
             playerUIs[i].UpdatePlayer(playerStatsList[i]);
         }
-        invisPlatform.SetActive(false);
+        inBattle = true;
     }
 
     void Update()
     {        
-        if (min==0 && sec==0 && (int) msec==0)
+        if (min==0 && sec==0 && (int) msec==0 && inBattle == true)
         {
+            inBattle = false;
             screensTransitionManager.ToAfterMatch();
         }
-        else
+        else if (min>=0 && sec>=0 && (int) msec>=0 && inBattle == true)
         {
             // if button pressed and ispaused
             

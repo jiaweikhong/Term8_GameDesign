@@ -21,26 +21,35 @@ public class ControlsManager : MonoBehaviour
 
     public void SwitchAllControllersToCharacterMode()
     {
-        if (controlsP1.gameObject.activeSelf == true)
-        { controlsP1.SwitchCurrentActionMap("CharacterActions"); }
-        if (controlsP2.gameObject.activeSelf == true)
-        { controlsP2.SwitchCurrentActionMap("CharacterActions"); }
-        if (controlsP3.gameObject.activeSelf == true)
-        { controlsP3.SwitchCurrentActionMap("CharacterActions"); }
-        if (controlsP4.gameObject.activeSelf == true)
-        { controlsP4.SwitchCurrentActionMap("CharacterActions"); }
+        // if (controlsP1.gameObject.activeSelf == true)
+        // { controlsP1.SwitchCurrentActionMap("CharacterActions"); }
+        // if (controlsP2.gameObject.activeSelf == true)
+        // { controlsP2.SwitchCurrentActionMap("CharacterActions"); }
+        // if (controlsP3.gameObject.activeSelf == true)
+        // { controlsP3.SwitchCurrentActionMap("CharacterActions"); }
+        // if (controlsP4.gameObject.activeSelf == true)
+        // { controlsP4.SwitchCurrentActionMap("CharacterActions"); }
+        controlsP1.SwitchCurrentActionMap("CharacterActions");
+        controlsP2.SwitchCurrentActionMap("CharacterActions");
+        controlsP3.SwitchCurrentActionMap("CharacterActions");
+        controlsP4.SwitchCurrentActionMap("CharacterActions");
     }
 
     public void SwitchAllControllersToUIMode()
     {
-        if (controlsP1.gameObject.activeSelf == true)
-        { controlsP1.SwitchCurrentActionMap("UIActions"); }
-        if (controlsP2.gameObject.activeSelf == true)
-        { controlsP2.SwitchCurrentActionMap("UIActions"); }
-        if (controlsP3.gameObject.activeSelf == true)
-        { controlsP3.SwitchCurrentActionMap("UIActions"); }
-        if (controlsP4.gameObject.activeSelf == true)
-        { controlsP4.SwitchCurrentActionMap("UIActions"); }
+        Debug.Log("im in control manager");
+        // if (controlsP1.gameObject.activeSelf == true)
+        // { controlsP1.SwitchCurrentActionMap("UIActions"); }
+        // if (controlsP2.gameObject.activeSelf == true)
+        // { controlsP2.SwitchCurrentActionMap("UIActions"); }
+        // if (controlsP3.gameObject.activeSelf == true)
+        // { controlsP3.SwitchCurrentActionMap("UIActions"); }
+        // if (controlsP4.gameObject.activeSelf == true)
+        // { controlsP4.SwitchCurrentActionMap("UIActions"); }
+        controlsP1.SwitchCurrentActionMap("UIActions");
+        controlsP2.SwitchCurrentActionMap("UIActions");
+        controlsP3.SwitchCurrentActionMap("UIActions");
+        controlsP4.SwitchCurrentActionMap("UIActions");
     }
 
     public void DisableActionMap(int playerNum)

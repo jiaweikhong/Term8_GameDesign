@@ -11,6 +11,8 @@ public abstract class GenericCharacter : MonoBehaviour
     protected CharacterMovementController movementController;
     protected GenericPlayer playerScript;
     protected Animator animator;
+    [SerializeField]
+    protected GameOverlayController gameOverlayController;
 
     // movement variables
     public float runSpeed = 40f;
@@ -190,7 +192,8 @@ public abstract class GenericCharacter : MonoBehaviour
     {
         // remember to check if there's any more potions left.
         // if playerScript.UseSpecialPotionIfCanUse() -> use
-        if (playerScript.UseSpecialPotionIfCanUse()) {
+        if (playerScript.UseSpecialPotionIfCanUse())
+        {
             Debug.Log("Potion 3!");
             switch (playerScript.GetSpecialPotionType())
             {
@@ -208,7 +211,7 @@ public abstract class GenericCharacter : MonoBehaviour
                     break;
             }
         }
-        
+
     }
 
     public abstract void OnDeath();
@@ -242,7 +245,8 @@ public abstract class GenericCharacter : MonoBehaviour
         playerScript.CastMuddlingMist();
     }
 
-    public void disableSprite() {
+    public void disableSprite()
+    {
         MMSprite.SetActive(false);
         DDSprite.SetActive(false);
     }
@@ -300,6 +304,9 @@ public abstract class GenericCharacter : MonoBehaviour
         boxCollider.enabled = true;
         rigidBody.bodyType = RigidbodyType2D.Dynamic;
         spriteRenderer.enabled = true;
-        controlsManager.EnableCharacterActionMap(playerScript.playerNum);
+        if (gameOverlayController.inBattle == true)
+        {
+            controlsManager.EnableCharacterActionMap(playerScript.playerNum);
+        }
     }
 }

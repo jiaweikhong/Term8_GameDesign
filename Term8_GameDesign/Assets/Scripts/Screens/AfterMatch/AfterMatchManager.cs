@@ -10,6 +10,10 @@ public class AfterMatchManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    }
+
+    void OnEnable()
+    {
         for (int i = 0; i < playerStatsList.Length; i++)
         {
             kills[i] = playerStatsList[i].PlayerKills;

@@ -13,11 +13,13 @@ public class ScreensTransitionManager : MonoBehaviour
     public GameObject afterMatchCanvas;
     public GameObject gameOverlayCanvas;
     public ControlsManager controlsManager;
+    private GameOverlayController gameOverlayController;
 
     public int requiredPlayersToStart = 4;
     private int screenNum = 0;
     [SerializeField]
     private int readyPlayersNum = 0;
+    private int matchNum = 0;
 
     private AudioSource audioSrc;
     public AudioClip toSelectPlaySFX;
@@ -31,7 +33,7 @@ public class ScreensTransitionManager : MonoBehaviour
     // {
     //     DontDestroyOnLoad(gameObject);
     // }
-    
+
     private void Start()
     {
         // set active/inactive pages 
@@ -40,12 +42,13 @@ public class ScreensTransitionManager : MonoBehaviour
         brewingPhaseCanvas.SetActive(false);
         afterMatchCanvas.SetActive(false);
         gameOverlayCanvas.SetActive(false);
+        gameOverlayController = gameOverlayCanvas.GetComponent<GameOverlayController>();
         audioSrc = GetComponent<AudioSource>();
     }
 
     public void Update()
     {
-        if (screenNum == 1)
+        if (screenNum == 1) // character select
         {
             if (readyPlayersNum == requiredPlayersToStart)
             {
@@ -54,27 +57,28 @@ public class ScreensTransitionManager : MonoBehaviour
                 StartCoroutine(ToBrewingPhase());
             }
         }
-        else if (screenNum == 2)
+        else if (screenNum == 2) // brewing phase
         {
             if (readyPlayersNum == requiredPlayersToStart)
             {
                 screenNum += 1;
-                readyPlayersNum = 0;
+                readyPlayersNum = 4;
                 StartCoroutine(ToGamePlay());
             }
         }
-        
-        else if (screenNum == 4)
+
+        else if (screenNum == 4) // after match
         {
             if (readyPlayersNum == requiredPlayersToStart)
             {
                 screenNum = 2;
                 readyPlayersNum = 0;
+                Debug.Log("going to brewing phase now");
                 StartCoroutine(ToBrewingPhase());
             }
         }
     }
-    
+
 
     public void ReadyPlayer(bool ready)
     {
@@ -93,17 +97,45 @@ public class ScreensTransitionManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         gameOverlayCanvas.SetActive(true);
+        gameOverlayController.StartMatch();
         brewingPhaseCanvas.SetActive(false);
         controlsManager.SwitchAllControllersToCharacterMode();
+        matchNum += 1;
     }
 
-    public void ToAfterMatch() 
+    private IEnumerator SwitchControllers()
+    {
+        controlsManager.DisableActionMap(0);
+        controlsManager.DisableActionMap(1);
+        controlsManager.DisableActionMap(2);
+        controlsManager.DisableActionMap(3);
+        // Time.timeScale = 0;
+        // Time.timeScale=0;
+        // yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSeconds(2f);
+        // Time.timeScale=1;
+        screenNum += 1;
+        afterMatchCanvas.SetActive(true);
+        // Time.timeScale = 1;
+        Debug.Log("supposed to start change to ui");
+        controlsManager.SwitchAllControllersToUIMode();
+        Debug.Log("change to ui");
+    }
+
+
+    public void ToAfterMatch()
     {
         if (screenNum == 3)
         {
-            screenNum += 1;
-            afterMatchCanvas.SetActive(true);
-            controlsManager.SwitchAllControllersToUIMode();
+            OnNewMatch?.Invoke();
+            if (matchNum < 3)
+            {
+                StartCoroutine(SwitchControllers());
+            }
+            else
+            {
+                // final match ui
+            }
         }
     }
 
@@ -118,5 +150,6 @@ public class ScreensTransitionManager : MonoBehaviour
         }
     }
 
-
+    public delegate void NewMatch();
+    public event NewMatch OnNewMatch;
 }
