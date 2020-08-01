@@ -18,6 +18,9 @@ public class CharacterMovementController : MonoBehaviour
     private bool m_FacingRight = true;
     private Vector3 m_Velocity = Vector3.zero;
 
+	private AudioSource audioSrc;
+	public AudioClip jumpSFX;
+
 	[Header("Events")]
 	[Space]
 
@@ -26,6 +29,7 @@ public class CharacterMovementController : MonoBehaviour
 	private void Awake()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
+		audioSrc = GetComponent<AudioSource>();
 		if (OnLandEvent == null) OnLandEvent = new UnityEvent();
 	}
 
@@ -68,6 +72,7 @@ public class CharacterMovementController : MonoBehaviour
 
 		if (m_Grounded && jump)
 		{
+			audioSrc.PlayOneShot(jumpSFX);
 			//Debug.Log("jump velocity activated!");
 			m_Grounded = false;
 			/*m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));*/

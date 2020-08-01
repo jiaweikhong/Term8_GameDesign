@@ -27,10 +27,11 @@ public class Lumira : GenericCharacter
         animator.SetTrigger("Attack");
         audioSrc.PlayOneShot(potion1SFX);
 
-        // Set casterPlayerNum in primaryPotion script of prefab 
+        // Set casterPlayerNum, casterPlayerSpeed in primaryPotion script of prefab 
         GameObject primaryPotion = ObjectPooler.SharedInstance.GetPooledObject("LumiraPrimary(Clone)"); 
         primaryPotion.GetComponent<PrimaryPotion>().casterPlayerNum = playerScript.playerNum;
-        
+        primaryPotion.GetComponent<PrimaryPotion>().casterPlayerSpeed = rigidBody.velocity;
+
         // Reset transform, set pooled object to active
         if (primaryPotion != null)
         {
@@ -44,18 +45,20 @@ public class Lumira : GenericCharacter
 
     public override void UsePotion2()
     {
-        animator.SetTrigger("Attack");
-        audioSrc.PlayOneShot(potion2SFX);
+        if (playerScript.UseSecondaryPotionIfCanUse()) {
+            animator.SetTrigger("Secondary");
+            audioSrc.PlayOneShot(potion2SFX);
 
-        GameObject secondaryPotion = ObjectPooler.SharedInstance.GetPooledObject("LumiraSecondary(Clone)"); 
-        secondaryPotion.GetComponent<SecondaryPotion>().casterPlayerNum = playerScript.playerNum;
-        if (secondaryPotion != null)
-        {
-            secondaryPotion.transform.position = transform.position;
-            secondaryPotion.transform.rotation = transform.rotation;
-            secondaryPotion.SetActive(true);
+            GameObject secondaryPotion = ObjectPooler.SharedInstance.GetPooledObject("LumiraSecondary(Clone)"); 
+            secondaryPotion.GetComponent<SecondaryPotion>().casterPlayerNum = playerScript.playerNum;
+            if (secondaryPotion != null)
+            {
+                secondaryPotion.transform.position = transform.position;
+                secondaryPotion.transform.rotation = transform.rotation;
+                secondaryPotion.SetActive(true);
+            }
+            Debug.Log("Potion 2!!");
         }
-        Debug.Log("Potion 2!!");
     }
 
     public override void OnDeath()

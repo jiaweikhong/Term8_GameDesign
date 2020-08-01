@@ -16,44 +16,52 @@ public class ObjectPooler : MonoBehaviour {
     public List<ObjectPoolItem> itemsToPool;
     public List<GameObject> pooledObjects;
 
-	void Awake() {
+	void Awake()
+    {
 		SharedInstance = this;
 	}
 
 	// Use this for initialization
-  void Start () {
-    pooledObjects = new List<GameObject>();
-    foreach (ObjectPoolItem item in itemsToPool) {
-      for (int i = 0; i < item.amountToPool; i++) {
-        GameObject obj = (GameObject)Instantiate(item.objectToPool);
-        obj.SetActive(false);
-        pooledObjects.Add(obj);
-      }
-    }
-  }
-	
-  public GameObject GetPooledObject(string name) {
-    for (int i = 0; i < pooledObjects.Count; i++) {
-        Debug.Log(pooledObjects[i].name);
-      if (!pooledObjects[i].activeInHierarchy && pooledObjects[i].name == name) {
-        return pooledObjects[i];
-      }
-    }
-    foreach (ObjectPoolItem item in itemsToPool) {
-      if (item.objectToPool.name == name) {
-        if (item.shouldExpand) {
-          GameObject obj = (GameObject)Instantiate(item.objectToPool);
-          obj.SetActive(false);
-          pooledObjects.Add(obj);
-          return obj;
+    void Start()
+    {
+        pooledObjects = new List<GameObject>();
+        foreach (ObjectPoolItem item in itemsToPool)
+        {
+            for (int i = 0; i < item.amountToPool; i++)
+            {
+                GameObject obj = (GameObject)Instantiate(item.objectToPool);
+                obj.SetActive(false);
+                pooledObjects.Add(obj);
+            }
         }
-      }
     }
-    return null;
-  }
 
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public GameObject GetPooledObject(string name)
+    {
+        for (int i = 0; i < pooledObjects.Count; i++)
+        {
+            if (!pooledObjects[i].activeInHierarchy && pooledObjects[i].name == name)
+            {
+                return pooledObjects[i];
+            }
+        }
+
+        // if don't have an inactive object ready to be pooled
+        foreach (ObjectPoolItem item in itemsToPool)
+        {
+            string formattedName = name.Replace("(Clone)", "");
+            if (item.objectToPool.name == formattedName)
+            {
+                Debug.Log(name + "   " + item.shouldExpand);
+                if (item.shouldExpand)
+                {
+                    GameObject obj = (GameObject)Instantiate(item.objectToPool);
+                    obj.SetActive(false);
+                    pooledObjects.Add(obj);
+                    return obj;
+                }
+            }
+        }
+        return null;
+    }
 }

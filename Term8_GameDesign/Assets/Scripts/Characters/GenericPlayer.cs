@@ -93,6 +93,12 @@ public class GenericPlayer : MonoBehaviour
 
     public bool UseSpecialPotionIfCanUse()
     {
+        if (GetSpecialPotionType() == SpecialPotionType.SwiftnessElixir)
+        {
+            // if Swiftness Elixir has been used, do not allow stacked usage 
+            if (genericCharacter.isFast) return false;
+        }
+
         return gameManager.UseSpecialPotionIfCanUse(playerNum);
     }
 
@@ -120,6 +126,20 @@ public class GenericPlayer : MonoBehaviour
     public void CastDreamingDust()
     {
         gameManager.CastDreamDust(playerNum);
+    }
+
+    public void AddWeets()
+    {
+        // TODO: change amount of weets
+        int amt = 20;
+        gameManager.AddWeets(playerNum, amt);
+    }
+
+    public void AddSecPotionQty()
+    {
+        // TODO: change amount of secQty
+        int amt = 2;
+        gameManager.AddSecPotionQty(playerNum, amt);
     }
 
     public void AttachCharacter(CharacterType charType)

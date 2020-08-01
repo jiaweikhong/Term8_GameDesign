@@ -3406,8 +3406,23 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: af56303c-1836-4449-a347-309abd2caf4a
     m_ActionName: UI0/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 197273091}
+        m_MethodName: PauseInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d50ae7eb-9ca2-43c2-b23b-5f84ecdfb32e
+    m_ActionName: CharacterActions/StartButton[/Keyboard/p]
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: UIActions
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -13367,6 +13382,21 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: af56303c-1836-4449-a347-309abd2caf4a
     m_ActionName: UI0/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 761714820}
+        m_MethodName: PauseInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d50ae7eb-9ca2-43c2-b23b-5f84ecdfb32e
+    m_ActionName: CharacterActions/StartButton[/Keyboard/p]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: UIActions
@@ -19561,7 +19591,7 @@ MonoBehaviour:
   afterMatchCanvas: {fileID: 120882812}
   gameOverlayCanvas: {fileID: 21800606}
   controlsManager: {fileID: 1517808936}
-  requiredPlayersToStart: 2
+  requiredPlayersToStart: 4
   readyPlayersNum: 0
   toSelectPlaySFX: {fileID: 8300000, guid: d2701761ad919584d8a04bbe6b134f28, type: 3}
 --- !u!4 &1193019350
@@ -22240,6 +22270,21 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: af56303c-1836-4449-a347-309abd2caf4a
     m_ActionName: UI0/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1347666516}
+        m_MethodName: PauseInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d50ae7eb-9ca2-43c2-b23b-5f84ecdfb32e
+    m_ActionName: CharacterActions/StartButton[/Keyboard/p]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: UIActions
@@ -23647,6 +23692,21 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: af56303c-1836-4449-a347-309abd2caf4a
     m_ActionName: UI0/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1454679446}
+        m_MethodName: PauseInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d50ae7eb-9ca2-43c2-b23b-5f84ecdfb32e
+    m_ActionName: CharacterActions/StartButton[/Keyboard/p]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: UIActions

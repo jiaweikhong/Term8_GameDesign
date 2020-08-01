@@ -12,6 +12,8 @@ public class PlayerInputScript : MonoBehaviour
     public BrewingPhaseController brewingPhaseController;
     public AfterMatchController afterMatchController;
     protected GenericCharacter genericCharacter;
+    public PauseMenu pauseMenu;
+    [SerializeField] protected GenericCharacter genericCharacter;
 
 
     private void Start()
@@ -45,7 +47,10 @@ public class PlayerInputScript : MonoBehaviour
         // Arena Scene - Start the input for match conclusion screen here
         else if (SceneManager.GetActiveScene().buildIndex == 1 && context.performed)
         {
-
+            if (PauseMenu.isGamePaused)
+            {
+                pauseMenu.NavigateInput(context);
+            }
         }
     }
 
@@ -78,7 +83,10 @@ public class PlayerInputScript : MonoBehaviour
         // Arena Scene - Start the input for match conclusion screen here
         else if (SceneManager.GetActiveScene().buildIndex == 1 && context.performed)
         {
-
+            if (PauseMenu.isGamePaused)
+            {
+                pauseMenu.Select();
+            }
         }
     }
 
@@ -106,7 +114,6 @@ public class PlayerInputScript : MonoBehaviour
         // Arena Scene - Start the input for match conclusion screen here
         else if (SceneManager.GetActiveScene().buildIndex == 1 && context.performed)
         {
-
         }
     }
 
@@ -145,6 +152,15 @@ public class PlayerInputScript : MonoBehaviour
         if (context.performed)
         {
             genericCharacter.SpecialPotInput(context);
+        }
+    }
+
+    public void PauseInput(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            // pause button is pressed
+            pauseMenu.TogglePause();
         }
     }
 

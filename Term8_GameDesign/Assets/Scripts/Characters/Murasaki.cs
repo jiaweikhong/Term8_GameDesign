@@ -27,12 +27,12 @@ public class Murasaki : GenericCharacter
         // attack animation
         animator.SetTrigger("Attack");
         audioSrc.PlayOneShot(potion1SFX);
-        // TODO: primary attack animation
 
-        // Set casterPlayerNum in primaryPotion script of prefab 
+        // Set casterPlayerNum, casterPlayerSpeed in primaryPotion script of prefab 
         GameObject primaryPotion = ObjectPooler.SharedInstance.GetPooledObject("MurasakiPrimary(Clone)"); 
         // Instantiate(primaryPotionPrefab, firePoint.position, firePoint.rotation);
         primaryPotion.GetComponent<PrimaryPotion>().casterPlayerNum = playerScript.playerNum;
+        primaryPotion.GetComponent<PrimaryPotion>().casterPlayerSpeed = rigidBody.velocity;
         if (primaryPotion != null)
         {
             primaryPotion.transform.position = firePoint.position;
@@ -46,18 +46,20 @@ public class Murasaki : GenericCharacter
 
     public override void UsePotion2()
     {
-        animator.SetTrigger("Attack");
-        audioSrc.PlayOneShot(potion2SFX);
+        if (playerScript.UseSecondaryPotionIfCanUse()) {
+            animator.SetTrigger("Secondary");
+            audioSrc.PlayOneShot(potion2SFX);
 
-        GameObject secondaryPotion = ObjectPooler.SharedInstance.GetPooledObject("MurasakiSecondary(Clone)"); 
-        secondaryPotion.GetComponent<SecondaryPotion>().casterPlayerNum = playerScript.playerNum;
-        if (secondaryPotion != null)
-        {
-            secondaryPotion.transform.position = swordsSpawnPoint.position;
-            secondaryPotion.transform.rotation = swordsSpawnPoint.rotation;
-            secondaryPotion.SetActive(true);
+            GameObject secondaryPotion = ObjectPooler.SharedInstance.GetPooledObject("MurasakiSecondary(Clone)"); 
+            secondaryPotion.GetComponent<SecondaryPotion>().casterPlayerNum = playerScript.playerNum;
+            if (secondaryPotion != null)
+            {
+                secondaryPotion.transform.position = swordsSpawnPoint.position;
+                secondaryPotion.transform.rotation = swordsSpawnPoint.rotation;
+                secondaryPotion.SetActive(true);
+            }
+            Debug.Log("Potion 2!!");
         }
-        Debug.Log("Potion 2!!");
     }
 
     public override void OnDeath()

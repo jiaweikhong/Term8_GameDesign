@@ -17,8 +17,6 @@ public abstract class GenericCharacter : MonoBehaviour
     protected Vector2 inputVector = new Vector2(0, 0);
     protected float horizontalMove = 0f;
     protected bool jump = false;
-    protected bool isLeftPressed = false;     // REMOVE THIS once we get the axis controls
-    protected bool isRightPressed = false;
 
     // attack variables
     protected float timeBtwAttack;          // To prevent spamming skill
@@ -29,12 +27,15 @@ public abstract class GenericCharacter : MonoBehaviour
     // status effect variables
     protected bool isMuddled = false;
     protected bool canMove = true;
+    public bool isFast = false;      // used to prevent stacking of swiftness elixirs
+    [SerializeField]
+    private float speedBoostMultiplier = 1.75f;
 
     // death respawn stuff
     public float respawnTime = 2f;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider;
-    private Rigidbody2D rigidBody;
+    protected Rigidbody2D rigidBody;
 
     // SFX
     protected AudioSource audioSrc;
@@ -43,6 +44,9 @@ public abstract class GenericCharacter : MonoBehaviour
     public AudioClip deathSFX;
     public AudioClip jumpSFX;
     public AudioClip landSFX;
+
+    public GameObject MMSprite;
+    public GameObject DDSprite;
 
     private void Start()
     {
@@ -71,6 +75,7 @@ public abstract class GenericCharacter : MonoBehaviour
             //Debug.Log("move input detected");
             inputVector = context.ReadValue<Vector2>();
             horizontalMove = inputVector.x * runSpeed * (isMuddled ? -1 : 1);
+            horizontalMove *= (isFast ? speedBoostMultiplier : 1);
             animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         }
     }
@@ -79,7 +84,7 @@ public abstract class GenericCharacter : MonoBehaviour
     {
         if (canMove)
         {
-            audioSrc.PlayOneShot(jumpSFX);
+            //audioSrc.PlayOneShot(jumpSFX);
             //Debug.Log("jump input detected");
             jump = true;
             animator.SetBool("IsJumping", true);
@@ -122,7 +127,7 @@ public abstract class GenericCharacter : MonoBehaviour
         animator.SetBool("IsJumping", false);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Damage") && !wasHurted)
         {
@@ -151,6 +156,22 @@ public abstract class GenericCharacter : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("pickup"))
+        {
+            Debug.Log("I met some weeds");
+            playerScript.AddWeets();
+            collision.gameObject.SetActive(false);
+        }
+        if (collision.gameObject.CompareTag("potion"))
+        {
+            Debug.Log("I met the potion");
+            playerScript.AddSecPotionQty();
+            collision.gameObject.SetActive(false);
+        }
+    }
+
     IEnumerator UnhurtPlayer()
     {
         animator.SetLayerWeight(1, 1);
@@ -169,22 +190,25 @@ public abstract class GenericCharacter : MonoBehaviour
     {
         // remember to check if there's any more potions left.
         // if playerScript.UseSpecialPotionIfCanUse() -> use
-        Debug.Log("Potion 3!");
-        switch (playerScript.GetSpecialPotionType())
-        {
-            case SpecialPotionType.DreamDust:
-                DreamDust();
-                break;
-            case SpecialPotionType.KillerBrew:
-                KillerBrew();
-                break;
-            case SpecialPotionType.MuddlingMist:
-                MuddlingMist();
-                break;
-            case SpecialPotionType.SwiftnessElixir:
-                SwiftnessElixir();
-                break;
+        if (playerScript.UseSpecialPotionIfCanUse()) {
+            Debug.Log("Potion 3!");
+            switch (playerScript.GetSpecialPotionType())
+            {
+                case SpecialPotionType.DreamDust:
+                    DreamDust();
+                    break;
+                case SpecialPotionType.KillerBrew:
+                    KillerBrew();
+                    break;
+                case SpecialPotionType.MuddlingMist:
+                    MuddlingMist();
+                    break;
+                case SpecialPotionType.SwiftnessElixir:
+                    SwiftnessElixir();
+                    break;
+            }
         }
+        
     }
 
     public abstract void OnDeath();
@@ -193,15 +217,16 @@ public abstract class GenericCharacter : MonoBehaviour
     public void SwiftnessElixir()
     {
         Debug.Log("Started speed boost");
+        animator.SetTrigger("SE");
         audioSrc.PlayOneShot(specialPotsSFX.SwiftnessElixirSFX);
-        float speedMultiplier = 1.75f;   // TODO: refactor to variable later
-        runSpeed *= speedMultiplier;
-        StartCoroutine(RevertEnhancedSpeed(speedMultiplier));
+        isFast = true;
+        StartCoroutine(RevertEnhancedSpeed());
     }
 
     public void KillerBrew()
     {
         Debug.Log("Started Killer Brew");
+        animator.SetTrigger("KB");
         audioSrc.PlayOneShot(specialPotsSFX.KillerBrewSFX);
         playerScript.IncreaseDamageDealtTo2();
         StartCoroutine(RevertDamageDealt());
@@ -210,22 +235,33 @@ public abstract class GenericCharacter : MonoBehaviour
     public void MuddlingMist()
     {
         Debug.Log("Started Muddling Mist");
+        animator.SetTrigger("Open");
+        MMSprite.SetActive(true);
+        Invoke("disableSprite", 1f);
         audioSrc.PlayOneShot(specialPotsSFX.MuddlingMistSFX);
         playerScript.CastMuddlingMist();
+    }
+
+    public void disableSprite() {
+        MMSprite.SetActive(false);
+        DDSprite.SetActive(false);
     }
 
     public void DreamDust()
     {
         Debug.Log("Started Dream Dust");
+        animator.SetTrigger("Open");
+        DDSprite.SetActive(true);
+        Invoke("disableSprite", 1f);
         audioSrc.PlayOneShot(specialPotsSFX.DreamDustSFX);
         playerScript.CastDreamingDust();
     }
 
     // Coroutines to end special potion's effect
-    IEnumerator RevertEnhancedSpeed(float speedMultiplier)
+    IEnumerator RevertEnhancedSpeed()
     {
         yield return new WaitForSeconds(7f);
-        runSpeed /= speedMultiplier;
+        isFast = false;
         Debug.Log("Ended speed boost");
     }
 

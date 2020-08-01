@@ -30,10 +30,11 @@ public class TheTraveller : GenericCharacter
         // TODO: primary attack animation
         // potionAnimator.SetTrigger("Primary");
 
-        // Set casterPlayerNum in primaryPotion script of prefab 
+        // Set casterPlayerNum, casterPlayerSpeed in primaryPotion script of prefab 
         GameObject primaryPotion = ObjectPooler.SharedInstance.GetPooledObject("TheTravellerPrimary(Clone)"); 
         // Instantiate(primaryPotionPrefab, firePoint.position, firePoint.rotation);
         primaryPotion.GetComponent<PrimaryPotion>().casterPlayerNum = playerScript.playerNum;
+        primaryPotion.GetComponent<PrimaryPotion>().casterPlayerSpeed = rigidBody.velocity;
         if (primaryPotion != null)
         {
             primaryPotion.transform.position = firePoint.position;
@@ -47,18 +48,21 @@ public class TheTraveller : GenericCharacter
 
     public override void UsePotion2()
     {
-        animator.SetTrigger("Attack");
-        audioSrc.PlayOneShot(potion2SFX);
+        if (playerScript.UseSecondaryPotionIfCanUse()) {
+            animator.SetTrigger("Secondary");
+            audioSrc.PlayOneShot(potion2SFX);
 
-        GameObject secondaryPotion = ObjectPooler.SharedInstance.GetPooledObject("TheTravellerSecondary(Clone)"); 
-        secondaryPotion.GetComponent<SecondaryPotion>().casterPlayerNum = playerScript.playerNum;
-        if (secondaryPotion != null)
-        {
-            secondaryPotion.transform.position = pillarFirePoint.position;
-            secondaryPotion.transform.rotation = pillarFirePoint.rotation;
-            secondaryPotion.SetActive(true);
+            GameObject secondaryPotion = ObjectPooler.SharedInstance.GetPooledObject("TheTravellerSecondary(Clone)"); 
+            secondaryPotion.GetComponent<SecondaryPotion>().casterPlayerNum = playerScript.playerNum;
+            if (secondaryPotion != null)
+            {
+                secondaryPotion.transform.position = pillarFirePoint.position;
+                secondaryPotion.transform.rotation = pillarFirePoint.rotation;
+                secondaryPotion.SetActive(true);
+            }
+            Debug.Log("Potion 2!!");
         }
-        Debug.Log("Potion 2!!");
+        
     }
 
     public override void OnDeath()
