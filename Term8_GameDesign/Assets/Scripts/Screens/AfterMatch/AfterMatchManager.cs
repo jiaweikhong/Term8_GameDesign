@@ -3,28 +3,27 @@ using UnityEngine;
 
 public class AfterMatchManager : MonoBehaviour
 {
-    public AfterMatchController[] afterMatchControllers;
     public PlayerStats[] playerStatsList;
+    private ScreensTransitionManager screensTransitionManager;
     private int[] kills = new int[4];
     private string[] ranks = { "1ST", "2ND", "3RD", "4TH" };
 
     // Start is called before the first frame update
     void Start()
     {
+        screensTransitionManager = FindObjectOfType<ScreensTransitionManager>();
+        screensTransitionManager.OnNewMatch += NewMatch;
     }
 
     void OnEnable()
     {
+        Debug.Log("onenable aftermatchmanager called");
         for (int i = 0; i < playerStatsList.Length; i++)
         {
             kills[i] = playerStatsList[i].PlayerKills;
         }
         Array.Sort(kills);
         Array.Reverse(kills);
-        for (int i = 0; i < afterMatchControllers.Length; i++)
-        {
-            afterMatchControllers[i].UnreadyPlayer();
-        }
     }
 
     public string getPlayerRank(int playerNum)
@@ -33,4 +32,15 @@ public class AfterMatchManager : MonoBehaviour
         int rankIndex = Array.IndexOf(kills, playerKills);
         return ranks[rankIndex];
     }
+
+    private void NewMatch()
+    {
+        for (int i = 0; i < playerStatsList.Length; i++)
+        {
+            kills[i] = playerStatsList[i].PlayerKills;
+        }
+        Array.Sort(kills);
+        Array.Reverse(kills);
+    }
+    
 }

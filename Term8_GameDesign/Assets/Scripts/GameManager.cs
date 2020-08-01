@@ -163,6 +163,7 @@ public class GameManager : MonoBehaviour
     {
         PlayerStats requiredPlayer = playersHashTable[playerNum];
         requiredPlayer.SecondaryPotionQty += amt;
+        playersGameOverlayUI[playerNum].UpdateSecondaryQty(requiredPlayer.SecondaryPotionQty);
     }
 
     // When game ends, reset player scriptable object ======================================

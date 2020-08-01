@@ -24,6 +24,8 @@ public class AfterMatchController : MonoBehaviour
         audioSrc = GetComponent<AudioSource>();
         afterMatchUI.UpdatePlayer(playerStats);
         afterMatchUI.UpdateRank(afterMatchManager.getPlayerRank(playerNum));
+
+        screensTransitionManager.OnNewMatch += NewMatch;
     }
 
     public void SubmitInput()
@@ -56,10 +58,10 @@ public class AfterMatchController : MonoBehaviour
         }
     }
 
-    public void UnreadyPlayer()
+    public void NewMatch()
     {
-        Debug.Log("unreadying player");
         playerReady = false;
         afterMatchUI.UpdateSelected(false);
+        afterMatchUI.UpdateRank(afterMatchManager.getPlayerRank(playerNum));
     }
 }

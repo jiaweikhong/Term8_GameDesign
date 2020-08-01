@@ -12,9 +12,9 @@ public class GameOverlayController : MonoBehaviour
     private ScreensTransitionManager screensTransitionManager;
     private bool isPaused;
     // pauseOverlayCanvas
-    private float min = 0;
-    private float sec = 5;
-    private float msec = 0;
+    private float min;
+    private float sec;
+    private float msec;
 
     [SerializeField]
     public bool inBattle = false;
@@ -43,7 +43,7 @@ public class GameOverlayController : MonoBehaviour
             inBattle = false;
             screensTransitionManager.ToAfterMatch();
         }
-        else if (min>=0 && sec>=0 && (int) msec>=0 && inBattle == true)
+        else if (inBattle == true)
         {
             // if button pressed and ispaused
             
@@ -73,7 +73,7 @@ public class GameOverlayController : MonoBehaviour
     public void NewMatch()
     {
         min = 0;
-        sec = 5;
+        sec = 10;
         msec = 0;
     }
 }

@@ -15,6 +15,8 @@ public class ScreensTransitionManager : MonoBehaviour
     public ControlsManager controlsManager;
     private GameOverlayController gameOverlayController;
 
+    public SpawnPickups spawnPickupsScript;
+
     public int requiredPlayersToStart = 4;
     private int screenNum = 0;
     [SerializeField]
@@ -101,6 +103,9 @@ public class ScreensTransitionManager : MonoBehaviour
         brewingPhaseCanvas.SetActive(false);
         controlsManager.SwitchAllControllersToCharacterMode();
         matchNum += 1;
+
+        // trigger start of spawnings
+        spawnPickupsScript.StartSpawning();
     }
 
     private IEnumerator SwitchControllers()
@@ -125,15 +130,17 @@ public class ScreensTransitionManager : MonoBehaviour
 
     public void ToAfterMatch()
     {
+        spawnPickupsScript.StopSpawning();
         if (screenNum == 3)
         {
             OnNewMatch?.Invoke();
-            if (matchNum < 3)
+            if (matchNum <= 2)
             {
                 StartCoroutine(SwitchControllers());
             }
             else
             {
+                Debug.Log("Gabriel's final screen");
                 // final match ui
             }
         }

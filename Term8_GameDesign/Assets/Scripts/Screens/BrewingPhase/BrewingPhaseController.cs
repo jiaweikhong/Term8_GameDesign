@@ -225,7 +225,7 @@ public class BrewingPhaseController : MonoBehaviour
         specialQty = 0;
         playerStats.SecondaryPotionQty = secondaryQty;
         playerStats.SpecialPotionQty = specialQty;
-        playerStats.Weets += 200;
+        playerStats.Weets += 300;
         weets = playerStats.Weets;
         brewingPhaseUI.UpdatePlayer(playerStats);       // does not update the special potion
         brewingPhaseUI.UpdateSpecialQty(0, playerStats.Weets);
