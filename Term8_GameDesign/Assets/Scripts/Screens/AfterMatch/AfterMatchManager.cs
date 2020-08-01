@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class AfterMatchManager : MonoBehaviour
 {
+    public AfterMatchController[] afterMatchControllers;
     public PlayerStats[] playerStatsList;
     private int[] kills = new int[4];
-    private string[] ranks = {"1ST", "2ND", "3RD", "4TH"};
+    private string[] ranks = { "1ST", "2ND", "3RD", "4TH" };
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,10 @@ public class AfterMatchManager : MonoBehaviour
         }
         Array.Sort(kills);
         Array.Reverse(kills);
+        for (int i = 0; i < afterMatchControllers.Length; i++)
+        {
+            afterMatchControllers[i].UnreadyPlayer();
+        }
     }
 
     public string getPlayerRank(int playerNum)

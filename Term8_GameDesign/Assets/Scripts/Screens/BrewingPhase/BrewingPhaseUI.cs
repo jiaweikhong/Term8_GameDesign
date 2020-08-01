@@ -48,8 +48,9 @@ public class BrewingPhaseUI : MonoBehaviour
         secondarySprite.sprite = character.SecondarySprite;
         secondaryName.text = character.SecondaryName;
 
-        Debug.Log(data.Weets.ToString() + " w");
+        //Debug.Log(data.Weets.ToString() + " w");
         weets.text = data.Weets.ToString() + " w";
+        //weets.text = "hahha";
         secondaryQty.text = data.SecondaryPotionQty.ToString();
         // specialQty.text = data.SpecialPotionQty.ToString();
     }
@@ -62,16 +63,21 @@ public class BrewingPhaseUI : MonoBehaviour
         specialQty.text = "0";
 
         weets.text = value.ToString() + " w";
+        //weets.text = "update special potion";
     }
     public void UpdateSecondaryQty(int qty, int value)
     {
         secondaryQty.text = qty.ToString();
         weets.text = value.ToString() + " w";
+        //weets.text = "update sec qty";
+
     }
     public void UpdateSpecialQty(int qty, int value)
     {
         specialQty.text = qty.ToString();
         weets.text = value.ToString() + " w";
+        //weets.text = "updatespecial qty";
+
     }
     public void UpdateSelectionBox(int index)
     {

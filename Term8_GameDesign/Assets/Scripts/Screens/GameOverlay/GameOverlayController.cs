@@ -13,7 +13,7 @@ public class GameOverlayController : MonoBehaviour
     private bool isPaused;
     // pauseOverlayCanvas
     private float min = 0;
-    private float sec = 10;
+    private float sec = 5;
     private float msec = 0;
 
     [SerializeField]
@@ -33,6 +33,7 @@ public class GameOverlayController : MonoBehaviour
             playerUIs[i].UpdatePlayer(playerStatsList[i]);
         }
         inBattle = true;
+        NewMatch();
     }
 
     void Update()
@@ -67,5 +68,12 @@ public class GameOverlayController : MonoBehaviour
     {
         minCountdown.text = min.ToString() + ":" + second.ToString("00");
         msecCountdown.text = ((int) milisecond).ToString("00");
+    }
+
+    public void NewMatch()
+    {
+        min = 0;
+        sec = 5;
+        msec = 0;
     }
 }

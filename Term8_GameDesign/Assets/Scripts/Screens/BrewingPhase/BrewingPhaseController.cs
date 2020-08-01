@@ -226,10 +226,13 @@ public class BrewingPhaseController : MonoBehaviour
         playerStats.SecondaryPotionQty = secondaryQty;
         playerStats.SpecialPotionQty = specialQty;
         playerStats.Weets += 200;
-        brewingPhaseUI.UpdatePlayer(playerStats);
-        brewingPhaseUI.UpdateSpecialPotion(brewingPhaseManager.GetSpecialPotion(specialIndex), weets);
+        weets = playerStats.Weets;
+        brewingPhaseUI.UpdatePlayer(playerStats);       // does not update the special potion
+        brewingPhaseUI.UpdateSpecialQty(0, playerStats.Weets);
+        //brewingPhaseUI.UpdateSpecialPotion(brewingPhaseManager.GetSpecialPotion(specialIndex), weets);
         selectionIndex = 0;
         brewingPhaseUI.UpdateSelectionBox(selectionIndex);
+        brewingPhaseUI.UpdateSelected(false);
         screensTransitionManager.ReadyPlayer(false);
     }
 }

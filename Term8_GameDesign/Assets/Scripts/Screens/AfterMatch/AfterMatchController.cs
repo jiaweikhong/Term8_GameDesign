@@ -55,4 +55,11 @@ public class AfterMatchController : MonoBehaviour
             audioSrc.PlayOneShot(errorSFX);
         }
     }
+
+    public void UnreadyPlayer()
+    {
+        Debug.Log("unreadying player");
+        playerReady = false;
+        afterMatchUI.UpdateSelected(false);
+    }
 }
