@@ -78,7 +78,7 @@ public class GenericPlayer : MonoBehaviour
 
     IEnumerator RevertDreaming()
     {
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(3f);
         genericCharacter.SetDreaming(false);
         genericCharacter.StatusEffectAnimator.SetBool("Sleeping", false);
         Debug.Log("Ended Dream Dust on player " + playerNum);
