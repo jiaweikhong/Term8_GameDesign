@@ -92,8 +92,8 @@ public class PodiumGenerator : MonoBehaviour
         }
         // Debug.Log("Spawning players...");
         SpawnPlayers();
-        yield return new WaitForSeconds(10f);
-        screensTransitionManager.ToTitle();
+/*        yield return new WaitForSeconds(10f);
+        screensTransitionManager.ToTitle();*/
     }
 
     private IEnumerator CrateLanding(int x, int y, GameObject crate)
