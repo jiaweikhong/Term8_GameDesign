@@ -74,6 +74,16 @@ public class PlayerInputScript : MonoBehaviour
         // Title Screen Scene
         if (SceneManager.GetActiveScene().buildIndex == 0 && context.performed)
         {
+            // controls screen
+            if (screensTransitionManager.GetScreenNum() == -2)
+            {
+                controlsController.SubmitInput();
+            }
+            // instructions screen
+            if (screensTransitionManager.GetScreenNum() == -1)
+            {
+                instructionsController.SubmitInput();
+            }
             // title screen
             if (screensTransitionManager.GetScreenNum() == 0)
             {

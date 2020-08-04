@@ -38,6 +38,17 @@ public class TitleController : MonoBehaviour
         {
             navigateVector = context.ReadValue<Vector2>();
             
+            // navigate UP
+            if (navigateVector.y > 0.5f && selectionIndex==0)
+            {
+                selectionIndex = 1;
+            }
+            // navigate DOWN
+            if (navigateVector.y < -0.5f && selectionIndex!=0)
+            {
+                selectionIndex = 0;
+            }
+
             // navigate LEFT
             if (navigateVector.x < -0.5f)
             {
