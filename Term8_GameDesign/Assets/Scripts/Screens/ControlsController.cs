@@ -6,6 +6,7 @@ public class ControlsController : MonoBehaviour
 {
     private ScreensTransitionManager screensTransitionManager;
     private AudioSource audioSrc;
+    public AudioClip selectSFX;
     public AudioClip cancelSFX;
 
     void Start()
@@ -16,13 +17,34 @@ public class ControlsController : MonoBehaviour
 
     public void CancelInput()
     {
-        StartCoroutine(ToTitle());
+        StartCoroutine(Back(screensTransitionManager.InWalkthrough()));
+    }
+
+    public void SubmitInput()
+    {
+        if (screensTransitionManager.InWalkthrough())
+        {
+            StartCoroutine(ToCharacterSelect());
+        }
     }
     
-    private IEnumerator ToTitle()
+    private IEnumerator Back(bool inWalkthrough)
     {
         audioSrc.PlayOneShot(cancelSFX);
         yield return new WaitForSeconds(0.5f);
-        screensTransitionManager.ToTitle();
+        if (inWalkthrough)
+        {
+            screensTransitionManager.ToInstructions();
+        }
+        else
+        {
+            screensTransitionManager.ToTitle();
+        }
+    }
+    private IEnumerator ToCharacterSelect()
+    {
+        audioSrc.PlayOneShot(selectSFX);
+        yield return new WaitForSeconds(0.5f);
+        screensTransitionManager.EndWalkthrough();
     }
 }

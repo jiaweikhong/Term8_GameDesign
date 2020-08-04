@@ -72,8 +72,8 @@ public class GameOverlayController : MonoBehaviour
 
     public void NewMatch()
     {
-        min = 2;
-        sec = 0;
+        min = 0;
+        sec = 5;
         msec = 0;
     }
 }
