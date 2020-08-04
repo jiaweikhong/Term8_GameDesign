@@ -33,6 +33,12 @@ public class AfterMatchManager : MonoBehaviour
         return ranks[rankIndex];
     }
 
+    public string getPlayerRankPodium(int playerNum)
+    {
+        OnEnable();
+        return getPlayerRank(playerNum);
+    }
+
     private void NewMatch()
     {
         for (int i = 0; i < playerStatsList.Length; i++)
