@@ -198,6 +198,7 @@ public class ScreensTransitionManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         gameOverlayCanvas.SetActive(false);
         podium.SetActive(true);
+        audioManager.ChangeTrack("toAfterMatch");
     }
     public void ToAfterMatch()
     {
