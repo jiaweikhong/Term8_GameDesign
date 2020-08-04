@@ -6,15 +6,33 @@ public class SpawnPickups : MonoBehaviour
 {
     public float spawnTime = 15f;       // time between each spawns
     
-    void Start()
+    void Awake()
+    {
+
+    }
+
+    public void StartSpawning()
     {
         // Invokes the spawning of pickups in spawnTime+rand seconds
         Invoke("SpawnAWeet", spawnTime + Random.Range(-2, 2));
         Invoke("SpawnAPotion", spawnTime + Random.Range(-2, 2));
+    } 
+
+    public void StopSpawning()
+    {
+        // cancels all invoke calls on this monobehavior
+        CancelInvoke();
+    }
+
+    public void DestroyPickups()
+    {
+        // set all weets pickup and potions on scene to inactive
+        ObjectPooler.SharedInstance.SetAllPickupsToInactive();
     }
 
     void SpawnAWeet()
     {        
+        Debug.Log("spawning a weet");
         // get from objectpooler
         GameObject weets = ObjectPooler.SharedInstance.GetPooledObject("WeetsPickup(Clone)");
 
@@ -45,6 +63,7 @@ public class SpawnPickups : MonoBehaviour
 
     void ResetVelocityTransform(GameObject gameObject)
     {
+        Debug.Log("gameobj is " + gameObject);
         // reset velocity to zero
         Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
         rb.velocity = Vector3.zero;

@@ -10,8 +10,7 @@ public class BrewingPhaseController : MonoBehaviour
     public int playerNum;
     public PlayerStats playerStats;
     public BrewingPhaseUI brewingPhaseUI;
-    private ControlsManager controlsManager;
-    private BrewingPhaseManager brewingManager;
+    private BrewingPhaseManager brewingPhaseManager;
     private ScreensTransitionManager screensTransitionManager;
     private int secondaryQty;
     private int specialQty;
@@ -31,17 +30,18 @@ public class BrewingPhaseController : MonoBehaviour
     void Start()
     {
         // get reference and display default
-        controlsManager = FindObjectOfType<ControlsManager>();
         screensTransitionManager = FindObjectOfType<ScreensTransitionManager>();
-        brewingManager = FindObjectOfType<BrewingPhaseManager>();
+        brewingPhaseManager = FindObjectOfType<BrewingPhaseManager>();
 
         secondaryQty = playerStats.SecondaryPotionQty;
         specialQty = playerStats.SpecialPotionQty;
         weets = playerStats.Weets;
         brewingPhaseUI.UpdatePlayer(playerStats);
         brewingPhaseUI.UpdateSelectionBox(selectionIndex);
-        brewingPhaseUI.UpdateSpecialPotion(brewingManager.GetSpecialPotion(specialIndex), weets);
+        brewingPhaseUI.UpdateSpecialPotion(brewingPhaseManager.GetSpecialPotion(specialIndex), weets);
         audioSrc = GetComponent<AudioSource>();
+
+        screensTransitionManager.OnNewMatch += NewMatch;
     }
 
     public void NavigateInput(InputAction.CallbackContext context)
@@ -51,8 +51,8 @@ public class BrewingPhaseController : MonoBehaviour
             // browse characters
             navigateVector = context.ReadValue<Vector2>();
 
-            int specialCost = brewingManager.GetSpecialPotion(specialIndex).Cost;
-            int numSpecialPotions = brewingManager.NumSpecialPotions();
+            int specialCost = brewingPhaseManager.GetSpecialPotion(specialIndex).Cost;
+            int numSpecialPotions = brewingPhaseManager.NumSpecialPotions();
 
             // navigate UP
             if (navigateVector.y > 0.5f)
@@ -92,7 +92,7 @@ public class BrewingPhaseController : MonoBehaviour
                     // change index and displayed
                     specialIndex -= 1;
                     if (specialIndex < 0) specialIndex = numSpecialPotions - 1;
-                    brewingPhaseUI.UpdateSpecialPotion(brewingManager.GetSpecialPotion(specialIndex), weets);
+                    brewingPhaseUI.UpdateSpecialPotion(brewingPhaseManager.GetSpecialPotion(specialIndex), weets);
                 }
             }
             // navigate RIGHT
@@ -110,7 +110,7 @@ public class BrewingPhaseController : MonoBehaviour
                     // change index and displayed
                     specialIndex += 1;
                     if (specialIndex > numSpecialPotions - 1) specialIndex = 0;
-                    brewingPhaseUI.UpdateSpecialPotion(brewingManager.GetSpecialPotion(specialIndex), weets);
+                    brewingPhaseUI.UpdateSpecialPotion(brewingPhaseManager.GetSpecialPotion(specialIndex), weets);
                 }
             }
         }
@@ -139,8 +139,8 @@ public class BrewingPhaseController : MonoBehaviour
             // buy 1 special potion
             else if (selectionIndex == 1)
             {
-                int specialCost = brewingManager.GetSpecialPotion(specialIndex).Cost;
-                //int numSpecialPotions = brewingManager.NumSpecialPotions();
+                int specialCost = brewingPhaseManager.GetSpecialPotion(specialIndex).Cost;
+                //int numSpecialPotions = brewingPhaseManager.NumSpecialPotions();
                 if (weets - specialCost >= 0) // check enough money
                 {
                     audioSrc.PlayOneShot(incrementPotionSFX);
@@ -158,7 +158,7 @@ public class BrewingPhaseController : MonoBehaviour
             {
                 audioSrc.PlayOneShot(selectSFX);
                 selectionIndex = 3;
-                playerStats.UpdateBrew(weets, secondaryQty, specialQty, brewingManager.GetSpecialPotion(specialIndex));
+                playerStats.UpdateBrew(weets, secondaryQty, specialQty, brewingPhaseManager.GetSpecialPotion(specialIndex));
                 brewingPhaseUI.UpdateSelected(true);
                 screensTransitionManager.ReadyPlayer(true);
             }
@@ -188,8 +188,8 @@ public class BrewingPhaseController : MonoBehaviour
             // sell 1 special potion
             else if (selectionIndex == 1)
             {
-                int specialCost = brewingManager.GetSpecialPotion(specialIndex).Cost;
-                //int numSpecialPotions = brewingManager.NumSpecialPotions();
+                int specialCost = brewingPhaseManager.GetSpecialPotion(specialIndex).Cost;
+                //int numSpecialPotions = brewingPhaseManager.NumSpecialPotions();
 
                 if (specialQty > 0) // check enough qty
                 {
@@ -217,5 +217,22 @@ public class BrewingPhaseController : MonoBehaviour
                 screensTransitionManager.ReadyPlayer(false);
             }
         }
+    }
+
+    private void NewMatch()
+    {
+        secondaryQty = 0;
+        specialQty = 0;
+        playerStats.SecondaryPotionQty = secondaryQty;
+        playerStats.SpecialPotionQty = specialQty;
+        playerStats.Weets += 300;
+        weets = playerStats.Weets;
+        brewingPhaseUI.UpdatePlayer(playerStats);       // does not update the special potion
+        brewingPhaseUI.UpdateSpecialQty(0, playerStats.Weets);
+        //brewingPhaseUI.UpdateSpecialPotion(brewingPhaseManager.GetSpecialPotion(specialIndex), weets);
+        selectionIndex = 0;
+        brewingPhaseUI.UpdateSelectionBox(selectionIndex);
+        brewingPhaseUI.UpdateSelected(false);
+        screensTransitionManager.ReadyPlayer(false);
     }
 }

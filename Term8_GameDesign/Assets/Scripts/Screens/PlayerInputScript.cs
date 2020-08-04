@@ -10,6 +10,8 @@ public class PlayerInputScript : MonoBehaviour
     public ScreensTransitionManager screensTransitionManager;
     public CharacterSelectController characterSelectController;
     public BrewingPhaseController brewingPhaseController;
+    public AfterMatchController afterMatchController;
+    // protected GenericCharacter genericCharacter;
     public PauseMenu pauseMenu;
     [SerializeField] protected GenericCharacter genericCharacter;
 
@@ -72,6 +74,11 @@ public class PlayerInputScript : MonoBehaviour
             {
                 brewingPhaseController.SubmitInput(context);
             }
+            // after match screen
+            else if (screensTransitionManager.GetScreenNum() == 4)
+            {
+                afterMatchController.SubmitInput();
+            }
         }
         // Arena Scene - Start the input for match conclusion screen here
         else if (SceneManager.GetActiveScene().buildIndex == 1 && context.performed)
@@ -97,6 +104,11 @@ public class PlayerInputScript : MonoBehaviour
             else if (screensTransitionManager.GetScreenNum() == 2)
             {
                 brewingPhaseController.CancelInput(context);
+            }
+            // after match screen
+            else if (screensTransitionManager.GetScreenNum() == 4)
+            {
+                afterMatchController.CancelInput();
             }
         }
         // Arena Scene - Start the input for match conclusion screen here

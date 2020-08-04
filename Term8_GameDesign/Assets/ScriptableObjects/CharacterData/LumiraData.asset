@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4281c08cabaf9964c946953bb3ba221d, type: 3}
   m_Name: LumiraData
   m_EditorClassIdentifier: 
-  characterName: Lumira
+  characterName: LUMIRA
   sprite: {fileID: 4723107735738678597, guid: 8eef6af16478942448b7b25665928441, type: 3}
   title: Frost Alchemist
   backstory: "Heiress of Arandell and the top student in the prestigious alchemy

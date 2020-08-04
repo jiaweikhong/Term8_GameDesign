@@ -10,7 +10,7 @@ public class PlayerStats : ScriptableObject
     [SerializeField]
     private CharacterData _character;
     [SerializeField]
-    private int _weets = 200;
+    private int _weets = 600;
     [SerializeField]
     private int _secondaryPotionQty = 0;
     [SerializeField]
@@ -101,7 +101,7 @@ public class PlayerStats : ScriptableObject
     }
     public void ResetGame()
     {
-        _weets = 200;
+        _weets = 600;
         _secondaryPotionQty = 0;
         _specialPotionQty = 0;
         _playerKills = 0;

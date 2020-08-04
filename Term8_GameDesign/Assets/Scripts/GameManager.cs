@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     public delegate void PlayerDeathDelegate(int deadPlayerNum);
     public event PlayerDeathDelegate OnDeathEvent;              // to let GenericPlayer know that they dieded so need to trigger animation
 
+    // References to all players' in-game UI
+    public GameOverlayUI[] playersGameOverlayUI;
+
     // SpecialPotion Events
     public delegate void MuddledDelegate(int casterPlayerNum);
     public event MuddledDelegate OnMuddledEvent;
@@ -29,6 +32,8 @@ public class GameManager : MonoBehaviour
     public CameraShake mainCamShake;
     public bool enableCamShakeOnDeath = true;
 
+    private ScreensTransitionManager screensTransitionManager;
+
     void Start()
     {
         playersHashTable = new Dictionary<int, PlayerStats> {
@@ -38,6 +43,18 @@ public class GameManager : MonoBehaviour
             { 3, player3 }
         };
         DontDestroyOnLoad(gameObject);
+        
+        screensTransitionManager = FindObjectOfType<ScreensTransitionManager>();
+        screensTransitionManager.OnNewMatch += ResetHealth;
+    }
+
+    private void ResetHealth()
+    {
+        for (int i =0; i<4; i++)
+        {
+            PlayerStats playerStats = playersHashTable[i];
+            playerStats.PlayerHealth = 3;
+        }
     }
 
     void Update()
@@ -60,7 +77,12 @@ public class GameManager : MonoBehaviour
         {
             IncrementDeath(receivingPlayerNum);         // increment death for receiving player
             IncrementScore(attackingPlayerNum);         // increment score for attacking player   
-            receivingPlayer.ResetPlayerHealth();        // reset health 
+            receivingPlayer.ResetPlayerHealth();        // reset health
+        }
+        if (receivingPlayerNum != attackingPlayerNum || receivingPlayer.PlayerHealth <= 0)
+        {
+            // update in-game UI
+            playersGameOverlayUI[receivingPlayerNum].UpdateNumHearts(receivingPlayer.PlayerHealth);
         }
     }
 
@@ -82,7 +104,6 @@ public class GameManager : MonoBehaviour
         }
         PlayerStats requiredPlayer = playersHashTable[playerNum];
         requiredPlayer.PlayerDeaths++;
-        Debug.Log("invoke death on" + playerNum.ToString());
         //Debug.Log(OnMuddledEvent.GetInvocationList().Length);
         OnDeathEvent?.Invoke(playerNum);        // let the respecive player know that they ded
     }
@@ -107,6 +128,8 @@ public class GameManager : MonoBehaviour
         {
             // decrement potion2 qty
             requiredPlayer.SecondaryPotionQty--;
+            // update in-game UI
+            playersGameOverlayUI[playerNum].UpdateSecondaryQty(requiredPlayer.SecondaryPotionQty);
             return true;
         }
         return false;
@@ -119,6 +142,8 @@ public class GameManager : MonoBehaviour
         {
             // decrement potion3 qty
             requiredPlayer.SpecialPotionQty--;
+            // update in-game UI
+            playersGameOverlayUI[playerNum].UpdateSpecialQty(requiredPlayer.SpecialPotionQty);
             return true;
         }
         return false;
@@ -152,6 +177,7 @@ public class GameManager : MonoBehaviour
     {
         PlayerStats requiredPlayer = playersHashTable[playerNum];
         requiredPlayer.SecondaryPotionQty += amt;
+        playersGameOverlayUI[playerNum].UpdateSecondaryQty(requiredPlayer.SecondaryPotionQty);
     }
 
     // When game ends, reset player scriptable object ======================================

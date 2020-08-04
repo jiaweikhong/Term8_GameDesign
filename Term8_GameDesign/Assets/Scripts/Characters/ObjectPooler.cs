@@ -64,4 +64,23 @@ public class ObjectPooler : MonoBehaviour {
         }
         return null;
     }
+
+    public void SetAllPickupsToInactive()
+    {
+        for (int i = 0; i < pooledObjects.Count; i++)
+        {
+            // if active & is the same tag
+            if (pooledObjects[i].activeInHierarchy)
+            {
+                if (pooledObjects[i].CompareTag("pickup"))
+                {
+                    pooledObjects[i].SetActive(false);
+                }
+                else if (pooledObjects[i].CompareTag("potion"))
+                {
+                    pooledObjects[i].SetActive(false);
+                }
+            }
+        }
+    }
 }

@@ -16,8 +16,9 @@ MonoBehaviour:
   _character: {fileID: 11400000, guid: 4fc1ab2275dccc34d8ee486c36fbc304, type: 2}
   _weets: 200
   _secondaryPotionQty: 0
-  _specialPotion: {fileID: 11400000, guid: 356e64ce6ecacf04b81c42de5d90e04c, type: 2}
+  _specialPotion: {fileID: 11400000, guid: a3a880e1c6f4c4d4fa60ba97221c649b, type: 2}
   _specialPotionQty: 0
+  _damageDealtToOthers: 1
   _playerKills: 0
   _playerDeaths: 0
   _playerHealth: 3
