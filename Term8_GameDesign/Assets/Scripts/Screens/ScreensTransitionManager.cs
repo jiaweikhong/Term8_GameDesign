@@ -26,6 +26,8 @@ public class ScreensTransitionManager : MonoBehaviour
     private AudioSource audioSrc;
     public AudioClip toSelectPlaySFX;
 
+    public AudioManager audioManager;
+
     public int GetScreenNum()
     {
         return screenNum;
@@ -93,6 +95,8 @@ public class ScreensTransitionManager : MonoBehaviour
         brewingPhaseCanvas.SetActive(true);
         characterSelectCanvas.SetActive(false);
         afterMatchCanvas.SetActive(false);
+
+        audioManager.ChangeTrack("characterSelect");
     }
 
     private IEnumerator ToGamePlay()
@@ -103,6 +107,8 @@ public class ScreensTransitionManager : MonoBehaviour
         brewingPhaseCanvas.SetActive(false);
         controlsManager.SwitchAllControllersToCharacterMode();
         matchNum += 1;
+
+        audioManager.ChangeTrack("toGamePlay");
 
         // trigger start of spawnings
         spawnPickupsScript.StartSpawning();
@@ -130,6 +136,7 @@ public class ScreensTransitionManager : MonoBehaviour
     public void ToAfterMatch()
     {
         spawnPickupsScript.StopSpawning();
+        audioManager.audioSource.Stop();
         if (screenNum == 3)
         {
             OnNewMatch?.Invoke();
@@ -154,6 +161,7 @@ public class ScreensTransitionManager : MonoBehaviour
             audioSrc.PlayOneShot(toSelectPlaySFX);
             screenNum += 1;
             characterSelectCanvas.SetActive(true);
+            audioManager.ChangeTrack("characterSelect");
             titleCanvas.SetActive(false);
         }
     }
