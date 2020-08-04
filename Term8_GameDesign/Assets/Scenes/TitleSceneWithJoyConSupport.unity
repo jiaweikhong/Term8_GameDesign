@@ -3621,7 +3621,7 @@ MonoBehaviour:
   characterSelectController: {fileID: 169695309}
   brewingPhaseController: {fileID: 171339764}
   afterMatchController: {fileID: 1033107790}
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 1457426892}
   genericCharacter: {fileID: 0}
 --- !u!114 &197273092
 MonoBehaviour:
@@ -14669,7 +14669,7 @@ MonoBehaviour:
   characterSelectController: {fileID: 2079346792}
   brewingPhaseController: {fileID: 1286975034}
   afterMatchController: {fileID: 716191650}
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 1457426892}
   genericCharacter: {fileID: 0}
 --- !u!114 &761714821
 MonoBehaviour:
@@ -18505,7 +18505,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1033107787
 GameObject:
@@ -21821,7 +21821,7 @@ MonoBehaviour:
   gameOverlayCanvas: {fileID: 21800606}
   controlsManager: {fileID: 1517808936}
   spawnPickupsScript: {fileID: 1748545542}
-  requiredPlayersToStart: 4
+  requiredPlayersToStart: 2
   readyPlayersNum: 0
   toSelectPlaySFX: {fileID: 8300000, guid: d2701761ad919584d8a04bbe6b134f28, type: 3}
   roundEndSFX: {fileID: 8300000, guid: 8ad6ea618b89ebf49ac2fdd93b8ecb97, type: 3}
@@ -24822,7 +24822,7 @@ MonoBehaviour:
   characterSelectController: {fileID: 78135407}
   brewingPhaseController: {fileID: 1947301601}
   afterMatchController: {fileID: 1669547694}
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 1457426892}
   genericCharacter: {fileID: 0}
 --- !u!114 &1347666517
 MonoBehaviour:
@@ -25034,7 +25034,7 @@ Transform:
   - {fileID: 1340640111}
   - {fileID: 685199137}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1353513184
 GameObject:
@@ -26339,7 +26339,7 @@ MonoBehaviour:
   characterSelectController: {fileID: 2029108413}
   brewingPhaseController: {fileID: 192626862}
   afterMatchController: {fileID: 35314256}
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 1457426892}
   genericCharacter: {fileID: 0}
 --- !u!114 &1454679447
 MonoBehaviour:
@@ -26682,7 +26682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec64b8605d7805b4eb26327bc9fb0714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlsManager: {fileID: 0}
+  controlsManager: {fileID: 1517808936}
   pauseMenuUI: {fileID: 643280872}
   navigateSFX: {fileID: 8300000, guid: ed3b85ee550a5c14390894dfc6b0263c, type: 3}
   selectSFX: {fileID: 8300000, guid: 2c9d6035d2c6d6b429b70abe2e2df74d, type: 3}
