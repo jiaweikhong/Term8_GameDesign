@@ -3485,7 +3485,7 @@ MonoBehaviour:
   characterSelectController: {fileID: 169695309}
   brewingPhaseController: {fileID: 171339764}
   afterMatchController: {fileID: 1033107790}
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 1457426892}
   genericCharacter: {fileID: 0}
 --- !u!114 &197273092
 MonoBehaviour:
@@ -13873,7 +13873,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 706933933}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -15091,7 +15091,7 @@ MonoBehaviour:
   characterSelectController: {fileID: 2079346792}
   brewingPhaseController: {fileID: 1286975034}
   afterMatchController: {fileID: 716191650}
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 1457426892}
   genericCharacter: {fileID: 0}
 --- !u!114 &761714821
 MonoBehaviour:
@@ -22583,6 +22583,7 @@ MonoBehaviour:
   brewingPhaseCanvas: {fileID: 2026188538}
   afterMatchCanvas: {fileID: 120882812}
   gameOverlayCanvas: {fileID: 21800606}
+  podium: {fileID: 1496977863}
   controlsManager: {fileID: 1517808936}
   spawnPickupsScript: {fileID: 1748545542}
   requiredPlayersToStart: 4
@@ -25634,7 +25635,7 @@ MonoBehaviour:
   characterSelectController: {fileID: 78135407}
   brewingPhaseController: {fileID: 1947301601}
   afterMatchController: {fileID: 1669547694}
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 1457426892}
   genericCharacter: {fileID: 0}
 --- !u!114 &1347666517
 MonoBehaviour:
@@ -27062,7 +27063,7 @@ MonoBehaviour:
   characterSelectController: {fileID: 2029108413}
   brewingPhaseController: {fileID: 192626862}
   afterMatchController: {fileID: 35314256}
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 1457426892}
   genericCharacter: {fileID: 0}
 --- !u!114 &1454679447
 MonoBehaviour:
@@ -27405,7 +27406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec64b8605d7805b4eb26327bc9fb0714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlsManager: {fileID: 0}
+  controlsManager: {fileID: 1517808936}
   pauseMenuUI: {fileID: 643280872}
   navigateSFX: {fileID: 8300000, guid: ed3b85ee550a5c14390894dfc6b0263c, type: 3}
   selectSFX: {fileID: 8300000, guid: 2c9d6035d2c6d6b429b70abe2e2df74d, type: 3}
@@ -28053,6 +28054,158 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496513479}
   m_CullTransparentMesh: 0
+--- !u!1 &1496977863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1496977866}
+  - component: {fileID: 1496977865}
+  - component: {fileID: 1496977864}
+  m_Layer: 0
+  m_Name: cratesPodium
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1496977864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496977863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 214ab60f6d3295b4b9df367aaeebc5f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cratePrefab: {fileID: 6006276944777252145, guid: 167e7d0900a391249937ca319a3f7d36,
+    type: 3}
+  controls:
+  - {fileID: 197273089}
+  - {fileID: 761714818}
+  - {fileID: 1454679444}
+  - {fileID: 1347666514}
+  numberOfPlayers: 4
+  characters: []
+  platforms: {fileID: 1134700299}
+  afterMatchManager: {fileID: 120882819}
+  screensTransitionManager: {fileID: 1193019349}
+--- !u!82 &1496977865
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496977863}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1593f0283de9bf54994fab46bb3dd6cc, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1496977866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496977863}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1497364977
 GameObject:
   m_ObjectHideFlags: 0
