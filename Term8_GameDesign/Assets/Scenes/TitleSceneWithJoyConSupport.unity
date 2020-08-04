@@ -1998,7 +1998,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc2d98cf1459b64cacb0bd4de8344e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  afterMatchControllers: []
   playerStatsList:
   - {fileID: 11400000, guid: 86b5e2945bb646043b4eaba1c3533f5f, type: 2}
   - {fileID: 11400000, guid: 491e4f90cc3cea545b7b86776434fce4, type: 2}
@@ -19594,7 +19593,7 @@ MonoBehaviour:
   gameOverlayCanvas: {fileID: 21800606}
   controlsManager: {fileID: 1517808936}
   spawnPickupsScript: {fileID: 1748545542}
-  requiredPlayersToStart: 1
+  requiredPlayersToStart: 4
   readyPlayersNum: 0
   toSelectPlaySFX: {fileID: 8300000, guid: d2701761ad919584d8a04bbe6b134f28, type: 3}
 --- !u!4 &1193019350

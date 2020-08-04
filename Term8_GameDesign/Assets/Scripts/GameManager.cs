@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
     public CameraShake mainCamShake;
     public bool enableCamShakeOnDeath = true;
 
+    private ScreensTransitionManager screensTransitionManager;
+
     void Start()
     {
         playersHashTable = new Dictionary<int, PlayerStats> {
@@ -41,6 +43,18 @@ public class GameManager : MonoBehaviour
             { 3, player3 }
         };
         DontDestroyOnLoad(gameObject);
+        
+        screensTransitionManager = FindObjectOfType<ScreensTransitionManager>();
+        screensTransitionManager.OnNewMatch += ResetHealth;
+    }
+
+    private void ResetHealth()
+    {
+        for (int i =0; i<4; i++)
+        {
+            PlayerStats playerStats = playersHashTable[i];
+            playerStats.PlayerHealth = 3;
+        }
     }
 
     void Update()

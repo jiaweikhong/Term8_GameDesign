@@ -114,17 +114,10 @@ public class ScreensTransitionManager : MonoBehaviour
         controlsManager.DisableActionMap(1);
         controlsManager.DisableActionMap(2);
         controlsManager.DisableActionMap(3);
-        // Time.timeScale = 0;
-        // Time.timeScale=0;
-        // yield return new WaitForSecondsRealtime(2f);
         yield return new WaitForSeconds(2f);
-        // Time.timeScale=1;
         screenNum += 1;
         afterMatchCanvas.SetActive(true);
-        // Time.timeScale = 1;
-        Debug.Log("supposed to start change to ui");
         controlsManager.SwitchAllControllersToUIMode();
-        Debug.Log("change to ui");
     }
 
 
@@ -134,6 +127,7 @@ public class ScreensTransitionManager : MonoBehaviour
         if (screenNum == 3)
         {
             OnNewMatch?.Invoke();
+            
             if (matchNum <= 2)
             {
                 StartCoroutine(SwitchControllers());

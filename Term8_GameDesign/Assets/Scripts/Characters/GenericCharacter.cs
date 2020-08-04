@@ -52,12 +52,17 @@ public abstract class GenericCharacter : MonoBehaviour
     public GameObject DDSprite;
     public Animator StatusEffectAnimator;
 
+    private ScreensTransitionManager screensTransitionManager;
+
     private void Start()
     {
         audioSrc = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
         rigidBody = GetComponent<Rigidbody2D>();
+        
+        screensTransitionManager = FindObjectOfType<ScreensTransitionManager>();
+        screensTransitionManager.OnNewMatch += ResetPosition;
     }
 
     public virtual void Awake()
@@ -314,5 +319,10 @@ public abstract class GenericCharacter : MonoBehaviour
         {
             controlsManager.EnableCharacterActionMap(playerScript.playerNum);
         }
+    }
+
+    private void ResetPosition()
+    {
+        transform.position = new Vector3(Random.Range(-9f, 9f), 5, 0);
     }
 }

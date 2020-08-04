@@ -32,6 +32,7 @@ public class AfterMatchUI : MonoBehaviour
     }
     public void UpdateSelected(bool isSelected)
     {
+        Debug.Log("called afterMatchUI UpdateSelected");
         // select/unselect response
         confirmBorder.SetActive(!isSelected);
         Confirm.text = (isSelected) ? "READY >" : "CONFIRM";

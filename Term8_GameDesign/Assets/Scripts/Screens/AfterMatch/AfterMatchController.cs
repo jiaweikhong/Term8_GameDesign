@@ -25,7 +25,7 @@ public class AfterMatchController : MonoBehaviour
         afterMatchUI.UpdatePlayer(playerStats);
         afterMatchUI.UpdateRank(afterMatchManager.getPlayerRank(playerNum));
 
-        screensTransitionManager.OnNewMatch += NewMatch;
+        afterMatchManager.OnUpdateRank += UpdateRank;
     }
 
     public void SubmitInput()
@@ -58,10 +58,11 @@ public class AfterMatchController : MonoBehaviour
         }
     }
 
-    public void NewMatch()
+    public void UpdateRank()
     {
         playerReady = false;
         afterMatchUI.UpdateSelected(false);
+        afterMatchUI.UpdatePlayer(playerStats);
         afterMatchUI.UpdateRank(afterMatchManager.getPlayerRank(playerNum));
     }
 }
