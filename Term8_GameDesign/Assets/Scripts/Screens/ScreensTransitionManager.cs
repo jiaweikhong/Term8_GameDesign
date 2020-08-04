@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 public class ScreensTransitionManager : MonoBehaviour
 {
     public GameObject titleCanvas;
+    public GameObject charactersCanvas;
+    public GameObject instructionsCanvas;
     public GameObject characterSelectCanvas;
     public GameObject brewingPhaseCanvas;
     public GameObject afterMatchCanvas;
@@ -23,29 +25,23 @@ public class ScreensTransitionManager : MonoBehaviour
     private int readyPlayersNum = 0;
     private int matchNum = 0;
 
-    private AudioSource audioSrc;
-    public AudioClip toSelectPlaySFX;
-
     public int GetScreenNum()
     {
         return screenNum;
     }
 
-    // public void Awake()
-    // {
-    //     DontDestroyOnLoad(gameObject);
-    // }
-
     private void Start()
     {
         // set active/inactive pages 
         titleCanvas.SetActive(true);
+        charactersCanvas.SetActive(false);
+        instructionsCanvas.SetActive(false);
         characterSelectCanvas.SetActive(false);
         brewingPhaseCanvas.SetActive(false);
         afterMatchCanvas.SetActive(false);
         gameOverlayCanvas.SetActive(false);
+
         gameOverlayController = gameOverlayCanvas.GetComponent<GameOverlayController>();
-        audioSrc = GetComponent<AudioSource>();
     }
 
     public void Update()
@@ -68,44 +64,20 @@ public class ScreensTransitionManager : MonoBehaviour
                 StartCoroutine(ToGamePlay());
             }
         }
-
         else if (screenNum == 4) // after match
         {
             if (readyPlayersNum == requiredPlayersToStart)
             {
                 screenNum = 2;
                 readyPlayersNum = 0;
-                Debug.Log("going to brewing phase now");
                 StartCoroutine(ToBrewingPhase());
             }
         }
     }
 
-
     public void ReadyPlayer(bool ready)
     {
         readyPlayersNum += (ready) ? 1 : -1;
-    }
-
-    private IEnumerator ToBrewingPhase()
-    {
-        yield return new WaitForSeconds(1f);
-        brewingPhaseCanvas.SetActive(true);
-        characterSelectCanvas.SetActive(false);
-        afterMatchCanvas.SetActive(false);
-    }
-
-    private IEnumerator ToGamePlay()
-    {
-        yield return new WaitForSeconds(1f);
-        gameOverlayCanvas.SetActive(true);
-        gameOverlayController.StartMatch();
-        brewingPhaseCanvas.SetActive(false);
-        controlsManager.SwitchAllControllersToCharacterMode();
-        matchNum += 1;
-
-        // trigger start of spawnings
-        spawnPickupsScript.StartSpawning();
     }
 
     private IEnumerator SwitchControllers()
@@ -127,6 +99,56 @@ public class ScreensTransitionManager : MonoBehaviour
         spawnPickupsScript.DestroyPickups();
     }
 
+    public void ToTitle()
+    {
+        screenNum = 0;
+        titleCanvas.SetActive(true);
+        charactersCanvas.SetActive(false);
+        instructionsCanvas.SetActive(false);
+    }
+
+    public void ToCharacters()
+    {
+        screenNum = -1;
+        charactersCanvas.SetActive(true);
+        titleCanvas.SetActive(false);
+    }
+
+    public void ToInstructions()
+    {
+        screenNum = -2;
+        instructionsCanvas.SetActive(true);
+        titleCanvas.SetActive(false);
+    }
+
+    public void ToCharacterSelect()
+    {
+        if (screenNum == 0)
+        {
+            screenNum += 1;
+            characterSelectCanvas.SetActive(true);
+            titleCanvas.SetActive(false);
+        }
+    }
+    private IEnumerator ToBrewingPhase()
+    {
+        yield return new WaitForSeconds(1f);
+        brewingPhaseCanvas.SetActive(true);
+        characterSelectCanvas.SetActive(false);
+        afterMatchCanvas.SetActive(false);
+    }
+    private IEnumerator ToGamePlay()
+    {
+        yield return new WaitForSeconds(1f);
+        gameOverlayCanvas.SetActive(true);
+        gameOverlayController.StartMatch();
+        brewingPhaseCanvas.SetActive(false);
+        controlsManager.SwitchAllControllersToCharacterMode();
+        matchNum += 1;
+
+        // trigger start of spawnings
+        spawnPickupsScript.StartSpawning();
+    }
     public void ToAfterMatch()
     {
         spawnPickupsScript.StopSpawning();
@@ -144,17 +166,6 @@ public class ScreensTransitionManager : MonoBehaviour
                 Debug.Log("Gabriel's final screen");
                 // final match ui
             }
-        }
-    }
-
-    public void onSelectPlay()
-    {
-        if (screenNum == 0)
-        {
-            audioSrc.PlayOneShot(toSelectPlaySFX);
-            screenNum += 1;
-            characterSelectCanvas.SetActive(true);
-            titleCanvas.SetActive(false);
         }
     }
 

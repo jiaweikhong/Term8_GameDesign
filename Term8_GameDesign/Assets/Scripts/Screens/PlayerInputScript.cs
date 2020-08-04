@@ -8,6 +8,9 @@ public class PlayerInputScript : MonoBehaviour
 {
     public ControlsManager controlsManager;
     public ScreensTransitionManager screensTransitionManager;
+    public TitleController titleController;
+    public InstructionsController instructionsController;
+    public CharactersController charactersController;
     public CharacterSelectController characterSelectController;
     public BrewingPhaseController brewingPhaseController;
     public AfterMatchController afterMatchController;
@@ -33,6 +36,17 @@ public class PlayerInputScript : MonoBehaviour
         // Title Screen Scene
         if (SceneManager.GetActiveScene().buildIndex == 0 && context.performed)
         {
+            
+            if (screensTransitionManager.GetScreenNum() == -1)
+            {
+                charactersController.NavigateInput(context);
+            }
+
+            if (screensTransitionManager.GetScreenNum() == 0)
+            {
+                titleController.NavigateInput(context);
+            }
+            
             if (screensTransitionManager.GetScreenNum() == 1)
             {
                 characterSelectController.NavigateInput(context);
@@ -62,7 +76,7 @@ public class PlayerInputScript : MonoBehaviour
             // title screen
             if (screensTransitionManager.GetScreenNum() == 0)
             {
-                screensTransitionManager.onSelectPlay();
+                titleController.SubmitInput();
             }
             // char select screen
             else if (screensTransitionManager.GetScreenNum() == 1)
@@ -95,6 +109,21 @@ public class PlayerInputScript : MonoBehaviour
         // Title Screen Scene
         if (SceneManager.GetActiveScene().buildIndex == 0 && context.performed)
         {
+            // characters screen
+            if (screensTransitionManager.GetScreenNum() == -1)
+            {
+                charactersController.CancelInput();
+            }
+            // instructions screen
+            if (screensTransitionManager.GetScreenNum() == -2)
+            {
+                instructionsController.CancelInput();
+            }
+            // title screen
+            if (screensTransitionManager.GetScreenNum() == 0)
+            {
+                titleController.CancelInput();
+            }
             // char select screen
             if (screensTransitionManager.GetScreenNum() == 1)
             {
