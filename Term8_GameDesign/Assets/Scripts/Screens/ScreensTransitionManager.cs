@@ -9,7 +9,7 @@ public class ScreensTransitionManager : MonoBehaviour
 {
     public GameObject titleCanvas;
     public GameObject charactersCanvas;
-    public GameObject instructionsCanvas;
+    public GameObject controlsCanvas;
     public GameObject characterSelectCanvas;
     public GameObject brewingPhaseCanvas;
     public GameObject afterMatchCanvas;
@@ -39,7 +39,7 @@ public class ScreensTransitionManager : MonoBehaviour
         // set active/inactive pages 
         titleCanvas.SetActive(true);
         charactersCanvas.SetActive(false);
-        instructionsCanvas.SetActive(false);
+        controlsCanvas.SetActive(false);
         characterSelectCanvas.SetActive(false);
         brewingPhaseCanvas.SetActive(false);
         afterMatchCanvas.SetActive(false);
@@ -108,7 +108,7 @@ public class ScreensTransitionManager : MonoBehaviour
         screenNum = 0;
         titleCanvas.SetActive(true);
         charactersCanvas.SetActive(false);
-        instructionsCanvas.SetActive(false);
+        controlsCanvas.SetActive(false);
     }
 
     public void ToCharacters()
@@ -121,7 +121,7 @@ public class ScreensTransitionManager : MonoBehaviour
     public void ToInstructions()
     {
         screenNum = -2;
-        instructionsCanvas.SetActive(true);
+        controlsCanvas.SetActive(true);
         titleCanvas.SetActive(false);
     }
 
