@@ -6,7 +6,7 @@ public class SpawnPickups : MonoBehaviour
 {
     public float spawnTime = 15f;       // time between each spawns
     
-    void Start()
+    void Awake()
     {
 
     }
@@ -22,6 +22,12 @@ public class SpawnPickups : MonoBehaviour
     {
         // cancels all invoke calls on this monobehavior
         CancelInvoke();
+    }
+
+    public void DestroyPickups()
+    {
+        // set all weets pickup and potions on scene to inactive
+        ObjectPooler.SharedInstance.SetAllPickupsToInactive();
     }
 
     void SpawnAWeet()

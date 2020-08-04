@@ -127,6 +127,12 @@ public class ScreensTransitionManager : MonoBehaviour
         Debug.Log("change to ui");
     }
 
+    private IEnumerator DestroyPickups()
+    {
+        // after screen has transited to match conclusion
+        yield return new WaitForSeconds(2.1f);
+        spawnPickupsScript.DestroyPickups();
+    }
 
     public void ToAfterMatch()
     {
@@ -137,6 +143,7 @@ public class ScreensTransitionManager : MonoBehaviour
             if (matchNum <= 2)
             {
                 StartCoroutine(SwitchControllers());
+                StartCoroutine(DestroyPickups());
             }
             else
             {
