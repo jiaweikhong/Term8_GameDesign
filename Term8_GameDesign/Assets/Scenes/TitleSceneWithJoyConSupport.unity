@@ -20508,7 +20508,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cratePrefab: {fileID: 6006276944777252145, guid: 167e7d0900a391249937ca319a3f7d36,
     type: 3}
-  controls: []
+  controls:
+  - {fileID: 197273089}
+  - {fileID: 761714818}
+  - {fileID: 1454679444}
+  - {fileID: 1347666514}
   numberOfPlayers: 4
   characters: []
   platforms: {fileID: 1134700299}
@@ -27555,7 +27559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec64b8605d7805b4eb26327bc9fb0714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlsManager: {fileID: 0}
+  controlsManager: {fileID: 1517808936}
   pauseMenuUI: {fileID: 643280872}
   navigateSFX: {fileID: 8300000, guid: ed3b85ee550a5c14390894dfc6b0263c, type: 3}
   selectSFX: {fileID: 8300000, guid: 2c9d6035d2c6d6b429b70abe2e2df74d, type: 3}
