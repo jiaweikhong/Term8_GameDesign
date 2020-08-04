@@ -10,6 +10,7 @@ public class PlayerInputScript : MonoBehaviour
     public ScreensTransitionManager screensTransitionManager;
     public TitleController titleController;
     public InstructionsController instructionsController;
+    public ControlsController controlsController;
     public CharactersController charactersController;
     public CharacterSelectController characterSelectController;
     public BrewingPhaseController brewingPhaseController;
@@ -37,7 +38,7 @@ public class PlayerInputScript : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 0 && context.performed)
         {
             
-            if (screensTransitionManager.GetScreenNum() == -1)
+            if (screensTransitionManager.GetScreenNum() == -3)
             {
                 charactersController.NavigateInput(context);
             }
@@ -109,12 +110,17 @@ public class PlayerInputScript : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 0 && context.performed)
         {
             // characters screen
-            if (screensTransitionManager.GetScreenNum() == -1)
+            if (screensTransitionManager.GetScreenNum() == -3)
             {
                 charactersController.CancelInput();
             }
-            // instructions screen
+            // controls screen
             if (screensTransitionManager.GetScreenNum() == -2)
+            {
+                controlsController.CancelInput();
+            }
+            // instructions screen
+            if (screensTransitionManager.GetScreenNum() == -1)
             {
                 instructionsController.CancelInput();
             }
