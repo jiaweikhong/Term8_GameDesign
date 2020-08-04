@@ -9,8 +9,10 @@ using System.Text.RegularExpressions;
 public class ScreensTransitionManager : MonoBehaviour
 {
     public GameObject titleCanvas;
-    public GameObject charactersCanvas;
+    public GameObject walkthroughCanvas;
+    public GameObject instructionsCanvas;
     public GameObject controlsCanvas;
+    public GameObject charactersCanvas;
     public GameObject characterSelectCanvas;
     public GameObject brewingPhaseCanvas;
     public GameObject afterMatchCanvas;
@@ -21,6 +23,7 @@ public class ScreensTransitionManager : MonoBehaviour
     public SpawnPickups spawnPickupsScript;
 
     public int requiredPlayersToStart = 4;
+    private bool isFirstGame = true;
     private int screenNum = 0;
     [SerializeField]
     private int readyPlayersNum = 0;
@@ -110,32 +113,42 @@ public class ScreensTransitionManager : MonoBehaviour
     {
         screenNum = 0;
         titleCanvas.SetActive(true);
-        charactersCanvas.SetActive(false);
+        instructionsCanvas.SetActive(false);
         controlsCanvas.SetActive(false);
-    }
-
-    public void ToCharacters()
-    {
-        screenNum = -1;
-        charactersCanvas.SetActive(true);
-        titleCanvas.SetActive(false);
+        charactersCanvas.SetActive(false);
+        characterSelectCanvas.SetActive(false);
     }
 
     public void ToInstructions()
+    {
+        screenNum = -1;
+        instructionsCanvas.SetActive(true);
+        titleCanvas.SetActive(false);
+    }
+    public void ToControls()
     {
         screenNum = -2;
         controlsCanvas.SetActive(true);
         titleCanvas.SetActive(false);
     }
+    public void ToCharacters()
+    {
+        screenNum = -3;
+        charactersCanvas.SetActive(true);
+        titleCanvas.SetActive(false);
+    }
 
+    private void ToWalkthrough()
+    {
+        screenNum = -5;
+        instructionsCanvas.SetActive(true);
+        titleCanvas.SetActive(false);
+    }
     public void ToCharacterSelect()
     {
-        if (screenNum == 0)
-        {
-            screenNum += 1;
-            characterSelectCanvas.SetActive(true);
-            titleCanvas.SetActive(false);
-        }
+        screenNum = 1;
+        characterSelectCanvas.SetActive(true);
+        titleCanvas.SetActive(false);
     }
     private IEnumerator ToBrewingPhase()
     {

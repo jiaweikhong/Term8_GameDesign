@@ -6,14 +6,17 @@ public class TitleUI : MonoBehaviour
     [SerializeField] 
     private GameObject playBox;
     [SerializeField]
-    private GameObject charactersBox;
+    private GameObject instructionsBox;
     [SerializeField]
     private GameObject controlsBox;
+    [SerializeField]
+    private GameObject charactersBox;
 
     public void UpdateSelectionBox(int index)
     {
         playBox.SetActive(index==0);
-        charactersBox.SetActive(index==1);
+        instructionsBox.SetActive(index==1);
         controlsBox.SetActive(index==2);
+        charactersBox.SetActive(index==3);
     }
 }

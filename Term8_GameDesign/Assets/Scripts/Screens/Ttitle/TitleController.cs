@@ -42,14 +42,14 @@ public class TitleController : MonoBehaviour
             if (navigateVector.x < -0.5f)
             {
                 selectionIndex-=1;
-                selectionIndex = (selectionIndex<0) ? 2 : selectionIndex;
+                selectionIndex = (selectionIndex<0) ? 3 : selectionIndex;
             }
             
             // navigate RIGHT
             else if (navigateVector.x > 0.5f)
             {
                 selectionIndex+=1;
-                selectionIndex = (selectionIndex>2) ? 0 : selectionIndex;
+                selectionIndex = (selectionIndex>3) ? 0 : selectionIndex;
             }
             
             titleUI.UpdateSelectionBox(selectionIndex);
@@ -67,11 +67,15 @@ public class TitleController : MonoBehaviour
         }
         else if (selectionIndex==1)
         {
-            screensTransitionManager.ToCharacters();
+            screensTransitionManager.ToInstructions();
         }
         else if (selectionIndex==2)
         {
-            screensTransitionManager.ToInstructions();
+            screensTransitionManager.ToControls();
+        }
+        else if (selectionIndex==3)
+        {
+            screensTransitionManager.ToCharacters();
         }
     }
 }
