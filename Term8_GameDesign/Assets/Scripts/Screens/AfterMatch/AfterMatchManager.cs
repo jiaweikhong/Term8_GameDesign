@@ -15,17 +15,6 @@ public class AfterMatchManager : MonoBehaviour
         screensTransitionManager.OnNewMatch += NewMatch;
     }
 
-    void OnEnable()
-    {
-        Debug.Log("onenable aftermatchmanager called");
-        for (int i = 0; i < playerStatsList.Length; i++)
-        {
-            kills[i] = playerStatsList[i].PlayerKills;
-        }
-        Array.Sort(kills);
-        Array.Reverse(kills);
-    }
-
     public string getPlayerRank(int playerNum)
     {
         int playerKills = playerStatsList[playerNum].PlayerKills;
@@ -35,7 +24,7 @@ public class AfterMatchManager : MonoBehaviour
 
     public string getPlayerRankPodium(int playerNum)
     {
-        OnEnable();
+        NewMatch();
         return getPlayerRank(playerNum);
     }
 
@@ -47,7 +36,7 @@ public class AfterMatchManager : MonoBehaviour
         }
         Array.Sort(kills);
         Array.Reverse(kills);
-        OnUpdateRank();
+        OnUpdateRank?.Invoke();
     }
     
     public delegate void UpdateRank();

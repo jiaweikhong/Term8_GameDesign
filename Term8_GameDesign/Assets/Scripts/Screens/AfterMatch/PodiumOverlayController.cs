@@ -10,7 +10,7 @@ public class PodiumOverlayController : MonoBehaviour
     private ScreensTransitionManager screensTransitionManager;
     private AfterMatchManager afterMatchManager;
     private bool isReady = false;
-    void Start()
+    void OnEnable()
     {
         screensTransitionManager = FindObjectOfType<ScreensTransitionManager>();
         afterMatchManager = FindObjectOfType<AfterMatchManager>();
