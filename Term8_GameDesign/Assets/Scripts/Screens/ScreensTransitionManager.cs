@@ -15,6 +15,7 @@ public class ScreensTransitionManager : MonoBehaviour
     public GameObject brewingPhaseCanvas;
     public GameObject afterMatchCanvas;
     public GameObject gameOverlayCanvas;
+    public GameObject podium;
     public ControlsManager controlsManager;
     private GameOverlayController gameOverlayController;
 
@@ -48,7 +49,9 @@ public class ScreensTransitionManager : MonoBehaviour
         afterMatchCanvas.SetActive(false);
         gameOverlayCanvas.SetActive(false);
 
+        podium.SetActive(false);
         gameOverlayController = gameOverlayCanvas.GetComponent<GameOverlayController>();
+        audioSrc = gameObject.GetComponent<AudioSource>();
     }
 
     public void Update()
@@ -160,6 +163,12 @@ public class ScreensTransitionManager : MonoBehaviour
         // trigger start of spawnings
         spawnPickupsScript.StartSpawning(matchNum);
     }
+    private IEnumerator ToFinal()
+    {
+        yield return new WaitForSeconds(1f);
+        gameOverlayCanvas.SetActive(false);
+        podium.SetActive(true);
+    }
     public void ToAfterMatch()
     {
         spawnPickupsScript.StopSpawning();
@@ -167,7 +176,7 @@ public class ScreensTransitionManager : MonoBehaviour
         if (screenNum == 3)
         {
             audioSrc.PlayOneShot(roundEndSFX);
-            OnNewMatch?.Invoke();
+            OnNewMatch.Invoke();
             
             if (matchNum <= 2)
             {
@@ -176,8 +185,7 @@ public class ScreensTransitionManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("Gabriel's final screen");
-                // final match ui
+                StartCoroutine(ToFinal());
             }
         }
     }
