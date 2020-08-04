@@ -15,7 +15,7 @@ public class ProfessorSecondary : MonoBehaviour
     }
     void OnEnable()
     {
-        Vector2 playerVelocityX = Vector2.right * casterPlayerSpeed.x;
+        Vector2 playerVelocityX = Vector2.right * casterPlayerSpeed.x  * 20f;
         this.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         this.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(transform.right.x, 1.25f) * speed + playerVelocityX);
     }
