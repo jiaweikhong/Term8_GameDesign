@@ -16,7 +16,7 @@ MonoBehaviour:
   sprite: {fileID: 4723107735738678597, guid: c33362e61092e4d4ab9edc8a37018d02, type: 3}
   title: Toxic Alchemist
   backstory: 'Ex-researcher that was fired because his inventions were deemed too
-    toxic for the lab. Dr. Professor continues to experiment independently to make
+    toxic for the lab. Dr Professor continues to experiment independently to make
     people see the beauty of his creations. '
   primarySprite: {fileID: 21300000, guid: 8532565a25f93af499aca585298fa347, type: 3}
   primaryName: Woosh Cruk

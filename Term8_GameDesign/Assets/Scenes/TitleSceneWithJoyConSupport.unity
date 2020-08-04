@@ -21781,8 +21781,8 @@ MonoBehaviour:
   requiredPlayersToStart: 1
   readyPlayersNum: 0
   toSelectPlaySFX: {fileID: 8300000, guid: d2701761ad919584d8a04bbe6b134f28, type: 3}
-  audioManager: {fileID: 1027997229}
   roundEndSFX: {fileID: 8300000, guid: 8ad6ea618b89ebf49ac2fdd93b8ecb97, type: 3}
+  audioManager: {fileID: 1027997229}
 --- !u!4 &1193019350
 Transform:
   m_ObjectHideFlags: 0
@@ -24991,7 +24991,7 @@ Transform:
   - {fileID: 1340640111}
   - {fileID: 685199137}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1353513184
 GameObject:
@@ -26722,7 +26722,7 @@ RectTransform:
   m_Children:
   - {fileID: 643280873}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -30594,7 +30594,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2ccb7f6fe39e694cbf70e2e6da7cdd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTime: 15
+  potionSpawnTime: 10
+  weetsSpawnTime: 15
 --- !u!114 &1748545543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30661,7 +30662,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1759107080
 GameObject:
@@ -32087,7 +32088,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1867729644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32538,7 +32539,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -208, y: -31.5}
+  m_AnchoredPosition: {x: -208, y: -30.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1886192377
