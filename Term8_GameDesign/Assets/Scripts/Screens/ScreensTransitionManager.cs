@@ -4,6 +4,7 @@ using UnityEngine;
 using Enums;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using System.Text.RegularExpressions;
 
 public class ScreensTransitionManager : MonoBehaviour
 {
@@ -111,7 +112,7 @@ public class ScreensTransitionManager : MonoBehaviour
         audioManager.ChangeTrack("toGamePlay");
 
         // trigger start of spawnings
-        spawnPickupsScript.StartSpawning();
+        spawnPickupsScript.StartSpawning(matchNum);
     }
 
     private IEnumerator SwitchControllers()

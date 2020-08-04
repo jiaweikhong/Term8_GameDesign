@@ -4,18 +4,28 @@ using UnityEngine;
 
 public class SpawnPickups : MonoBehaviour
 {
-    public float spawnTime = 15f;       // time between each spawns
-    
+    public float potionSpawnTime = 10f;       // time between each spawns
+    public float weetsSpawnTime = 15f;       // time between each spawns
+
     void Awake()
     {
 
     }
 
-    public void StartSpawning()
+    public void StartSpawning(int matchNum)
     {
-        // Invokes the spawning of pickups in spawnTime+rand seconds
-        Invoke("SpawnAWeet", spawnTime + Random.Range(-2, 2));
-        Invoke("SpawnAPotion", spawnTime + Random.Range(-2, 2));
+        if (matchNum <= 2)
+        {
+            // Invokes the spawning of pickups in spawnTime+rand seconds
+            Invoke("SpawnAWeet", weetsSpawnTime + Random.Range(-2, 2));
+            Invoke("SpawnAPotion", potionSpawnTime + Random.Range(-2, 2));
+        }
+        else if (matchNum == 3)
+        {
+            // spawns only potions in match 3
+            Invoke("SpawnAPotion", potionSpawnTime + Random.Range(-2, 2));
+        }
+        
     } 
 
     public void StopSpawning()
@@ -32,7 +42,6 @@ public class SpawnPickups : MonoBehaviour
 
     void SpawnAWeet()
     {        
-        Debug.Log("spawning a weet");
         // get from objectpooler
         GameObject weets = ObjectPooler.SharedInstance.GetPooledObject("WeetsPickup(Clone)");
 
@@ -42,7 +51,7 @@ public class SpawnPickups : MonoBehaviour
         weets.SetActive(true);
 
         // invoke this function again after spawnTime+rand seconds
-        Invoke("SpawnAWeet", spawnTime + Random.Range(-2, 2));
+        Invoke("SpawnAWeet", weetsSpawnTime + Random.Range(-2, 2));
     }
 
     void SpawnAPotion()
@@ -53,17 +62,15 @@ public class SpawnPickups : MonoBehaviour
         if (potion)
         {
             ResetVelocityTransform(potion);
-
             potion.SetActive(true);
         }
 
         // invoke this function again after spawnTime+rand seconds
-        Invoke("SpawnAPotion", spawnTime + Random.Range(-2, 2));
+        Invoke("SpawnAPotion", potionSpawnTime + Random.Range(-2, 2));
     }
 
     void ResetVelocityTransform(GameObject gameObject)
     {
-        Debug.Log("gameobj is " + gameObject);
         // reset velocity to zero
         Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
         rb.velocity = Vector3.zero;
