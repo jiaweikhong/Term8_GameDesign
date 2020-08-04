@@ -19596,6 +19596,7 @@ MonoBehaviour:
   requiredPlayersToStart: 4
   readyPlayersNum: 0
   toSelectPlaySFX: {fileID: 8300000, guid: d2701761ad919584d8a04bbe6b134f28, type: 3}
+  roundEndSFX: {fileID: 8300000, guid: 8ad6ea618b89ebf49ac2fdd93b8ecb97, type: 3}
 --- !u!4 &1193019350
 Transform:
   m_ObjectHideFlags: 0
