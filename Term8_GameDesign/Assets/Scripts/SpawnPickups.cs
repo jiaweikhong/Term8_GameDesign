@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class SpawnPickups : MonoBehaviour
 {
-    public float spawnTime = 15f;       // time between each spawns
-    
+    public float potionSpawnTime = 10f;       // time between each spawns
+    public float weetsSpawnTime = 15f;       // time between each spawns
+
     void Awake()
     {
 
@@ -16,13 +17,13 @@ public class SpawnPickups : MonoBehaviour
         if (matchNum <= 2)
         {
             // Invokes the spawning of pickups in spawnTime+rand seconds
-            Invoke("SpawnAWeet", spawnTime + Random.Range(-2, 2));
-            Invoke("SpawnAPotion", spawnTime + Random.Range(-2, 2));
+            Invoke("SpawnAWeet", weetsSpawnTime + Random.Range(-2, 2));
+            Invoke("SpawnAPotion", potionSpawnTime + Random.Range(-2, 2));
         }
         else if (matchNum == 3)
         {
             // spawns only potions in match 3
-            Invoke("SpawnAPotion", spawnTime + Random.Range(-2, 2));
+            Invoke("SpawnAPotion", potionSpawnTime + Random.Range(-2, 2));
         }
         
     } 
@@ -50,7 +51,7 @@ public class SpawnPickups : MonoBehaviour
         weets.SetActive(true);
 
         // invoke this function again after spawnTime+rand seconds
-        Invoke("SpawnAWeet", spawnTime + Random.Range(-2, 2));
+        Invoke("SpawnAWeet", weetsSpawnTime + Random.Range(-2, 2));
     }
 
     void SpawnAPotion()
@@ -65,7 +66,7 @@ public class SpawnPickups : MonoBehaviour
         }
 
         // invoke this function again after spawnTime+rand seconds
-        Invoke("SpawnAPotion", spawnTime + Random.Range(-2, 2));
+        Invoke("SpawnAPotion", potionSpawnTime + Random.Range(-2, 2));
     }
 
     void ResetVelocityTransform(GameObject gameObject)
