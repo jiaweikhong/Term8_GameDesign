@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MurasakiSecondary : MonoBehaviour
+public class MurasakiSecondary : GenericPotion
 {
     public float speed = 10f;
     public Rigidbody2D rb;
 
-    // hide from inspector since they are not set in Inspector
-    [HideInInspector]
-    public int casterPlayerNum;
     [HideInInspector]
     public Vector3 casterPlayerSpeed;
     

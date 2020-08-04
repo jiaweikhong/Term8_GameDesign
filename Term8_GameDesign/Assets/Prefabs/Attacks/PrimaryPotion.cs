@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PrimaryPotion : MonoBehaviour
+public class PrimaryPotion : GenericPotion
 {
     public float speed = 7f;
     public Rigidbody2D rb;
 
-    // hide from inspector since they are not set in Inspector
-    [HideInInspector]
-    public int casterPlayerNum;
     [HideInInspector]
     public Vector3 casterPlayerSpeed;
     

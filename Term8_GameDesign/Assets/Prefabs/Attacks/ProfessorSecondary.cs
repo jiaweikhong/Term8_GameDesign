@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProfessorSecondary : MonoBehaviour
+public class ProfessorSecondary : GenericPotion
 {
     public float speed = 500f;
     public Animator potionAnimator;
-    public int casterPlayerNum;
     public Vector3 casterPlayerSpeed;
 
     private List<string> names;

@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SecondaryPotion : MonoBehaviour
+public class SecondaryPotion : GenericPotion
 {
-    public int casterPlayerNum;
     void OnEnable()
     {
         Invoke("Destroy", 1.5f);
