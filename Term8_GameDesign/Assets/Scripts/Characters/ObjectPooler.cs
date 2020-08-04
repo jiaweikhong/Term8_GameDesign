@@ -52,7 +52,6 @@ public class ObjectPooler : MonoBehaviour {
             string formattedName = name.Replace("(Clone)", "");
             if (item.objectToPool.name == formattedName)
             {
-                Debug.Log(name + "   " + item.shouldExpand);
                 if (item.shouldExpand)
                 {
                     GameObject obj = (GameObject)Instantiate(item.objectToPool);

@@ -323,6 +323,12 @@ public abstract class GenericCharacter : MonoBehaviour
 
     private void ResetPosition()
     {
+        StartCoroutine(ResetPositionAfterSeconds(2));
+    }
+
+    IEnumerator ResetPositionAfterSeconds(int sec)
+    {
+        yield return new WaitForSeconds(sec);
         transform.position = new Vector3(Random.Range(-9f, 9f), 5, 0);
     }
 }

@@ -95,7 +95,14 @@ public class CharacterSelectController : MonoBehaviour
         }
         else if (gameObject.activeInHierarchy && !playerReady)
         {
-            audioSrc.PlayOneShot(errorSFX);
+            StartCoroutine(ToTitle());
+
         }
+    }
+    private IEnumerator ToTitle()
+    {
+        audioSrc.PlayOneShot(cancelSFX);
+        yield return new WaitForSeconds(0.5f);
+        screensTransitionManager.ToTitle();
     }
 }

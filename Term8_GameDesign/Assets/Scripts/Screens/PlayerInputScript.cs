@@ -8,6 +8,9 @@ public class PlayerInputScript : MonoBehaviour
 {
     public ControlsManager controlsManager;
     public ScreensTransitionManager screensTransitionManager;
+    public TitleController titleController;
+    public InstructionsController instructionsController;
+    public CharactersController charactersController;
     public CharacterSelectController characterSelectController;
     public BrewingPhaseController brewingPhaseController;
     public AfterMatchController afterMatchController;
@@ -33,6 +36,17 @@ public class PlayerInputScript : MonoBehaviour
         // Title Screen Scene
         if (SceneManager.GetActiveScene().buildIndex == 0 && context.performed)
         {
+            
+            if (screensTransitionManager.GetScreenNum() == -1)
+            {
+                charactersController.NavigateInput(context);
+            }
+
+            if (screensTransitionManager.GetScreenNum() == 0)
+            {
+                titleController.NavigateInput(context);
+            }
+            
             if (screensTransitionManager.GetScreenNum() == 1)
             {
                 characterSelectController.NavigateInput(context);
@@ -43,13 +57,13 @@ public class PlayerInputScript : MonoBehaviour
                 // brewing controls
                 brewingPhaseController.NavigateInput(context);
             }
-        }
-        // Arena Scene - Start the input for match conclusion screen here
-        else if (SceneManager.GetActiveScene().buildIndex == 1 && context.performed)
-        {
-            if (PauseMenu.isGamePaused)
+
+            else if(screensTransitionManager.GetScreenNum() == 3)
             {
-                pauseMenu.NavigateInput(context);
+                if (PauseMenu.isGamePaused)
+                {
+                    pauseMenu.NavigateInput(context);
+                }
             }
         }
     }
@@ -62,7 +76,7 @@ public class PlayerInputScript : MonoBehaviour
             // title screen
             if (screensTransitionManager.GetScreenNum() == 0)
             {
-                screensTransitionManager.onSelectPlay();
+                titleController.SubmitInput();
             }
             // char select screen
             else if (screensTransitionManager.GetScreenNum() == 1)
@@ -79,13 +93,12 @@ public class PlayerInputScript : MonoBehaviour
             {
                 afterMatchController.SubmitInput();
             }
-        }
-        // Arena Scene - Start the input for match conclusion screen here
-        else if (SceneManager.GetActiveScene().buildIndex == 1 && context.performed)
-        {
-            if (PauseMenu.isGamePaused)
+            else if (screensTransitionManager.GetScreenNum() == 3)
             {
-                pauseMenu.Select();
+                if (PauseMenu.isGamePaused)
+                {
+                    pauseMenu.Select();
+                }
             }
         }
     }
@@ -95,6 +108,21 @@ public class PlayerInputScript : MonoBehaviour
         // Title Screen Scene
         if (SceneManager.GetActiveScene().buildIndex == 0 && context.performed)
         {
+            // characters screen
+            if (screensTransitionManager.GetScreenNum() == -1)
+            {
+                charactersController.CancelInput();
+            }
+            // instructions screen
+            if (screensTransitionManager.GetScreenNum() == -2)
+            {
+                instructionsController.CancelInput();
+            }
+            // title screen
+            if (screensTransitionManager.GetScreenNum() == 0)
+            {
+                titleController.CancelInput();
+            }
             // char select screen
             if (screensTransitionManager.GetScreenNum() == 1)
             {
@@ -110,10 +138,7 @@ public class PlayerInputScript : MonoBehaviour
             {
                 afterMatchController.CancelInput();
             }
-        }
-        // Arena Scene - Start the input for match conclusion screen here
-        else if (SceneManager.GetActiveScene().buildIndex == 1 && context.performed)
-        {
+
         }
     }
 
