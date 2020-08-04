@@ -57,13 +57,13 @@ public class PlayerInputScript : MonoBehaviour
                 // brewing controls
                 brewingPhaseController.NavigateInput(context);
             }
-        }
-        // Arena Scene - Start the input for match conclusion screen here
-        else if (SceneManager.GetActiveScene().buildIndex == 1 && context.performed)
-        {
-            if (PauseMenu.isGamePaused)
+
+            else if(screensTransitionManager.GetScreenNum() == 3)
             {
-                pauseMenu.NavigateInput(context);
+                if (PauseMenu.isGamePaused)
+                {
+                    pauseMenu.NavigateInput(context);
+                }
             }
         }
     }
@@ -93,13 +93,12 @@ public class PlayerInputScript : MonoBehaviour
             {
                 afterMatchController.SubmitInput();
             }
-        }
-        // Arena Scene - Start the input for match conclusion screen here
-        else if (SceneManager.GetActiveScene().buildIndex == 1 && context.performed)
-        {
-            if (PauseMenu.isGamePaused)
+            else if (screensTransitionManager.GetScreenNum() == 3)
             {
-                pauseMenu.Select();
+                if (PauseMenu.isGamePaused)
+                {
+                    pauseMenu.Select();
+                }
             }
         }
     }
@@ -139,10 +138,7 @@ public class PlayerInputScript : MonoBehaviour
             {
                 afterMatchController.CancelInput();
             }
-        }
-        // Arena Scene - Start the input for match conclusion screen here
-        else if (SceneManager.GetActiveScene().buildIndex == 1 && context.performed)
-        {
+
         }
     }
 

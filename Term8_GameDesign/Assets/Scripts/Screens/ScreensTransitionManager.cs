@@ -25,6 +25,10 @@ public class ScreensTransitionManager : MonoBehaviour
     private int readyPlayersNum = 0;
     private int matchNum = 0;
 
+    private AudioSource audioSrc;
+    public AudioClip toSelectPlaySFX;
+    public AudioClip roundEndSFX;
+
     public int GetScreenNum()
     {
         return screenNum;
@@ -154,6 +158,7 @@ public class ScreensTransitionManager : MonoBehaviour
         spawnPickupsScript.StopSpawning();
         if (screenNum == 3)
         {
+            audioSrc.PlayOneShot(roundEndSFX);
             OnNewMatch?.Invoke();
             
             if (matchNum <= 2)
