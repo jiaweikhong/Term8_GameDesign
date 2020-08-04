@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Player2Stats
   m_EditorClassIdentifier: 
   playerNum: 2
-  _character: {fileID: 11400000, guid: 4fc1ab2275dccc34d8ee486c36fbc304, type: 2}
-  _weets: 200
+  _character: {fileID: 11400000, guid: 4caea6bd2df3e2e41bd930ee2f28b36b, type: 2}
+  _weets: 600
   _secondaryPotionQty: 0
-  _specialPotion: {fileID: 11400000, guid: a3a880e1c6f4c4d4fa60ba97221c649b, type: 2}
+  _specialPotion: {fileID: 11400000, guid: a19f75fc27961b34dab78285f5329675, type: 2}
   _specialPotionQty: 0
   _damageDealtToOthers: 1
   _playerKills: 0

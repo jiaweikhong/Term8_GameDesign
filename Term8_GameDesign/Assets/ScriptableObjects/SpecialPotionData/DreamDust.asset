@@ -15,4 +15,5 @@ MonoBehaviour:
   specialName: Dream Dust
   description: ' Makes all other players sleep for 2 seconds '
   sprite: {fileID: 21300000, guid: 2c904865185b4a446ba655a9491ed0eb, type: 3}
-  cost: 160
+  cost: 200
+  specialPotionType: 0
