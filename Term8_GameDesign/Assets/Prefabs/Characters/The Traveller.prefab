@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7451418004959359733}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.03, y: 1.47, z: 0}
+  m_LocalPosition: {x: 1.03, y: 2.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7451418005684447543}
@@ -446,6 +446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlsManager: {fileID: 0}
+  gameOverlayController: {fileID: 0}
   runSpeed: 40
   startTimeBtwAttack: 0.6
   isFast: 0

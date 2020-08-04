@@ -50,12 +50,13 @@ public class Murasaki : GenericCharacter
             animator.SetTrigger("Secondary");
             audioSrc.PlayOneShot(potion2SFX);
 
-            GameObject secondaryPotion = ObjectPooler.SharedInstance.GetPooledObject("MurasakiSecondary(Clone)"); 
-            secondaryPotion.GetComponent<SecondaryPotion>().casterPlayerNum = playerScript.playerNum;
+            GameObject secondaryPotion = ObjectPooler.SharedInstance.GetPooledObject("MurasakiSecondaryV2(Clone)"); 
+            secondaryPotion.GetComponent<MurasakiSecondary>().casterPlayerNum = playerScript.playerNum;
+            secondaryPotion.GetComponent<MurasakiSecondary>().casterPlayerSpeed = rigidBody.velocity;
             if (secondaryPotion != null)
             {
-                secondaryPotion.transform.position = swordsSpawnPoint.position;
-                secondaryPotion.transform.rotation = swordsSpawnPoint.rotation;
+                secondaryPotion.transform.position = firePoint.position;
+                secondaryPotion.transform.rotation = firePoint.rotation;
                 secondaryPotion.SetActive(true);
             }
             Debug.Log("Potion 2!!");

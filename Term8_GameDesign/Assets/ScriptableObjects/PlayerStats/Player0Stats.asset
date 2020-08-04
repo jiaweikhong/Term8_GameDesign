@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNum: 0
   _character: {fileID: 11400000, guid: b2324c148bb3398489656117da134249, type: 2}
-  _weets: 200
+  _weets: 600
   _secondaryPotionQty: 0
   _specialPotion: {fileID: 11400000, guid: a19f75fc27961b34dab78285f5329675, type: 2}
   _specialPotionQty: 0

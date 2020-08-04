@@ -1446,7 +1446,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &923332726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3356,6 +3356,7 @@ MonoBehaviour:
   screensTransitionManager: {fileID: 0}
   characterSelectController: {fileID: 0}
   brewingPhaseController: {fileID: 0}
+  afterMatchController: {fileID: 0}
   pauseMenu: {fileID: 315553084}
   genericCharacter: {fileID: 0}
 --- !u!114 &1087879059
@@ -3625,6 +3626,7 @@ MonoBehaviour:
   screensTransitionManager: {fileID: 0}
   characterSelectController: {fileID: 0}
   brewingPhaseController: {fileID: 0}
+  afterMatchController: {fileID: 0}
   pauseMenu: {fileID: 315553084}
   genericCharacter: {fileID: 0}
 --- !u!114 &1175505541
@@ -4698,6 +4700,7 @@ MonoBehaviour:
   screensTransitionManager: {fileID: 0}
   characterSelectController: {fileID: 0}
   brewingPhaseController: {fileID: 0}
+  afterMatchController: {fileID: 0}
   pauseMenu: {fileID: 315553084}
   genericCharacter: {fileID: 0}
 --- !u!114 &1565437055
@@ -5996,7 +5999,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2022999827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6013,6 +6016,7 @@ MonoBehaviour:
   player1: {fileID: 11400000, guid: 491e4f90cc3cea545b7b86776434fce4, type: 2}
   player2: {fileID: 11400000, guid: f0af0c7bb9303264b8ac0b812117b6ad, type: 2}
   player3: {fileID: 11400000, guid: ac6388aa48268434cb1af62bbc18df67, type: 2}
+  playersGameOverlayUI: []
   mainCamShake: {fileID: 1202666046}
   enableCamShakeOnDeath: 1
 --- !u!4 &2022999828
@@ -6175,6 +6179,7 @@ MonoBehaviour:
   screensTransitionManager: {fileID: 0}
   characterSelectController: {fileID: 0}
   brewingPhaseController: {fileID: 0}
+  afterMatchController: {fileID: 0}
   pauseMenu: {fileID: 315553084}
   genericCharacter: {fileID: 0}
 --- !u!114 &2101556421
