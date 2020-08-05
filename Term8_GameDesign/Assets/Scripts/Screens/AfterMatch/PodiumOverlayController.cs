@@ -8,12 +8,12 @@ public class PodiumOverlayController : MonoBehaviour
     public PlayerStats playerStats;
     public PodiumOverlayUI podiumOverlayUI;
     private ScreensTransitionManager screensTransitionManager;
+    [SerializeField]
     private AfterMatchManager afterMatchManager;
     private bool isReady = false;
     void OnEnable()
     {
         screensTransitionManager = FindObjectOfType<ScreensTransitionManager>();
-        afterMatchManager = FindObjectOfType<AfterMatchManager>();
 
         afterMatchManager.OnUpdateRank += UpdateRank;
     }

@@ -680,7 +680,7 @@ RectTransform:
   - {fileID: 1687538136}
   - {fileID: 118620866}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3985,8 +3985,7 @@ Transform:
   - {fileID: 1398251952}
   - {fileID: 1116485265}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
-  m_RootOrder: 17
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &198071512
 GameObject:
@@ -5387,6 +5386,7 @@ MonoBehaviour:
   playerNum: 3
   playerStats: {fileID: 11400000, guid: ac6388aa48268434cb1af62bbc18df67, type: 2}
   podiumOverlayUI: {fileID: 259843463}
+  afterMatchManager: {fileID: 1710327552}
 --- !u!114 &259843463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7970,8 +7970,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
-  m_RootOrder: 14
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &307273756
 GameObject:
@@ -10623,6 +10622,7 @@ MonoBehaviour:
   playerNum: 1
   playerStats: {fileID: 11400000, guid: 491e4f90cc3cea545b7b86776434fce4, type: 2}
   podiumOverlayUI: {fileID: 462590009}
+  afterMatchManager: {fileID: 1710327552}
 --- !u!114 &462590009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14705,8 +14705,7 @@ Transform:
   - {fileID: 965964432}
   - {fileID: 1019438927}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &693870404
 GameObject:
@@ -15166,8 +15165,7 @@ Transform:
   - {fileID: 263254829}
   - {fileID: 1134700300}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &709173303
 GameObject:
@@ -16740,8 +16738,7 @@ Transform:
   - {fileID: 1742275619}
   - {fileID: 948836629}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
-  m_RootOrder: 18
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &779101640
 GameObject:
@@ -21014,8 +21011,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
-  m_RootOrder: 21
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1033107787
 GameObject:
@@ -22264,8 +22260,6 @@ MonoBehaviour:
   characters: []
   platforms: {fileID: 1134700299}
   afterMatchManager: {fileID: 1354880926}
-  screensTransitionManager: {fileID: 1193019349}
-  afterMatchManager: {fileID: 1710327552}
 --- !u!82 &1105154362
 AudioSource:
   m_ObjectHideFlags: 0
@@ -22374,8 +22368,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 25
-  m_RootOrder: 24
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1109609334
 GameObject:
@@ -24762,8 +24755,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
-  m_RootOrder: 13
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1193019351
 AudioSource:
@@ -28160,8 +28152,7 @@ Transform:
   - {fileID: 1340640111}
   - {fileID: 685199137}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
-  m_RootOrder: 20
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1353513184
 GameObject:
@@ -28964,7 +28955,6 @@ GameObject:
   - component: {fileID: 1416622941}
   - component: {fileID: 1416622940}
   - component: {fileID: 1416622939}
-  - component: {fileID: 1416622943}
   m_Layer: 5
   m_Name: PodiumOverlayCanvas
   m_TagString: Untagged
@@ -28988,7 +28978,7 @@ RectTransform:
   - {fileID: 1524181850}
   - {fileID: 259843464}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -29063,23 +29053,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &1416622943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1416622937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cc2d98cf1459b64cacb0bd4de8344e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerStatsList:
-  - {fileID: 11400000, guid: 86b5e2945bb646043b4eaba1c3533f5f, type: 2}
-  - {fileID: 11400000, guid: 491e4f90cc3cea545b7b86776434fce4, type: 2}
-  - {fileID: 11400000, guid: f0af0c7bb9303264b8ac0b812117b6ad, type: 2}
-  - {fileID: 11400000, guid: ac6388aa48268434cb1af62bbc18df67, type: 2}
 --- !u!1 &1421559570
 GameObject:
   m_ObjectHideFlags: 0
@@ -29919,8 +29892,7 @@ Transform:
   - {fileID: 587005491}
   - {fileID: 1804860605}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
-  m_RootOrder: 19
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1457426890
 GameObject:
@@ -30134,8 +30106,7 @@ RectTransform:
   m_Children:
   - {fileID: 643280873}
   m_Father: {fileID: 0}
-  m_RootOrder: 24
-  m_RootOrder: 23
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -31154,8 +31125,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
-  m_RootOrder: 15
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1524181849
 GameObject:
@@ -31219,6 +31189,7 @@ MonoBehaviour:
   playerNum: 2
   playerStats: {fileID: 11400000, guid: f0af0c7bb9303264b8ac0b812117b6ad, type: 2}
   podiumOverlayUI: {fileID: 1524181852}
+  afterMatchManager: {fileID: 1710327552}
 --- !u!114 &1524181852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33136,8 +33107,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
-  m_RootOrder: 16
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1700022214
 GameObject:
@@ -33341,7 +33311,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1711503755
 GameObject:
@@ -33812,6 +33782,7 @@ MonoBehaviour:
   playerNum: 0
   playerStats: {fileID: 11400000, guid: 86b5e2945bb646043b4eaba1c3533f5f, type: 2}
   podiumOverlayUI: {fileID: 1733243515}
+  afterMatchManager: {fileID: 1710327552}
 --- !u!114 &1733243515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34507,8 +34478,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
-  m_RootOrder: 22
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1759107080
 GameObject:
