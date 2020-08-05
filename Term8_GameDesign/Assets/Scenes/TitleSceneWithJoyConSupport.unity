@@ -700,7 +700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   matchMin: 0
-  matchSec: 5
+  matchSec: 30
   minCountdown: {fileID: 731482068}
   msecCountdown: {fileID: 2069130741}
   invisPlatform: {fileID: 1792674437}
@@ -3084,9 +3084,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 3
-  m_Text: 'Ex-researcher that was fired because his inventions were deemed too toxic
-    for the lab. Dr. Professor continues to experiment independently to make people
-    see the beauty of his creations. '
+  m_Text: 'Descendent of the Renesha Clan renown for their ability to brew potions
+    that allow them to create metal objects. Murasaki is adept at using blades. She
+    fights to bring glory and honour to her clan. '
 --- !u!222 &163088510
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6871,7 +6871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &263413534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18886,7 +18886,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: THE TRAVELLER
+  m_Text: MURASAKI
 --- !u!1001 &915272204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27902,7 +27902,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SAND ALCHEMIST
+  m_Text: BLADE ALCHEMIST
 --- !u!1 &1331317847
 GameObject:
   m_ObjectHideFlags: 0

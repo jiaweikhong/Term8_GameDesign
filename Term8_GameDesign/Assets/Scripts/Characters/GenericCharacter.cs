@@ -141,20 +141,7 @@ public abstract class GenericCharacter : MonoBehaviour
         if (other.gameObject.CompareTag("Damage") && !wasHurted)
         {
             int otherPlayerNum = other.gameObject.GetComponent<GenericPotion>().casterPlayerNum;
-            // if (other.gameObject.TryGetComponent(out PrimaryPotion primary))
-            // {
-            //     otherPlayerNum = primary.casterPlayerNum;
-            // }
-            // else if (other.gameObject.TryGetComponent(out SecondaryPotion secondary))
-            // {
-            //     otherPlayerNum = secondary.casterPlayerNum;
-            // }
-            // else if (other.gameObject.TryGetComponent(out MurasakiSecondary secondary2)){
-            //     Debug.Log("MRUASKAIIISAD");
-            //     otherPlayerNum = secondary2.casterPlayerNum;
-            // } else {
-            //     otherPlayerNum  = other.gameObject.GetComponent<ProfessorSecondary>().casterPlayerNum;
-            // }
+            
             int playerNum = gameObject.transform.parent.gameObject.GetComponentInParent<GenericPlayer>().playerNum;
             if (otherPlayerNum != playerNum)
             {

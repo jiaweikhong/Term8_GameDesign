@@ -22,11 +22,4 @@ public class PrimaryPotion : GenericPotion
     {
         gameObject.SetActive(false);
     }
-
-    public void SetCasterPlayerNumAndSpeed(int playerNum, Vector3 playerSpeed)
-    {
-        casterPlayerNum = playerNum;
-        casterPlayerSpeed = playerSpeed;
-
-    }
 }

@@ -153,6 +153,7 @@ public class ScreensTransitionManager : MonoBehaviour
         controlsCanvas.SetActive(false);
         charactersCanvas.SetActive(false);
         characterSelectCanvas.SetActive(false);
+        audioManager.ChangeTrack("toTitle");
     }
 
     public void ToInstructions()
@@ -187,6 +188,7 @@ public class ScreensTransitionManager : MonoBehaviour
         {
             screenNum = 1;
             characterSelectCanvas.SetActive(true);
+            audioManager.ChangeTrack("characterSelect");
             titleCanvas.SetActive(false);
             controlsCanvas.SetActive(false);
         }

@@ -38,6 +38,15 @@ public class AudioManager : MonoBehaviour
             audioSource.clip = matchConclude;
             audioSource.Play();
         }
+        if (track == "toTitle") {
+            if (audioSource.clip == titleScreen) {
+                return;
+            }
+            audioSource.Stop();
+            audioSource.loop= true;
+            audioSource.clip = titleScreen;
+            audioSource.Play();
+        }
         
     }
     
