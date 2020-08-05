@@ -47,7 +47,7 @@ public class AfterMatchManager : MonoBehaviour
         }
         Array.Sort(kills);
         Array.Reverse(kills);
-        OnUpdateRank();
+        OnUpdateRank?.Invoke();
     }
     
     public delegate void UpdateRank();

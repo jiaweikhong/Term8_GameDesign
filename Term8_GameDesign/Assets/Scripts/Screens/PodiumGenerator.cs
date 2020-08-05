@@ -18,8 +18,9 @@ public class PodiumGenerator : MonoBehaviour
     [SerializeField]
     private Transform[] characters;
     public GameObject platforms;    // under Grid/Jumpable
-    public AfterMatchManager afterMatchManager;
-    public ScreensTransitionManager screensTransitionManager;
+    [SerializeField]
+    private AfterMatchManager afterMatchManager;
+    private ScreensTransitionManager screensTransitionManager;
     private bool gotPositions;
     AudioSource thump;
 
@@ -27,6 +28,8 @@ public class PodiumGenerator : MonoBehaviour
 
     void OnEnable()
     {
+        screensTransitionManager = FindObjectOfType<ScreensTransitionManager>();
+
         numberOfPlayers = screensTransitionManager.requiredPlayersToStart;
         positions = new int[numberOfPlayers];
         characters = new Transform[numberOfPlayers];

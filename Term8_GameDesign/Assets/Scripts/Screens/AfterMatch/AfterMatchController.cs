@@ -8,6 +8,7 @@ public class AfterMatchController : MonoBehaviour
     public PlayerStats playerStats;
     public AfterMatchUI afterMatchUI;
     private ScreensTransitionManager screensTransitionManager;
+    [SerializeField]
     private AfterMatchManager afterMatchManager;
     private bool playerReady = false;
     private AudioSource audioSrc;
@@ -20,7 +21,6 @@ public class AfterMatchController : MonoBehaviour
     {
         // get reference and display default
         screensTransitionManager = FindObjectOfType<ScreensTransitionManager>();
-        afterMatchManager = FindObjectOfType<AfterMatchManager>();
         audioSrc = GetComponent<AudioSource>();
         afterMatchUI.UpdatePlayer(playerStats);
         afterMatchUI.UpdateRank(afterMatchManager.getPlayerRank(playerNum));
