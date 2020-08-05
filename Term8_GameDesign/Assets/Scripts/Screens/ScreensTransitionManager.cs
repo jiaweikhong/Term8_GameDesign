@@ -16,6 +16,7 @@ public class ScreensTransitionManager : MonoBehaviour
     public GameObject brewingPhaseCanvas;
     public GameObject afterMatchCanvas;
     public GameObject gameOverlayCanvas;
+    public GameObject podiumOverlayCanvas;
     public GameObject podium;
     public ControlsManager controlsManager;
     private GameOverlayController gameOverlayController;
@@ -63,6 +64,7 @@ public class ScreensTransitionManager : MonoBehaviour
         brewingPhaseCanvas.SetActive(false);
         afterMatchCanvas.SetActive(false);
         gameOverlayCanvas.SetActive(false);
+        podiumOverlayCanvas.SetActive(false);
 
         podium.SetActive(false);
         gameOverlayController = gameOverlayCanvas.GetComponent<GameOverlayController>();
@@ -96,6 +98,25 @@ public class ScreensTransitionManager : MonoBehaviour
                 screenNum = 2;
                 readyPlayersNum = 0;
                 StartCoroutine(ToBrewingPhase());
+            }
+        }
+        else if (screenNum == 5) // podium
+        {
+            if (readyPlayersNum == requiredPlayersToStart)
+            {
+                screenNum = 0;
+                readyPlayersNum = 0;
+                matchNum = 0;
+                
+                // set active/inactive pages 
+                titleCanvas.SetActive(true);
+                charactersCanvas.SetActive(false);
+                controlsCanvas.SetActive(false);
+                characterSelectCanvas.SetActive(false);
+                brewingPhaseCanvas.SetActive(false);
+                afterMatchCanvas.SetActive(false);
+                gameOverlayCanvas.SetActive(false);
+                podiumOverlayCanvas.SetActive(false);
             }
         }
     }
@@ -198,6 +219,7 @@ public class ScreensTransitionManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         gameOverlayCanvas.SetActive(false);
         podium.SetActive(true);
+        podiumOverlayCanvas.SetActive(true);
         audioManager.ChangeTrack("toAfterMatch");
     }
     public void ToAfterMatch()
@@ -216,6 +238,8 @@ public class ScreensTransitionManager : MonoBehaviour
             }
             else
             {
+                screenNum = 5;
+                readyPlayersNum = 0;
                 StartCoroutine(ToFinal());
             }
         }

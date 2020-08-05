@@ -4,6 +4,8 @@ using System.Collections;
 
 public class GameOverlayController : MonoBehaviour
 {
+    public int matchMin;
+    public int matchSec;
     public Text minCountdown;
     public Text msecCountdown;
     public GameObject invisPlatform;
@@ -72,8 +74,8 @@ public class GameOverlayController : MonoBehaviour
 
     public void NewMatch()
     {
-        min = 0;
-        sec = 5;
+        min = matchMin;
+        sec = matchSec;
         msec = 0;
     }
 }

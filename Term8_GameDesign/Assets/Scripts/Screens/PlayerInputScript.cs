@@ -15,6 +15,7 @@ public class PlayerInputScript : MonoBehaviour
     public CharacterSelectController characterSelectController;
     public BrewingPhaseController brewingPhaseController;
     public AfterMatchController afterMatchController;
+    public PodiumOverlayController podiumOverlayController;
     // protected GenericCharacter genericCharacter;
     public PauseMenu pauseMenu;
     [SerializeField] protected GenericCharacter genericCharacter;
@@ -192,7 +193,14 @@ public class PlayerInputScript : MonoBehaviour
     {
         if (context.performed)
         {
-            genericCharacter.SpecialPotInput(context);
+            if (screensTransitionManager.GetScreenNum() == 4)
+            {
+                podiumOverlayController.UpdateReady();
+            }
+            else
+            {
+                genericCharacter.SpecialPotInput(context);
+            }
         }
     }
 
