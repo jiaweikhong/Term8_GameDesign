@@ -150,6 +150,15 @@ public class PlayerInputScript : MonoBehaviour
             {
                 brewingPhaseController.CancelInput(context);
             }
+            // arena screen
+            else if (screensTransitionManager.GetScreenNum() == 3)
+            {   
+                // pause screen
+                if (PauseMenu.isGamePaused)
+                {
+                    pauseMenu.CancelInput();
+                }
+            }
             // after match screen
             else if (screensTransitionManager.GetScreenNum() == 4)
             {

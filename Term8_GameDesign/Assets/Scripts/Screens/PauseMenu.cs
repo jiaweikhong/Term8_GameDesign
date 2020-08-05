@@ -14,12 +14,15 @@ public class PauseMenu : MonoBehaviour
     private AudioSource audioSrc;
     public AudioClip navigateSFX;
     public AudioClip selectSFX;
+    public AudioClip cancelSFX;
     public GameObject resumeButton;
     public Image resumeButtonImage;
     public GameObject controlsButton;
     public Image controlsButtonImage;
     public GameObject mainMenuButton;
     public Image mainMenuButtonImage;
+    public GameObject controlsCanvas;
+    private bool controlsCanvasOpen = false;
 
     private void Awake()
     {
@@ -28,7 +31,7 @@ public class PauseMenu : MonoBehaviour
     private void Start()
     {
         pauseMenuUI.SetActive(false);
-        DontDestroyOnLoad(gameObject);
+        controlsCanvas.SetActive(false);
     }
 
     private void Update()
@@ -99,11 +102,18 @@ public class PauseMenu : MonoBehaviour
     public void LoadControls()
     {
         Debug.Log("Loading Controls...");
+        controlsCanvas.SetActive(true);
+    }
+
+    public void HideControls()
+    {
+        Debug.Log("Hiding controls...");
+        controlsCanvas.SetActive(false);
     }
 
     public void NavigateInput(InputAction.CallbackContext context)
     {
-        if (gameObject.activeInHierarchy && context.performed)
+        if (gameObject.activeInHierarchy && context.performed && !controlsCanvasOpen)
         {
             navigateVector = context.ReadValue<Vector2>();
             // navigate down
@@ -133,14 +143,34 @@ public class PauseMenu : MonoBehaviour
                 break;
             case 1:
                 // controls
-                audioSrc.PlayOneShot(selectSFX);
-                LoadControls();
+                if (!controlsCanvasOpen)
+                {
+                    controlsCanvasOpen = true;
+                    audioSrc.PlayOneShot(selectSFX);
+                    LoadControls();
+                }
                 break;
             case 2:
                 // return to main menu
                 audioSrc.PlayOneShot(selectSFX);
                 LoadMenu();
                 //index = 0;
+                break;
+        }
+    }
+
+    public void CancelInput()
+    {
+        switch (index)
+        {
+            case 1:
+                // controls
+                if (controlsCanvasOpen)
+                {
+                    controlsCanvasOpen = false;
+                    audioSrc.PlayOneShot(cancelSFX);
+                    HideControls();
+                }
                 break;
         }
     }
