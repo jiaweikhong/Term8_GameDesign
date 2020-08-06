@@ -6,10 +6,8 @@ using UnityEngine.EventSystems;
 
 public class Murasaki : GenericCharacter
 {
-    public Animator potionAnimator;
     // If you want to override awake, please see: https://answers.unity.com/questions/388454/can-ishould-i-call-awake-in-parent-class-manually.html
     public Transform firePoint;
-    public Transform swordsSpawnPoint;
     public AudioClip potion1SFX;
     public AudioClip potion2SFX;
 

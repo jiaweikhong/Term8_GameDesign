@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 
 public class TheTraveller : GenericCharacter
 {
-    public Animator potionAnimator;
     // If you want to override awake, please see: https://answers.unity.com/questions/388454/can-ishould-i-call-awake-in-parent-class-manually.html
     public Transform firePoint;
     public Transform pillarFirePoint;

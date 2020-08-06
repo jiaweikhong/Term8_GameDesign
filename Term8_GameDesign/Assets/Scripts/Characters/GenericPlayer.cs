@@ -52,7 +52,7 @@ public class GenericPlayer : MonoBehaviour
         {
             Debug.Log("I am muddled, my player number is " + playerNum);
             genericCharacter.SetMuddleness(true);
-            genericCharacter.StatusEffectAnimator.SetBool("Confused", true);
+            genericCharacter.allStatusEffects[0].gameObject.SetActive(true);
             StartCoroutine(RevertMuddleness());
         }
     }
@@ -63,7 +63,7 @@ public class GenericPlayer : MonoBehaviour
         {
             Debug.Log("I am dreaming, my player number is " + playerNum);
             genericCharacter.SetDreaming(true);
-            genericCharacter.StatusEffectAnimator.SetBool("Sleeping", true);
+            genericCharacter.allStatusEffects[1].gameObject.SetActive(true);
             StartCoroutine(RevertDreaming());
         }
     }
@@ -72,7 +72,7 @@ public class GenericPlayer : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         genericCharacter.SetMuddleness(false);
-        genericCharacter.StatusEffectAnimator.SetBool("Confused", false);
+        genericCharacter.allStatusEffects[0].gameObject.SetActive(false);
         Debug.Log("Ended Muddling Mist on player " + playerNum);
     }
 
@@ -80,7 +80,7 @@ public class GenericPlayer : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         genericCharacter.SetDreaming(false);
-        genericCharacter.StatusEffectAnimator.SetBool("Sleeping", false);
+        genericCharacter.allStatusEffects[1].gameObject.SetActive(false);
         Debug.Log("Ended Dream Dust on player " + playerNum);
     }
 

@@ -5,10 +5,7 @@ using Enums;
 
 public class DrProfessor : GenericCharacter
 {
-    public Animator potionAnimator;     // can refactor into the GenericCharacter (when other attacks are done)
     public Transform firePoint;
-    // public GameObject secondaryPotion;
-
     public AudioClip potion1SFX;
     public AudioClip potion2SFX;
 
