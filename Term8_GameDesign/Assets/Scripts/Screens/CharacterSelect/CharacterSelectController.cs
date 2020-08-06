@@ -31,6 +31,9 @@ public class CharacterSelectController : MonoBehaviour
         characterSelectUI.UpdateCharacterDisplayed(characterSelectManager.GetCharacter(characterIndex));
         characterSelectUI.UpdateSelected(playerReady);
         audioSrc = GetComponent<AudioSource>();
+
+        // resets UI when stm.ToTitle() is called
+        screensTransitionManager.OnReturnToTitle += ResetUI;
     }
 
     // Note: The following 3 functions NavigateInput, SelectInput, and CancelInput are called from the PlayerInputScript
@@ -104,5 +107,12 @@ public class CharacterSelectController : MonoBehaviour
         audioSrc.PlayOneShot(cancelSFX);
         yield return new WaitForSeconds(0.5f);
         screensTransitionManager.ToTitle();
+    }
+
+    private void ResetUI()
+    {
+        playerReady = false;
+        characterSelectManager.UnSelectCharacter(characterIndex);
+        characterSelectUI.UpdateSelected(false);
     }
 }

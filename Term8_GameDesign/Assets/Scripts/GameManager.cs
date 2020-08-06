@@ -42,10 +42,11 @@ public class GameManager : MonoBehaviour
             { 2, player2 },
             { 3, player3 }
         };
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         
         screensTransitionManager = FindObjectOfType<ScreensTransitionManager>();
         screensTransitionManager.OnNewMatch += ResetHealth;
+        screensTransitionManager.OnReturnToTitle += ResetAllPlayers;
     }
 
     private void ResetHealth()
@@ -183,15 +184,20 @@ public class GameManager : MonoBehaviour
     // When game ends, reset player scriptable object ======================================
     void OnDestroy()
     {
-        ResetPlayer(player0);
-        ResetPlayer(player1);
-        ResetPlayer(player2);
-        ResetPlayer(player3);
+        ResetAllPlayers();
     }
 
     void ResetPlayer(PlayerStats playerStats)
     {
         // reset weets, potionQty, kills, death, health
         playerStats.ResetGame();
+    }
+
+    void ResetAllPlayers()
+    {
+        ResetPlayer(player0);
+        ResetPlayer(player1);
+        ResetPlayer(player2);
+        ResetPlayer(player3);
     }
 }

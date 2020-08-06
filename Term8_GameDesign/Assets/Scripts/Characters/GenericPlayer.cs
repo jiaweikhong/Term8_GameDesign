@@ -16,10 +16,13 @@ public class GenericPlayer : MonoBehaviour
     public GameObject MurasakiChild;
     public GameObject TheTravellerChild;
     public PlayerInputScript playerInputScript;
+    [SerializeField]
+    private ScreensTransitionManager screensTransitionManager;
 
     void Awake()
     {
         genericCharacter = GetComponentInChildren<GenericCharacter>();
+        screensTransitionManager.OnReturnToTitle += DetachAllCharacters;
     }
 
     void RetrieveChildCharacter()
@@ -179,6 +182,7 @@ public class GenericPlayer : MonoBehaviour
         }
     }
 
+    // Detaches all characters from this script
     public void DetachAllCharacters()
     {
         DrProfessorChild.SetActive(false);
@@ -186,5 +190,4 @@ public class GenericPlayer : MonoBehaviour
         TheTravellerChild.SetActive(false);
         MurasakiChild.SetActive(false);
     }
-
 }

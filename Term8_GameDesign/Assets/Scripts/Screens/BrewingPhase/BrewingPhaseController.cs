@@ -42,6 +42,7 @@ public class BrewingPhaseController : MonoBehaviour
         audioSrc = GetComponent<AudioSource>();
 
         screensTransitionManager.OnNewMatch += NewMatch;
+        screensTransitionManager.OnReturnToTitle += ResetUI;
     }
 
     public void NavigateInput(InputAction.CallbackContext context)
@@ -234,5 +235,17 @@ public class BrewingPhaseController : MonoBehaviour
         brewingPhaseUI.UpdateSelectionBox(selectionIndex);
         brewingPhaseUI.UpdateSelected(false);
         screensTransitionManager.ReadyPlayer(false);
+    }
+
+    private void ResetUI()
+    {
+        selectionIndex = 0;
+        secondaryQty = playerStats.SecondaryPotionQty;
+        specialQty = playerStats.SpecialPotionQty;
+        weets = playerStats.Weets;
+        brewingPhaseUI.UpdatePlayer(playerStats);
+        brewingPhaseUI.UpdateSelectionBox(selectionIndex);
+        brewingPhaseUI.UpdateSpecialPotion(brewingPhaseManager.GetSpecialPotion(specialIndex), weets);
+        brewingPhaseUI.UpdateSelected(false);
     }
 }

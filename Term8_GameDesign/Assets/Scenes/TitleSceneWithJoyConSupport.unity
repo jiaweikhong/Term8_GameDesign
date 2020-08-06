@@ -700,7 +700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   matchMin: 0
-  matchSec: 30
+  matchSec: 10
   minCountdown: {fileID: 731482068}
   msecCountdown: {fileID: 2069130741}
   invisPlatform: {fileID: 1792674437}
@@ -3831,6 +3831,7 @@ MonoBehaviour:
   MurasakiChild: {fileID: 1398251951}
   TheTravellerChild: {fileID: 1116485264}
   playerInputScript: {fileID: 197273091}
+  screensTransitionManager: {fileID: 1193019349}
 --- !u!114 &197273091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16806,6 +16807,7 @@ MonoBehaviour:
   MurasakiChild: {fileID: 1742275620}
   TheTravellerChild: {fileID: 948836628}
   playerInputScript: {fileID: 761714820}
+  screensTransitionManager: {fileID: 1193019349}
 --- !u!114 &761714820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25196,7 +25198,7 @@ MonoBehaviour:
   podium: {fileID: 1105154360}
   controlsManager: {fileID: 1517808936}
   spawnPickupsScript: {fileID: 1748545542}
-  requiredPlayersToStart: 2
+  requiredPlayersToStart: 1
   readyPlayersNum: 0
   toSelectPlaySFX: {fileID: 8300000, guid: d2701761ad919584d8a04bbe6b134f28, type: 3}
   roundEndSFX: {fileID: 8300000, guid: 8ad6ea618b89ebf49ac2fdd93b8ecb97, type: 3}
@@ -28376,6 +28378,7 @@ MonoBehaviour:
   MurasakiChild: {fileID: 1340640110}
   TheTravellerChild: {fileID: 685199136}
   playerInputScript: {fileID: 1347666516}
+  screensTransitionManager: {fileID: 1193019349}
 --- !u!114 &1347666516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30116,6 +30119,7 @@ MonoBehaviour:
   MurasakiChild: {fileID: 587005490}
   TheTravellerChild: {fileID: 1804860604}
   playerInputScript: {fileID: 1454679446}
+  screensTransitionManager: {fileID: 1193019349}
 --- !u!114 &1454679446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30482,6 +30486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlsManager: {fileID: 1517808936}
+  screensTransitionManager: {fileID: 1193019349}
   pauseMenuUI: {fileID: 643280872}
   navigateSFX: {fileID: 8300000, guid: ed3b85ee550a5c14390894dfc6b0263c, type: 3}
   selectSFX: {fileID: 8300000, guid: 2c9d6035d2c6d6b429b70abe2e2df74d, type: 3}

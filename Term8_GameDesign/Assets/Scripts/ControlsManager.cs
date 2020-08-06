@@ -14,10 +14,10 @@ public class ControlsManager : MonoBehaviour
     public PlayerInput controlsP3;
     public PlayerInput controlsP4;
 
-    private void Start()
+/*    private void Start()
     {
         DontDestroyOnLoad(gameObject);
-    }
+    }*/
 
     public void SwitchAllControllersToCharacterMode()
     {

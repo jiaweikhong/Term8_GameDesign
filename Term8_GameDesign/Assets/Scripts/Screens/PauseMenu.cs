@@ -7,7 +7,10 @@ using UnityEngine.UI;
 public class PauseMenu : MonoBehaviour
 {
     public static bool isGamePaused = false;
-    public ControlsManager controlsManager;
+    [SerializeField]
+    private ControlsManager controlsManager;
+    [SerializeField]
+    private ScreensTransitionManager screensTransitionManager;
     public GameObject pauseMenuUI;
     private int index = 0;      // 0 to 2
     private Vector2 navigateVector = Vector2.zero;
@@ -28,6 +31,7 @@ public class PauseMenu : MonoBehaviour
     {
         audioSrc = GetComponent<AudioSource>();
     }
+
     private void Start()
     {
         pauseMenuUI.SetActive(false);
@@ -38,6 +42,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (isGamePaused)
         {
+            // Handles switching of colors of buttons
             switch (index)
             {
                 case 0:
@@ -59,6 +64,7 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    // Resumes the game
     public void Resume()
     {
         StartCoroutine(SwitchToCharacterActionMaps());
@@ -67,12 +73,14 @@ public class PauseMenu : MonoBehaviour
         isGamePaused = false;
     }
 
+    // Switches all characters' actionmaps to CharacterActions after an insignificant delay.
     IEnumerator SwitchToCharacterActionMaps()
     {
         yield return new WaitForSeconds(0.1f);
         controlsManager.SwitchAllControllersToCharacterMode();
     }
 
+    // Pauses the game
     void Pause()
     {
         audioSrc.PlayOneShot(selectSFX);
@@ -82,6 +90,7 @@ public class PauseMenu : MonoBehaviour
         isGamePaused = true;
     }
 
+    // Toggles between pause and unpause
     public void TogglePause()
     {
         if (isGamePaused)
@@ -94,23 +103,28 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    // Returns the game to the title screen
     public void LoadMenu()
     {
-        Debug.Log("Loading Menu...");
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        isGamePaused = false;
+        screensTransitionManager.ToTitle();
     }
 
+    // Shows the controls screen
     public void LoadControls()
     {
-        Debug.Log("Loading Controls...");
         controlsCanvas.SetActive(true);
     }
 
+    // Hides the controls screen
     public void HideControls()
     {
-        Debug.Log("Hiding controls...");
         controlsCanvas.SetActive(false);
     }
 
+    // Handles UI navigation
     public void NavigateInput(InputAction.CallbackContext context)
     {
         if (gameObject.activeInHierarchy && context.performed && !controlsCanvasOpen)
@@ -131,6 +145,7 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    // Handles UI Select
     public void Select()
     {
         switch (index)
@@ -159,6 +174,7 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    // Handles UI Cancel
     public void CancelInput()
     {
         switch (index)

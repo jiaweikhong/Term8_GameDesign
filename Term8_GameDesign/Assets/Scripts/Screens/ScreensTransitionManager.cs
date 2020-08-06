@@ -31,11 +31,17 @@ public class ScreensTransitionManager : MonoBehaviour
     private int readyPlayersNum = 0;
     private int matchNum = 0;
 
+    // for SFX
     private AudioSource audioSrc;
     public AudioClip toSelectPlaySFX;
     public AudioClip roundEndSFX;
 
+    // for BGM
     public AudioManager audioManager;
+
+    // for return to title
+    public delegate void ReturnToTitle();
+    public event ReturnToTitle OnReturnToTitle;
 
     public int GetScreenNum()
     {
@@ -148,11 +154,13 @@ public class ScreensTransitionManager : MonoBehaviour
     public void ToTitle()
     {
         screenNum = 0;
+        readyPlayersNum = 0;
         titleCanvas.SetActive(true);
         instructionsCanvas.SetActive(false);
         controlsCanvas.SetActive(false);
         charactersCanvas.SetActive(false);
         characterSelectCanvas.SetActive(false);
+        OnReturnToTitle?.Invoke();
         audioManager.ChangeTrack("toTitle");
     }
 
