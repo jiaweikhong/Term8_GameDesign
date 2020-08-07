@@ -32,6 +32,10 @@ public class GameManager : MonoBehaviour
     public CameraShake mainCamShake;
     public bool enableCamShakeOnDeath = true;
 
+    // For Podium Scene
+    public delegate void PodiumDelegate(bool enteringPodium);
+    public event PodiumDelegate OnPodiumSceneEvent;
+
     private ScreensTransitionManager screensTransitionManager;
 
     void Start()
@@ -68,8 +72,6 @@ public class GameManager : MonoBehaviour
     {
         PlayerStats receivingPlayer = playersHashTable[receivingPlayerNum];
         PlayerStats attackingPlayer = playersHashTable[attackingPlayerNum];
-        Debug.Log(receivingPlayer);
-        Debug.Log(attackingPlayer);
         if (receivingPlayer != attackingPlayer)
         {
             receivingPlayer.PlayerHealth -= attackingPlayer.DamageDealtToOthers;
@@ -181,6 +183,15 @@ public class GameManager : MonoBehaviour
         playersGameOverlayUI[playerNum].UpdateSecondaryQty(requiredPlayer.SecondaryPotionQty);
     }
 
+    // Podium ======================================
+    public void EnterPodium()
+    {
+        // let all players know that they are in podium
+        OnPodiumSceneEvent?.Invoke(true);
+        // disable camera shake
+        enableCamShakeOnDeath = false;
+    }
+
     // When game ends, reset player scriptable object ======================================
     void OnDestroy()
     {
@@ -195,6 +206,10 @@ public class GameManager : MonoBehaviour
 
     void ResetAllPlayers()
     {
+        // invoke not in podium anymore (if it was even in podium)
+        OnPodiumSceneEvent?.Invoke(false);
+        // enable camera shake
+        enableCamShakeOnDeath = true;
         ResetPlayer(player0);
         ResetPlayer(player1);
         ResetPlayer(player2);

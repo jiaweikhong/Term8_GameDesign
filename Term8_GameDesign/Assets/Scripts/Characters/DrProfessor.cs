@@ -57,14 +57,4 @@ public class DrProfessor : GenericCharacter
             Debug.Log("Potion 2!!");
         }
     }
-
-    public override void OnDeath()
-    {
-        animator.SetBool("IsJumping", false);
-        animator.SetTrigger("Death");
-        float deathAnimLength = animator.GetCurrentAnimatorStateInfo(0).length;
-        StartCoroutine(SetSpawnPosition(deathAnimLength));
-        // throw new System.NotImplementedException();
-    }
-
 }

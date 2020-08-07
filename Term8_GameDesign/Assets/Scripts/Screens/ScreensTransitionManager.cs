@@ -144,10 +144,10 @@ public class ScreensTransitionManager : MonoBehaviour
         controlsManager.SwitchAllControllersToUIMode();
     }
 
-    private IEnumerator DestroyPickups()
+    private IEnumerator DestroyPickups(float delay)
     {
         // after screen has transited to match conclusion
-        yield return new WaitForSeconds(2.1f);
+        yield return new WaitForSeconds(delay);
         spawnPickupsScript.DestroyPickups();
     }
 
@@ -244,13 +244,14 @@ public class ScreensTransitionManager : MonoBehaviour
             if (matchNum <= 2)
             {
                 StartCoroutine(SwitchControllers());
-                StartCoroutine(DestroyPickups());
+                StartCoroutine(DestroyPickups(2.1f));
             }
             else
             {
                 screenNum = 5;
                 readyPlayersNum = 0;
                 StartCoroutine(ToFinal());
+                StartCoroutine(DestroyPickups(1f));
             }
         }
     }
