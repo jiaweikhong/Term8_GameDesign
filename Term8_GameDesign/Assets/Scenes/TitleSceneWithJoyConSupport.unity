@@ -700,7 +700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   matchMin: 0
-  matchSec: 10
+  matchSec: 30
   minCountdown: {fileID: 731482068}
   msecCountdown: {fileID: 2069130741}
   invisPlatform: {fileID: 1792674437}
@@ -4046,7 +4046,7 @@ MonoBehaviour:
     m_ActionId: d50ae7eb-9ca2-43c2-b23b-5f84ecdfb32e
     m_ActionName: CharacterActions/StartButton[/Keyboard/p]
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Gamepad
+  m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: UIActions
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -25198,7 +25198,7 @@ MonoBehaviour:
   podium: {fileID: 1105154360}
   controlsManager: {fileID: 1517808936}
   spawnPickupsScript: {fileID: 1748545542}
-  requiredPlayersToStart: 1
+  requiredPlayersToStart: 2
   readyPlayersNum: 0
   toSelectPlaySFX: {fileID: 8300000, guid: d2701761ad919584d8a04bbe6b134f28, type: 3}
   roundEndSFX: {fileID: 8300000, guid: 8ad6ea618b89ebf49ac2fdd93b8ecb97, type: 3}

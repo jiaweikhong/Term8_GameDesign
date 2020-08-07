@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 // crate sprite : http://clipart-library.com/clipart/22069.htm
@@ -21,6 +23,7 @@ public class PodiumGenerator : MonoBehaviour
     [SerializeField]
     private AfterMatchManager afterMatchManager;
     private ScreensTransitionManager screensTransitionManager;
+    private GameManager gameManager;
     private bool gotPositions;
     AudioSource thump;
 
@@ -29,6 +32,8 @@ public class PodiumGenerator : MonoBehaviour
     void OnEnable()
     {
         screensTransitionManager = FindObjectOfType<ScreensTransitionManager>();
+        gameManager = FindObjectOfType<GameManager>();
+        gameManager.EnterPodium();
 
         numberOfPlayers = screensTransitionManager.requiredPlayersToStart;
         positions = new int[numberOfPlayers];
@@ -79,9 +84,9 @@ public class PodiumGenerator : MonoBehaviour
 
     private IEnumerator SpawnCrate()
     {
-        for (int y = 0; y < YValues.Length; y++)
+        for (int y = 0; y < numberOfPlayers ; y++)
         {
-            for (int x = 0; x < XValues.Length; x++)
+            for (int x = 0; x < numberOfPlayers; x++)
             {
                 if (y >= (YValues.Length-positions[x]+1))
                 {

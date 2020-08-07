@@ -32,6 +32,7 @@ public abstract class GenericCharacter : MonoBehaviour
     public bool isFast = false;      // used to prevent stacking of swiftness elixirs
     [SerializeField]
     private float speedBoostMultiplier = 1.75f;
+    public bool isPodiumScene = false;      // used in podium scene to disallow some actions
 
     // death respawn stuff
     public float respawnTime = 2f;
@@ -118,7 +119,7 @@ public abstract class GenericCharacter : MonoBehaviour
 
     public void SecPotInput(InputAction.CallbackContext context)
     {
-        if (timeBtwAttack <= 0 && canMove)
+        if (timeBtwAttack <= 0 && canMove && !isPodiumScene)
         {
             //Debug.Log("sec pot input detected");
             UsePotion2();
@@ -128,7 +129,7 @@ public abstract class GenericCharacter : MonoBehaviour
 
     public void SpecialPotInput(InputAction.CallbackContext context)
     {
-        if (timeBtwAttack <= 0 && canMove)
+        if (timeBtwAttack <= 0 && canMove && !isPodiumScene)
         {
             //Debug.Log("special pot input detected");
             UsePotion3();
@@ -192,8 +193,6 @@ public abstract class GenericCharacter : MonoBehaviour
 
     public void UsePotion3()
     {
-        // remember to check if there's any more potions left.
-        // if playerScript.UseSpecialPotionIfCanUse() -> use
         if (playerScript.UseSpecialPotionIfCanUse())
         {
             Debug.Log("Potion 3!");
@@ -216,7 +215,17 @@ public abstract class GenericCharacter : MonoBehaviour
 
     }
 
-    public abstract void OnDeath();
+    public void OnDeath()
+    {
+        // if on podium scene, characters will not have death animations
+        if (!isPodiumScene)
+        {
+            animator.SetBool("IsJumping", false);
+            animator.SetTrigger("Death");
+            float deathAnimLength = animator.GetCurrentAnimatorStateInfo(0).length;
+            StartCoroutine(SetSpawnPosition(deathAnimLength));
+        }
+    }
 
     // implement methods for all the different potion 3s here
     public void SwiftnessElixir()
@@ -296,6 +305,7 @@ public abstract class GenericCharacter : MonoBehaviour
         canMove = !isCharacterDreaming;
     }
 
+    // Spawning after death
     protected IEnumerator SetSpawnPosition(float deathAnimLength)
     {
         audioSrc.PlayOneShot(deathSFX);

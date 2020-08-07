@@ -19,6 +19,10 @@ public class GenericPlayer : MonoBehaviour
     [SerializeField]
     private ScreensTransitionManager screensTransitionManager;
 
+    // pickup variables
+    protected int weetsPickUpAmt = 20;
+    protected int secPotPickUpQty = 2;
+
     void Awake()
     {
         genericCharacter = GetComponentInChildren<GenericCharacter>();
@@ -35,6 +39,8 @@ public class GenericPlayer : MonoBehaviour
         gameManager.OnDeathEvent += GenericPlayerDeath;         // subscribe so that GenericPlayer knows when to die
         gameManager.OnMuddledEvent += PlayerMuddled;
         gameManager.OnDreamingEvent += PlayerDreaming;
+        gameManager.OnPodiumSceneEvent += PlayerOnPodium;
+
     }
 
     // Event Handlers
@@ -68,6 +74,23 @@ public class GenericPlayer : MonoBehaviour
             genericCharacter.SetDreaming(true);
             genericCharacter.allStatusEffects[1].gameObject.SetActive(true);
             StartCoroutine(RevertDreaming());
+        }
+    }
+
+    private void PlayerOnPodium(bool enteringPodium)
+    {
+        if (genericCharacter)
+        {
+            if (enteringPodium)
+            {
+                Debug.Log("I am now in podium, my player number is " + playerNum);
+                genericCharacter.isPodiumScene = true;
+            }
+            else
+            {
+                Debug.Log("I am now not in podium, my player number is " + playerNum);
+                genericCharacter.isPodiumScene = false;
+            }
         }
     }
 
@@ -111,7 +134,6 @@ public class GenericPlayer : MonoBehaviour
 
     public SpecialPotionType GetSpecialPotionType()
     {
-        // TODO: refactor this? feels inefficient to fetch special potion from PlayerStats each time
         return gameManager.GetSpecialPotionType(playerNum);
     }
 
@@ -137,16 +159,12 @@ public class GenericPlayer : MonoBehaviour
 
     public void AddWeets()
     {
-        // TODO: change amount of weets
-        int amt = 20;
-        gameManager.AddWeets(playerNum, amt);
+        gameManager.AddWeets(playerNum, weetsPickUpAmt);
     }
 
     public void AddSecPotionQty()
     {
-        // TODO: change amount of secQty
-        int amt = 2;
-        gameManager.AddSecPotionQty(playerNum, amt);
+        gameManager.AddSecPotionQty(playerNum, secPotPickUpQty);
     }
 
     public void AttachCharacter(CharacterType charType)
