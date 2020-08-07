@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 
 public class TheTraveller : GenericCharacter
 {
-    // If you want to override awake, please see: https://answers.unity.com/questions/388454/can-ishould-i-call-awake-in-parent-class-manually.html
     public Transform firePoint;
     public Transform pillarFirePoint;
 
@@ -26,12 +25,9 @@ public class TheTraveller : GenericCharacter
         // attack animation
         animator.SetTrigger("Attack");
         audioSrc.PlayOneShot(potion1SFX);
-        // TODO: primary attack animation
-        // potionAnimator.SetTrigger("Primary");
 
         // Set casterPlayerNum, casterPlayerSpeed in primaryPotion script of prefab 
         GameObject primaryPotion = ObjectPooler.SharedInstance.GetPooledObject("TheTravellerPrimary(Clone)"); 
-        // Instantiate(primaryPotionPrefab, firePoint.position, firePoint.rotation);
         primaryPotion.GetComponent<PrimaryPotion>().casterPlayerNum = playerScript.playerNum;
         primaryPotion.GetComponent<PrimaryPotion>().casterPlayerSpeed = rigidBody.velocity;
         if (primaryPotion != null)
@@ -39,7 +35,6 @@ public class TheTraveller : GenericCharacter
             primaryPotion.transform.position = firePoint.position;
             primaryPotion.transform.rotation = firePoint.rotation;
             primaryPotion.SetActive(true);
-            // primaryPotion.GetComponent<PrimaryPotion>().enabled = true;
         }
         
         Debug.Log(playerScript.playerNum + " Potion 1!!");

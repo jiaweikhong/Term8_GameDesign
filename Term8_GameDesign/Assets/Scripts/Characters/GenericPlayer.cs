@@ -43,10 +43,9 @@ public class GenericPlayer : MonoBehaviour
 
     }
 
-    // Event Handlers
+    // Event Handlers =============================================
     private void GenericPlayerDeath(int deadPlayerNum)
     {
-        Debug.Log("dying");
         if (deadPlayerNum == playerNum)
         {
             // trigger death animation in character
@@ -96,6 +95,7 @@ public class GenericPlayer : MonoBehaviour
         }
     }
 
+    // Coroutines Methods =============================================
     IEnumerator RevertMuddleness()
     {
         yield return new WaitForSeconds(5f);
@@ -112,7 +112,7 @@ public class GenericPlayer : MonoBehaviour
         Debug.Log("Ended Dream Dust on player " + playerNum);
     }
 
-    // Pass request to GameManager
+    // Pass request to GameManager =============================================
     public void TakeDamage(int attackingPlayerNum)
     {
         gameManager.PlayerTakesDamage(attackingPlayerNum, playerNum);
@@ -169,32 +169,31 @@ public class GenericPlayer : MonoBehaviour
         gameManager.AddSecPotionQty(playerNum, secPotPickUpQty);
     }
 
+    // Attach character to player
     public void AttachCharacter(CharacterType charType)
     {
         // set base characterNum
         characterType = charType;
+
+        // set the specified character to active (character is a child to this player gameobject)
         switch (characterType)
         {
             case CharacterType.DrProfessor:
-                // attach character 1 prefab as a child to this player (which includes the sprite, script etc);
                 DrProfessorChild.SetActive(true);
                 RetrieveChildCharacter();
                 playerInputScript.RetrieveChildCharacter();
                 break;
             case CharacterType.Lumira:
-                // attach character 2 prefab as a child to this player (which includes the sprite, script etc);
                 LumiraChild.SetActive(true);
                 RetrieveChildCharacter();
                 playerInputScript.RetrieveChildCharacter();
                 break;
             case CharacterType.Murasaki:
-                // attach character 3 prefab as a child to this player (which includes the sprite, script etc);
                 MurasakiChild.SetActive(true);
                 RetrieveChildCharacter();
                 playerInputScript.RetrieveChildCharacter();
                 break;
             case CharacterType.TheTraveller:
-                // attach character 4 prefab as a child to this player (which includes the sprite, script etc);
                 TheTravellerChild.SetActive(true);
                 RetrieveChildCharacter();
                 playerInputScript.RetrieveChildCharacter();
@@ -202,7 +201,7 @@ public class GenericPlayer : MonoBehaviour
         }
     }
 
-    // Detaches all characters from this script
+    // set all characters to inactive
     public void DetachAllCharacters()
     {
         DrProfessorChild.SetActive(false);

@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 
 public class Murasaki : GenericCharacter
 {
-    // If you want to override awake, please see: https://answers.unity.com/questions/388454/can-ishould-i-call-awake-in-parent-class-manually.html
     public Transform firePoint;
     public AudioClip potion1SFX;
     public AudioClip potion2SFX;
@@ -27,7 +26,6 @@ public class Murasaki : GenericCharacter
 
         // Set casterPlayerNum, casterPlayerSpeed in primaryPotion script of prefab 
         GameObject primaryPotion = ObjectPooler.SharedInstance.GetPooledObject("MurasakiPrimary(Clone)"); 
-        // Instantiate(primaryPotionPrefab, firePoint.position, firePoint.rotation);
         primaryPotion.GetComponent<PrimaryPotion>().casterPlayerNum = playerScript.playerNum;
         primaryPotion.GetComponent<PrimaryPotion>().casterPlayerSpeed = rigidBody.velocity;
         if (primaryPotion != null)
@@ -35,7 +33,6 @@ public class Murasaki : GenericCharacter
             primaryPotion.transform.position = firePoint.position;
             primaryPotion.transform.rotation = firePoint.rotation;
             primaryPotion.SetActive(true);
-            // primaryPotion.GetComponent<PrimaryPotion>().enabled = true;
         }
         
         Debug.Log(playerScript.playerNum + " Potion 1!!");

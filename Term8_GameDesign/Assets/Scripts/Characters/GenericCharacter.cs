@@ -183,8 +183,10 @@ public abstract class GenericCharacter : MonoBehaviour
     {
         animator.SetLayerWeight(1, 1);
         animator.SetBool("Hurt", true);
+        
         // during these 1s won't get hurt again
         yield return new WaitForSeconds(1.0f);
+        
         animator.SetBool("Hurt", false);
         // animator.SetLayerWeight(1, 0);
         wasHurted = false;

@@ -25,7 +25,6 @@ public class DrProfessor : GenericCharacter
 
         // Set casterPlayerNum, casterPlayerSpeed in primaryPotion script of prefab 
         GameObject primaryPotion = ObjectPooler.SharedInstance.GetPooledObject("DrProfessorPrimary(Clone)");
-        // Instantiate(primaryPotionPrefab, firePoint.position, firePoint.rotation);
         primaryPotion.GetComponent<PrimaryPotion>().casterPlayerNum = playerScript.playerNum;
         primaryPotion.GetComponent<PrimaryPotion>().casterPlayerSpeed = rigidBody.velocity;
         if (primaryPotion != null)
@@ -33,7 +32,6 @@ public class DrProfessor : GenericCharacter
             primaryPotion.transform.position = firePoint.position;
             primaryPotion.transform.rotation = firePoint.rotation;
             primaryPotion.SetActive(true);
-            // primaryPotion.GetComponent<PrimaryPotion>().enabled = true;
         }
 
         Debug.Log(playerScript.playerNum + " Potion 1!!");

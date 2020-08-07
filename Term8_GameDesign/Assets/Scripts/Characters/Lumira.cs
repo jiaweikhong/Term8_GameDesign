@@ -6,9 +6,6 @@ using UnityEngine.EventSystems;
 
 public class Lumira : GenericCharacter
 {
-    // If you want to override awake, please see: https://answers.unity.com/questions/388454/can-ishould-i-call-awake-in-parent-class-manually.html
-    public Transform firePoint;
-
     public AudioClip potion1SFX;
     public AudioClip potion2SFX;
 
