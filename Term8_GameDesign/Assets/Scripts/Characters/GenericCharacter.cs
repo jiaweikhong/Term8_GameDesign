@@ -180,14 +180,17 @@ public abstract class GenericCharacter : MonoBehaviour
     IEnumerator UnhurtPlayer()
     {
         animator.SetLayerWeight(1, 1);
+        animator.SetBool("Hurt", true);
         // during these 0.3s won't get hurt again
         yield return new WaitForSeconds(1.0f);
+        animator.SetBool("Hurt", false);
         animator.SetLayerWeight(1, 0);
         wasHurted = false;
     }
 
     public void InstantUnhurtPlayer()
     {
+        animator.SetBool("Hurt", false);
         animator.SetLayerWeight(1, 0);
         wasHurted = false;
     }
