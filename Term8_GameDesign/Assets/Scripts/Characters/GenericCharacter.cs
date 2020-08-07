@@ -186,6 +186,12 @@ public abstract class GenericCharacter : MonoBehaviour
         wasHurted = false;
     }
 
+    public void InstantUnhurtPlayer()
+    {
+        animator.SetLayerWeight(1, 0);
+        wasHurted = false;
+    }
+
     // abstract methods must be implemented by child classes
     public abstract void UseCharacterPotion();
 

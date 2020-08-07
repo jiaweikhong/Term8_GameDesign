@@ -85,6 +85,8 @@ public class GenericPlayer : MonoBehaviour
             {
                 Debug.Log("I am now in podium, my player number is " + playerNum);
                 genericCharacter.isPodiumScene = true;
+                // unhurt player if it was hurted
+                genericCharacter.InstantUnhurtPlayer();
             }
             else
             {

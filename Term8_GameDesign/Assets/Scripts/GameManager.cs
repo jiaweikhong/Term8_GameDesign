@@ -188,6 +188,8 @@ public class GameManager : MonoBehaviour
     {
         // let all players know that they are in podium
         OnPodiumSceneEvent?.Invoke(true);
+        // disable camera shake
+        enableCamShakeOnDeath = false;
     }
 
     // When game ends, reset player scriptable object ======================================
@@ -206,6 +208,8 @@ public class GameManager : MonoBehaviour
     {
         // invoke not in podium anymore (if it was even in podium)
         OnPodiumSceneEvent?.Invoke(false);
+        // enable camera shake
+        enableCamShakeOnDeath = true;
         ResetPlayer(player0);
         ResetPlayer(player1);
         ResetPlayer(player2);
