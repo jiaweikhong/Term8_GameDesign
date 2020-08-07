@@ -700,7 +700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   matchMin: 0
-  matchSec: 30
+  matchSec: 5
   minCountdown: {fileID: 731482068}
   msecCountdown: {fileID: 2069130741}
   invisPlatform: {fileID: 1792674437}
@@ -3804,6 +3804,7 @@ GameObject:
   - component: {fileID: 197273092}
   - component: {fileID: 197273091}
   - component: {fileID: 197273090}
+  - component: {fileID: 197273094}
   m_Layer: 0
   m_Name: ControlsP1
   m_TagString: Untagged
@@ -3818,7 +3819,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 197273089}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6feec4440d3bd5b49a45187ad3e37e5b, type: 3}
   m_Name: 
@@ -4068,6 +4069,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &197273094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197273089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7953feb8a042af843bf32da551cbd9ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNum: 0
+  characterType: 0
+  gameManager: {fileID: 1697950259}
+  DrProfessorChild: {fileID: 861748355}
+  LumiraChild: {fileID: 2123742206}
+  MurasakiChild: {fileID: 1398251951}
+  TheTravellerChild: {fileID: 1116485264}
+  playerInputScript: {fileID: 197273091}
+  screensTransitionManager: {fileID: 1193019349}
 --- !u!1 &198071512
 GameObject:
   m_ObjectHideFlags: 0
@@ -16780,6 +16802,7 @@ GameObject:
   - component: {fileID: 761714821}
   - component: {fileID: 761714820}
   - component: {fileID: 761714819}
+  - component: {fileID: 761714823}
   m_Layer: 0
   m_Name: ControlsP2
   m_TagString: Untagged
@@ -16794,7 +16817,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 761714818}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 413ea086ab18494498a0ab1321176e44, type: 3}
   m_Name: 
@@ -17044,6 +17067,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &761714823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761714818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7953feb8a042af843bf32da551cbd9ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNum: 1
+  characterType: 0
+  gameManager: {fileID: 1697950259}
+  DrProfessorChild: {fileID: 1342457478}
+  LumiraChild: {fileID: 2026314366}
+  MurasakiChild: {fileID: 1742275620}
+  TheTravellerChild: {fileID: 948836628}
+  playerInputScript: {fileID: 761714820}
+  screensTransitionManager: {fileID: 1193019349}
 --- !u!1 &779101640
 GameObject:
   m_ObjectHideFlags: 0
@@ -28351,6 +28395,7 @@ GameObject:
   - component: {fileID: 1347666517}
   - component: {fileID: 1347666516}
   - component: {fileID: 1347666515}
+  - component: {fileID: 1347666519}
   m_Layer: 0
   m_Name: ControlsP4
   m_TagString: Untagged
@@ -28365,7 +28410,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1347666514}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 413ea086ab18494498a0ab1321176e44, type: 3}
   m_Name: 
@@ -28615,6 +28660,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1347666519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347666514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7953feb8a042af843bf32da551cbd9ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNum: 3
+  characterType: 0
+  gameManager: {fileID: 1697950259}
+  DrProfessorChild: {fileID: 288121778}
+  LumiraChild: {fileID: 791144287}
+  MurasakiChild: {fileID: 1340640110}
+  TheTravellerChild: {fileID: 685199136}
+  playerInputScript: {fileID: 1347666516}
+  screensTransitionManager: {fileID: 1193019349}
 --- !u!1 &1353513184
 GameObject:
   m_ObjectHideFlags: 0
@@ -30092,6 +30158,7 @@ GameObject:
   - component: {fileID: 1454679447}
   - component: {fileID: 1454679446}
   - component: {fileID: 1454679445}
+  - component: {fileID: 1454679449}
   m_Layer: 0
   m_Name: ControlsP3
   m_TagString: Untagged
@@ -30106,7 +30173,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1454679444}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 413ea086ab18494498a0ab1321176e44, type: 3}
   m_Name: 
@@ -30356,6 +30423,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1454679449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454679444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7953feb8a042af843bf32da551cbd9ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNum: 3
+  characterType: 0
+  gameManager: {fileID: 1697950259}
+  DrProfessorChild: {fileID: 915272205}
+  LumiraChild: {fileID: 1512087254}
+  MurasakiChild: {fileID: 587005490}
+  TheTravellerChild: {fileID: 1804860604}
+  playerInputScript: {fileID: 1454679446}
+  screensTransitionManager: {fileID: 1193019349}
 --- !u!1 &1457426890
 GameObject:
   m_ObjectHideFlags: 0
