@@ -143,6 +143,7 @@ public abstract class GenericCharacter : MonoBehaviour
         animator.SetBool("IsJumping", false);
     }
 
+    // for taking damage
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Damage") && !wasHurted)
@@ -161,6 +162,7 @@ public abstract class GenericCharacter : MonoBehaviour
         }
     }
 
+    // for pickups =============================================
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("pickup"))
@@ -181,21 +183,21 @@ public abstract class GenericCharacter : MonoBehaviour
     {
         animator.SetLayerWeight(1, 1);
         animator.SetBool("Hurt", true);
-        // during these 0.3s won't get hurt again
+        // during these 1s won't get hurt again
         yield return new WaitForSeconds(1.0f);
         animator.SetBool("Hurt", false);
-        animator.SetLayerWeight(1, 0);
+        // animator.SetLayerWeight(1, 0);
         wasHurted = false;
     }
 
     public void InstantUnhurtPlayer()
     {
         animator.SetBool("Hurt", false);
-        animator.SetLayerWeight(1, 0);
+        // animator.SetLayerWeight(1, 0);
         wasHurted = false;
     }
 
-    // abstract methods must be implemented by child classes
+    // abstract methods must be implemented by child classes ============================
     public abstract void UseCharacterPotion();
 
     public abstract void UsePotion2();
@@ -221,7 +223,6 @@ public abstract class GenericCharacter : MonoBehaviour
                     break;
             }
         }
-
     }
 
     public void OnDeath()
@@ -236,7 +237,7 @@ public abstract class GenericCharacter : MonoBehaviour
         }
     }
 
-    // implement methods for all the different potion 3s here
+    // implement methods for all the different potion 3s here ========================
     public void SwiftnessElixir()
     {
         Debug.Log("Started speed boost");
@@ -283,7 +284,7 @@ public abstract class GenericCharacter : MonoBehaviour
         playerScript.CastDreamingDust();
     }
 
-    // Coroutines to end special potion's effect
+    // Coroutines to end special potion's effect ==========================
     IEnumerator RevertEnhancedSpeed()
     {
         yield return new WaitForSeconds(7f);
@@ -300,7 +301,7 @@ public abstract class GenericCharacter : MonoBehaviour
         Debug.Log("Ended Killer Brew");
     }
 
-    // Special Potions Status Effect on this player
+    // Special Potions Status Effect on this player =======================
     public void SetMuddleness(bool isCharacterMuddled)
     {
         isMuddled = isCharacterMuddled;
@@ -314,7 +315,7 @@ public abstract class GenericCharacter : MonoBehaviour
         canMove = !isCharacterDreaming;
     }
 
-    // Spawning after death
+    // Spawning after death =============================================
     protected IEnumerator SetSpawnPosition(float deathAnimLength)
     {
         audioSrc.PlayOneShot(deathSFX);
