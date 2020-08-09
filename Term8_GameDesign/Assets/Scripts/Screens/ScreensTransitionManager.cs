@@ -43,6 +43,11 @@ public class ScreensTransitionManager : MonoBehaviour
     public delegate void ReturnToTitle();
     public event ReturnToTitle OnReturnToTitle;
 
+    // for new match (each round)
+    public delegate void NewMatch();
+    public event NewMatch OnNewMatch;
+
+
     public int GetScreenNum()
     {
         return screenNum;
@@ -155,11 +160,16 @@ public class ScreensTransitionManager : MonoBehaviour
     {
         screenNum = 0;
         readyPlayersNum = 0;
+        matchNum = 0;
+        OnNewMatch = delegate {};
+
         titleCanvas.SetActive(true);
         instructionsCanvas.SetActive(false);
         controlsCanvas.SetActive(false);
         charactersCanvas.SetActive(false);
         characterSelectCanvas.SetActive(false);
+        podium.SetActive(false);
+        podiumOverlayCanvas.SetActive(false);
         OnReturnToTitle?.Invoke();
         audioManager.ChangeTrack("toTitle");
     }
@@ -256,6 +266,4 @@ public class ScreensTransitionManager : MonoBehaviour
         }
     }
 
-    public delegate void NewMatch();
-    public event NewMatch OnNewMatch;
 }

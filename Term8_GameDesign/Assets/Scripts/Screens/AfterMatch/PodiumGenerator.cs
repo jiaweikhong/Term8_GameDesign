@@ -8,20 +8,21 @@ using UnityEngine;
 public class PodiumGenerator : MonoBehaviour
 {
     public int numberOfPlayers = 4;
-    private float[] XValues = {-2f, -0.5f, 1f, 2.5f};   // same for player positions, Y-val is at 6
+    public float secondsToTitle = 60f;
+    private float[] XValues = {-2f, -0.5f, 1f, 2.5f};   // same for player positions, player Y-val = 5
     private float[] YValues = {-2.52f, -1.53f, -0.54f, 0.45f};
-    // int[] positions = {3, 1, 2, 4};
     public GameObject[] controls;
     [SerializeField]
     private Transform[] characters;
     private int[] positions;
+    private bool gotPositions;
     public GameObject cratePrefab;
     public GameObject platforms;    // under Grid/Jumpable
     [SerializeField]
     private AfterMatchManager afterMatchManager;
     private ScreensTransitionManager screensTransitionManager;
     private GameManager gameManager;
-    private bool gotPositions;
+    private ControlsManager controlsManager;
     private AudioSource thump;
 
 
@@ -30,6 +31,7 @@ public class PodiumGenerator : MonoBehaviour
         screensTransitionManager = FindObjectOfType<ScreensTransitionManager>();
         gameManager = FindObjectOfType<GameManager>();
         gameManager.EnterPodium();
+        controlsManager = FindObjectOfType<ControlsManager>();
 
         numberOfPlayers = screensTransitionManager.requiredPlayersToStart;
         positions = new int[numberOfPlayers];
@@ -106,7 +108,8 @@ public class PodiumGenerator : MonoBehaviour
             characters[x].gameObject.GetComponent<BoxCollider2D>().enabled = true;
         }
 
-        // TODO : podium to title
+        // Transition podium to title after duration
+        StartCoroutine(ToTitle(secondsToTitle));
 
     }
 
@@ -120,5 +123,18 @@ public class PodiumGenerator : MonoBehaviour
         crate.transform.position = new Vector3(XValues[x], YValues[y], 0);
     }
 
+    // ===== Return to title after set duration ======
+    private IEnumerator ToTitle(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        Debug.Log("Podium returning to title...");
+        controlsManager.SwitchAllControllersToUIMode();
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+        platforms.SetActive(true);
+        screensTransitionManager.ToTitle();
+    }
 
 }
