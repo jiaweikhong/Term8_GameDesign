@@ -155,6 +155,7 @@ public class ScreensTransitionManager : MonoBehaviour
     {
         screenNum = 0;
         readyPlayersNum = 0;
+        matchNum = 0;
         titleCanvas.SetActive(true);
         instructionsCanvas.SetActive(false);
         controlsCanvas.SetActive(false);
