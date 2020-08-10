@@ -64,12 +64,21 @@ public abstract class GenericCharacter : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         
         screensTransitionManager = FindObjectOfType<ScreensTransitionManager>();
-        screensTransitionManager.OnNewMatch += ResetPosition;
         
         for (int i =0; i < statusEffect.transform.childCount; i ++) {
             allStatusEffects.Add(statusEffect.transform.GetChild(i));
             Debug.Log(allStatusEffects[i].name);
         }
+    }
+
+    private void OnEnable()
+    {
+        screensTransitionManager.OnNewMatch += ResetPosition;
+    }
+
+    private void OnDisable()
+    {
+        screensTransitionManager.OnNewMatch -= ResetPosition;
     }
 
     public virtual void Awake()
