@@ -33,6 +33,7 @@ public class AfterMatchManager : MonoBehaviour
         for (int i = 0; i < playerStatsList.Length; i++)
         {
             kills[i] = playerStatsList[i].PlayerKills;
+            playerStatsList[i].Weets += 300;
         }
         Array.Sort(kills);
         Array.Reverse(kills);
