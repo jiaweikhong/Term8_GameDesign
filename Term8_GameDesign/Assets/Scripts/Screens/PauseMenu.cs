@@ -11,6 +11,8 @@ public class PauseMenu : MonoBehaviour
     private ControlsManager controlsManager;
     [SerializeField]
     private ScreensTransitionManager screensTransitionManager;
+    [SerializeField]
+    private GameManager gameManager;
     public GameObject pauseMenuUI;
     private int index = 0;      // 0 to 2
     private Vector2 navigateVector = Vector2.zero;
@@ -26,6 +28,13 @@ public class PauseMenu : MonoBehaviour
     public Image mainMenuButtonImage;
     public GameObject controlsCanvas;
     private bool controlsCanvasOpen = false;
+    [SerializeField]
+    private bool inPodiumScene = false;
+
+    public void SetInPodiumScene(bool setBool)
+    {
+        inPodiumScene = setBool;
+    }
 
     private void Awake()
     {
@@ -36,6 +45,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenuUI.SetActive(false);
         controlsCanvas.SetActive(false);
+        gameManager.OnPodiumSceneEvent += SetInPodiumScene;
     }
 
     private void Update()
@@ -85,6 +95,7 @@ public class PauseMenu : MonoBehaviour
     {
         audioSrc.PlayOneShot(selectSFX);
         controlsManager.SwitchAllControllersToUIMode();
+        index = 0;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         isGamePaused = true;
@@ -93,6 +104,11 @@ public class PauseMenu : MonoBehaviour
     // Toggles between pause and unpause
     public void TogglePause()
     {
+        if (inPodiumScene)
+        {
+            // Do not open up a pause menu if player is in podium scene
+            return;
+        }
         if (isGamePaused)
         {
             Resume();

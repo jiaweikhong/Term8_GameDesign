@@ -58,6 +58,10 @@ public class PodiumGenerator : MonoBehaviour
                 if (control.transform.GetChild(c).gameObject.activeSelf == true)
                 {
                     characters[i] = control.transform.GetChild(c);
+
+                    characters[i].gameObject.GetComponent<Animator>().SetBool("Hurt", false);
+                    characters[i].gameObject.GetComponent<SpriteRenderer>().color = new Color(1,1,1,1);
+
                     characters[i].gameObject.SetActive(false);
                     // Debug.Log(characters[i]);
                     break;
@@ -115,6 +119,10 @@ public class PodiumGenerator : MonoBehaviour
             // lines below to handle characters who were SetActive(false) in the midst of death animation
             characters[x].gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             characters[x].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            Color tmp = characters[x].gameObject.GetComponent<SpriteRenderer>().color;
+            tmp.a = 1f;
+            characters[x].gameObject.GetComponent<SpriteRenderer>().color = tmp;
+            // characters[x].gameObject.GetComponent<SpriteRenderer>().color = new Color(1,1,1,1);
             characters[x].gameObject.GetComponent<BoxCollider2D>().enabled = true;
         }
 
