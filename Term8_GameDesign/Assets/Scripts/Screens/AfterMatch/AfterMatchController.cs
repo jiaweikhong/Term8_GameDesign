@@ -16,15 +16,18 @@ public class AfterMatchController : MonoBehaviour
     public AudioClip errorSFX;
     public AudioClip cancelSFX;
 
-    void OnEnable()
+    void Awake()
     {
         // get reference and display default
         screensTransitionManager = FindObjectOfType<ScreensTransitionManager>();
         audioSrc = GetComponent<AudioSource>();
-        afterMatchUI.UpdatePlayer(playerStats);
-        afterMatchUI.UpdateRank(afterMatchManager.getPlayerRank(playerNum));
-
         afterMatchManager.OnUpdateRank += UpdateRank;
+    }
+
+    void OnEnable()
+    {
+        afterMatchUI.UpdatePlayer(playerStats);
+        // afterMatchUI.UpdateRank(afterMatchManager.getPlayerRank(playerNum));
     }
 
     public void SubmitInput()

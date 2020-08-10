@@ -5,12 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/TitleSceneWithJoyConSupport1.unity
-    guid: 9db36ca5699332c4d890df75c0c72786
-  - enabled: 0
-    path: Assets/Scenes/ArenaSceneWithJoyConSupport.unity
-    guid: 61bbfd25bc0abd648ab673f9362a8784
   - enabled: 1
     path: Assets/Scenes/TitleSceneWithJoyConSupport.unity
     guid: 8307b13a6c82a2749b6ea6f775d475c4

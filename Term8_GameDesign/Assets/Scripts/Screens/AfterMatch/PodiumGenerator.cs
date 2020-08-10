@@ -3,25 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class PodiumGenerator : MonoBehaviour
 {
     public int numberOfPlayers = 4;
-    private float[] XValues = {-2f, -0.5f, 1f, 2.5f};   // same for player positions, Y-val is at 6
+    private float[] XValues = {-2f, -0.5f, 1f, 2.5f};   // same for player positions, player Y-val = 5
     private float[] YValues = {-2.52f, -1.53f, -0.54f, 0.45f};
-    // int[] positions = {3, 1, 2, 4};
     public GameObject[] controls;
     [SerializeField]
     private Transform[] characters;
     private int[] positions;
+    private bool gotPositions;
+
+    [SerializeField]
+    private int secondsToTitle = 10;
+    [SerializeField]
+    private string countdownString = " seconds to title...";
+    public GameObject countdownText;
+    private float msec = 0f;
+
     public GameObject cratePrefab;
     public GameObject platforms;    // under Grid/Jumpable
     [SerializeField]
     private AfterMatchManager afterMatchManager;
     private ScreensTransitionManager screensTransitionManager;
     private GameManager gameManager;
-    private bool gotPositions;
+    private ControlsManager controlsManager;
     private AudioSource thump;
 
 
@@ -30,12 +39,15 @@ public class PodiumGenerator : MonoBehaviour
         screensTransitionManager = FindObjectOfType<ScreensTransitionManager>();
         gameManager = FindObjectOfType<GameManager>();
         gameManager.EnterPodium();
+        controlsManager = FindObjectOfType<ControlsManager>();
 
         numberOfPlayers = screensTransitionManager.requiredPlayersToStart;
         positions = new int[numberOfPlayers];
         characters = new Transform[numberOfPlayers];
         
         platforms.SetActive(false);
+        countdownText.SetActive(false);
+        countdownText.GetComponent<Text>().text = secondsToTitle.ToString() + countdownString;
         
         // Get the character's Transform for each player
         for(int i = 0; i < controls.Length; i++)
@@ -61,7 +73,7 @@ public class PodiumGenerator : MonoBehaviour
 
         // ======================================
         // get player positions
-        bool gotPositions = false;
+        gotPositions = false;
         while (!gotPositions)
         {
             for (int i = 0; i < positions.Length; i++)
@@ -114,9 +126,28 @@ public class PodiumGenerator : MonoBehaviour
             characters[x].gameObject.GetComponent<BoxCollider2D>().enabled = true;
         }
 
-        // TODO : podium to title
-
+        // Start countdown to title (handled in Update)
+        countdownText.SetActive(true);
     }
+
+    void Update()
+    {
+        if (countdownText.activeSelf)
+        {
+            if (secondsToTitle <= 0) ToTitle();
+            // handle countdown & text
+            if(msec <= 0)
+            {
+                if(secondsToTitle >= 0)
+                {
+                    secondsToTitle--;
+                }
+                msec = 100;
+            }
+            msec -= Time.deltaTime * 100;
+            countdownText.GetComponent<Text>().text = secondsToTitle.ToString() + countdownString;
+        }
+    } 
 
     // ===== ensure crate lands in the right position ======
     private IEnumerator CrateLanding(int x, int y, GameObject crate)
@@ -128,6 +159,18 @@ public class PodiumGenerator : MonoBehaviour
         crate.transform.position = new Vector3(XValues[x], YValues[y], 0);
     }
 
+    // ===== Return to title after set duration ======
+    private void ToTitle()
+    {
+        Debug.Log("Podium returning to title...");
+        controlsManager.SwitchAllControllersToUIMode();
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+        platforms.SetActive(true);
+        screensTransitionManager.ToTitle();
+    }
 
 
 }

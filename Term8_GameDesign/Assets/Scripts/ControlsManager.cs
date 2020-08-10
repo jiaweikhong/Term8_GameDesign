@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Enums;
 using UnityEngine.InputSystem;
-using UnityEditor.U2D.Path.GUIFramework;
+//using UnityEditor.U2D.Path.GUIFramework;
 
 // This Class will control the input for all Players
 public class ControlsManager : MonoBehaviour

@@ -11,10 +11,10 @@ public class PodiumOverlayController : MonoBehaviour
     [SerializeField]
     private AfterMatchManager afterMatchManager;
     private bool isReady = false;
+
     void OnEnable()
     {
         screensTransitionManager = FindObjectOfType<ScreensTransitionManager>();
-
         afterMatchManager.OnUpdateRank += UpdateRank;
     }
 
