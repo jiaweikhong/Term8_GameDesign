@@ -22631,17 +22631,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 214ab60f6d3295b4b9df367aaeebc5f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cratePrefab: {fileID: 6006276944777252145, guid: 167e7d0900a391249937ca319a3f7d36,
-    type: 3}
+  numberOfPlayers: 4
   controls:
   - {fileID: 197273089}
   - {fileID: 761714818}
   - {fileID: 1454679444}
   - {fileID: 1347666514}
-  numberOfPlayers: 4
   characters: []
+  cratePrefab: {fileID: 6006276944777252145, guid: 167e7d0900a391249937ca319a3f7d36,
+    type: 3}
   platforms: {fileID: 1134700299}
-  afterMatchManager: {fileID: 1354880926}
+  afterMatchManager: {fileID: 1710327552}
 --- !u!82 &1105154362
 AudioSource:
   m_ObjectHideFlags: 0
@@ -30487,6 +30487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlsManager: {fileID: 1517808936}
   screensTransitionManager: {fileID: 1193019349}
+  gameManager: {fileID: 1697950259}
   pauseMenuUI: {fileID: 643280872}
   navigateSFX: {fileID: 8300000, guid: ed3b85ee550a5c14390894dfc6b0263c, type: 3}
   selectSFX: {fileID: 8300000, guid: 2c9d6035d2c6d6b429b70abe2e2df74d, type: 3}
@@ -30498,6 +30499,7 @@ MonoBehaviour:
   mainMenuButton: {fileID: 1331317847}
   mainMenuButtonImage: {fileID: 1331317848}
   controlsCanvas: {fileID: 473618510}
+  inPodiumScene: 0
 --- !u!114 &1457426893
 MonoBehaviour:
   m_ObjectHideFlags: 0
