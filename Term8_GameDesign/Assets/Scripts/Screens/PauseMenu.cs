@@ -26,6 +26,13 @@ public class PauseMenu : MonoBehaviour
     public Image mainMenuButtonImage;
     public GameObject controlsCanvas;
     private bool controlsCanvasOpen = false;
+    [SerializeField]
+    private bool inPodiumScene = false;
+
+    public void SetInPodiumScene(bool setBool)
+    {
+        inPodiumScene = setBool;
+    }
 
     private void Awake()
     {
@@ -93,6 +100,11 @@ public class PauseMenu : MonoBehaviour
     // Toggles between pause and unpause
     public void TogglePause()
     {
+        if (inPodiumScene)
+        {
+            // Do not open up a pause menu if player is in podium scene
+            return;
+        }
         if (isGamePaused)
         {
             Resume();
