@@ -40,10 +40,13 @@ public class GameOverlayController : MonoBehaviour
 
     void Update()
     {        
-        if (min==0 && sec==0 && (int) msec==0 && inBattle == true)
+        if (min<=0 && sec<=0 && (int) msec<=0)
         {
-            inBattle = false;
-            screensTransitionManager.ToAfterMatch();
+            if (inBattle == true)
+            {
+                inBattle = false;
+                screensTransitionManager.ToAfterMatch();
+            }
         }
         else if (inBattle == true)
         {
@@ -54,7 +57,7 @@ public class GameOverlayController : MonoBehaviour
                     min--;
                     sec = 59;
                 }
-                else if(sec >= 0){
+                else if(sec > 0){
                     sec--;
                 }
                     
