@@ -16,8 +16,7 @@ public class AfterMatchController : MonoBehaviour
     public AudioClip errorSFX;
     public AudioClip cancelSFX;
 
-    // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         // get reference and display default
         screensTransitionManager = FindObjectOfType<ScreensTransitionManager>();

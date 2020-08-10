@@ -204,7 +204,7 @@ public class PlayerInputScript : MonoBehaviour
         {
             if (screensTransitionManager.GetScreenNum() == 4)
             {
-                podiumOverlayController.UpdateReady();
+                //podiumOverlayController.UpdateReady();
             }
             else
             {

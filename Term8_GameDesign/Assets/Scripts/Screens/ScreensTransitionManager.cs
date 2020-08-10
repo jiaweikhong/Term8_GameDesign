@@ -240,6 +240,7 @@ public class ScreensTransitionManager : MonoBehaviour
         if (screenNum == 3)
         {
             audioSrc.PlayOneShot(roundEndSFX);
+            readyPlayersNum = 0;
             OnNewMatch.Invoke();
             
             if (matchNum <= 2)

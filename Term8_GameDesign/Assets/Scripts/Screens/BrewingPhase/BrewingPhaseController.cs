@@ -26,8 +26,7 @@ public class BrewingPhaseController : MonoBehaviour
     public AudioClip errorSFX;
     public AudioClip cancelSFX;
 
-    // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         // get reference and display default
         screensTransitionManager = FindObjectOfType<ScreensTransitionManager>();
@@ -232,7 +231,6 @@ public class BrewingPhaseController : MonoBehaviour
         selectionIndex = 0;
         brewingPhaseUI.UpdateSelectionBox(selectionIndex);
         brewingPhaseUI.UpdateSelected(false);
-        screensTransitionManager.ReadyPlayer(false);
     }
 
     private void ResetUI()
