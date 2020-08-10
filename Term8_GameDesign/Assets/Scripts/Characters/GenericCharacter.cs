@@ -63,7 +63,6 @@ public abstract class GenericCharacter : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         rigidBody = GetComponent<Rigidbody2D>();
         
-        screensTransitionManager = FindObjectOfType<ScreensTransitionManager>();
         
         for (int i =0; i < statusEffect.transform.childCount; i ++) {
             allStatusEffects.Add(statusEffect.transform.GetChild(i));
@@ -73,6 +72,7 @@ public abstract class GenericCharacter : MonoBehaviour
 
     private void OnEnable()
     {
+        screensTransitionManager = FindObjectOfType<ScreensTransitionManager>();
         screensTransitionManager.OnNewMatch += ResetPosition;
     }
 
@@ -202,7 +202,7 @@ public abstract class GenericCharacter : MonoBehaviour
     public void InstantUnhurtPlayer()
     {
         animator.SetBool("Hurt", false);
-        // animator.SetLayerWeight(1, 0);
+        animator.SetLayerWeight(1, 0);
         wasHurted = false;
     }
 
