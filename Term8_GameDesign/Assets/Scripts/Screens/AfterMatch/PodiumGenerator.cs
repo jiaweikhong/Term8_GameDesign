@@ -73,7 +73,7 @@ public class PodiumGenerator : MonoBehaviour
 
         // ======================================
         // get player positions
-        bool gotPositions = false;
+        gotPositions = false;
         while (!gotPositions)
         {
             for (int i = 0; i < positions.Length; i++)
