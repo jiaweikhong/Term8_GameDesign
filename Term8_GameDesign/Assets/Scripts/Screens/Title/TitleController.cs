@@ -29,7 +29,8 @@ public class TitleController : MonoBehaviour
         if (selectionMade)
         {
             return;
-        } else if (!selectionMade)
+        }
+        else if (!selectionMade)
         {
             selectionMade = true;
             StartCoroutine(NavigateTitle());
@@ -40,20 +41,20 @@ public class TitleController : MonoBehaviour
     {
         audioSrc.PlayOneShot(errorSFX);
     }
-    
+
     public void NavigateInput(InputAction.CallbackContext context)
     {
         if (gameObject.activeInHierarchy && context.performed && !selectionMade)
         {
             navigateVector = context.ReadValue<Vector2>();
-            
+
             // navigate UP
-            if (navigateVector.y > 0.5f && selectionIndex==0)
+            if (navigateVector.y > 0.5f && selectionIndex == 0)
             {
                 selectionIndex = 1;
             }
             // navigate DOWN
-            if (navigateVector.y < -0.5f && selectionIndex!=0)
+            if (navigateVector.y < -0.5f && selectionIndex != 0)
             {
                 selectionIndex = 0;
             }
@@ -61,17 +62,17 @@ public class TitleController : MonoBehaviour
             // navigate LEFT
             if (navigateVector.x < -0.5f)
             {
-                selectionIndex-=1;
-                selectionIndex = (selectionIndex<0) ? 3 : selectionIndex;
+                selectionIndex -= 1;
+                selectionIndex = (selectionIndex < 0) ? 4 : selectionIndex;
             }
-            
+
             // navigate RIGHT
             else if (navigateVector.x > 0.5f)
             {
-                selectionIndex+=1;
-                selectionIndex = (selectionIndex>3) ? 0 : selectionIndex;
+                selectionIndex += 1;
+                selectionIndex = (selectionIndex > 4) ? 0 : selectionIndex;
             }
-            
+
             titleUI.UpdateSelectionBox(selectionIndex);
             audioSrc.PlayOneShot(navigateSFX);
         }
@@ -97,6 +98,10 @@ public class TitleController : MonoBehaviour
         else if (selectionIndex == 3)
         {
             screensTransitionManager.ToCharacters();
+        }
+        else if (selectionIndex == 4)
+        {
+            Application.Quit();
         }
     }
 }
