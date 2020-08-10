@@ -121,6 +121,7 @@ public class PodiumGenerator : MonoBehaviour
             characters[x].gameObject.SetActive(true);
             characters[x].gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             characters[x].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            characters[x].gameObject.GetComponent<SpriteRenderer>().color = new Color(1,1,1,1);
             characters[x].gameObject.GetComponent<BoxCollider2D>().enabled = true;
 
         }
