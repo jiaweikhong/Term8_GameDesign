@@ -61,9 +61,12 @@ public class GameOverlayController : MonoBehaviour
                     sec--;
                 }
                     
-                    msec = 100;
+                    msec = 99;
                 }
-            msec -= Time.deltaTime * 100;
+            else if (msec> 0) 
+            { 
+                msec -= Time.deltaTime * 100;
+            }
             SetCountDown(min, sec, msec);
         }
         
