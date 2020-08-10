@@ -11,6 +11,8 @@ public class PauseMenu : MonoBehaviour
     private ControlsManager controlsManager;
     [SerializeField]
     private ScreensTransitionManager screensTransitionManager;
+    [SerializeField]
+    private GameManager gameManager;
     public GameObject pauseMenuUI;
     private int index = 0;      // 0 to 2
     private Vector2 navigateVector = Vector2.zero;
@@ -43,6 +45,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenuUI.SetActive(false);
         controlsCanvas.SetActive(false);
+        gameManager.OnPodiumSceneEvent += SetInPodiumScene;
     }
 
     private void Update()
@@ -92,6 +95,7 @@ public class PauseMenu : MonoBehaviour
     {
         audioSrc.PlayOneShot(selectSFX);
         controlsManager.SwitchAllControllersToUIMode();
+        index = 0;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         isGamePaused = true;
