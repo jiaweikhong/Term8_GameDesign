@@ -8,8 +8,7 @@ public class AfterMatchManager : MonoBehaviour
     private int[] kills = new int[4];
     private string[] ranks = { "1ST", "2ND", "3RD", "4TH" };
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         screensTransitionManager = FindObjectOfType<ScreensTransitionManager>();
         screensTransitionManager.OnNewMatch += NewMatch;

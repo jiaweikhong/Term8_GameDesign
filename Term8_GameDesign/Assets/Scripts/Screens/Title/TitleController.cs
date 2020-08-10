@@ -8,6 +8,8 @@ public class TitleController : MonoBehaviour
 {
     public TitleUI titleUI;
     private int selectionIndex = 0;
+    //private int selectedIndex;
+    private bool selectionMade = false;
     private ScreensTransitionManager screensTransitionManager;
     private Vector2 navigateVector = new Vector2(0, 0);
     private AudioSource audioSrc;
@@ -24,7 +26,14 @@ public class TitleController : MonoBehaviour
 
     public void SubmitInput()
     {
-        StartCoroutine(NavigateTitle());
+        if (selectionMade)
+        {
+            return;
+        } else if (!selectionMade)
+        {
+            selectionMade = true;
+            StartCoroutine(NavigateTitle());
+        }
     }
 
     public void CancelInput()
@@ -34,7 +43,7 @@ public class TitleController : MonoBehaviour
     
     public void NavigateInput(InputAction.CallbackContext context)
     {
-        if (gameObject.activeInHierarchy && context.performed)
+        if (gameObject.activeInHierarchy && context.performed && !selectionMade)
         {
             navigateVector = context.ReadValue<Vector2>();
             
@@ -72,19 +81,20 @@ public class TitleController : MonoBehaviour
     {
         audioSrc.PlayOneShot(selectSFX);
         yield return new WaitForSeconds(0.5f);
-        if (selectionIndex==0)
+        selectionMade = false;
+        if (selectionIndex == 0)
         {
             screensTransitionManager.ToCharacterSelect();
         }
-        else if (selectionIndex==1)
+        else if (selectionIndex == 1)
         {
             screensTransitionManager.ToInstructions();
         }
-        else if (selectionIndex==2)
+        else if (selectionIndex == 2)
         {
             screensTransitionManager.ToControls();
         }
-        else if (selectionIndex==3)
+        else if (selectionIndex == 3)
         {
             screensTransitionManager.ToCharacters();
         }

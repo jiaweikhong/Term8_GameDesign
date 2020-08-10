@@ -26,23 +26,24 @@ public class BrewingPhaseController : MonoBehaviour
     public AudioClip errorSFX;
     public AudioClip cancelSFX;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         // get reference and display default
         screensTransitionManager = FindObjectOfType<ScreensTransitionManager>();
         brewingPhaseManager = FindObjectOfType<BrewingPhaseManager>();
+        audioSrc = GetComponent<AudioSource>();
+        screensTransitionManager.OnNewMatch += NewMatch;
+        screensTransitionManager.OnReturnToTitle += ResetUI;
+    }
 
+    void OnEnable()
+    {
         secondaryQty = playerStats.SecondaryPotionQty;
         specialQty = playerStats.SpecialPotionQty;
         weets = playerStats.Weets;
         brewingPhaseUI.UpdatePlayer(playerStats);
         brewingPhaseUI.UpdateSelectionBox(selectionIndex);
         brewingPhaseUI.UpdateSpecialPotion(brewingPhaseManager.GetSpecialPotion(specialIndex), weets);
-        audioSrc = GetComponent<AudioSource>();
-
-        screensTransitionManager.OnNewMatch += NewMatch;
-        screensTransitionManager.OnReturnToTitle += ResetUI;
     }
 
     public void NavigateInput(InputAction.CallbackContext context)
@@ -232,7 +233,6 @@ public class BrewingPhaseController : MonoBehaviour
         selectionIndex = 0;
         brewingPhaseUI.UpdateSelectionBox(selectionIndex);
         brewingPhaseUI.UpdateSelected(false);
-        screensTransitionManager.ReadyPlayer(false);
     }
 
     private void ResetUI()

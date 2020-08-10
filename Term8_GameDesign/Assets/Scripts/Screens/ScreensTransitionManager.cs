@@ -158,6 +158,7 @@ public class ScreensTransitionManager : MonoBehaviour
 
     public void ToTitle()
     {
+        SceneManager.LoadScene(0);
         screenNum = 0;
         readyPlayersNum = 0;
         matchNum = 0;
@@ -249,6 +250,7 @@ public class ScreensTransitionManager : MonoBehaviour
         if (screenNum == 3)
         {
             audioSrc.PlayOneShot(roundEndSFX);
+            readyPlayersNum = 0;
             OnNewMatch.Invoke();
             
             if (matchNum <= 2)
