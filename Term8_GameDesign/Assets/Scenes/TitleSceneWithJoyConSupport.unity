@@ -26261,7 +26261,7 @@ MonoBehaviour:
   podium: {fileID: 1105154360}
   controlsManager: {fileID: 1517808936}
   spawnPickupsScript: {fileID: 1748545542}
-  requiredPlayersToStart: 4
+  requiredPlayersToStart: 2
   readyPlayersNum: 0
   toSelectPlaySFX: {fileID: 8300000, guid: d2701761ad919584d8a04bbe6b134f28, type: 3}
   roundEndSFX: {fileID: 8300000, guid: 8ad6ea618b89ebf49ac2fdd93b8ecb97, type: 3}
