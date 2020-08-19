@@ -47,6 +47,8 @@ public abstract class GenericCharacter : MonoBehaviour
     public AudioClip deathSFX;
     public AudioClip jumpSFX;
     public AudioClip landSFX;
+    private AudioClip weetPickupSFX;
+    private AudioClip secPotPickupSFX;
     
     // Special potion effects
     public GameObject MMSprite;
@@ -176,13 +178,23 @@ public abstract class GenericCharacter : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("pickup"))
         {
-            Debug.Log("I met some weeds");
+            //Debug.Log("I met some weeds");
             playerScript.AddWeets();
+            if (weetPickupSFX == null)
+            {
+                weetPickupSFX = collision.gameObject.GetComponent<AudioSource>().clip;
+            }
+            audioSrc.PlayOneShot(weetPickupSFX);
             collision.gameObject.SetActive(false);
         }
         if (collision.gameObject.CompareTag("potion"))
         {
-            Debug.Log("I met the potion");
+            //Debug.Log("I met the potion");
+            if (secPotPickupSFX == null)
+            {
+                secPotPickupSFX = collision.gameObject.GetComponent<AudioSource>().clip;
+            }
+            audioSrc.PlayOneShot(secPotPickupSFX);
             playerScript.AddSecPotionQty();
             collision.gameObject.SetActive(false);
         }
