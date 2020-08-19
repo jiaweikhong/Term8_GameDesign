@@ -9,45 +9,51 @@ public class AudioManager : MonoBehaviour
     public AudioClip characterSelection;
     public AudioClip battle;
     public AudioClip matchConclude;
-    
-    void Start() {
+
+    void Start()
+    {
         audioSource.loop = true;
         audioSource.clip = titleScreen;
         audioSource.Play();
     }
 
-    public void ChangeTrack(string track) {
-        if (track == "characterSelect") {
-            if (audioSource.clip == characterSelection) {
+    public void ChangeTrack(string track)
+    {
+        if (track == "characterSelect")
+        {
+            if (audioSource.clip == characterSelection)
+            {
                 return;
             }
             audioSource.Stop();
-            audioSource.loop= true;
+            audioSource.loop = true;
             audioSource.clip = characterSelection;
             audioSource.Play();
         }
-        if (track == "toGamePlay") {
+        if (track == "toGamePlay")
+        {
             audioSource.Stop();
-            audioSource.loop= true;
+            audioSource.loop = true;
             audioSource.clip = battle;
             audioSource.Play();
         }
-        if (track == "toAfterMatch") {
+        if (track == "toAfterMatch")
+        {
             audioSource.Stop();
-            audioSource.loop= true;
+            audioSource.loop = true;
             audioSource.clip = matchConclude;
             audioSource.Play();
         }
-        if (track == "toTitle") {
-            if (audioSource.clip == titleScreen) {
+        if (track == "toTitle")
+        {
+            if (audioSource.clip == titleScreen)
+            {
                 return;
             }
             audioSource.Stop();
-            audioSource.loop= true;
+            audioSource.loop = true;
             audioSource.clip = titleScreen;
             audioSource.Play();
         }
-        
     }
-    
 }

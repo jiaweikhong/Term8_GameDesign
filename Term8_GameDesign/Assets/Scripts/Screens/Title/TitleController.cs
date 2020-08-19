@@ -7,11 +7,14 @@ using UnityEngine.InputSystem;
 public class TitleController : MonoBehaviour
 {
     public TitleUI titleUI;
+    [SerializeField]
+    private int numberOfButtons;
     private int selectionIndex = 0;
-    //private int selectedIndex;
     private bool selectionMade = false;
     private ScreensTransitionManager screensTransitionManager;
     private Vector2 navigateVector = new Vector2(0, 0);
+
+    // for audio
     private AudioSource audioSrc;
     public AudioClip navigateSFX;
     public AudioClip selectSFX;
@@ -63,14 +66,14 @@ public class TitleController : MonoBehaviour
             if (navigateVector.x < -0.5f)
             {
                 selectionIndex -= 1;
-                selectionIndex = (selectionIndex < 0) ? 4 : selectionIndex;
+                selectionIndex = (selectionIndex < 0) ? numberOfButtons - 1 : selectionIndex;
             }
 
             // navigate RIGHT
             else if (navigateVector.x > 0.5f)
             {
                 selectionIndex += 1;
-                selectionIndex = (selectionIndex > 4) ? 0 : selectionIndex;
+                selectionIndex = (selectionIndex > numberOfButtons - 1) ? 0 : selectionIndex;
             }
 
             titleUI.UpdateSelectionBox(selectionIndex);
@@ -100,6 +103,10 @@ public class TitleController : MonoBehaviour
             screensTransitionManager.ToCharacters();
         }
         else if (selectionIndex == 4)
+        {
+            screensTransitionManager.ToCredits();
+        }
+        else if (selectionIndex == 5)
         {
             Application.Quit();
         }

@@ -12,6 +12,7 @@ public class PlayerInputScript : MonoBehaviour
     public InstructionsController instructionsController;
     public ControlsController controlsController;
     public CharactersController charactersController;
+    public CreditsController creditsController;
     public CharacterSelectController characterSelectController;
     public BrewingPhaseController brewingPhaseController;
     public AfterMatchController afterMatchController;
@@ -120,6 +121,10 @@ public class PlayerInputScript : MonoBehaviour
         // Title Screen Scene
         if (SceneManager.GetActiveScene().buildIndex == 0 && context.performed)
         {
+            if (screensTransitionManager.GetScreenNum() == -4)
+            {
+                creditsController.CancelInput();
+            }
             // characters screen
             if (screensTransitionManager.GetScreenNum() == -3)
             {
