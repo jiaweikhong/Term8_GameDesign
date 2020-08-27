@@ -7745,7 +7745,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250, y: -35.6}
+  m_AnchoredPosition: {x: 250, y: -27.5}
   m_SizeDelta: {x: 440, y: 61.81073}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &287620522
@@ -22380,7 +22380,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250, y: -134.8}
+  m_AnchoredPosition: {x: 250, y: -118.1}
   m_SizeDelta: {x: 440, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1031368415
@@ -26389,7 +26389,7 @@ MonoBehaviour:
   podium: {fileID: 1105154360}
   controlsManager: {fileID: 1517808936}
   spawnPickupsScript: {fileID: 1748545542}
-  requiredPlayersToStart: 4
+  requiredPlayersToStart: 2
   readyPlayersNum: 0
   toSelectPlaySFX: {fileID: 8300000, guid: d2701761ad919584d8a04bbe6b134f28, type: 3}
   roundEndSFX: {fileID: 8300000, guid: 8ad6ea618b89ebf49ac2fdd93b8ecb97, type: 3}
@@ -32609,7 +32609,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250, y: 9.200024}
+  m_AnchoredPosition: {x: 250, y: 17.300014}
   m_SizeDelta: {x: 440, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1486591074
@@ -33625,8 +33625,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250, y: -192.50002}
-  m_SizeDelta: {x: 440, y: 85.317444}
+  m_AnchoredPosition: {x: 250, y: -182.20001}
+  m_SizeDelta: {x: 440, y: 98.168884}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1556495248
 MonoBehaviour:
@@ -33665,6 +33665,8 @@ MonoBehaviour:
     Fliflifly
 
     Neorice
+
+    rrcaseyr
 
     VikingTabern'
 --- !u!222 &1556495249
