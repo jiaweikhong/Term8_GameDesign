@@ -269,7 +269,9 @@ MonoBehaviour:
   startTimeBtwAttack: 0.6
   isFast: 0
   speedBoostMultiplier: 1.75
+  isPodiumScene: 0
   respawnTime: 2
+  respawnPromptSpriteRenderer: {fileID: 0}
   specialPotsSFX: {fileID: 11400000, guid: a69ded931c64f10498cf6323a68331a2, type: 2}
   hurtSFX: {fileID: 8300000, guid: bc847b9132aa1984ba22a326f789b33e, type: 3}
   deathSFX: {fileID: 8300000, guid: 2c3ca07ea3596d84aae749783910f123, type: 3}

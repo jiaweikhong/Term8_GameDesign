@@ -39,6 +39,8 @@ public abstract class GenericCharacter : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider;
     protected Rigidbody2D rigidBody;
+    [SerializeField]
+    protected SpriteRenderer respawnPromptSpriteRenderer;
 
     // SFX
     protected AudioSource audioSrc;
@@ -352,10 +354,13 @@ public abstract class GenericCharacter : MonoBehaviour
         yield return new WaitForSeconds(deathAnimLength);
         spriteRenderer.enabled = false;
         transform.position = new Vector3(Random.Range(-9f, 9f), 5, 0);
+        respawnPromptSpriteRenderer.gameObject.transform.position = transform.position;
+        respawnPromptSpriteRenderer.enabled = true;
         yield return new WaitForSeconds(respawnTime - deathAnimLength);
         boxCollider.enabled = true;
         rigidBody.bodyType = RigidbodyType2D.Dynamic;
         spriteRenderer.enabled = true;
+        respawnPromptSpriteRenderer.enabled = false;
         if (gameOverlayController.inBattle == true)
         {
             controlsManager.EnableCharacterActionMap(playerScript.playerNum);
