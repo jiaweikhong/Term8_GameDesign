@@ -352,9 +352,10 @@ public abstract class GenericCharacter : MonoBehaviour
         rigidBody.bodyType = RigidbodyType2D.Kinematic;
         boxCollider.enabled = false;
         yield return new WaitForSeconds(deathAnimLength);
-        respawnPromptSpriteRenderer.enabled = true;
         spriteRenderer.enabled = false;
         transform.position = new Vector3(Random.Range(-9f, 9f), 5, 0);
+        respawnPromptSpriteRenderer.gameObject.transform.position = transform.position;
+        respawnPromptSpriteRenderer.enabled = true;
         yield return new WaitForSeconds(respawnTime - deathAnimLength);
         boxCollider.enabled = true;
         rigidBody.bodyType = RigidbodyType2D.Dynamic;
